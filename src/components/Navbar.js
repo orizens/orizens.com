@@ -30,7 +30,7 @@ const Navbar = class extends React.Component {
   }
 
   render() {
-    console.log('navbar items', this.props);
+    // console.log('navbar items', this.props);
     const {
       items: {
         props,
@@ -38,15 +38,16 @@ const Navbar = class extends React.Component {
       }
     } = this.props;
     const isBlogPostWithFeaturedImage = image;
-    const featuredImage = isBlogPostWithFeaturedImage
-      ? {
-          // image
-          backgroundImage: `url(${image.childImageSharp.resolutions.src})`
-        }
-      : {};
-    console.log('featuredImage: ', featuredImage);
+    const featuredImage =
+      isBlogPostWithFeaturedImage && image.childImageSharp.resolutions
+        ? {
+            // image
+            backgroundImage: `url(${image.childImageSharp.resolutions.src})`
+          }
+        : {};
+    // console.log('featuredImage: ', featuredImage);
 
-    console.log('isBlogPostWithFeaturedImage: ', isBlogPostWithFeaturedImage);
+    // console.log('isBlogPostWithFeaturedImage: ', isBlogPostWithFeaturedImage);
     return (
       <header
         id="masthead"
