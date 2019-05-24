@@ -11,3 +11,24 @@
     
   section
     margin-bottom: 3rem
+
+  .menu-item.dropdown
+    display: block
+
+  ul.nav li.dropdown:hover > ul.dropdown-menu
+    display: flex
+    flex-direction: column
+    border-radius: 10px
+
+  .dropdown-menu > li > a
+    display: block
+    padding: 10px 15px
+    color: #111
+    border-bottom: 1px solid #eeeeee
+
+  .site-navigation-inner .navbar-collapse
+    flex: 2
+    align-self: center
+    display: flex
+
+  

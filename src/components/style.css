@@ -129,6 +129,7 @@ p {
 
 * > p:last-child {
   margin-bottom: 0;
+  font-size: 1.5rem;
 }
 
 blockquote {
@@ -645,19 +646,6 @@ article.grid iframe {
   margin-top: 0;
   padding: 0;
 }
-.single-featured {
-  -webkit-transition: opacity 0.3s linear;
-     -moz-transition: opacity 0.3s linear;
-       -o-transition: opacity 0.3s linear;
-          transition: opacity 0.3s linear;
-  display: block;
-  margin: auto;
-  width: 100%;
-  box-shadow: 0 0px 10px 1px rgb(0,0,0);
-}
-.single-featured:hover {
-  opacity: 0.8;
-}
 .wp-caption {
   border: 1px solid #ddd;
   margin-bottom: 1.5em;
@@ -1171,9 +1159,7 @@ letter-spacing: 1px;
   color: #DADADA;
 }
 @media (min-width: 979px) {
-  ul.nav li.dropdown:hover > ul.dropdown-menu {
-    display: block;
-  }
+  
 }
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   border-left: 1px solid rgba(0, 0, 0, 0.1);
@@ -1933,16 +1919,11 @@ a.ng2-special-offer {
   #menu-main-menu .menu-item.menu-item-has-children::after {
     content: '\25bc';
     display: inline-block;
-    position: absolute;
-    top: 30px;
     right: 0;
-    font-size: .7rem;
+    font-size: .5rem;
     color: #81d742;
   }
 
-  #menu-main-menu .menu-item.menu-item-has-children a {
-    padding-right: 15px;
-  }
   .navbar-collapse {
     background: transparent;
   }
@@ -2066,9 +2047,7 @@ margin-bottom: 1.5rem;
   display: flex;
   flex-direction: row;
 }
-.site-navigation-inner .navbar-collapse {
-  flex: 2;
-}
+
 .site-navigation-inner .nav-search {
   flex: 1;
   text-align: right;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import Img from 'gatsby-image';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -15,21 +16,32 @@ export default class IndexPage extends React.Component {
             <div className="content">
               <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
-            {posts.map(({ node: post }) => (
+            {posts.slice(0, 5).map(({ node: post }) => (
               <div
                 className="content"
-                style={{ border: '1px solid #333', padding: '2em 4em' }}
+                style={{ padding: '2em 4em' }}
                 key={post.id}
               >
                 <p>
                   <Link
-                    className="has-text-primary"
+                    className="has-text-primary post-header"
                     to={post.frontmatter.permalink}
                   >
                     {post.frontmatter.title}
                   </Link>
-                  <span> &bull; </span>
-                  <small>{post.frontmatter.date}</small>
+                  <div>{post.frontmatter.date}</div>
+                  <a
+                    href={post.frontmatter.permalink}
+                    title={post.frontmatter.title}
+                  >
+                    <Img
+                      fixed={post.frontmatter.image.childImageSharp.fixed}
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      className="single-featured wp-post-image"
+                      alt=""
+                    />
+                  </a>
                 </p>
                 <p>
                   {post.excerpt}
@@ -80,6 +92,12 @@ export const pageQuery = graphql`
             image {
               name
               absolutePath
+              childImageSharp {
+                fixed(height: 400, width: 800) {
+                  src
+                  srcSet
+                }
+              }
             }
           }
         }

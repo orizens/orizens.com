@@ -41,9 +41,9 @@ const Navbar = class extends React.Component {
     const featuredImage =
       isBlogPostWithFeaturedImage && image.childImageSharp.resolutions
         ? {
-            // image
-            backgroundImage: `url(${image.childImageSharp.resolutions.src})`
-          }
+          // image
+          backgroundImage: `url(${image.childImageSharp.resolutions.src})`
+        }
         : {};
     // console.log('featuredImage: ', featuredImage);
 
@@ -81,32 +81,28 @@ const Navbar = class extends React.Component {
             <div className="collapse navbar-collapse navbar-ex1-collapse">
               <ul id="menu-main-menu" className="nav navbar-nav">
                 <li
-                  id="menu-item-837"
-                  className="menu-item menu-item-type-custom menu-item-object-custom menu-item-837"
+                  className="menu-item"
                 >
                   <a title="Blog" href="http://orizens.com">
                     Blog
                   </a>
                 </li>
                 <li
-                  id="menu-item-406"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-406"
+                  className="menu-item"
                 >
                   <a title="About" href="./about/">
                     About
                   </a>
                 </li>
                 <li
-                  id="menu-item-407"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-407"
+                  className="menu-item"
                 >
                   <a title="Services" href="./services/">
                     Services
                   </a>
                 </li>
                 <li
-                  id="menu-item-1159"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 dropdown"
+                  className="menu-item menu-item-has-children dropdown"
                 >
                   <a
                     title="Articles"
@@ -114,12 +110,11 @@ const Navbar = class extends React.Component {
                     data-toggle="dropdown"
                     className="dropdown-toggle"
                   >
-                    Articles{' '}
+                    Articles
                   </a>
                   <ul role="menu" className=" dropdown-menu">
                     <li
-                      id="menu-item-1164"
-                      className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1164"
+                      className="menu-item"
                     >
                       <a
                         title="Angular Articles Series"
@@ -129,16 +124,14 @@ const Navbar = class extends React.Component {
                       </a>
                     </li>
                     <li
-                      id="menu-item-1166"
-                      className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1166"
+                      className="menu-item menu-item-object-category"
                     >
                       <a title="AngularJS" href="./categories/angular/">
                         AngularJS
                       </a>
                     </li>
                     <li
-                      id="menu-item-1161"
-                      className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1161"
+                      className="menu-item menu-item-object-category"
                     >
                       <a title="ngrx" href="./categories/ngrx/">
                         <span className="glyphicon articles about angular 2 and ngrx/store, ngrx/effects" />
@@ -146,8 +139,7 @@ const Navbar = class extends React.Component {
                       </a>
                     </li>
                     <li
-                      id="menu-item-1162"
-                      className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1162"
+                      className="menu-item menu-item-object-category"
                     >
                       <a title="RxJS" href="./categories/rxjs/">
                         <span className="glyphicon Articles about RxJs" />
@@ -155,16 +147,14 @@ const Navbar = class extends React.Component {
                       </a>
                     </li>
                     <li
-                      id="menu-item-1163"
-                      className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1163"
+                      className="menu-item menu-item-object-category"
                     >
                       <a title="testing" href="./categories/testing/">
                         testing
                       </a>
                     </li>
                     <li
-                      id="menu-item-1165"
-                      className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1165"
+                      className="menu-item menu-item-object-category"
                     >
                       <a title="typescript" href="./categories/typescript/">
                         typescript
@@ -173,8 +163,7 @@ const Navbar = class extends React.Component {
                   </ul>
                 </li>
                 <li
-                  id="menu-item-405"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-405"
+                  className="menu-item"
                 >
                   <a title="Contact" href="./contact/">
                     Contact
