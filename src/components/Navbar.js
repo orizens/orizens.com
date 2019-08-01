@@ -4,7 +4,52 @@ import github from '../img/github-icon.svg';
 import logo from '../img/logo.svg';
 import ensoLogoWhite from '../img/uploads/2017/12/enso-white.png';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
+import NavbarItem from './NavbarItem';
 
+const navItems = [
+  {
+    label: 'Blog',
+    link: 'http://orizens.com'
+  },
+  {
+    label: 'About',
+    link: '/about'
+  },
+  {
+    label: 'Services',
+    link: '/services'
+  },
+  {
+    label: 'Articles',
+    link: '#',
+    items: [
+      {
+        label: 'Angular Articles Series',
+        link: '/angular-2-article-series'
+      },
+      {
+        label: 'NgRx',
+        link: '/categories/ngrx'
+      },
+      {
+        label: 'RxJS',
+        link: '/categories/rxjs'
+      },
+      {
+        label: 'Testing',
+        link: '/categories/testing'
+      },
+      {
+        label: 'Typescript',
+        link: '/categories/typescript'
+      }
+    ]
+  },
+  {
+    label: 'Contact',
+    link: '/contact'
+  }
+];
 const Navbar = class extends React.Component {
   componentDidMount() {
     // Get all "navbar-burger" elements
@@ -41,9 +86,9 @@ const Navbar = class extends React.Component {
     const featuredImage =
       isBlogPostWithFeaturedImage && image.childImageSharp.resolutions
         ? {
-          // image
-          backgroundImage: `url(${image.childImageSharp.resolutions.src})`
-        }
+            // image
+            backgroundImage: `url(${image.childImageSharp.resolutions.src})`
+          }
         : {};
     // console.log('featuredImage: ', featuredImage);
 
@@ -80,95 +125,9 @@ const Navbar = class extends React.Component {
             </div>
             <div className="collapse navbar-collapse navbar-ex1-collapse">
               <ul id="menu-main-menu" className="nav navbar-nav">
-                <li
-                  className="menu-item"
-                >
-                  <a title="Blog" href="http://orizens.com">
-                    Blog
-                  </a>
-                </li>
-                <li
-                  className="menu-item"
-                >
-                  <a title="About" href="./about/">
-                    About
-                  </a>
-                </li>
-                <li
-                  className="menu-item"
-                >
-                  <a title="Services" href="./services/">
-                    Services
-                  </a>
-                </li>
-                <li
-                  className="menu-item menu-item-has-children dropdown"
-                >
-                  <a
-                    title="Articles"
-                    href="#"
-                    data-toggle="dropdown"
-                    className="dropdown-toggle"
-                  >
-                    Articles
-                  </a>
-                  <ul role="menu" className=" dropdown-menu">
-                    <li
-                      className="menu-item"
-                    >
-                      <a
-                        title="Angular Articles Series"
-                        href="./angular-2-article-series/"
-                      >
-                        Angular Articles Series
-                      </a>
-                    </li>
-                    <li
-                      className="menu-item menu-item-object-category"
-                    >
-                      <a title="AngularJS" href="./categories/angular/">
-                        AngularJS
-                      </a>
-                    </li>
-                    <li
-                      className="menu-item menu-item-object-category"
-                    >
-                      <a title="ngrx" href="./categories/ngrx/">
-                        <span className="glyphicon articles about angular 2 and ngrx/store, ngrx/effects" />
-                        &nbsp;ngrx
-                      </a>
-                    </li>
-                    <li
-                      className="menu-item menu-item-object-category"
-                    >
-                      <a title="RxJS" href="./categories/rxjs/">
-                        <span className="glyphicon Articles about RxJs" />
-                        &nbsp;RxJS
-                      </a>
-                    </li>
-                    <li
-                      className="menu-item menu-item-object-category"
-                    >
-                      <a title="testing" href="./categories/testing/">
-                        testing
-                      </a>
-                    </li>
-                    <li
-                      className="menu-item menu-item-object-category"
-                    >
-                      <a title="typescript" href="./categories/typescript/">
-                        typescript
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li
-                  className="menu-item"
-                >
-                  <a title="Contact" href="./contact/">
-                    Contact
-                  </a>
-                </li>
+                {navItems.map(item => (
+                  <NavbarItem {...item} />
+                ))}
               </ul>
             </div>
           </div>

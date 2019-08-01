@@ -24,7 +24,7 @@ export default class IndexPage extends React.Component {
               >
                 <p>
                   <Link
-                    className="has-text-primary post-header"
+                    className="post-header"
                     to={post.frontmatter.permalink}
                   >
                     {post.frontmatter.title}
@@ -48,7 +48,7 @@ export default class IndexPage extends React.Component {
                   <br />
                   <br />
                   <Link
-                    className="button is-small"
+                    className="btn-keep-reading"
                     to={post.frontmatter.permalink}
                   >
                     Keep Reading →

@@ -1,7 +1,10 @@
 // content
 body
   color: #696969
-  background-color: #FFFFFF
+  background: $header-bg-image
+  // background-color: $white
+  background-attachment: fixed
+  background-blend-mode: $header-bg-image-blend-mode
   word-wrap: break-word
   font-family: 'Open Sans', 'Lora', serif
   line-height: 2
@@ -14,7 +17,20 @@ h1, h2, h3, h4, h5, h5
 .section
   z-index: 1111
   position: relative
-  background-color: white
+  background-color: rgba(250, 250, 250, 0.83)
+  box-shadow: 0 4px 9px 1px $black
+  backdrop-filter: blur(5px)
 
 .post-header
   font-size: 2.5rem
+  font-weight: $weight-bold
+
+a.btn-keep-reading
+  background-color: $link
+  color: $white
+  padding: $size-6
+  font-weight: $weight-bold
+  border-radius: $size-7
+
+.content
+  background-color: $white
