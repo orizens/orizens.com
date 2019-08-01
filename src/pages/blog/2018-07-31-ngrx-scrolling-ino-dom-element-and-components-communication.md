@@ -66,21 +66,21 @@ The &#8220;Now **Playlist**&#8221; component is a component of the &#8220;Now **
   selector: 'now-playing',
   styleUrls: ['./now-playing.scss'],
   template: `
-  &lt;div class="sidebar-pane"&gt;
-    &lt;now-playlist-filter
-      [ playlist ]="nowPlaylist$ | async"
+  <div class="sidebar-pane">
+    <now-playlist-filter
+      [playlist]="nowPlaylist$ | async"
       (clear)="clearPlaylist()"
       (filter)="updateFilter($event)"
       (reset)="resetFilter()"
       (headerClick)="onHeaderClick()"
-    &gt;&lt;/now-playlist-filter&gt;
-    &lt;now-playlist
-      [ playlist ]="nowPlaylist$ | async"
+    ></now-playlist-filter>
+    <now-playlist
+      [playlist]="nowPlaylist$ | async"
       (select)="selectVideo($event)"
       (selectTrack)="selectTrackInVideo($event)"
       (remove)="removeVideo($event)"
-    &gt;&lt;/now-playlist&gt;
-  &lt;/div&gt;
+    ></now-playlist>
+  </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -97,45 +97,55 @@ The &#8220;**scrollToActiveTrack**()&#8221; method is responsible for scrolling 
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./now-playlist.scss'],
   template: `
-  &lt;section class="now-playlist ux-maker"&gt;
-    &lt;ul class="nav nav-list ux-maker nicer-ux"&gt;
-      &lt;li class="now-playlist-track" #playlistTrack
-        [ngClass]="{
-          'active': isActiveMedia(video.id, playlistTrack)
-        }"
-        *ngFor="let video of playlist.videos | search:playlist.filter; let index = index"
-        [@flyOut]&gt;
-        &lt;now-playlist-track
-          [ video ]="video"
-          [ index ]="index"
-          (remove)="removeVideo($event)"
-          (select)="selectVideo(video)"
-          (selectTrack)="selectTrackInVideo($event)"
-        &gt;&lt;/now-playlist-track&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/section&gt;
+    <section class="now-playlist ux-maker">
+      <ul class="nav nav-list ux-maker nicer-ux">
+        <li
+          class="now-playlist-track"
+          #playlistTrack
+          [ngClass]="{
+            active: isActiveMedia(video.id, playlistTrack)
+          }"
+          *ngFor="
+            let video of (playlist.videos | search: playlist.filter);
+            let index = index
+          "
+          [@flyOut]
+        >
+          <now-playlist-track
+            [
+            video
+            ]="video"
+            [
+            index
+            ]="index"
+            (remove)="removeVideo($event)"
+            (select)="selectVideo(video)"
+            (selectTrack)="selectTrackInVideo($event)"
+          ></now-playlist-track>
+        </li>
+      </ul>
+    </section>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
   @Input() playlist: NowPlaylist.INowPlaylist;
-  @Output() select = new EventEmitter&lt;GoogleApiYouTubeVideoResource&gt;();
+  @Output() select = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output()
-  selectTrack = new EventEmitter&lt;{
+  selectTrack = new EventEmitter<{
     time: string;
     media: GoogleApiYouTubeVideoResource;
-  }&gt;();
-  @Output() remove = new EventEmitter&lt;GoogleApiYouTubeVideoResource&gt;();
+  }>();
+  @Output() remove = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
   public activeTrackElement: HTMLUListElement;
   public hasActiveChanged = false;
 
-  constructor(public zone: NgZone) { }
+  constructor(public zone: NgZone) {}
 
   ngAfterViewChecked() {
     if (this.hasActiveChanged && this.activeTrackElement) {
-      this.zone.runOutsideAngular(() =&gt; this.scrollToActiveTrack());
+      this.zone.runOutsideAngular(() => this.scrollToActiveTrack());
     }
   }
 
@@ -182,12 +192,13 @@ There are 2 possible scenarios where the &#8220;scrollToActiveTrack()&#8221; met
     1) AfterViewChecked Component Life Cycle
   </h3>
   
-  <pre class="lang:default decode:true ">ngAfterViewChecked() {
+  ```typescript
+  ngAfterViewChecked() {
     if (this.hasActiveChanged && this.activeTrackElement) {
-      this.zone.runOutsideAngular(() =&gt; this.scrollToActiveTrack());
+      this.zone.runOutsideAngular(() => this.scrollToActiveTrack());
     }
   }
-</pre>
+```
   
   <p>
     When the active media is changed via the now playlist store, the &#8220;<strong>selectedId</strong>&#8221; is updated, thus triggering a change detection down to the &#8220;now playlist component&#8221;, which is the, renders the component and updates the active media in view.
@@ -214,10 +225,13 @@ Now, whenever the &#8220;**onHeaderClick**()&#8221; method is invoked in respons
 
 ```typescript
 export class NowPlayingComponent implements OnInit {
-  public nowPlaylist$: Observable&lt;INowPlaylist&gt;;
+  public nowPlaylist$: Observable<INowPlaylist>;
   @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
 
-  constructor(public store: Store&lt;EchoesState&gt;, public nowPlaylistService: NowPlaylistService) { }
+  constructor(
+    public store: Store<EchoesState>,
+    public nowPlaylistService: NowPlaylistService
+  ) {}
 
   // ...removed code
   onHeaderClick() {
