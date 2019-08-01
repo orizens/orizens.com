@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
 
 export const BlogPostTemplate = ({
   content,
@@ -13,9 +14,17 @@ export const BlogPostTemplate = ({
   tags,
   title,
   image,
-  helmet
+  helmet,
+  dsq_thread_id,
+  permalink,
+  ...props
 }) => {
   const PostContent = contentComponent || Content;
+  let disqusConfig = {
+    url: permalink,
+    identifier: dsq_thread_id,
+    title
+  };
   return (
     <section className="section is-paddingless">
       {helmet || ''}
@@ -39,6 +48,7 @@ export const BlogPostTemplate = ({
                 </ul>
               </div>
             ) : null}
+            <Disqus config={disqusConfig} />
           </div>
         </div>
       </div>
@@ -61,6 +71,7 @@ const BlogPost = ({ data }) => {
   return (
     <Layout>
       <BlogPostTemplate
+        {...post}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
