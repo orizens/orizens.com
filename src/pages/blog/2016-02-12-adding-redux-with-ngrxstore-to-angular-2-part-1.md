@@ -103,9 +103,9 @@ export const ADD = 'ADD';
 export const REMOVE = 'REMOVE';
 export const RESET = 'RESET';
 
-export interface EchoesVideos extends Array&lt;GoogleApiYouTubeSearchResource&gt;{};
+export interface EchoesVideos extends Array<GoogleApiYouTubeSearchResource>{};
 
-export const videos: ActionReducer&lt;GoogleApiYouTubeSearchResource[]&gt; = (state: EchoesVideos = [], action: Action) =&gt; {
+export const videos: ActionReducer<GoogleApiYouTubeSearchResource[]> = (state: EchoesVideos = [], action: Action) => {
 
     switch (action.type) {
         case ADD:
@@ -146,10 +146,10 @@ import { Observable } from 'rxjs/Observable';
  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeVideos {
-	videos$: Observable&lt;EchoesVideos&gt;;
+	videos$: Observable<EchoesVideos>;
 
-	constructor(private youtubeSearch: YoutubeSearch, public store: Store&lt;any&gt;) {
-		this.videos$ = store.select(state =&gt; state.videos);
+	constructor(private youtubeSearch: YoutubeSearch, public store: Store<any>) {
+		this.videos$ = store.select(state => state.videos);
 	}
         ngOnInit(){
                 this.search('')
@@ -192,10 +192,10 @@ search(query: string, dontReset: Boolean){
 		this._config.set('q', query);
 	}
 	return this.http.get(this.url, { search: this._config })
-		// .map((res: Response) =&gt; res.json())
+		// .map((res: Response) => res.json())
 		.toPromise()
-		.then((response) =&gt; response.json())
-		.then((response) =&gt; {
+		.then((response) => response.json())
+		.then((response) => {
 			let itemsAmount = this.items.length;
 			this.nextPageToken = response.nextPageToken;
 			this.store.dispatch({ type: ADD, payload: [ ...response.items ] })

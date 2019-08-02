@@ -72,7 +72,7 @@ import concat from 'gulp-concat';
 import sourcemaps from 'gulp-sourcemaps';
 
 // notice the fat arrow syntax instead of 'function(){ ... }'
-gulp.task('style', () =&gt; {
+gulp.task('style', () => {
   return gulp.src([
       './src/css/style.less',
       './src/app/**/*.less'
@@ -103,7 +103,7 @@ import karma from 'karma';
 const isTravis = process.env.TRAVIS || false;
 const pathToKarmaConf = __dirname.replace('/gulp', '');
 
-gulp.task('test', (done) =&gt; {
+gulp.task('test', (done) => {
   karma.server.start({
     configFile: pathToKarmaConf + '/karma.conf.js',
     singleRun: isTravis

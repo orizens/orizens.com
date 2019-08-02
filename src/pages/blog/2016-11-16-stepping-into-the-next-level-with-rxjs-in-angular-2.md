@@ -49,16 +49,16 @@ The code responsible for authorization and sign belongs to the &#8220;**authoriz
 loadAuth() {
     this.gapiLoader
       .load('auth2')
-      .subscribe((authInstance: any) =&gt; {
-        // gapi['auth2'].getAuthInstance().isSignedIn.listen(authState =&gt; {
+      .subscribe((authInstance: any) => {
+        // gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
         // 	console.log('authState changed', authState);
         // });
         if (authInstance && authInstance.currentUser) {
           return this._googleAuth = authInstance;
         }
         this.authorize()
-          .then(googleAuth =&gt; {
-            window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState =&gt; {
+          .then(googleAuth => {
+            window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
               console.log('authState changed', authState);
             });
             const isSignedIn = googleAuth.isSignedIn.get();
@@ -66,7 +66,7 @@ loadAuth() {
             const hasAccessToken = authResponse.getAuthResponse().hasOwnProperty('access_token');
             this._googleAuth = googleAuth;
             if (isSignedIn && hasAccessToken) {
-              this.zone.run(() =&gt; this.handleSuccessLogin(authResponse));
+              this.zone.run(() => this.handleSuccessLogin(authResponse));
             }
           });
       });
@@ -112,7 +112,7 @@ authorize() {
   }
 
   signIn() {
-    const run = (fn) =&gt; (r) =&gt; this.zone.run(() =&gt; fn.call(this, r));
+    const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
     const signOptions = { scope: this._scope };
     if (this._googleAuth) {
       Observable.fromPromise(this._googleAuth.signIn(signOptions))
@@ -130,9 +130,9 @@ loadAuth() {
   // attempt to SILENT authorize
   this.gapiLoader
     .load('auth2')
-    .switchMap(response =&gt; this.authorize())
-    .subscribe((googleAuth: any) =&gt; {
-      window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState =&gt; {
+    .switchMap(response => this.authorize())
+    .subscribe((googleAuth: any) => {
+      window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
         console.log('authState changed', authState);
       });
       const isSignedIn = googleAuth.isSignedIn.get();
@@ -140,7 +140,7 @@ loadAuth() {
       const hasAccessToken = authResponse.getAuthResponse().hasOwnProperty('access_token');
       this._googleAuth = googleAuth;
       if (isSignedIn && hasAccessToken) {
-        this.zone.run(() =&gt; this.handleSuccessLogin(authResponse));
+        this.zone.run(() => this.handleSuccessLogin(authResponse));
       }
     });
 }
@@ -155,15 +155,15 @@ loadAuth() {
   // attempt to SILENT authorize
   this.gapiLoader
     .load('auth2')
-    .switchMap(response =&gt; this.authorize())
-    .filter((googleAuth: GoogleAuthResponse) =&gt; this.isSignIn())
-    .filter((googleAuth: GoogleAuthResponse) =&gt; this.hasAccessToken(googleAuth))
-    .subscribe((googleAuth: any) =&gt; {
-      window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState =&gt; {
+    .switchMap(response => this.authorize())
+    .filter((googleAuth: GoogleAuthResponse) => this.isSignIn())
+    .filter((googleAuth: GoogleAuthResponse) => this.hasAccessToken(googleAuth))
+    .subscribe((googleAuth: any) => {
+      window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
         console.log('authState changed', authState);
       });
       this._googleAuth = googleAuth;
-      this.zone.run(() =&gt; this.handleSuccessLogin(authResponse));
+      this.zone.run(() => this.handleSuccessLogin(authResponse));
     });
 }
 ```
@@ -177,14 +177,14 @@ loadAuth() {
     // attempt to SILENT authorize
     this.gapiLoader
       .load('auth2')
-      .switchMap(() =&gt; this.authorize())
-      .do((googleAuth: GoogleAuthResponse) =&gt; this.saveGoogleAuth(googleAuth))
-      .do((googleAuth: GoogleAuthResponse) =&gt; this.listenToGoogleAuthSignIn(googleAuth))
-      .filter((googleAuth: GoogleAuthResponse) =&gt; this.isSignIn())
-      .filter((googleAuth: GoogleAuthResponse) =&gt; this.hasAccessToken(googleAuth))
-      .map((googleAuth: GoogleAuthResponse) =&gt; googleAuth.currentUser.get())
-      .subscribe((googleUser: GoogleAuthCurrentUser) =&gt; {
-        this.zone.run(() =&gt; this.handleSuccessLogin(googleUser));
+      .switchMap(() => this.authorize())
+      .do((googleAuth: GoogleAuthResponse) => this.saveGoogleAuth(googleAuth))
+      .do((googleAuth: GoogleAuthResponse) => this.listenToGoogleAuthSignIn(googleAuth))
+      .filter((googleAuth: GoogleAuthResponse) => this.isSignIn())
+      .filter((googleAuth: GoogleAuthResponse) => this.hasAccessToken(googleAuth))
+      .map((googleAuth: GoogleAuthResponse) => googleAuth.currentUser.get())
+      .subscribe((googleUser: GoogleAuthCurrentUser) => {
+        this.zone.run(() => this.handleSuccessLogin(googleUser));
       });
   }
 ```

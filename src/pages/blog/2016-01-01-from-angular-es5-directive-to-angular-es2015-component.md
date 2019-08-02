@@ -52,29 +52,29 @@ Since I added this feature fast, I didn't create a module for it - I used angula
 taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90f61f23711cdfcb0234aafff/src/index.html#L150" target="_blank">index.html</a> file:
 
 ```typescript
-&lt;ul id="user-playlists" class="nav nav-list xux-maker xnicer-ux user-playlists"
+<ul id="user-playlists" class="nav nav-list xux-maker xnicer-ux user-playlists"
 	ng-class="{ 
 		'transition-in': vm.playlists.length,
 		'slide-down': vm.showPlaylistSaver 
 	}"
 	sv-root sv-part="vm.playlists"
 	sv-on-sort="vm.updateIndex($item, $indexTo)"
-	&gt;
-	&lt;li class="user-playlist"
+	>
+	<li class="user-playlist"
 		ng-class="{ 'active': vm.nowPlaying.index === $index}"
 		ng-repeat="video in vm.playlists | filter:vm.playlistSearch"
-		sv-element&gt;
-		&lt;a class="" title="{{:: video.snippet.title }}"
-			ng-click="vm.playVideo(video, $index)"&gt;
+		sv-element>
+		<a class="" title="{{:: video.snippet.title }}"
+			ng-click="vm.playVideo(video, $index)">
 			{{ $index + 1 }})
-			&lt;img class="video-thumb" draggable="false" ng-src="{{:: video.snippet.thumbnails.default.url }}" sv-handle title="Drag to sort"&gt;
-			&lt;span class="video-title"&gt;{{:: video.snippet.title }}&lt;/span&gt;
-			&lt;span class="badge badge-info"&gt;{{:: video.time }}&lt;/span&gt;
-			&lt;span class="label label-danger ux-maker" title="Remove From Playlist"
-				ng-click="vm.remove($event, video, $index)"&gt;&lt;i class="fa fa-remove"&gt;&lt;/i&gt;&lt;/span&gt;
-		&lt;/a&gt;
-	&lt;/li&gt;
-&lt;/ul&gt;
+			<img class="video-thumb" draggable="false" ng-src="{{:: video.snippet.thumbnails.default.url }}" sv-handle title="Drag to sort">
+			<span class="video-title">{{:: video.snippet.title }}</span>
+			<span class="badge badge-info">{{:: video.time }}</span>
+			<span class="label label-danger ux-maker" title="Remove From Playlist"
+				ng-click="vm.remove($event, video, $index)"><i class="fa fa-remove"></i></span>
+		</a>
+	</li>
+</ul>
 ```
 
 Aside from using angular's built-in directives, this tracks in this playlist are draggable (i'm using the angular-sortable-view module). The tracks can be removed from this list as well.
@@ -149,12 +149,12 @@ The inspiration for refactoring the code comes from <a href="https://github.com/
 First, I wanted to redefine the html template to be used as a **web-component** (or rather an html tag). After much thought, I came up with this component:
 
 ```typescript
-&lt;now-playlist videos="nowPlaying.playlist" 
+<now-playlist videos="nowPlaying.playlist" 
 	filter="nowPlaying.playlistSearch"
 	on-select="nowPlaying.playVideo(video)" 
 	on-remove="nowPlaying.removeVideo($event, video, $index)"
 	on-sort="nowPlaying.updateIndex($item, $indexTo)"
-&gt;&lt;/now-playlist&gt;
+></now-playlist>
 ```
 
 I decided to expose the relevant attributes in order to keep the logics in one <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.aanidwnn4" target="_blank">&#8220;smart" component</a> (the &#8220;now-playing" component) and keeping this component as stateless as possible.
@@ -219,7 +219,7 @@ import template from './now-playlist.tpl.html';
 /* @ngInject */
 export default function nowPlaylist() {
     // Usage:
-    //  &lt;now-playlist&gt;&lt;/now-playlist&gt;
+    //  <now-playlist></now-playlist>
     // Creates:
     //
     var directive = {
@@ -278,31 +278,31 @@ This file contains the html template that was in the index.html. Few things have
   * The &#8220;css" classes now reflects the correct meaning - &#8220;now-playlist", &#8220;now-playlist-track"
 
 ```typescript
-&lt;section class="now-playlist" ng-class="{ 
+<section class="now-playlist" ng-class="{ 
 			'transition-in': nowPlaylist.videos.length,
 			'slide-down': nowPlaylist.showPlaylistSaver 
-		}"&gt;
-	&lt;ul class="nav nav-list xux-maker xnicer-ux"
+		}">
+	<ul class="nav nav-list xux-maker xnicer-ux"
 		
 		sv-root sv-part="nowPlaylist.videos"
 		sv-on-sort="nowPlaylist.sortVideo($item, $indexTo)"
-		&gt;
-		&lt;li class="now-playlist-track"
+		>
+		<li class="now-playlist-track"
 			ng-class="{ 'active': nowPlaylist.nowPlaying.index === $index}"
 			ng-repeat="video in nowPlaylist.videos | filter:nowPlaylist.filter"
-			sv-element&gt;
-			&lt;a class="" title="{{:: video.snippet.title }}"
-				ng-click="nowPlaylist.selectVideo(video, $index)"&gt;
+			sv-element>
+			<a class="" title="{{:: video.snippet.title }}"
+				ng-click="nowPlaylist.selectVideo(video, $index)">
 				{{ $index + 1 }})
-				&lt;img class="video-thumb" draggable="false" ng-src="{{:: video.snippet.thumbnails.default.url }}" sv-handle title="Drag to sort"&gt;
-				&lt;span class="video-title"&gt;{{:: video.snippet.title }}&lt;/span&gt;
-				&lt;span class="badge badge-info"&gt;{{:: video.time }}&lt;/span&gt;
-				&lt;span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-					ng-click="nowPlaylist.removeVideo($event, video, $index)"&gt;&lt;i class="fa fa-remove"&gt;&lt;/i&gt;&lt;/span&gt;
-			&lt;/a&gt;
-		&lt;/li&gt;
-	&lt;/ul&gt;
-&lt;/section&gt;
+				<img class="video-thumb" draggable="false" ng-src="{{:: video.snippet.thumbnails.default.url }}" sv-handle title="Drag to sort">
+				<span class="video-title">{{:: video.snippet.title }}</span>
+				<span class="badge badge-info">{{:: video.time }}</span>
+				<span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
+					ng-click="nowPlaylist.removeVideo($event, video, $index)"><i class="fa fa-remove"></i></span>
+			</a>
+		</li>
+	</ul>
+</section>
 ```
 
 Eventually, I also moved the relevant css/less rules to the &#8220;now-playlist.less" file.
@@ -317,26 +317,26 @@ Finally, the area that contains the now-playlist and 2 other components, has bee
 This is the smart component &#8220;**now-playing**" html template code (I still have work to do - this ng-if expression should be changed):
 
 ```typescript
-&lt;div class="sidebar-pane"&gt;
-	&lt;now-playlist-filter
+<div class="sidebar-pane">
+	<now-playlist-filter
 		playlist="nowPlaying.playlist"
 		on-save="nowPlaying.togglePlaylistSaver(show)"
 		on-clear="nowPlaying.clearPlaylist()"
 		on-change="nowPlaying.onFilterChange(filter)"
-	&gt;&lt;/now-playlist-filter&gt;
-	&lt;section class="playlist-saver-container clearfix" ng-if="nowPlaying.showPlaylistSaver && nowPlaying.playlist.length &gt; 0"&gt;
-		&lt;playlist-saver class="col-md-12" tracks="nowPlaying.playlist"
+	></now-playlist-filter>
+	<section class="playlist-saver-container clearfix" ng-if="nowPlaying.showPlaylistSaver && nowPlaying.playlist.length > 0">
+		<playlist-saver class="col-md-12" tracks="nowPlaying.playlist"
 			on-cancel="nowPlaying.togglePlaylistSaver()"
 			on-save="nowPlaying.onPlaylistSave()"
-			&gt;&lt;/playlist-saver&gt;
-	&lt;/section&gt;
-	&lt;now-playlist videos="nowPlaying.playlist" 
+			></playlist-saver>
+	</section>
+	<now-playlist videos="nowPlaying.playlist" 
 		filter="nowPlaying.playlistSearch"
 		on-select="nowPlaying.playVideo(video)" 
 		on-remove="nowPlaying.removeVideo($event, video, $index)"
 		on-sort="nowPlaying.updateIndex($item, $indexTo)"
-	&gt;&lt;/now-playlist&gt;
-&lt;/div&gt;
+	></now-playlist>
+</div>
 ```
 
 ## Final Thoughts

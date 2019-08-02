@@ -152,9 +152,9 @@ module.exports = function(grunt) {
 		  options: {
 		    dumpLineNumbers: 'all',
 		    sourceMap: true,
-		    sourceMapFilename: '&lt;%= yeoman.app %>/app.css.map',
+		    sourceMapFilename: '<%= yeoman.app %>/app.css.map',
 		    sourceMapURL: '../app.css.map',
-		    sourceMapBasepath: '&lt;%= yeoman.app %>/',
+		    sourceMapBasepath: '<%= yeoman.app %>/',
 		    outputSourceFiles: true,
 
 		    imports: {
@@ -166,8 +166,8 @@ module.exports = function(grunt) {
 		  },
 
 		  files: {
-		    "&lt;%= yeoman.app %>/styles/app.css": [
-		      "&lt;%= yeoman.app %>/app.tmp.less"
+		    "<%= yeoman.app %>/styles/app.css": [
+		      "<%= yeoman.app %>/app.tmp.less"
 		    ]
 		  }
 		},
@@ -184,8 +184,8 @@ module.exports = function(grunt) {
 		  },
 
 		  files: {
-		    "&lt;%= yeoman.dist %>/&lt;%= yeoman.app %>/styles/app.css": [
-		      "&lt;%= yeoman.dist %>/&lt;%= yeoman.app %>/app.tmp.less"
+		    "<%= yeoman.dist %>/<%= yeoman.app %>/styles/app.css": [
+		      "<%= yeoman.dist %>/<%= yeoman.app %>/app.tmp.less"
 		    ]
 		  }
 		}
@@ -202,8 +202,8 @@ return {
 	// among other statments of watch
   styles: {
       files: [
-      '&lt;%= yeoman.app %>/styles/**/*.less',
-      '&lt;%= yeoman.app %>/scripts/**/*.less'
+      '<%= yeoman.app %>/styles/**/*.less',
+      '<%= yeoman.app %>/scripts/**/*.less'
       ],
       tasks: ['manifest', 'includeSource', 'less:development'],
     },
@@ -254,12 +254,12 @@ So, in order to prepare external templates for production (let it be directives 
 module.exports = function(grunt) {
 	return {
 		dist:{
-			cwd: '&lt;%= yeoman.app %>',
+			cwd: '<%= yeoman.app %>',
 			src:[
 				'app/**/*.html',
 				'common/**/*.html'
 			],
-			dest:'&lt;%= yeoman.dist %>/&lt;%= yeoman.app %>/templates.js',
+			dest:'<%= yeoman.dist %>/<%= yeoman.app %>/templates.js',
 			options:{
 				htmlmin: { 
 					collapseWhitespace: true,

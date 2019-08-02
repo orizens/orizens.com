@@ -39,7 +39,7 @@ export class PlaylistViewComponent implements OnInit {
   nowPlaylist$ = this.store.let(NowPlaylist.getNowPlaylist$);
   
   constructor(
-    public store: Store&lt;EchoesState&gt;, 
+    public store: Store<EchoesState>, 
     private nowPlaylistActions: NowPlaylist.NowPlaylistActions,
     private nowPlaylistService: NowPlaylistService,
     private appPlayerService: AppPlayerService,
@@ -91,17 +91,17 @@ Lets walkthrough the final implementation that includes the proxy for the playli
   selector: 'playlist-view',
   styleUrls: ['./playlist-view.component.scss'],
   template: `
-  &lt;article&gt;
-    &lt;app-navbar [header]="header$ | async"&gt;&lt;/app-navbar&gt;
-    &lt;div class="row"&gt;
-      &lt;playlist-viewer class="clearfix"
+  <article>
+    <app-navbar [header]="header$ | async"></app-navbar>
+    <div class="row">
+      <playlist-viewer class="clearfix"
         [videos]="videos$ | async"
         [ playlist ]="playlist$ | async"
         [queuedPlaylist]="nowPlaylist$ | async"
         ...
-      &gt;&lt;/playlist-viewer&gt;
-    &lt;/div&gt;
-  &lt;/article&gt;
+      ></playlist-viewer>
+    </div>
+  </article>
   `
 })
 export class PlaylistViewComponent implements OnInit {
@@ -138,19 +138,19 @@ Next, these class methods are the public api that this component expose to the t
   selector: 'playlist-view',
   styleUrls: ['./playlist-view.component.scss'],
   template: `
-  &lt;article&gt;
-    &lt;app-navbar [header]="header$ | async"&gt;&lt;/app-navbar&gt;
-    &lt;div class="row"&gt;
-      &lt;playlist-viewer class="clearfix"
+  <article>
+    <app-navbar [header]="header$ | async"></app-navbar>
+    <div class="row">
+      <playlist-viewer class="clearfix"
         ...
         (playPlaylist)="playPlaylist($event)"
         (queuePlaylist)="queuePlaylist($event)"
         (playVideo)="playVideo($event)"
         (queueVideo)="queueVideo($event)"
         (unqueueVideo)="unqueueVideo($event)"
-      &gt;&lt;/playlist-viewer&gt;
-    &lt;/div&gt;
-  &lt;/article&gt;
+      ></playlist-viewer>
+    </div>
+  </article>
   `
 })
 export class PlaylistViewComponent implements OnInit {
@@ -229,7 +229,7 @@ export class PlaylistProxy {
   nowPlaylist$ = this.store.let(getPlaylistVideos$);
 
   constructor(
-    public store: Store&lt;EchoesState&gt;,
+    public store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
   ) { }
 
@@ -237,7 +237,7 @@ export class PlaylistProxy {
 
   fetchPlaylistVideos(route: ActivatedRoute) {
     return this.toRouteData(route)
-      .map((data: PlaylistData) =&gt; data.videos);
+      .map((data: PlaylistData) => data.videos);
   }
 
   playPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
@@ -272,7 +272,7 @@ export class PlaylistProxy {
   nowPlaylist$ = this.store.let(getPlaylistVideos$);
 
   constructor(
-    public store: Store&lt;EchoesState&gt;,
+    public store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
   ) { }
   // ...

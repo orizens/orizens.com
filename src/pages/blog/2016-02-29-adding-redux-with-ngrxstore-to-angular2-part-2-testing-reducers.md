@@ -57,7 +57,7 @@ For better readability and perhaps easier maintenance, I like to keep the creati
 All in all, the "**player**" reducer function can also be tested (which is described later in this article):
 
 ```typescript
-export const player: Reducer&lt;any&gt; = (state: Object = initialPlayerState, action: Action) =&gt; {
+export const player: Reducer<any> = (state: Object = initialPlayerState, action: Action) => {
 
     switch (action.type) {
         case PLAY:
@@ -125,22 +125,22 @@ The actual tests ("**it**" functions) invoke the "**player**" reducer function, 
 I could check these operations manually inside the browser, but - Testing is fun - someone is doing it for me :).
 
 ```typescript
-describe('The Youtube Player reducer', () =&gt; {
-    it('should return current state when no valid actions have been made', () =&gt; {
+describe('The Youtube Player reducer', () => {
+    it('should return current state when no valid actions have been made', () => {
         const state = { mediaId: 'mocked...' };
         const actual = player(state, {type: 'INVALID_ACTION', payload: {}});
         const expected = state;
         expect(actual).toBe(expected);
     });
 
-    it('should set the new media id by the new PLAYED youtube media item', () =&gt; {
+    it('should set the new media id by the new PLAYED youtube media item', () => {
         const state = { mediaId: 'mocked', media: {}};
         const actual = player(state, { type: PLAY, payload: YoutubeMediaMock });
         const expected = state;
         expect(actual.mediaId).toBe(YoutubeMediaMock.id.videoId);
     });
 
-    it('should toggle visibility of the player', () =&gt; {
+    it('should toggle visibility of the player', () => {
         const state = { mediaId: 'mocked', showPlayer: false;
         const actual = player(state, { type: TOGGLE_PLAYER, payload: true });
         const expected = state;
@@ -170,7 +170,7 @@ export class YoutubePlayer {
 	player: any;
 
 	constructor(public playerService: YoutubePlayerService) {
-		playerService.player$.subscribe((player) =&gt; this.player = player);
+		playerService.player$.subscribe((player) => this.player = player);
 	}
 
 	ngOnInit(){}

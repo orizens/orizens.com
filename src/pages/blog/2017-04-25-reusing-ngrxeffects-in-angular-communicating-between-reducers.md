@@ -63,18 +63,18 @@ The &#8220;AppPlayer" Component is responsible for emitting the &#8220;MEDIA_END
 @Component({
   selector: 'app-player',
   template: `
-  &lt;section 
+  <section 
     [class.show-youtube-player]="(player$ | async).showPlayer"
-    [class.fullscreen]="(player$ | async).isFullscreen"&gt;
-    &lt;div class="yt-player ux-maker"&gt;
+    [class.fullscreen]="(player$ | async).isFullscreen">
+    <div class="yt-player ux-maker">
     ...
-      &lt;youtube-player class="nicer-ux"
+      <youtube-player class="nicer-ux"
         (ready)="setupPlayer($event)"
         (change)="updatePlayerState($event)"
-      &gt;&lt;/youtube-player&gt;
-    &lt;/div&gt;
+      ></youtube-player>
+    </div>
     ...
-  &lt;/section&gt;
+  </section>
   `
 })
 export class AppPlayerComponent implements OnInit {
@@ -83,7 +83,7 @@ export class AppPlayerComponent implements OnInit {
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
     private playerActions: AppPlayerActions,
-    private store: Store&lt;EchoesState&gt;
+    private store: Store<EchoesState>
   ) {
   }
 
@@ -118,7 +118,7 @@ The &#8220;**trackEnded()**" method invoked the &#8220;MEDIA_ENDED" action. This
 function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string): NowPlaylistInterface {
   const videosPlaylist = state.videos;
   const currentId = state.selectedId;
-  const indexOfCurrentVideo = videosPlaylist.findIndex(video =&gt; currentId === video.id);
+  const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
   const isCurrentLast = indexOfCurrentVideo + 1 === videosPlaylist.length;
   const nextId = isCurrentLast
     ? getNextIdForPlaylist(videosPlaylist, state.repeat, currentId)
@@ -143,8 +143,8 @@ loadNextTrack$ = this.actions$
     .ofType(NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)
     .withLatestFrom(this.store.let(getSelectedMedia$))
-    .filter((states: [any, GoogleApiYouTubeVideoResource]) =&gt; states[1] && states[1].hasOwnProperty('id'))
-    .map((states: [any, GoogleApiYouTubeVideoResource]) =&gt; {
+    .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
+    .map((states: [any, GoogleApiYouTubeVideoResource]) => {
       return this.nowPlaylistActions.selectVideo(states[1]);
     }).share();
 ```
@@ -164,7 +164,7 @@ constructor(
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
     private playerActions: AppPlayerActions,
-    private store: Store&lt;EchoesState&gt;,
+    private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects
   ) {
   }
@@ -176,7 +176,7 @@ Now, in the &#8220;**ngOnInit**" life cycle, the component subscribes to the &#8
 // AppPlayerComponent
 ngOnInit() {
     this.nowPlaylistEffects.loadNextTrack$
-      .subscribe((action) =&gt; this.playVideo(action.payload));
+      .subscribe((action) => this.playVideo(action.payload));
 }
 ...
 playVideo (media: GoogleApiYouTubeVideoResource) {
@@ -194,7 +194,7 @@ private nowPlaylistSub: Subscription;
 ngOnInit() {
     this.store.dispatch(this.playerActions.reset());
     this.nowPlaylistSub = this.nowPlaylistEffects.loadNextTrack$
-      .subscribe((action) =&gt; this.playVideo(action.payload));
+      .subscribe((action) => this.playVideo(action.payload));
 }
 
 ngOnDestroy() {

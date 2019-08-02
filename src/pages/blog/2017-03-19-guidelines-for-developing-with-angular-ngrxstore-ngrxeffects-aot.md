@@ -128,7 +128,7 @@ I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxst
 @NgModule({
   imports: [
     CoreStoreModule,
-    effects.map(effect =&gt; EffectsModule.run(effect))
+    effects.map(effect => EffectsModule.run(effect))
   ]
 })
 export class CoreModule {}

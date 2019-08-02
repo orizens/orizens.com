@@ -28,19 +28,19 @@ In the <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angu
 In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="http://github.com/orizens/echoes" target="_blank">AngularJS</a>, this template is part of the "search-panel" component. It renders the search box to the top of the player:
 
 ```typescript
-&lt;div class="search-panel"&gt;
-	&lt;form class="navbar-form form-search navbar-left" ng-submit="vm.search()"&gt;
-		&lt;div class="form-group"&gt;
-			&lt;input placeholder="Explore Media" type="search" class="form-control" autocomplete="off"
+<div class="search-panel">
+	<form class="navbar-form form-search navbar-left" ng-submit="vm.search()">
+		<div class="form-group">
+			<input placeholder="Explore Media" type="search" class="form-control" autocomplete="off"
 				ng-model="vm.params.q"
-				ng-change="vm.resetPageToken()"&gt;
-			&lt;button class="btn btn-transparent btn-submit" type="submit" title="search with echoes"&gt;
-				&lt;i class="fa fa-search"&gt;&lt;/i&gt;
-			&lt;/button&gt;
-		&lt;/div&gt;
-	&lt;/form&gt;
+				ng-change="vm.resetPageToken()">
+			<button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+	</form>
 
-&lt;/div&gt;
+</div>
 ```
 
 * I removed some attributes and html code to make this code simpler for this post.
@@ -54,23 +54,23 @@ The migration of the html code above is quite simple (I mentioned it in <a href=
 Notice the **ngModel** is both bind with a value (using the binding [] brackets) and both syncs back to its variable (as an event with () ) - This the 2-way binding we've been used to from AngularJS. This template goes inside the youtube-videos template. Here is the full template:
 
 ```typescript
-&lt;div class="navbar-header"&gt;
-	&lt;div class="search-panel"&gt;
-		&lt;!-- SEARCH FORM --&gt;
-		&lt;form class="navbar-form form-search navbar-left"&gt;
-			&lt;div class="form-group"&gt;
-				&lt;input placeholder="Explore Media" type="search" class="form-control" autocomplete="off"
+<div class="navbar-header">
+	<div class="search-panel">
+		<!-- SEARCH FORM -->
+		<form class="navbar-form form-search navbar-left">
+			<div class="form-group">
+				<input placeholder="Explore Media" type="search" class="form-control" autocomplete="off"
 					[(ngModel)]="searchQuery"
 					(input)="resetPageToken()"
-					&gt;
-				&lt;button class="btn btn-transparent btn-submit" type="submit" title="search with echoes"
-					(click)="search()"&gt;
-					&lt;i class="fa fa-search"&gt;&lt;/i&gt;
-				&lt;/button&gt;
-			&lt;/div&gt;
-		&lt;/form&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
+					>
+				<button class="btn btn-transparent btn-submit" type="submit" title="search with echoes"
+					(click)="search()">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
 ```
 
 ## Updating Youtube Videos Component Class
@@ -98,7 +98,7 @@ export class YoutubeVideos {
 	videos: any;
 	searchQuery: string = 'tremonti';
 
-	constructor(private youtubeSearch: YoutubeSearch, public store: Store&lt;any&gt;) {
+	constructor(private youtubeSearch: YoutubeSearch, public store: Store<any>) {
 		this.videos = this.store.select('videos');
 		this.search();
 	}

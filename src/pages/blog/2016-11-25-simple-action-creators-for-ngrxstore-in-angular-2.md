@@ -77,9 +77,9 @@ export class YoutubeVideosActions {
   static RESET = '[YoutubeVideos] RESET';
   static UPDATE_METADATA = '[YoutubeVideos] UPDATE_METADATA';
 
-  addVideos = ActionCreatorFactory.create&lt;GoogleApiYouTubeVideoResource[]&gt;(YoutubeVideosActions.ADD);
-  removeVideo = ActionCreatorFactory.create&lt;void&gt;(YoutubeVideosActions.REMOVE);
-  reset = ActionCreatorFactory.create&lt;void&gt;(YoutubeVideosActions.RESET);
+  addVideos = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource[]>(YoutubeVideosActions.ADD);
+  removeVideo = ActionCreatorFactory.create<void>(YoutubeVideosActions.REMOVE);
+  reset = ActionCreatorFactory.create<void>(YoutubeVideosActions.RESET);
   updateMetaData = ActionCreatorFactory.create(YoutubeVideosActions.UPDATE_METADATA);
 }
 
@@ -96,7 +96,7 @@ Second, i'm using the &#8220;**<T>**" [generic](https://www.typescriptlang.org/d
 ```typescript
 import { Action } from '@ngrx/store';
 
-class ActionCreator&lt;T&gt; implements Action {
+class ActionCreator<T> implements Action {
   constructor(
     public type: string = 'NOT_SET',
     public payload?: T
@@ -104,10 +104,10 @@ class ActionCreator&lt;T&gt; implements Action {
 }
 
 export class ActionCreatorFactory {
-  static create?&lt;T&gt;(type: string, defaultPayloadValue?: any) {
-    return (payload?: T) =&gt; {
+  static create?<T>(type: string, defaultPayloadValue?: any) {
+    return (payload?: T) => {
       const _payload = payload || typeof payload !== 'undefined' ? payload : defaultPayloadValue;
-      return new ActionCreator&lt;T&gt;(type, _payload);
+      return new ActionCreator<T>(type, _payload);
     }
   };
 }

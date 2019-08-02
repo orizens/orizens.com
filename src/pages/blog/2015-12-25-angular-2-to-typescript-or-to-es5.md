@@ -213,7 +213,7 @@ function MediaSearchCtrl(YoutubeSearch) {
  vm.search = search;
 
  function search (query) {
-   YoutubeSearch.search(query).then((res) =&gt; {
+   YoutubeSearch.search(query).then((res) => {
      vm.items = res.items;
    })
  }

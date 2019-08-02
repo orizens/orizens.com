@@ -60,7 +60,7 @@ As mentioned above, the component i'm testing is written in <a href="http://oriz
 import template from './youtube-videos.tpl.html';
 
 // Usage:
-//  &lt;youtube-videos&gt;&lt;/youtube-videos&gt;
+//  <youtube-videos></youtube-videos>
 export let YoutubeVideosComponent = {
 	template,
 	selector: 'youtubeVideos',
@@ -111,7 +111,7 @@ First, to allow ES2015 new variables declarations, I need to define <a href="htt
 'use strict';
 import { YoutubeVideosComponent } from './youtube-videos.component';
 
-describe('Youtube Videos', () =&gt; {
+describe('Youtube Videos', () => {
 	let scope, YoutubeSearch, ctrl, YoutubePlayerSettings, controller;
 	let YoutubeVideoInfo = {};
 	let mockVideoItem = {};
@@ -131,7 +131,7 @@ During the actual test, the **&#8220;constructor"** function of &#8220;**Youtub
 ```typescript
 beforeEach(angular.mock.module('youtube-videos'));
 
-	beforeEach(inject(($injector, $controller, $q) =&gt; {
+	beforeEach(inject(($injector, $controller, $q) => {
 		controller = $controller;
 		YoutubeSearch = jasmine.createSpyObj('YoutubeSearch', [
 			'search', 'resetPageToken', 'getFeedType', 'searchMore'
@@ -140,8 +140,8 @@ beforeEach(angular.mock.module('youtube-videos'));
 			['playVideoId', 'queueVideo', 'playPlaylist']);
 		// spies
 		YoutubeSearch.items = [];
-		YoutubeVideoInfo.getPlaylist = () =&gt; {};
-		spyOn(YoutubeVideoInfo, 'getPlaylist').and.callFake( () =&gt; {
+		YoutubeVideoInfo.getPlaylist = () => {};
+		spyOn(YoutubeVideoInfo, 'getPlaylist').and.callFake( () => {
 			let defer = $q.defer();
 			defer.resolve();
 			return defer.promise;
@@ -164,7 +164,7 @@ That's the code needed for the &#8220;**beforeEach**" phase. Now, we can start w
 Notice how I refer to a &#8220;**search**" function that i'm expecting to exist on the YoutubeSearch **spy**. As part of this component behaviour, I expect the &#8220;search" method to be invoked only once if there are no items (videos) for the component to render.
 
 ```typescript
-it('search youtube once when it loads if there are no items to render', () =&gt; {
+it('search youtube once when it loads if there are no items to render', () => {
 	expect(YoutubeSearch.search).toHaveBeenCalled();
 	expect(YoutubeSearch.search.calls.count()).toBe(1);
 });
@@ -175,7 +175,7 @@ In order to test the opposite case, I took a different approach.
 I copied an array of video items to &#8220;**YoutubeSearch.items"** property to mock a populated property, after a &#8220;**search**" response. Then, I create again a new instance of the YoutubeVideos controller, expecting the **&#8220;YoutubeSearch.search"** function not to be called. Eventually, the count of calls for the &#8220;**search**" function should be still 1.
 
 ```typescript
-it('should not search when it loads if there are items to render', () =&gt; {
+it('should not search when it loads if there are items to render', () => {
 	angular.copy(mockPlaylistItem.items, YoutubeSearch.items);
 	controller(YoutubeVideosComponent.controller, {
 		$scope: scope,
@@ -194,13 +194,13 @@ In the 2nd test described below, I'm testing the &#8220;**playPlaylist**" method
 In order to &#8220;invoke" the promise chain, we need to instruct angular to **digest** the changes, an only then, we can expect to write assertions.
 
 ```typescript
-it('should queue and play video', () =&gt; {
+it('should queue and play video', () => {
 	ctrl.playVideo(mockVideoItem);
 	expect(YoutubePlayerSettings.queueVideo).toHaveBeenCalled();
 	expect(YoutubePlayerSettings.playVideoId).toHaveBeenCalled();
 });
 
-it('should play a playlist and queue the videos', () =&gt; {
+it('should play a playlist and queue the videos', () => {
 	ctrl.playPlaylist(mockPlaylistItem);
 	scope.$digest();
 	expect(YoutubePlayerSettings.playPlaylist.calls.count()).toBe(1);

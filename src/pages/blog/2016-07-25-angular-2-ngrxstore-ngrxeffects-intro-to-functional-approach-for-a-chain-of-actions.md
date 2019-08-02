@@ -72,23 +72,23 @@ The component that manages the right pane is &#8220;**youtube-videos.component.t
   selector: 'youtube-videos.youtube-videos'
 })
 export class YoutubeVideos implements OnInit {
-  videos$: Observable&lt;EchoesVideos&gt;;
-  playerSearch$: Observable&lt;PlayerSearch&gt;;
+  videos$: Observable<EchoesVideos>;
+  playerSearch$: Observable<PlayerSearch>;
 
   constructor(
     private youtubeSearch: YoutubeSearch,
     private nowPlaylistService: NowPlaylistService,
-    private store: Store&lt;EchoesState&gt;,
+    private store: Store<EchoesState>,
     public youtubePlayer: YoutubePlayerService
   ) {
-    this.videos$ = store.select(state =&gt; state.videos);
-    this.playerSearch$ = store.select(state =&gt; state.search)
+    this.videos$ = store.select(state => state.videos);
+    this.playerSearch$ = store.select(state => state.search)
   }
 
   playSelectedVideo (media: GoogleApiYouTubeSearchResource) {
     this.youtubePlayer.playVideo(media);
     this.queueSelectedVideo(media)
-      .then(videoResource =&gt; this.nowPlaylistService.updateIndexByMedia(videoResource));
+      .then(videoResource => this.nowPlaylistService.updateIndexByMedia(videoResource));
   }
 
   queueSelectedVideo (media: GoogleApiYouTubeSearchResource) {
@@ -109,17 +109,17 @@ The reason for using a promise here is - in order to display more data on the se
 // imports omitted 
 @Injectable()
 export class NowPlaylistService {
-	public playlist$: Observable&lt;YoutubeMediaPlaylist&gt;;
+	public playlist$: Observable<YoutubeMediaPlaylist>;
 
-	constructor(public store: Store&lt;any&gt;,
+	constructor(public store: Store<any>,
 		private youtubeVideosInfo: YoutubeVideosInfo
 		) {
-		this.playlist$ = this.store.select(state =&gt; state.nowPlaylist);
+		this.playlist$ = this.store.select(state => state.nowPlaylist);
 	}
 
 	queueVideo (mediaId: string) {
 		return this.youtubeVideosInfo.api.list(mediaId)
-      .then(response =&gt; {
+      .then(response => {
         this.store.dispatch({ type: QUEUE, payload: response.items[0] });
         return response.items[0];
 			});
@@ -173,19 +173,19 @@ the &#8220;**youtube-videos.component.ts**" has been revamped to use these actio
   selector: 'youtube-videos.youtube-videos'
 })
 export class YoutubeVideos implements OnInit {
-  videos$: Observable&lt;EchoesVideos&gt;;
-  playerSearch$: Observable&lt;PlayerSearch&gt;;
+  videos$: Observable<EchoesVideos>;
+  playerSearch$: Observable<PlayerSearch>;
 
   constructor(
     private youtubeSearch: YoutubeSearch,
     private nowPlaylistService: NowPlaylistService,
-    private store: Store&lt;EchoesState&gt;,
+    private store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private playerActions: PlayerActions,
     public youtubePlayer: YoutubePlayerService
   ) {
-    this.videos$ = store.select(state =&gt; state.videos);
-    this.playerSearch$ = store.select(state =&gt; state.search)
+    this.videos$ = store.select(state => state.videos);
+    this.playerSearch$ = store.select(state => state.search)
   }
 
   playSelectedVideo (media: GoogleApiYouTubeSearchResource) {
@@ -212,7 +212,7 @@ Along side the refactored code, I created a new directory for effects. This is t
 export class NowPlaylistEffects {
 
   constructor(
-    private store$: StateUpdates&lt;EchoesState&gt;,
+    private store$: StateUpdates<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private nowPlaylistService: NowPlaylistService,
     private youtubeVideosInfo: YoutubeVideosInfo
@@ -220,10 +220,10 @@ export class NowPlaylistEffects {
 
   @Effect() queueVideoReady$ = this.store$
     .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
-    .map&lt;GoogleApiYouTubeSearchResource&gt;(action =&gt; action.payload)
-    .switchMap(media =&gt; this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
-      .map(media =&gt; this.nowPlaylistActions.queueVideo(media))
-      .catch(() =&gt; Observable.of(this.nowPlaylistActions.queueFailed(media)))
+    .map<GoogleApiYouTubeSearchResource>(action => action.payload)
+    .switchMap(media => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
+      .map(media => this.nowPlaylistActions.queueVideo(media))
+      .catch(() => Observable.of(this.nowPlaylistActions.queueFailed(media)))
     );
 }
 ```

@@ -77,7 +77,7 @@ function handleErrors (error) {
     // Send error to notification center with gulp-notify
     notify.onError({
       title: 'Compile Error',
-      message: '&lt;%= error.message %&gt;'
+      message: '<%= error.message %>'
     }).apply(this, args);
 
     // Keep gulp from hanging on this task
@@ -138,7 +138,7 @@ function buildScript(file) {
   return rebundle();
 }
 
-gulp.task('browserify', () =&gt; {
+gulp.task('browserify', () => {
   return buildScript('bundle-bfy.js');
 });
 ```

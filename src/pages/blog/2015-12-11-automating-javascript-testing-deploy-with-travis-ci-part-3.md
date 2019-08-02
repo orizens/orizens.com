@@ -80,7 +80,7 @@ after_success:
 - git init
 - git add .
 - git commit -m "deployed new version from travis"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages &gt; /dev/null 2&gt;&1
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
 ```
 
 few notes on the **after_success** flow:

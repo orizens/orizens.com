@@ -101,8 +101,8 @@ requestJsonp(url, options, callback = 'callback') {
     // options.params is an HttpParams object
     const params = options.params.toString();
     return this.http.jsonp(`${url}?${params}`, callback)
-      .map((response: Response) =&gt; response[1])
-      .map((results: any[]) =&gt; results.map((result: string) =&gt; result[0]));
+      .map((response: Response) => response[1])
+      .map((results: any[]) => results.map((result: string) => result[0]));
   }
 ```
 

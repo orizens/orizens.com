@@ -57,7 +57,7 @@ createPlayer (callback) {
         width: defaultSizes.width,
         videoId: '',
         events: {
-            onReady: () =&gt; {},
+            onReady: () => {},
             onStateChange: onPlayerStateChange
         }
     });
@@ -86,7 +86,7 @@ import { Injectable, NgZone } from '@angular/core';
 Then, I injected it to its constructor:
 
 ```typescript
-constructor (public store: Store&lt;any&gt;, private zone: NgZone) {
+constructor (public store: Store<any>, private zone: NgZone) {
    // now zone is available via:
    // this.zone
 }
@@ -104,8 +104,8 @@ createPlayer (callback) {
         width: defaultSizes.width,
         videoId: '',
         events: {
-            onReady: () =&gt; {},
-            onStateChange: (ev) =&gt; this.zone.run(() =&gt; onPlayerStateChange(ev))
+            onReady: () => {},
+            onStateChange: (ev) => this.zone.run(() => onPlayerStateChange(ev))
         }
     });
 }
@@ -149,7 +149,7 @@ Similar to the youtube player problem, the solution here is using NgZone's "**ru
 ```typescript
 attachSignIn() {
   // an experssion for reuse with "this.zone"
-  const run = (fn) =&gt; (r) =&gt; this.zone.run(() =&gt; fn(r));
+  const run = (fn) => (r) => this.zone.run(() => fn(r));
   if (this.auth2 && !this.isSignedIn && !this.isAuthInitiated) {
     this.isAuthInitiated = true;
     // Attach the click handler to the sign-in button with "run"

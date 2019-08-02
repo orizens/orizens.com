@@ -59,9 +59,9 @@ defining a component as an attribute is simple since the @Component's &#8220;sel
 In order to achieve this, I had to define this component with the @Component() decorator. However, since this component is added to an input element, If I use regular template that will be rendered with Angular's engine, than it will be rendered inside the input element. This will show up in the devtools like this:
 
 ```typescript
-&lt;input typeahead&gt;
-   &lt;typehead-template-contents&gt;
-&lt;/input&gt;
+<input typeahead>
+   <typehead-template-contents>
+</input>
 ```
 
 I took a slightly different approach with this challenge. I remembered seeing few videos on youtube (Rob Warmwald) explaining about the strengths of the template engine within Angular and how it can be used to achieve complex ideas. At first, the template for the typeahead was quite simple. The template supports the following:
@@ -76,16 +76,16 @@ I took a slightly different approach with this challenge. I remembered seeing fe
 @Component({
   selector: '[typeahead]',
   template: `
-  &lt;ng-template #suggestionsTplRef&gt;
-  &lt;section class="list-group results" *ngIf="showSuggestions"&gt;
-    &lt;button type="button" class="list-group-item"
+  <ng-template #suggestionsTplRef>
+  <section class="list-group results" *ngIf="showSuggestions">
+    <button type="button" class="list-group-item"
       *ngFor="let result of results; let i = index;"
       [class.active]="markIsActive(i, result)"
-      (click)="handleSelectSuggestion(result)"&gt;
-      &lt;span&gt;&lt;i class="fa fa-search"&gt;&lt;/i&gt; {{ result }}&lt;/span&gt;
-    &lt;/button&gt;
-  &lt;/section&gt;
-  &lt;/ng-template&gt;
+      (click)="handleSelectSuggestion(result)">
+      <span><i class="fa fa-search"></i> {{ result }}</span>
+    </button>
+  </section>
+  </ng-template>
   `
 })
 ```
@@ -100,7 +100,7 @@ In order to support the typeahead selected event, I defined an event of string
 
 ```typescript
 export class TypeAheadComponent implements OnInit, OnDestroy {
-  @Output() typeaheadSelected = new EventEmitter&lt;string&gt;();
+  @Output() typeaheadSelected = new EventEmitter<string>();
 
   private showSuggestions: boolean = false;
   private results: string[];
@@ -142,7 +142,7 @@ ngOnInit() {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sub =&gt; sub.unsubscribe());
+    this.subscriptions.forEach(sub => sub.unsubscribe());
     this.subscriptions.length = 0;
   }
 
@@ -169,8 +169,8 @@ In order to support selection of a result with the enter key, this code listens 
 ```typescript
 filterEnterEvent() {
     return Observable.fromEvent(this.element.nativeElement, 'keydown')
-      .filter((e: KeyboardEvent) =&gt; e.keyCode === Key.Enter)
-      .subscribe((event: Event) =&gt; {
+      .filter((e: KeyboardEvent) => e.keyCode === Key.Enter)
+      .subscribe((event: Event) => {
         event.preventDefault();
         this.handleSelectSuggestion(this.activeResult);
       });
@@ -189,13 +189,13 @@ The subscribe starts the execution of this stream, saves the results and sets th
 listenAndSuggest() {
     return Observable.fromEvent(this.element.nativeElement, 'keyup')
       .filter(this.validateKeyCode)
-      .map((e: any) =&gt; e.target.value)
+      .map((e: any) => e.target.value)
       .debounceTime(400)
       .concat()
       .distinctUntilChanged()
-      .filter((query: string) =&gt; query.length &gt; 0)
-      .switchMap((query: string) =&gt; this.suggest(query))
-      .subscribe((results: string[]) =&gt; {
+      .filter((query: string) => query.length > 0)
+      .switchMap((query: string) => this.suggest(query))
+      .subscribe((results: string[]) => {
         this.results = results;
         this.showSuggestions = true;
         this.cdr.markForCheck();
@@ -214,8 +214,8 @@ Achieving one of the two is pretty straight forward - you can take this a good e
 ) {
 <span class="pl-k">    const</span> params <span class="pl-k">=</span> <span class="pl-smi">options</span>.<span class="pl-smi">params</span>.<span class="pl-c1">toString</span>();
     return this.http.jsonp(<span class="pl-pds">`</span>${<span class="pl-smi">url</span>}?${<span class="pl-smi">params</span>}<span class="pl-pds">`</span>, 'callback')
-      .map(response =&gt; response[1])
-      .map(results =&gt; results.map(result =&gt; result[0]));
+      .map(response => response[1])
+      .map(results => results.map(result => result[0]));
   }
 ```
 
@@ -226,9 +226,9 @@ To achieve this feature, the code listens to the &#8216;keydown' key strokes all
 ```typescript
 navigateWithArrows() {
     return Observable.fromEvent(this.element.nativeElement, 'keydown')
-      .filter((e: any) =&gt; e.keyCode === Key.ArrowDown || e.keyCode === Key.ArrowUp)
-      .map((e: any) =&gt; e.keyCode)
-      .subscribe((keyCode: number) =&gt; {
+      .filter((e: any) => e.keyCode === Key.ArrowDown || e.keyCode === Key.ArrowUp)
+      .map((e: any) => e.keyCode)
+      .subscribe((keyCode: number) => {
         let step = keyCode === Key.ArrowDown ? 1 : -1;
         const topLimit = 9;
         const bottomLimit = 0;
@@ -258,24 +258,24 @@ First, I added a new Input which gets a template reference:
 Then I added a template inside the button element to allow rendering this template ref when present. In order to render a template reference, the &#8220;**ngTemplateOutlet**" directive is used with the template tag. In order to add a context for the external template, so the result value can be referenced, Angular supplies the &#8220;**ngTemplateOutletContext**" directive. This directive should receive a literal object with the special &#8220;**$implicit**" property. This property is used as the contect for the contents of the ng-template tag (the one in this button) - then, the &#8220;result" and &#8220;index" variables can be used as expressions within the template that is passed through from outside.
 
 ```typescript
-&lt;button type="button" class="list-group-item"
+<button type="button" class="list-group-item"
       *ngFor="let result of results; let i = index;"
       [class.active]="markIsActive(i, result)"
-      (click)="handleSelectSuggestion(result)"&gt;
-      &lt;span *ngIf="!typeaheadItemTpl"&gt;&lt;i class="fa fa-search"&gt;&lt;/i&gt; {{ result }}&lt;/span&gt;
-      &lt;ng-template
+      (click)="handleSelectSuggestion(result)">
+      <span *ngIf="!typeaheadItemTpl"><i class="fa fa-search"></i> {{ result }}</span>
+      <ng-template
         [ngTemplateOutlet]="typeaheadItemTpl" 
         [ngTemplateOutletContext]="{ $implicit: {result: result, index: i} }"
-      &gt;&lt;/ng-template&gt;
-&lt;/button&gt;
+      ></ng-template>
+</button>
 ```
 
 A good example for defining a template and passing it as a reference is described in this snippet:
 
 ```typescript
-&lt;ng-template #itemTpl let-result&gt;
-    &lt;strong&gt;custom result: {{ result.result }}&lt;/strong&gt;
-&lt;/ng-template&gt;
+<ng-template #itemTpl let-result>
+    <strong>custom result: {{ result.result }}</strong>
+</ng-template>
 ```
 
 ### 6 - &#8220;@HostListener" cancel suggestions box with Escape key
@@ -301,8 +301,8 @@ The suggestions box is similar to a dropdown. To allow this feature, I took the 
   selector: '[typeahead]',
   template: `
 ....
-  &lt;section class="list-group results" *ngIf="showSuggestions"&gt;
-    &lt;div class="typeahead-backdrop" (click)="hideSuggestions()"&gt;&lt;/div&gt;
+  <section class="list-group results" *ngIf="showSuggestions">
+    <div class="typeahead-backdrop" (click)="hideSuggestions()"></div>
 ....
 `,
   styles: [`

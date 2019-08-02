@@ -59,7 +59,7 @@ With latest rise of javascript, I see functional programming becoming a part of 
 In javascript, there's really no need to introduce the unusual syntax of loops, such as:
 
 ```typescript
-for (var i = Things.length - 1; i &gt;= 0; i--) {
+for (var i = Things.length - 1; i >= 0; i--) {
   // some statements
 
 };
@@ -94,7 +94,7 @@ musicTracks
 The following (famous problem) code will assign the same value of &#8220;i" to every function:
 
 ```typescript
-for (var i = 0; i &lt; tracks.length; i++) {
+for (var i = 0; i < tracks.length; i++) {
 	tracks[i].onPlay = function () {
 		return i;
 	}
@@ -104,7 +104,7 @@ for (var i = 0; i &lt; tracks.length; i++) {
 That's because the &#8220;for" loop run all assignments of the &#8220;onPlay" function in the same execution context. To solve that, prior to modern es5/6 solutions, you could use private context for each (using a closure):
 
 ```typescript
-for (var i = 0; i &lt; tracks.length; i++) {
+for (var i = 0; i < tracks.length; i++) {
 	tracks[i].onPlay = function (index) {
 		return function() {
 			return index

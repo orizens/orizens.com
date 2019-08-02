@@ -36,15 +36,15 @@ The goal for this process was to reuse the recent youtube-media component and cr
 The AngularJS.x ES2015 implementation of youtube-list is a <a href="https://github.com/orizens/angular-es2015-styleguide#srccorecomponents" target="_blank">core/component</a> element. It is relatively a minimal component which reuse the youtube-media component. The template uses &#8220;ng-repeat" to render a list of videos:
 
 ```typescript
-&lt;ul&gt;
-	&lt;youtube-media 
+<ul>
+	<youtube-media 
 		ng-repeat="video in vm.videos track by $index"
 		video="video"
 		on-play="vm.playSelectedVideo(video)"
 		on-queue="vm.queueSelectedVideo(video)"
-		on-add="vm.add(video)"&gt;
-	&lt;/youtube-media&gt;
-&lt;/ul&gt;
+		on-add="vm.add(video)">
+	</youtube-media>
+</ul>
 ```
 
 This is the directive definition:
@@ -53,7 +53,7 @@ This is the directive definition:
 import template from './youtube-list.tpl.html';
 
 // Usage:
-//	&lt;youtube-list videos on-select="func(video)" on-queue="func(video)"&gt;&lt;/youtube-list&gt;
+//	<youtube-list videos on-select="func(video)" on-queue="func(video)"></youtube-list>
 /* @ngInject */
 export default function youtubeList() {
 	var directive = {
@@ -158,13 +158,13 @@ export class YoutubeList {
 This component's template is quite simple. It repeats the youtube-media component following the &#8220;list" property.
 
 ```typescript
-&lt;youtube-media
+<youtube-media
 	*ngFor="#media of list"
 	[media]="media"
 	(play)="playSelectedVideo(media)"
 	(queue)="queueSelectedVideo(media)"
-	(add)="addVideo(media)"&gt;
-&lt;/youtube-media&gt;
+	(add)="addVideo(media)">
+</youtube-media>
 ```
 
 Lets overview the &#8220;**NgFor**" directive usage in this template.

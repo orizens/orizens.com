@@ -45,7 +45,7 @@ youtube-videos is an anuglar module. It consumes 2 core services:
 As I wrote before, in order to use this module, I exposed it a directive, and can simply use it like so:
 
 ```typescript
-&lt;youtube-videos&gt;&lt;/youtube-videos&gt;
+<youtube-videos></youtube-videos>
 
 
 ```
@@ -65,7 +65,7 @@ In order to user youtube-videos module as a direcive, I defined it as a quite si
         /* @ngInject */
         function youtubeVideos () {
             // Usage:
-            //	&lt;youtube-videos&gt;&lt;/youtube-videos&gt;
+            //	<youtube-videos></youtube-videos>
             // Creates:
             //
             var directive = {
@@ -110,8 +110,8 @@ angular
 The code above works seemlessy the same of the AngularJS directive code, that with a little shim that I wrote which should be loaded right after angular.
 
 ```typescript
-&lt;script type="text/javascript" src="../bower_components/angular/angular.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="../node_modules/angular2to1/index.js"&gt;&lt;/script&gt;
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="../node_modules/angular2to1/index.js"></script>
 ```
 
 [angular2to1](https://github.com/orizens/angular2to1) is published as an npm module. to install it, simply use npm:

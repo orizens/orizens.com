@@ -73,9 +73,9 @@ let initialState: YoutubeMediaPlaylist = {
     index: 0,
     filter: ''
 }
-export const nowPlaylist: Reducer&lt;any&gt; = (state: YoutubeMediaPlaylist = initialState, action: Action) =&gt; {
-    let matchMedia = (media) =&gt; media.id.videoId === action.payload.id.videoId;
-    let isDifferent = (media) =&gt; media.id.videoId !== action.payload.id.videoId;
+export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
+    let matchMedia = (media) => media.id.videoId === action.payload.id.videoId;
+    let isDifferent = (media) => media.id.videoId !== action.payload.id.videoId;
 
     switch (action.type) {
         case NowPlaylistActions.SELECT:
@@ -117,20 +117,20 @@ import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
 @Injectable()
 export class NowPlaylistService {
- public playlist$: Observable&lt;YoutubeMediaPlaylist&gt;;
+ public playlist$: Observable<YoutubeMediaPlaylist>;
 
  constructor(
- public store: Store&lt;EchoesState&gt;,
+ public store: Store<EchoesState>,
  private youtubeVideosInfo: YoutubeVideosInfo,
  private nowPlaylistActions: NowPlaylistActions
  ) {
- this.playlist$ = this.store.select(state =&gt; state.nowPlaylist);
+ this.playlist$ = this.store.select(state => state.nowPlaylist);
  }
 
  queueVideo (mediaId: string) {
  return this.youtubeVideosInfo.api
  .list(mediaId)
- .map(items =&gt; items[0])
+ .map(items => items[0])
  }
 
  queueVideos (medias: GoogleApiYouTubeVideoResource[]) {
@@ -159,8 +159,8 @@ export class NowPlaylistService {
 
  getCurrent () {
  let media;
- this.playlist$.take(1).subscribe(playlist =&gt; {
- media = playlist.videos.find(video =&gt; video.id === playlist.index);
+ this.playlist$.take(1).subscribe(playlist => {
+ media = playlist.videos.find(video => video.id === playlist.index);
  });
  return media;
  }
@@ -175,16 +175,16 @@ The "**now playlist**" store is passed to both components. Each component will o
 To create the whole now playlist feature, the components are constructed in this manner:
 
 ```typescript
-&lt;div class="sidebar-pane"&gt;
-	&lt;now-playlist-filter 
+<div class="sidebar-pane">
+	<now-playlist-filter 
            [ playlist ]="nowPlaylist"
-	&gt;&lt;/now-playlist-filter&gt;
-	&lt;now-playlist 
+	></now-playlist-filter>
+	<now-playlist 
                 [ playlist ]="nowPlaylist"
 		(select)="selectVideo($event)"
 		(sort)="sortVideo($event)"
-	&gt;&lt;/now-playlist&gt;
-&lt;/div&gt;
+	></now-playlist>
+</div>
 ```
 
 ### Design Of "Now Playlist Filter" Component
@@ -237,22 +237,22 @@ I defined a local variable using the "**#**" syntax - this creates a local templ
 This is the template (I removed a button which is related to saving this playlist since its implemented yet):
 
 ```typescript
-&lt;h3 class="nav-header nav-header-fluid user-playlists-filter"&gt;
+<h3 class="nav-header nav-header-fluid user-playlists-filter">
 	Now Playing
-	&lt;button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
+	<button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
 		[disabled]="playlist?.videos?.length === 0"
-		(click)="clearPlaylist()"&gt;
-		&lt;span class="fa fa-trash-o"&gt;&lt;/span&gt;
-	&lt;/button&gt;
-	&lt;div class="playlist-filter pull-right"&gt;
-		&lt;i class="fa fa-search" *ngIf="isFilterEmpty()"&gt;&lt;/i&gt;
-		&lt;i class="fa fa-remove text-danger" *ngIf="!isFilterEmpty()" (click)="resetSearchFilter()"&gt;&lt;/i&gt;
-		&lt;input type="search"
+		(click)="clearPlaylist()">
+		<span class="fa fa-trash-o"></span>
+	</button>
+	<div class="playlist-filter pull-right">
+		<i class="fa fa-search" *ngIf="isFilterEmpty()"></i>
+		<i class="fa fa-remove text-danger" *ngIf="!isFilterEmpty()" (click)="resetSearchFilter()"></i>
+		<input type="search"
 			[value]="playlist?.filter"
 			#searchFilter
-			(input)="handleFilterChange(searchFilter.value)"&gt;
-	&lt;/div&gt;
-&lt;/h3&gt;
+			(input)="handleFilterChange(searchFilter.value)">
+	</div>
+</h3>
 ```
 
 ### Design Of The "Now Playlist" Component
@@ -279,29 +279,29 @@ However, we can easily create a filer/search pipe. I decided to create such filt
 Here's the full template for this component:
 
 ```typescript
-&lt;section class="now-playlist"
+<section class="now-playlist"
 	[ngClass]="{
 		'transition-in': playlist?.videos?.length
-	}"&gt;
-	&lt;ul class="nav nav-list"&gt;
-		&lt;li class="now-playlist-track"
+	}">
+	<ul class="nav nav-list">
+		<li class="now-playlist-track"
 			[ngClass]="{
 				'active': playlist?.index === index
 			}"
 			*ngFor="let video of playlist?.videos | search:playlist.filter ; let index = index"
-			&gt;
-			&lt;a class="" title="{{ video.snippet.title }}"
-				(click)="selectVideo(video)"&gt;
+			>
+			<a class="" title="{{ video.snippet.title }}"
+				(click)="selectVideo(video)">
 				{{ index + 1 }})
-				&lt;img class="video-thumb" draggable="false" src="{{ video.snippet.thumbnails.default.url }}" title="Drag to sort"&gt;
-				&lt;span class="video-title"&gt;{{ video.snippet.title }}&lt;/span&gt;
-				&lt;span class="badge badge-info"&gt;{{ video.time }}&lt;/span&gt;
-				&lt;span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-					(click)="removeVideo(video)"&gt;&lt;i class="fa fa-remove"&gt;&lt;/i&gt;&lt;/span&gt;
-			&lt;/a&gt;
-		&lt;/li&gt;
-	&lt;/ul&gt;
-&lt;/section&gt;
+				<img class="video-thumb" draggable="false" src="{{ video.snippet.thumbnails.default.url }}" title="Drag to sort">
+				<span class="video-title">{{ video.snippet.title }}</span>
+				<span class="badge badge-info">{{ video.time }}</span>
+				<span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
+					(click)="removeVideo(video)"><i class="fa fa-remove"></i></span>
+			</a>
+		</li>
+	</ul>
+</section>
 ```
 
 ### Communication Between Components Explained

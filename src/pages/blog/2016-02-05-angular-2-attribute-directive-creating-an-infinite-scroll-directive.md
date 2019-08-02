@@ -27,12 +27,12 @@ In the recent article, I used the <a href="http://orizens.com/wp/topics/from-an
 In the current production of <a href="http://echotu.be" target="_blank">Echoes Player</a>, in order to add more videos to the result while scrolling, I used &#8220;<a href="https://sroze.github.io/ngInfiniteScroll/" target="_blank">ng-infinite-scroll</a>&#8220;. It has a nice minimal directive api for triggering an infinite scroll - and the usage for Echoes Player is quite simple:
 
 ```typescript
-&lt;div class="view-content youtube-results youtube-videos" 
+<div class="view-content youtube-results youtube-videos" 
 	infinite-scroll="youtubeVideos.searchMore()" 
 	infinite-scroll-distance="2"
-	&gt;
+	>
 ....
-&lt;/div&gt;
+</div>
 ```
 
 There are more attributes as an api for this directive, however, in this case - I didn't use it.
@@ -105,11 +105,11 @@ export class InfiniteScroll {
 The &#8220;**infiniteScrollDistance**" property is expected to be set from outside the directive, as an attribute api. The same goes for the &#8220;**scroll**" event, which will trigger a function that is bind from outside. This means, that we'll use this directive like so:
 
 ```typescript
-&lt;div class="search-results"
+<div class="search-results"
     infinite-scroll
     [infiniteScrollDistance]="2"
-    (scroll)="onScroll()"&gt;
-&lt;/div&gt;
+    (scroll)="onScroll()">
+</div>
 ```
 
 Notice how each attribute in the above &#8220;**div**" element is matching a different declaration in this directive code.

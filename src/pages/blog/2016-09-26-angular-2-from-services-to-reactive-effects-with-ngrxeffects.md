@@ -72,7 +72,7 @@ The authorization process has been extracted to its own service in the app's cor
 ```typescript
 @Injectable()
 export class GapiLoader {
-  private _api: Observable&lt;any&gt;;
+  private _api: Observable<any>;
 
   constructor() { }
 
@@ -84,13 +84,13 @@ export class GapiLoader {
     if (gapiAuthLoaded && gapiAuthLoaded.currentUser) {
       return observer.next(gapiAuthLoaded);
     }
-    window.gapi.load(api, response =&gt; observer.next(response));
+    window.gapi.load(api, response => observer.next(response));
   }
 
   private createApi (api) {
-    this._api = new Observable(observer =&gt; {
+    this._api = new Observable(observer => {
       const isGapiLoaded = window.gapi && window.gapi.load;
-      const onApiLoaded = () =&gt; this._loadApi(api, observer);
+      const onApiLoaded = () => this._loadApi(api, observer);
       if (isGapiLoaded) {
         onApiLoaded();
       } else {
@@ -114,7 +114,7 @@ export class Authorization {
 
 	constructor(
 		private zone: NgZone,
-		private store: Store&lt;EchoesState&gt;,
+		private store: Store<EchoesState>,
 		private gapiLoader: GapiLoader,
 		private userProfileActions: UserProfileActions
 		) {
@@ -125,18 +125,18 @@ export class Authorization {
 		// attempt to SILENT authorize
 		this.gapiLoader
 			.load('auth2')
-			.subscribe(authInstance =&gt; {
+			.subscribe(authInstance => {
 				if (authInstance && authInstance.currentUser) {
 					return this._googleAuth = authInstance;
 				}
 				this.authorize()
-					.then(GoogleAuth =&gt; {
+					.then(GoogleAuth => {
 						const isSignedIn = GoogleAuth.isSignedIn.get();
 						const authResponse = GoogleAuth.currentUser.get();
 						const hasAccessToken = authResponse.getAuthResponse().hasOwnProperty('access_token');
 						this._googleAuth = GoogleAuth;
 						if (isSignedIn && hasAccessToken) {
-							this.zone.run(() =&gt; this.handleSuccessLogin(authResponse));
+							this.zone.run(() => this.handleSuccessLogin(authResponse));
 						}
 					});
 			});
@@ -162,7 +162,7 @@ I use **ngrx/store** in order to dispatch an action for saving the token. Notic
 export class Authorization {
 // ....
 signIn () {
-		const run = (fn) =&gt; (r) =&gt; this.zone.run(() =&gt; fn.call(this, r));
+		const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
 		const scope = 'profile email https://www.googleapis.com/auth/youtube';
 		const signOptions = { scope };
 		if (this._googleAuth) {
@@ -210,10 +210,10 @@ export class UserProfileEffects {
 
   @Effect() updateToken$ = this.actions$
     .ofType(UserProfileActions.UPDATE_TOKEN)
-    .map(action =&gt; action.payload)
-    .map((token: string) =&gt; this.userProfile.setAccessToken(token))
-    .switchMap(string =&gt; this.userProfile.getPlaylists(true))
-    .map(response =&gt; this.userProfileActions.updateData(response));
+    .map(action => action.payload)
+    .map((token: string) => this.userProfile.setAccessToken(token))
+    .switchMap(string => this.userProfile.getPlaylists(true))
+    .map(response => this.userProfileActions.updateData(response));
 ...
 }
 ```
@@ -245,13 +245,13 @@ export class UserProfileEffects {
 ...
   @Effect() addUserPlaylists$ = this.actions$
     .ofType(UserProfileActions.UPDATE)
-    .map(action =&gt; action.payload)
-    .map((data: any) =&gt;this.userProfileActions.addPlaylists(data.items));
+    .map(action => action.payload)
+    .map((data: any) =>this.userProfileActions.addPlaylists(data.items));
 
   @Effect() updateNextPageToken$ = this.actions$
     .ofType(UserProfileActions.UPDATE)
-    .map(action =&gt; action.payload)
-    .map(data =&gt; {
+    .map(action => action.payload)
+    .map(data => {
       const nextPageToken = data.nextPageToken;
       return nextPageToken
         ? this.userProfileActions.updatePageToken(data.nextPageToken)
@@ -276,12 +276,12 @@ export class UserProfileEffects {
 ...
 @Effect() getMorePlaylists$ = this.actions$
     .ofType(UserProfileActions.UPDATE_NEXT_PAGE_TOKEN)
-    .map(action =&gt; action.payload)
-    .switchMap((pageToken: string) =&gt; {
+    .map(action => action.payload)
+    .switchMap((pageToken: string) => {
       this.userProfile.updatePageToken(pageToken);
       return this.userProfile.getPlaylists(false);
     })
-    .map(response =&gt; this.userProfileActions.updateData(response));
+    .map(response => this.userProfileActions.updateData(response));
 }
 ```
 

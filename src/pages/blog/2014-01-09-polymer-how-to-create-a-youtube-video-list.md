@@ -76,7 +76,7 @@ and for using it:
 
 
 
-	&lt;youtube-list>&lt;/youtube-list>
+	<youtube-list></youtube-list>
 
 
 
@@ -98,9 +98,9 @@ Now, For creating the new module &#8220;youtube-list", we start with this snippe
 ```typescript
 
 	
-	&lt;template>&lt;/template>
+	<template></template>
 	
-&lt;/polymer-element>
+</polymer-element>
 
 ```
 
@@ -133,18 +133,18 @@ Much like angularjs directive &#8220;ng-repeat", you would use the repeat like s
 </h2>
 	...
 	...
-&lt;/template>
+</template>
 
 ```
 
 The polymer-ajax element is declared inside the main template tag for this module as so:
 
 ```typescript
-&lt;polymer-ajax id="ajax" url="/search/list" 
+<polymer-ajax id="ajax" url="/search/list" 
     params=''
     handleAs="json"
     on-polymer-response="{{handleResponse}}">
-&lt;/polymer-ajax>
+</polymer-ajax>
 
 ```
 

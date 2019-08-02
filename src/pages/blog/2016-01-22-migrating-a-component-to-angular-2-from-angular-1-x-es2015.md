@@ -208,120 +208,120 @@ export class YoutubeMedia {
 In echoes1, the template is (I dropped the social share feature for now):
 
 ```typescript
-&lt;li class="youtube-item card ux-maker col-sm-3 col-xs-12"
-ng-class="{ 'show-description': $ctrl.showDesc}"&gt;
-	&lt;section class="media-title"&gt;
+<li class="youtube-item card ux-maker col-sm-3 col-xs-12"
+ng-class="{ 'show-description': $ctrl.showDesc}">
+	<section class="media-title">
 		
-		&lt;div class="front face"&gt;
-			&lt;div class="indicators clearfix"&gt;
+		<div class="front face">
+			<div class="indicators clearfix">
 				
-				&lt;span class="pull-left item-is-playing playing-{{:: $ctrl.isPlaying }}"&gt;
-					&lt;i class="fa fa-play"&gt;&lt;/i&gt;Now Playing
-				&lt;/span&gt;
+				<span class="pull-left item-is-playing playing-{{:: $ctrl.isPlaying }}">
+					<i class="fa fa-play"></i>Now Playing
+				</span>
 				
-			&lt;/div&gt;
+			</div>
 			
-			&lt;section class="dropdown share"&gt;	
-				&lt;a class="dropdown-toggle" data-toggle="dropdown" href=""&gt;
-					&lt;span class="fa fa-share-alt"&gt;&lt;/span&gt;
-				&lt;/a&gt;
-				&lt;ul class="dropdown-menu dropdown-menu-fade"&gt;
-					&lt;li&gt;
-						&lt;a class=""
+			<section class="dropdown share">	
+				<a class="dropdown-toggle" data-toggle="dropdown" href="">
+					<span class="fa fa-share-alt"></span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-fade">
+					<li>
+						<a class=""
 							socialshare
 							socialshare-provider="google+"
 							socialshare-hashtags="echotube, youtube video, nowlistening"
-							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}"&gt;
-							&lt;span class="fa fa-google-plus-square"&gt;&lt;/span&gt; Google+
-						&lt;/a&gt;
-					&lt;/li&gt;
-					&lt;li&gt;
-						&lt;a class=""
+							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}">
+							<span class="fa fa-google-plus-square"></span> Google+
+						</a>
+					</li>
+					<li>
+						<a class=""
 							socialshare
 							socialshare-provider="twitter"
-							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}"&gt;
-							&lt;span class="fa fa-twitter-square"&gt;&lt;/span&gt; Twitter
-						&lt;/a&gt;
-					&lt;/li&gt;
-					&lt;li&gt;
-						&lt;a class=""
+							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}">
+							<span class="fa fa-twitter-square"></span> Twitter
+						</a>
+					</li>
+					<li>
+						<a class=""
 							socialshare
 							socialshare-provider="facebook"
-							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}"&gt;
-							&lt;span class="fa fa-facebook-square"&gt;&lt;/span&gt; Facebook
-						&lt;/a&gt;
-					&lt;/li&gt;
-				&lt;/ul&gt;
-			&lt;/section&gt;
+							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}">
+							<span class="fa fa-facebook-square"></span> Facebook
+						</a>
+					</li>
+				</ul>
+			</section>
 
-			&lt;div rel="tooltip" class="media-thumb"
+			<div rel="tooltip" class="media-thumb"
 				uib-tooltip="{{:: $ctrl.video.snippet.title }}" tooltip-placement="bottom"
-				ng-click="$ctrl.playVideo($ctrl.video)"&gt;
+				ng-click="$ctrl.playVideo($ctrl.video)">
 				
-				&lt;div class="thumbnail"&gt;
-					&lt;img ng-src="{{:: $ctrl.video.snippet.thumbnails.high.url}}"&gt;
-				&lt;/div&gt;
+				<div class="thumbnail">
+					<img ng-src="{{:: $ctrl.video.snippet.thumbnails.high.url}}">
+				</div>
 				
-				&lt;button class="btn btn-default btn-lg ux-maker play-media"&gt;
-					&lt;i class="fa fa-play"&gt;&lt;/i&gt;
-				&lt;/button&gt;
-			&lt;/div&gt;
+				<button class="btn btn-default btn-lg ux-maker play-media">
+					<i class="fa fa-play"></i>
+				</button>
+			</div>
 
-			&lt;section class="item-actions main-actions"&gt;
+			<section class="item-actions main-actions">
 				
-				&lt;h4 class="title span11"&gt;
-					&lt;a href='#/video/{{:: $ctrl.video.id}}' rel="tooltip" class="media-thumb ellipsis"
-						uib-tooltip="{{:: $ctrl.video.snippet.title}}" tooltip-placement="bottom"&gt;
+				<h4 class="title span11">
+					<a href='#/video/{{:: $ctrl.video.id}}' rel="tooltip" class="media-thumb ellipsis"
+						uib-tooltip="{{:: $ctrl.video.snippet.title}}" tooltip-placement="bottom">
 						{{:: $ctrl.video.snippet.title}}
-					&lt;/a&gt;
-				&lt;/h4&gt;
+					</a>
+				</h4>
 
-				&lt;section class="media-actions clearfix"&gt;
-					&lt;button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
-						ng-click="$ctrl.queueVideo($ctrl.video)"&gt;
-						&lt;i class="fa fa-share"&gt;&lt;/i&gt; Queue
-					&lt;/button&gt;
-					&lt;button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
-						ng-click="$ctrl.add($ctrl.video)"&gt;
-						&lt;i class="fa fa-plus"&gt;&lt;/i&gt; Add
-					&lt;/button&gt;
-				&lt;/section&gt;
+				<section class="media-actions clearfix">
+					<button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
+						ng-click="$ctrl.queueVideo($ctrl.video)">
+						<i class="fa fa-share"></i> Queue
+					</button>
+					<button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
+						ng-click="$ctrl.add($ctrl.video)">
+						<i class="fa fa-plus"></i> Add
+					</button>
+				</section>
 
-				&lt;span
+				<span
 					ng-click="$ctrl.toggle($ctrl.showDesc)"
-					class="btn btn-default btn-xs media-desc " title="more info about this video"&gt;
-					&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;
-				&lt;/span&gt;
+					class="btn btn-default btn-xs media-desc " title="more info about this video">
+					<i class="fa fa-info-circle"></i>
+				</span>
 
-				&lt;span class="item-action"&gt;&lt;i class="fa fa-clock-o"&gt;&lt;/i&gt;{{:: $ctrl.video.time}}&lt;/span&gt;
+				<span class="item-action"><i class="fa fa-clock-o"></i>{{:: $ctrl.video.time}}</span>
 
-				&lt;span class="item-likes item-action" rel="tooltip" title="Number of Likes"&gt;
-					&lt;i class="fa fa-thumbs-up"&gt;&lt;/i&gt; {{:: $ctrl.video.statistics.likeCount | number}}
-				&lt;/span&gt;
+				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
+					<i class="fa fa-thumbs-up"></i> {{:: $ctrl.video.statistics.likeCount | number}}
+				</span>
 
-				&lt;span class="item-views item-action" rel="tooltip" title="Number of Views"&gt;
-					&lt;i class="fa fa-eye"&gt;&lt;/i&gt; {{:: $ctrl.video.statistics.viewCount | number}}
-				&lt;/span&gt;
+				<span class="item-views item-action" rel="tooltip" title="Number of Views">
+					<i class="fa fa-eye"></i> {{:: $ctrl.video.statistics.viewCount | number}}
+				</span>
 
-			&lt;/section&gt;
-		&lt;/div&gt;
+			</section>
+		</div>
 
-		&lt;div class="description back face"&gt;
-			&lt;h4&gt;&lt;a href='#/video/{{:: $ctrl.video.id}}' rel="tooltip" title="{{:: $ctrl.video.snippet.title}}" class="media-thumb"&gt;{{:: $ctrl.video.snippet.title}}&lt;/a&gt;&lt;/h4&gt;
-			&lt;div ng-bind-html="::$ctrl.video.snippet.description | linky"&gt;&lt;/div&gt;
-		&lt;/div&gt;
+		<div class="description back face">
+			<h4><a href='#/video/{{:: $ctrl.video.id}}' rel="tooltip" title="{{:: $ctrl.video.snippet.title}}" class="media-thumb">{{:: $ctrl.video.snippet.title}}</a></h4>
+			<div ng-bind-html="::$ctrl.video.snippet.description | linky"></div>
+		</div>
 
-		&lt;section class="item-actions close-desc"&gt;
-			&lt;span
+		<section class="item-actions close-desc">
+			<span
 				ng-click="$ctrl.toggle($ctrl.showDesc)"
-				class="btn btn-default btn-xs media-desc " title="flip back..."&gt;
-					&lt;i class="fa fa-times-circle"&gt;&lt;/i&gt;
-				&lt;/span&gt;
-		&lt;/section&gt;
+				class="btn btn-default btn-xs media-desc " title="flip back...">
+					<i class="fa fa-times-circle"></i>
+				</span>
+		</section>
 
-	&lt;/section&gt;
+	</section>
 
-&lt;/li&gt;
+</li>
 ```
 
 &nbsp;
@@ -329,87 +329,87 @@ ng-class="{ 'show-description': $ctrl.showDesc}"&gt;
 This is the template for echoes2:
 
 ```typescript
-&lt;li class="youtube-item card ux-maker col-sm-3 col-xs-12"
-	[class.show-description]="showDesc"&gt;
-	&lt;section class="media-title"&gt;
+<li class="youtube-item card ux-maker col-sm-3 col-xs-12"
+	[class.show-description]="showDesc">
+	<section class="media-title">
 
-		&lt;div class="front face"&gt;
-			&lt;div class="indicators clearfix"&gt;
+		<div class="front face">
+			<div class="indicators clearfix">
 
-				&lt;span class="pull-left item-is-playing"&gt;
-					&lt;i class="fa fa-play"&gt;&lt;/i&gt;Now Playing
-				&lt;/span&gt;
+				<span class="pull-left item-is-playing">
+					<i class="fa fa-play"></i>Now Playing
+				</span>
 
-			&lt;/div&gt;
+			</div>
 
-			&lt;div rel="tooltip" class="media-thumb"
+			<div rel="tooltip" class="media-thumb"
 				title="{{ media.snippet.title }}"
-				(click)="playVideo(media)"&gt;
+				(click)="playVideo(media)">
 
-				&lt;div class="thumbnail"&gt;
-					&lt;img src="{{media.snippet.thumbnails.high.url}}"&gt;
-				&lt;/div&gt;
+				<div class="thumbnail">
+					<img src="{{media.snippet.thumbnails.high.url}}">
+				</div>
 
-				&lt;button class="btn btn-default btn-lg ux-maker play-media"&gt;
-					&lt;i class="fa fa-play"&gt;&lt;/i&gt;
-				&lt;/button&gt;
-			&lt;/div&gt;
+				<button class="btn btn-default btn-lg ux-maker play-media">
+					<i class="fa fa-play"></i>
+				</button>
+			</div>
 
-			&lt;section class="item-actions main-actions"&gt;
+			<section class="item-actions main-actions">
 
-				&lt;h4 class="title span11"&gt;
-					&lt;a href='#/video/{{ media.id }}' rel="tooltip" class="media-thumb ellipsis"
-						title="{{ media.snippet.title }}"&gt;
+				<h4 class="title span11">
+					<a href='#/video/{{ media.id }}' rel="tooltip" class="media-thumb ellipsis"
+						title="{{ media.snippet.title }}">
 						{{ media.snippet.title }}
-					&lt;/a&gt;
-				&lt;/h4&gt;
+					</a>
+				</h4>
 
-				&lt;section class="media-actions clearfix"&gt;
-					&lt;button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
-						(click)="queueVideo(media)"&gt;
-						&lt;i class="fa fa-share"&gt;&lt;/i&gt; Queue
-					&lt;/button&gt;
-					&lt;button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
-						(click)="addVideo(media)"&gt;
-						&lt;i class="fa fa-plus"&gt;&lt;/i&gt; Add
-					&lt;/button&gt;
-				&lt;/section&gt;
+				<section class="media-actions clearfix">
+					<button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
+						(click)="queueVideo(media)">
+						<i class="fa fa-share"></i> Queue
+					</button>
+					<button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
+						(click)="addVideo(media)">
+						<i class="fa fa-plus"></i> Add
+					</button>
+				</section>
 
-				&lt;span
+				<span
 					(click)="toggle(showDesc)"
-					class="btn btn-default btn-xs media-desc " title="more info about this video"&gt;
-					&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;
-				&lt;/span&gt;
+					class="btn btn-default btn-xs media-desc " title="more info about this video">
+					<i class="fa fa-info-circle"></i>
+				</span>
 
-				&lt;span class="item-action"&gt;&lt;i class="fa fa-clock-o"&gt;&lt;/i&gt;{{ media.time}}&lt;/span&gt;
+				<span class="item-action"><i class="fa fa-clock-o"></i>{{ media.time}}</span>
 
-				&lt;span class="item-likes item-action" rel="tooltip" title="Number of Likes"&gt;
-					&lt;i class="fa fa-thumbs-up"&gt;&lt;/i&gt; {{ media.statistics.likeCount | number:'2.0'}}
-				&lt;/span&gt;
+				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
+					<i class="fa fa-thumbs-up"></i> {{ media.statistics.likeCount | number:'2.0'}}
+				</span>
 
-				&lt;span class="item-views item-action" rel="tooltip" title="Number of Views"&gt;
-					&lt;i class="fa fa-eye"&gt;&lt;/i&gt; {{ media.statistics.viewCount | number:'2.0'}}
-				&lt;/span&gt;
+				<span class="item-views item-action" rel="tooltip" title="Number of Views">
+					<i class="fa fa-eye"></i> {{ media.statistics.viewCount | number:'2.0'}}
+				</span>
 
-			&lt;/section&gt;
-		&lt;/div&gt;
+			</section>
+		</div>
 
-		&lt;div class="description back face"&gt;
-			&lt;h4&gt;&lt;a href='#/video/{{ media.id}}' rel="tooltip" title="{{ media.snippet.title }}" class="media-thumb"&gt;{{ media.snippet.title}}&lt;/a&gt;&lt;/h4&gt;
-			&lt;div&gt;{{ media.snippet.description }}&lt;/div&gt;
-		&lt;/div&gt;
+		<div class="description back face">
+			<h4><a href='#/video/{{ media.id}}' rel="tooltip" title="{{ media.snippet.title }}" class="media-thumb">{{ media.snippet.title}}</a></h4>
+			<div>{{ media.snippet.description }}</div>
+		</div>
 
-		&lt;section class="item-actions close-desc"&gt;
-			&lt;span
+		<section class="item-actions close-desc">
+			<span
 				(click)="toggle(showDesc)"
-				class="btn btn-default btn-xs media-desc " title="flip back..."&gt;
-					&lt;i class="fa fa-times-circle"&gt;&lt;/i&gt;
-				&lt;/span&gt;
-		&lt;/section&gt;
+				class="btn btn-default btn-xs media-desc " title="flip back...">
+					<i class="fa fa-times-circle"></i>
+				</span>
+		</section>
 
-	&lt;/section&gt;
+	</section>
 
-&lt;/li&gt;
+</li>
 ```
 
 There few noticeable changes that needs to be made:
@@ -453,19 +453,19 @@ The format must be defined with the appropriate digits - I followed the exact <a
 In **echoes1**, the youtube-media component is used as:
 
 ```typescript
-&lt;youtube-media 
+<youtube-media 
 	video="video"
 	on-play="vm.playSelectedVideo(video)"
-&gt;&lt;/youtube-media&gt;
+></youtube-media>
 ```
 
 In **echoes2**, we can use the new component in echoes2 as such:
 
 ```typescript
-&lt;youtube-media 
+<youtube-media 
     [media]="videoMock"
     (play)="playSelectedVideo(videoMock)"
-&gt;&lt;/youtube-media&gt;
+></youtube-media>
 ```
 
 ## Final Thoughts

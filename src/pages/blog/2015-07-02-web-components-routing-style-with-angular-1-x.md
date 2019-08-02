@@ -58,7 +58,7 @@ Today, In my <a href="http://github.com/orizens/echoes" target="_blank">open sou
 
 ```typescript
 .when('/', {
-	template: '&lt;youtube-videos&gt;&lt;/youtube-videos&gt;'
+	template: '<youtube-videos></youtube-videos>'
 })
 ```
 
@@ -82,10 +82,10 @@ $stateProvider
         url: "",
         views: {
             "results": {
-                template: "&lt;youtube-videos&gt;&lt;/youtube-videos&gt;"
+                template: "<youtube-videos></youtube-videos>"
             },
             "sidebar": {
-                template: "&lt;now-playlist&gt;&lt;/now-playlist&gt;"
+                template: "<now-playlist></now-playlist>"
             }
         }
     });
