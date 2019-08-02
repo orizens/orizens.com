@@ -48,7 +48,8 @@ First, you need to setup few configurations in your github project.
 
 Travis uses a &#8220;.travis.yaml" configuration file to tell Travis what kind of environment the tests run (nodejs).
 
-<pre class="lang:yaml decode:true">language: node_js
+```typescript
+language: node_js
 node_js:
   - "0.10"
 branches:
@@ -61,7 +62,8 @@ before_script:
   - npm install -g karma
   - bower install
   - gulp build
-  - gulp style</pre>
+  - gulp style
+```
 
 Aside from being self explanatory, at this point i wanted Travis to run tests on the angular branch only - so i easily marked that with the &#8220;**branches**" section.
 
@@ -81,7 +83,8 @@ Travis uses the convention of &#8220;**npm test**" to run the tests. I configure
 
 Up until using Travis, the tests were configured to run with karma runner, and never end (so i can develop with tdd in practice). In karma runner, the flag for this is &#8220;singleRun" set to false. In Travis, the tests need to run once. Travis expose an environmental variable in nodejs process. So, in order to adjust to it, I simple read the TRAVIS variable and set the &#8220;singleRun" to true when running in TRAVIS.
 
-<pre class="lang:js mark:3 decode:true ">var gulp = require('gulp');
+```typescript
+var gulp = require('gulp');
 var karma = require('karma').server;
 var isTravis = process.env.TRAVIS || false;
 var pathToKarmaConf = __dirname.replace('/gulp', '');
@@ -92,7 +95,8 @@ module.exports = gulp.task('test', function (done) {
     configFile: pathToKarmaConf + '/karma.conf.js',
     singleRun: isTravis
   }, done);
-});</pre>
+});
+```
 
 The result of Travis running the build is output to travis dashboard (the same output that the terminal output when running the tests in mac's terminal):
 

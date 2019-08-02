@@ -32,7 +32,8 @@ In this post I want to show how requirejs allows us to minify all files into one
 
 When writing a web app using requirejs, it's important to separate each module to its own file. So, a typical file may look like this (I used backbone for this example):
 
-<pre class="brush:js">//- SearchModel.js
+```typescript
+//- SearchModel.js
 define(
 //- dependencies
 ['underscore', 'backbone'], 
@@ -50,11 +51,13 @@ function(_, Backbone) {
 	});
 
 	return SearchModel;
-});</pre>
+});
+```
 
 The folder structure of the application may be as followed:
 
-<pre class="brush:plain">- app
+```typescript
+- app
 	- css
 	- img
 	- js
@@ -63,7 +66,8 @@ The folder structure of the application may be as followed:
 		- views
 			Search.js
 	main.js
-	index.html</pre>
+	index.html
+```
 
 <!--RndAds-->
 
@@ -97,7 +101,8 @@ Please notice that the files of my application are located in the &#8220;app" fo
 
 All you have to do now is open your console (i.e, cmd in windows), navigate to the &#8220;build" folder and run this command:
 
-<pre class="brush:shell">node r.js -o app.build.js</pre>
+```typescript
+
 
 You can find the new files in the folder that is defined in the &#8220;dir" property in app.build.js.
   
@@ -110,10 +115,12 @@ Additional help configuration can be found on the <a href="http://requirejs.org/
 Since i'm working with <a href="http://orizens.com/wp/topics/javascript-ides-yes/" title="Javascript IDE’s? yes!" target="_blank">SublimeText</a> for code editing, I would like to have the option to build my project from. Fortunately, it's easy to accomplish.
 
   1. From sublime's menu, go to -> **Tools -> Build System -> New Build System &#8230;**. 
-  2. Paste this code to the new created file:</p> <pre class="brush:javascript">{
+  2. Paste this code to the new created file:</p> ```typescript
+{
 	"cmd": ["node r.js -o app.build.js"],
 	"shell": true
-}</pre>
+}
+```
 
   3. Save the new configuration build with a preferred name - I used **&#8220;RequireJS Optimization"**. 
 

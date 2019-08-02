@@ -53,32 +53,39 @@ There is a method for loading incompatible javascript files without any dedicate
   
 First, I configured requirejs with aliases to my backbone & underscore libraries to specific loaders (main.js):
 
-<pre class="brush:js">require.config({
+```typescript
+require.config({
   paths: {
   	order: "libs/require/order",
 	jquery: 'libs/jquery/jquery-min',
 	underscore: 'libs/underscore/underscore-loader',
 	backbone: 'libs/backbone/backbone-loader',
   }
-});</pre>
+});
+```
 
 I created a customized &#8220;underscore-loader.js" javascript file. This file loads the original underscore library - this gives me the option to replace underscore versions (development/production/other builds) without affecting the general application configuration (_underscore-loader.js_):
 
-<pre class="brush:js">define(["libs/underscore/underscore-orig"], function() {
+```typescript
+define(["libs/underscore/underscore-orig"], function() {
   return window._;
-});</pre>
+});
+```
 
 To load backbone, I had to use the [&#8220;order" plugin](http://requirejs.org/docs/1.0/docs/download.html#order) - which tells require js to load the depended files by the order of the array, and then invoking the callback. In backbone's case, I have to specify underscore once again to make sure the underscore-orig will be loaded if it hasn't (_backbone-loader.j_s).
 
-<pre class="brush:js">define(["order!jquery", "order!libs/underscore/underscore-orig", "order!libs/backbone/backbone-orig"], function() {
+```typescript
+define(["order!jquery", "order!libs/underscore/underscore-orig", "order!libs/backbone/backbone-orig"], function() {
   return window.Backbone;
-});</pre>
+});
+```
 
 ## How to use it?
 
 As simple as it goes:
 
-<pre class="brush:js">define([
+```typescript
+define([
 	'jquery',
 	'underscore',
 	'backbone',
@@ -91,4 +98,5 @@ As simple as it goes:
 			this.model.on("change", this.render, this);
 		}
 	});
-})</pre>
+})
+```

@@ -34,9 +34,11 @@ Before I dive into the several solutions that I found, I'de like to describe the
 
 Currently, to optimize angularjs v1.x in production, you can disable debug information. This will save your app few DOM operations like adding/changing classes - and will prevent some repaints and hopefully reflows as well. Disabling the debug information also removes certain global references such as accessing &#8220;**scope**" through &#8220;**angular.element**&#8220;. Setting the debug information to off should be applied in the &#8220;**config**" phase of the app:
 
-<pre class="lang:js decode:true ">function config ($compileProvider) {
+```typescript
+function config ($compileProvider) {
 	$compileProvider.debugInfoEnabled(false);
-}</pre>
+}
+```
 
 Since I converted the code of Echoes Player to ES2015, The challenge in this case was finding a way to load the appropriate module in build that is relevant to the environment. I'm also using <a href="http://browserify.org/" target="_blank">browserify</a> for compiling the code - so the challenge was also finding a proper way to integrate the solution to the build process.
 
@@ -58,30 +60,35 @@ Finally, after much thought, I had the solution right there, without using anoth
 
 I added these settings to the browserify build code. The idea is adding the relevant environment file to the build process. This code creates the relevant path of the desired environment config file:
 
-<pre class="lang:js decode:true">const Environments = {
+```typescript
+const Environments = {
   DEFAULT: 'dev',
   DEVELOPMENT: 'dev',
   PRODUCTION: 'production',
   TEST: 'test'
 }
 const currentEnvironment = process.env.ENV !== undefined ? process.env.ENV : Environments.DEFAULT;
-const configuraionFile = `./src/config/${currentEnvironment}.config.js`;</pre>
+const configuraionFile = `./src/config/${currentEnvironment}.config.js`;
+```
 
 Later on this file, I just added the &#8220;configurationFile" path to the browserify bundler code:
 
-<pre class="lang:js decode:true">let bundler = browserify({
+```typescript
+let bundler = browserify({
     entries: ['./src/app.js', configuraionFile],
     debug: true,
     cache: {},
     packageCache: {},
     fullPaths: isDevMode
-});</pre>
+});
+```
 
 Currently, these configuration files includes the a &#8220;config" function which is defined on the app's namespace. Although this is not the defacto way to define a separate configuration file, it is good enough for the purpose of this project. In a more scalable perspective, I would have created a file that exports a literal object or an angular module that can be consumed at config phase and then use it.
 
 This is the &#8220;**production.config.js**" that is loaded when the build process compiles the code for a release:
 
-<pre class="lang:js decode:true ">import angular from 'angular';
+```typescript
+import angular from 'angular';
 
 angular.module('echoes')
     .config(config);
@@ -89,6 +96,7 @@ angular.module('echoes')
 /* @ngInject */
 function config ($compileProvider) {
 	$compileProvider.debugInfoEnabled(false);
-}</pre>
+}
+```
 
 The full source code is <a href="http://github.com/orizens/echoes" target="_blank">available on github</a>.

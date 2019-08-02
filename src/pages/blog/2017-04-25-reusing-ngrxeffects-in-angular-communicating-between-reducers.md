@@ -59,7 +59,8 @@ The &#8220;AppPlayer" Component is responsible for emitting the &#8220;MEDIA_END
   1. The &#8220;onPlayerChange()" action updates the player reducer with the current state of the player.
   2. the &#8220;trackEnded()" action starts the process for checking if a next track should be played in the playlist.
 
-<pre class="lang:default decode:true ">@Component({
+```typescript
+@Component({
   selector: 'app-player',
   template: `
   &lt;section 
@@ -92,17 +93,20 @@ export class AppPlayerComponent implements OnInit {
       this.nowPlaylistService.trackEnded();
     }
   }
-}</pre>
+}
+```
 
 When the &#8220;repeat" feature wasn't available, playing the next track was quite easy: the player should emit a play action and take the currently selected media to be played using the Youtube Player Service. Actually, this was the previous &#8220;updatePlayerState()" code:
 
-<pre class="lang:default decode:true ">updatePlayerState (event) {
+```typescript
+updatePlayerState (event) {
     this.playerService.onPlayerStateChange(event);
     if (event.data === YT.PlayerState.ENDED) {
       this.nowPlaylistService.trackEnded();
       this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
     }
-}</pre>
+}
+```
 
 This worked for the purpose of just keep playing the next available track. However, to support the &#8220;repeat" feature, I had to think of another way and I wanted to think in a reactive programming style while reusing code that is already written.
 
@@ -110,7 +114,8 @@ This worked for the purpose of just keep playing the next available track. Howev
 
 The &#8220;**trackEnded()**" method invoked the &#8220;MEDIA_ENDED" action. This action is handled in the &#8220;now-playlist" reducer which runs the &#8220;**selectNextOrPreviousTrack()**&#8220;. This function updates the &#8220;selectedId" property in the reducer. If &#8220;repeat" is &#8220;on" and it's the end of the playlist, the playlist should not select the first track as the new selected track to play - an empty string indicates this state.
 
-<pre class="lang:default decode:true">function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string): NowPlaylistInterface {
+```typescript
+function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string): NowPlaylistInterface {
   const videosPlaylist = state.videos;
   const currentId = state.selectedId;
   const indexOfCurrentVideo = videosPlaylist.findIndex(video =&gt; currentId === video.id);
@@ -127,11 +132,13 @@ function getNextIdForPlaylist(videos: GoogleApiYouTubeVideoResource[], repeat: b
     id = videos[0].id;
   }
   return id;
-}</pre>
+}
+```
 
 The side effect that runs after the selected media has been updated, is supposed to emit a &#8220;selectVideo" action when the right conditions exists. To achieve that, first, it takes the latest state for the selected media object. Next, the &#8220;**filter**" operator checks whether the selected media is valid for playing the video - when the playlist is over, the &#8220;selectedId" property is set to an empty string, so in this case, there would not be any valid media object to play. This means that the side effect will not emit the &#8220;selectVideo" action if the filter function result is an invalid condition for selecting the next video.
 
-<pre class="lang:default decode:true">@Effect()
+```typescript
+@Effect()
 loadNextTrack$ = this.actions$
     .ofType(NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)
@@ -139,7 +146,8 @@ loadNextTrack$ = this.actions$
     .filter((states: [any, GoogleApiYouTubeVideoResource]) =&gt; states[1] && states[1].hasOwnProperty('id'))
     .map((states: [any, GoogleApiYouTubeVideoResource]) =&gt; {
       return this.nowPlaylistActions.selectVideo(states[1]);
-    }).share();</pre>
+    }).share();
+```
 
 This sequence just selects the next video in the playlist - it doesn't play it. Now it's time to integrate the actual action which triggers the &#8220;**PLAY**" action.
 
@@ -151,18 +159,21 @@ Notice that I added the &#8220;share()" operator at the end of the Effect's sequ
 
 Each &#8220;**Effects**" class is an injectable service. This gives us the opportunity to inject the &#8220;**NowPlaylistEffects**" class to the constructor of the &#8220;AppPlayer" component.
 
-<pre class="lang:default decode:true ">constructor(
+```typescript
+constructor(
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
     private playerActions: AppPlayerActions,
     private store: Store&lt;EchoesState&gt;,
     private nowPlaylistEffects: NowPlaylistEffects
   ) {
-  }</pre>
+  }
+```
 
 Now, in the &#8220;**ngOnInit**" life cycle, the component subscribes to the &#8220;**loadNextTrack$**" side effect and triggers a &#8220;**PLAY**" action with the payload of this action - the next selected media to play. Since the side effect filters scenarios where the track is last and repeat is not on, this subscription won't be triggered. It's important to note that defining this behavior - playing video after this side effect has triggered - will always happen - so, it's important to design and define the requirement.
 
-<pre class="lang:default decode:true">// AppPlayerComponent
+```typescript
+// AppPlayerComponent
 ngOnInit() {
     this.nowPlaylistEffects.loadNextTrack$
       .subscribe((action) =&gt; this.playVideo(action.payload));
@@ -171,11 +182,13 @@ ngOnInit() {
 playVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.playVideo(media));
 }
-</pre>
+
+```
 
 Since the &#8220;**AppPlayerComponent**" is a container component (<a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0" target="_blank" rel="noopener noreferrer"><strong>SMART</strong></a>), there's no need to unsubscribe from this subscription. Otherwise, this subscription should be disposed as:
 
-<pre class="lang:default decode:true">// AppPlayerComponent
+```typescript
+// AppPlayerComponent
 private nowPlaylistSub: Subscription;
 
 ngOnInit() {
@@ -186,7 +199,8 @@ ngOnInit() {
 
 ngOnDestroy() {
     this.nowPlaylistSub.unsubscribe();
-}</pre>
+}
+```
 
 That sums up the reuse of the &#8220;NowPlaylist" effects and the concept of communicating between two reducers or more. &#8220;<a href="http://echoesplayer.com" target="_blank" rel="noopener noreferrer">Echoes Player</a>" is an <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a> - feel free to **suggest** better alternatives, **feature** requests and other suggestions as well.
 

@@ -46,7 +46,8 @@ First, I created a new directory in &#8220;**src/app/core/store**" for defining 
 
 The **index.ts** is:
 
-<pre class="lang:js decode:true">import { compose } from "@ngrx/core/compose";
+```typescript
+import { compose } from "@ngrx/core/compose";
 // reducers
 import {videos} from './youtube-videos';
 // Echoes State
@@ -55,11 +56,13 @@ let EchoesStore = {
 };
 
 export default compose(
-)({ videos });</pre>
+)({ videos });
+```
 
 In order to attach this store to the app, i'm importing it in the **app.module.ts** (i'm using the excellent <a href="https://github.com/AngularClass/angular2-webpack-starter" target="_blank">Angular2Class angular2 starter kit</a>) as such:
 
-<pre class="lang:js decode:true">// other imports were removed for this example
+```typescript
+// other imports were removed for this example
 import { Store, StoreModule } from '@ngrx/store';
 import { store } from './core/store';
 
@@ -84,7 +87,8 @@ import { App } from './app.component';
  ]
 })
 export class AppModule {}
-</pre>
+
+```
 
 ### Creating a Reducer
 
@@ -92,7 +96,8 @@ The first reducer that I have created handles the videos search results. Current
 
 Notice how the &#8220;**videos**" function is a pure function: it gets **2 arguments** and is expected to return a value.
 
-<pre class="lang:js decode:true">import { ActionReducer, Action } from '@ngrx/store';
+```typescript
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const ADD = 'ADD';
 export const REMOVE = 'REMOVE';
@@ -119,7 +124,8 @@ export const videos: ActionReducer&lt;GoogleApiYouTubeSearchResource[]&gt; = (st
 
 export function addVideos(state: EchoesVideos, videos: GoogleApiYouTubeSearchResource[]) {
     return state.concat(videos);
-}</pre>
+}
+```
 
 The main (and currently only) action that is implemented here is the &#8220;**add**" action with addVideos function. The &#8220;**addVideos**" function simply returns a new array that includes a copy of the source array concatenated with a new videos array.
 
@@ -127,7 +133,8 @@ The main (and currently only) action that is implemented here is the &#8220;**ad
 
 In order to use the ngrx store in the &#8220;**youtube-videos.ts**" component, I need to import the Store - which is a &#8220;**singletone**" object, and inject it.
 
-<pre class="lang:default decode:true">// youtube-videos.ts
+```typescript
+// youtube-videos.ts
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
@@ -148,13 +155,15 @@ export class YoutubeVideos {
                 this.search('')
         }
 //....more code
-}</pre>
+}
+```
 
 I also imported the &#8220;**ChangeDetectionStrategy**&#8220;, so I can instruct angular to evaluate changes once.
 
 In order to use the result of the youtube search action, I attach the store's reducer result to the &#8220;**videos**" property in this class. Since this operation is async, the template of youtube-videos component has been defined with a pipe of **async**:
 
-<pre class="lang:xhtml decode:true">&lt;youtube-list [list]="videos$ | async" (play)="playSelectedVideo($event)"&gt;&lt;/youtube-list&gt;</pre>
+```typescript
+
 
 ### Using Store in Angular2 Service
 
@@ -162,14 +171,17 @@ The real action of dispatching action to the store comes from the youtube.search
 
 I first import the Store and the actions needed for new states:
 
-<pre class="lang:default decode:true ">import { Store } from '@ngrx/store';
-import { ADD } from '../store/youtube-videos';</pre>
+```typescript
+import { Store } from '@ngrx/store';
+import { ADD } from '../store/youtube-videos';
+```
 
 Similarly to the youtube-videos component, the &#8220;**Store**" is injected to this service constructor and attached to the &#8220;**this.store**" context.
 
 In order to update the store state, once the response is ready, the &#8220;**ADD**" event is dispatched with the expected payload:
 
-<pre class="lang:js decode:true ">search(query: string, dontReset: Boolean){
+```typescript
+search(query: string, dontReset: Boolean){
 	const isNewSearch = query && query !== this._config.get('q');
 	const shouldBeReset = !dontReset;
 
@@ -189,7 +201,8 @@ In order to update the store state, once the response is ready, the &#8220;**ADD
 			this.store.dispatch({ type: ADD, payload: [ ...response.items ] })
 			return response;
 		});
-}</pre>
+}
+```
 
 This closes a circle and invokes the &#8220;**videos**" reducer mentioned above, which afterwards updates the youtube-videos components, which in turn, displays the current state of the &#8220;**store.videos**" property.
 

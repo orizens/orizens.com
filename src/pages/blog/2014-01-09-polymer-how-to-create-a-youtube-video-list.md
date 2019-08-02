@@ -64,19 +64,23 @@ It tries to elimintate js boilerplate code by embracing back html standards - an
 	  
 All i needed for the Remote module was a simple module that will display a list of youtube items, searching youtube and controls for the currently played video. So, basically, my custom element should be in its simplest form like so:
 
-<pre class="brush:js">&lt;youtube-list>&lt;/youtube-list>
-</pre>
+```typescript
+
+
+```
 
 and for using it:
 
-<pre class="brush:html">
+```typescript
+
 
 
 
 	&lt;youtube-list>&lt;/youtube-list>
 
 
-</pre>
+
+```
 
 Polymer provides both basic platform elements and ui widgets. For starters, I chose to focus on the platform elements and create the youtube list module.
 
@@ -91,12 +95,14 @@ The &#8220;youtube-list" module requires few polymer elements:
 
 Now, For creating the new module &#8220;youtube-list", we start with this snippet:
 
-<pre class="brush:js">&lt;polymer-element name="youtube-list" attributes="">
+```typescript
+
 	
 	&lt;template>&lt;/template>
 	
 &lt;/polymer-element>
-</pre>
+
+```
 
 This code actually creates an incapsulated code which runs within the &#8220;youtube-list" module context.
 	  
@@ -118,7 +124,8 @@ The &#8216;template' tag may be nested and used. Its most common use is using it
 	  
 Much like angularjs directive &#8220;ng-repeat", you would use the repeat like so:
 
-<pre class="brush:js">&lt;template id="yt-list" repeat="{{item in items}}">
+```typescript
+
 	
 
 <h2 videoid="{{item.id.videoId}}">
@@ -127,16 +134,19 @@ Much like angularjs directive &#8220;ng-repeat", you would use the repeat like s
 	...
 	...
 &lt;/template>
-</pre>
+
+```
 
 The polymer-ajax element is declared inside the main template tag for this module as so:
 
-<pre class="brush:js">&lt;polymer-ajax id="ajax" url="/search/list" 
+```typescript
+&lt;polymer-ajax id="ajax" url="/search/list" 
     params=''
     handleAs="json"
     on-polymer-response="{{handleResponse}}">
 &lt;/polymer-ajax>
-</pre>
+
+```
 
 In the next section we'll see what the &#8220;id" attribute is used for, and how easy it is to use the polymer-ajax with js code. The &#8216;handleResponse' is a function which is defined in the script tag.
 
@@ -146,7 +156,8 @@ The &#8220;script" tag holds the logics of the custom element that we've created
 	  
 For declaring and inteacting with the new custom element &#8220;youtube-list", we need to declare this element using the Polymer function:
 
-<pre class="brush:js">Polymer('youtube-list', {
+```typescript
+Polymer('youtube-list', {
 	ready: function() {
 		this.nowPlaying = 'choose something below...';
 		this.items = [{
@@ -156,7 +167,8 @@ For declaring and inteacting with the new custom element &#8220;youtube-list", w
 			}];
 	}
 });
-</pre>
+
+```
 
 The &#8216;ready' function runs once Polymer has been initialized. Then, on any change to local, public properties attached to &#8220;this" context, the relevant expressions which have been defined in the template tag will be evaluated and rendered to the DOM of this element.
 	  
@@ -164,11 +176,13 @@ Lets inspect the &#8220;script" more and focus on the &#8216;handleResponse' met
 	  
 This method id defined as a method of the &#8216;youtube-list' polymer element:
 
-<pre class="brush:js">handleResponse: function(ev, res){
+```typescript
+handleResponse: function(ev, res){
 	this.items = res.response.items;
 	this.loading = '';
 }
-</pre>
+
+```
 
 Notice that all it has to do in order to update the dom with the new items is updating the &#8220;this.items" property. The rest is being taking care of by Polymer's data binding - so the new items that were retreived from the ajax call will be rendered accrodingly.
 	  
@@ -176,11 +190,13 @@ One of the many features that I like in Polymer is that it saved a reference to 
 	  
 For searching youtube videos, a form is defined in the template:
 
-<pre class="brush:js"></pre>
+```typescript
+
 
 First, a submit event handler is defined on Polymer's &#8216;ready' function. Notice how I can easily refer to the search form by quering the &#8220;this.$" property. Also, the callback function sends the input's value to the &#8216;query' method. Eventualy, the query method refers to the &#8216;ajax' element using the &#8216;this.$ajax' and runs the &#8216;go' method. The &#8216;go' method is a built in method that comes with polymer-ajax.
 
-<pre class="brush:js">ready: function(){
+```typescript
+ready: function(){
 ....
 	var that = this;
 	this.$.search.addEventListener('submit', function(ev){
@@ -201,7 +217,8 @@ query: function(q){
   this.$.ajax.params = JSON.stringify(params);
   this.$.ajax.go();
 }
-</pre>
+
+```
 
 ### Summary
 

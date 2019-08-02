@@ -35,7 +35,8 @@ So, when it comes to rendering a collection of items (or simply, a backbone coll
 
 For rendering views we can simply add a new method to Backbone.View that will take care of rendering a Backbone.Collection instance.
 
-<pre class="brush:js">renderCollection: function(options) {
+```typescript
+renderCollection: function(options) {
 	options = options || {};
 	options.target = options.target || this.$el;
 	options.collection = options.collection || this.collection;
@@ -54,7 +55,8 @@ For rendering views we can simply add a new method to Backbone.View that will ta
 	}
 	return this;
 }
-</pre>
+
+```
 
 ## The Pitfalls With rendering Backbone Collection
 
@@ -82,16 +84,19 @@ Finally, the method iterates the collection and uses 2 methods to render each vi
   
 The &#8220;_renderView" method renders a view to any given model as well as appending it to the selected &#8220;target" that was configured in the &#8220;options" object.
 
-<pre class="brush:js">_renderView: function(model) {
+```typescript
+_renderView: function(model) {
 	this._renderOptions.target.append(
 		this.createView(model, this._renderOptions.args || {}).render().$el
 	);
 }
-</pre>
+
+```
 
 This method uses the &#8220;createView" method which instantiates a view to a given model and optional arguments (using a regular Backbone.View constructor). The newly created instance is added to the internal array (for tracking) of subviews.
 
-<pre class="brush:js">createView: function(model, options) {
+```typescript
+createView: function(model, options) {
 	var indexOfNewView = this._subviews.length;
 	this._subviews.push(new this.view(_.extend({
 			model: model
@@ -100,7 +105,8 @@ This method uses the &#8220;createView" method which instantiates a view to a gi
 	)));
 	return this._subviews[indexOfNewView];
 }
-</pre>
+
+```
 
 ### Cleaning Views
 

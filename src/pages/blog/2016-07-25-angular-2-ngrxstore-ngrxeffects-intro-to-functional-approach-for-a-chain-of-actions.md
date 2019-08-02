@@ -66,7 +66,8 @@ I've started porting <a href="http://github.com/orizens/echoes-ng2" target="_bla
 
 The component that manages the right pane is &#8220;**youtube-videos.component.ts**&#8220;. handling the &#8220;**Queue**" event was implemented with this code in the &#8220;**queueSelectedVideo**" function:
 
-<pre class="lang:c# decode:true">// "imports" omitted to focus on the relevant code for this example
+```typescript
+// "imports" omitted to focus on the relevant code for this example
 @Component({
   selector: 'youtube-videos.youtube-videos'
 })
@@ -94,7 +95,8 @@ export class YoutubeVideos implements OnInit {
     return this.nowPlaylistService.queueVideo(media.id.videoId);
   }
 }
-</pre>
+
+```
 
 The &#8220;**queueSelectedVideo**" function calls the queueVideo function on the nowPlaylistService. In this implementation, the &#8220;**playSelectedVideo**" function also uses the queueSelectedVideo and it's easy to understand that this function return a promise (spot the &#8220;then").
 
@@ -102,7 +104,8 @@ The reason for using a promise here is - in order to display more data on the se
 
 &#8220;**queueVideo**" function, simply, dispatch an action once the promise has been resolved:
 
-<pre class="lang:js decode:true">// now-playlist.service.ts
+```typescript
+// now-playlist.service.ts
 // imports omitted 
 @Injectable()
 export class NowPlaylistService {
@@ -121,7 +124,8 @@ export class NowPlaylistService {
         return response.items[0];
 			});
 	}
-}</pre>
+}
+```
 
 This code is simple and works great. However, there might be few challenges that will be hard to implement with this approach:
 
@@ -144,7 +148,8 @@ Lets see how ngrx solves the above challenges while including the benefits of pr
 
 First, now I created a new class to be used as an action creator - functions which will return an Action object. i.e, the &#8220;**now-playlist.actions.ts**" is:
 
-<pre class="lang:default decode:true ">import { Injectable } from '@angular/core';
+```typescript
+import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
 @Injectable()
@@ -157,11 +162,13 @@ export class NowPlaylistActions {
     }
   }
 // other functions omitted for this post
-}</pre>
+}
+```
 
 the &#8220;**youtube-videos.component.ts**" has been revamped to use these action creators functions. Now, this component just dispatch actions with &#8220;**playSelectedVideo**" and &#8220;**queueSelectedVideo**&#8220;. There are no logics or ajax resolving here:
 
-<pre class="lang:default decode:true">// imports omitted for this post
+```typescript
+// imports omitted for this post
 @Component({
   selector: 'youtube-videos.youtube-videos'
 })
@@ -192,13 +199,15 @@ export class YoutubeVideos implements OnInit {
     this.store.dispatch(this.nowPlaylistActions.queueLoadVideo(media));
   }
 }
-</pre>
+
+```
 
 Lets focus on the new flow of &#8220;**queueSelectedVideo**&#8220;.
 
 Along side the refactored code, I created a new directory for effects. This is the &#8220;**now-playlist.effects.ts**&#8220;:
 
-<pre class="lang:default decode:true">// imports omitted for this post
+```typescript
+// imports omitted for this post
 @Injectable()
 export class NowPlaylistEffects {
 
@@ -216,7 +225,8 @@ export class NowPlaylistEffects {
       .map(media =&gt; this.nowPlaylistActions.queueVideo(media))
       .catch(() =&gt; Observable.of(this.nowPlaylistActions.queueFailed(media)))
     );
-}</pre>
+}
+```
 
 There a new decorator - &#8220;**@Effect()**" - which is used to what I call -  a side effect &#8220;**story**&#8220;. In my opinion, the code is almost a simple story from which I can understand a chain of reactions:
 

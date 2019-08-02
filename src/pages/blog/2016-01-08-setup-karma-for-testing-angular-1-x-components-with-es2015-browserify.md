@@ -46,7 +46,8 @@ In a previous article, I <a href="http://orizens.com/wp/topics/from-angular-es5-
 
 For <a href="http://echotu.be" target="_blank">Echoes Player</a>, I'm currently using <a href="http://browserify.org/" target="_blank">browserify</a> to achieve the above (webpack is an alternative and out of the scope of this article). I'm using a modified gulp task that I've found in various projects:
 
-<pre class="lang:js decode:true">'use strict';
+```typescript
+'use strict';
 
 import gulp         from 'gulp';
 import gulpif       from 'gulp-if';
@@ -139,7 +140,8 @@ function buildScript(file) {
 
 gulp.task('browserify', () =&gt; {
   return buildScript('bundle-bfy.js');
-});</pre>
+});
+```
 
 In a birds eye-view, the &#8220;browserify" gulp task handles several duties:
 
@@ -168,7 +170,8 @@ First, we need to add <a href="https://www.npmjs.com/package/karma-browserify" t
 
 i.e., This is the setup that I use in echoes:
 
-<pre class="lang:js decode:true">var browsers = isTravis ? [ 'PhantomJS' ] : [isDebug ? 'Chrome' : 'PhantomJS2'];
+```typescript
+var browsers = isTravis ? [ 'PhantomJS' ] : [isDebug ? 'Chrome' : 'PhantomJS2'];
 var options = {
 	basePath: './src',
 	browsers: browsers,
@@ -218,7 +221,8 @@ var options = {
     reporters: [
     	'mocha'
     	]
-};</pre>
+};
+```
 
 That's it.
 

@@ -51,11 +51,13 @@ Compiling with AOT is triggered via a terminal/cmd command. The &#8220;**@angul
 
 To compile, this command should run in the terminal:
 
-<pre class="lang:sh decode:true">ng build -aot</pre>
+```typescript
+
 
 To compile for production and get the benefits of minifying and others, you should run:
 
-<pre class="lang:default decode:true">ng build -prod</pre>
+```typescript
+
 
 Please note that the flag &#8220;-prod" includes compiles with AOT (thanks for [the update](https://github.com/angular/angular-cli/blob/master/CHANGELOG.md#breaking-changes-3) [@shiny](https://disqus.com/by/disqus_cCRtlEGXCj/))
 
@@ -67,20 +69,23 @@ In &#8220;Echoes Player", I chose to sync the store's state to the localstorage.
 
 In order to combine reducers, the &#8220;**compose**()" function from the &#8220;@ngrx/core/compose" should be used along with the &#8220;**combineReducers**" from &#8220;@ngrx/store". In the end, the compose return value should be stored in a variable:
 
-<pre class="lang:default decode:true">const reducers = {
+```typescript
+const reducers = {
   player,
   nowPlaylist,
   user,
   search,
   appLayout,
 };
-const appReducer = compose(localStorageSync(Object.keys(reducers), true), combineReducers)(reducers);</pre>
+const appReducer = compose(localStorageSync(Object.keys(reducers), true), combineReducers)(reducers);
+```
 
 ### Guideline #1: Using &#8220;compose" in ngrx/store
 
 Normally, the &#8220;**appReducer**" which holds a reference the new composed reducer, should be used as the argument for &#8220;StoreModule.provideStore(productionReducer)" to bootstrap the store. However, that approach is not compatible with **AOT**. In order to use &#8220;**compose**" in a way that is compatible with AOT, the &#8220;appReducer" is required to be wrapped with a function which will be sent as an argument to the &#8220;**provideStore**()". This is required for the AOT compiler to statically analyze the code and compile and produce the AOT ready code.
 
-<pre class="lang:default decode:true">const actions = []; // array of app's action classes
+```typescript
+const actions = []; // array of app's action classes
 const reducers = {
   player,
   nowPlaylist,
@@ -100,33 +105,39 @@ export function reducer(state: any, action: any) {
   declarations: [],
   exports: [],
   providers: [ ...actions ]
-})</pre>
+})
+```
 
 ### Guideline #2: Using Function declarations for Reducers
 
 Reducers are meant to be pure functions. In previous versions of blog posts and other sources, reducer functions were demonstrated as anonymous function assignments to variables, sometimes using function arrows as well:
 
-<pre class="lang:default decode:true">export const playerReducer = (state: YoutubePlayerState = initialPlayerState, action: Action) =&gt; { };</pre>
+```typescript
+
 
 As a rule of thumb for AOT in general (and not just for ngrx), exported arrow functions cannot be used. The AOT compatible way for defining reducer functions is with an **exported named function** declaration.
 
-<pre class="lang:default decode:true ">export function playerReducer (state: YoutubePlayerState = initialPlayerState, action: Action) { }</pre>
+```typescript
+
 
 ### Guideline #3: AOT compatible ngrx/effects
 
 I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using &#8220;**EffectsModule.run()**" which creates a provider for each effect . Since in &#8220;Echoes Player" there are few effects classes, I chose to use a dynamic creation using a simple functional &#8220;map":
 
-<pre class="lang:default decode:true">@NgModule({
+```typescript
+@NgModule({
   imports: [
     CoreStoreModule,
     effects.map(effect =&gt; EffectsModule.run(effect))
   ]
 })
-export class CoreModule {}</pre>
+export class CoreModule {}
+```
 
 Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the &#8220;imports" array:
 
-<pre class="lang:default decode:true ">const AppEffectModules = [
+```typescript
+const AppEffectModules = [
   EffectsModule.run(AppEffects[0]),
   EffectsModule.run(AppEffects[1]),
   EffectsModule.run(AppEffects[2]),
@@ -138,7 +149,8 @@ Since both arrow functions and dynamic creation within a decorator are not compa
     ...AppEffectModules
   ]
 })
-export class CoreModule {}</pre>
+export class CoreModule {}
+```
 
 ## Summary
 

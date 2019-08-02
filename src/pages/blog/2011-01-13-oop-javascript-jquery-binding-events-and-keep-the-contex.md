@@ -27,7 +27,8 @@ There was one issue I struggled with while developing in oop javascript - keepin
   
 This is one way to create a class in javascript:
 
-<pre class="brush:js">function Grid(id) {
+```typescript
+function Grid(id) {
 	this.id = id;
 	this.init();
 }
@@ -52,7 +53,8 @@ Grid.prototype = {
 	{
 		
 	}	
-}</pre>
+}
+```
 
 Now, what's wrong with the code above?
   
@@ -66,7 +68,8 @@ The &#8220;bind" method can get 3 parameters: event name, data to pass with the 
   
 We can add the context of the class &#8220;this" to the data object, and refer to in the callback function:
 
-<pre class="brush:js">function Grid(id) {
+```typescript
+function Grid(id) {
 	this.id = id;
 	this.init();
 }
@@ -95,6 +98,7 @@ Grid.prototype = {
 	}
 	
 }
-</pre>
+
+```
 
 With this simple solution, you can keep the context of the class when handling jquery events, or sending any other context and refer to them as well.

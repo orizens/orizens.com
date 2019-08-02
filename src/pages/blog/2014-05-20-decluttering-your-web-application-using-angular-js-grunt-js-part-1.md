@@ -44,14 +44,16 @@ This makes my development experience much more solid, automated - and yes - quit
 
 My app is structured to be module based. Lets start with directory structure:
 
-<pre class="brush:js">MyApp/
+```typescript
+MyApp/
 -- 	src/
 -- 	grunt/
 -- 	test/
 --	Gruntfile.js
 --	bower.json
 --	package.json
-</pre>
+
+```
 
 The main modules of the application environment are placed each in its own sandbox.
   
@@ -65,7 +67,8 @@ Modularize with Angular.js
   
 Lets focus on the &#8220;src" directory.
 
-<pre class="brush:js">src/
+```typescript
+src/
 --	common
 ----	services/
 ----	directives/
@@ -79,20 +82,23 @@ Lets focus on the &#8220;src" directory.
 ----	tables/
 ----	app.js
 ----	styles/
-</pre>
+
+```
 
 I like the &#8220;package by feature" development concept. This is why i like having a &#8220;common" directory, where all data providers and common consumed services (factories, resources and others) can be used from anywhere in the app. To make a long story short - the &#8220;common" modules are consumed by the app modules.
 
 My app, requires the various application modules with dependency injection when it is defined:
 
-<pre class="brush:js">angular.module('MyApp', [
+```typescript
+angular.module('MyApp', [
 	'guests',
 	'dashboard',
 	'tables',
 	'resources.metadata',
 	'resources.updates'
 ]);
-</pre></p> 
+
+```</p> 
 
 ## Organizing Less Compilation
 
@@ -119,7 +125,8 @@ To be more specific, I use these grunt modules to automate all of the above:
 
 I created a &#8220;app.tpl.less" file in the root of &#8220;src" directory which imports cross application environment files as well as configuration for importing all &#8220;less" from the app's common and modules directories.
 
-<pre class="brush:css">@import url('bower_components/bootstrap/less/bootstrap.less');
+```typescript
+@import url('bower_components/bootstrap/less/bootstrap.less');
 @import url('styles/variables.less');
 @import url('styles/bootswatch.less');
 
@@ -131,13 +138,15 @@ I created a &#8220;app.tpl.less" file in the root of &#8220;src" directory which
 // @import url('../bower_components/animate.css/animate.css');
 // include: "type": "less", "files": "styles/common/**/*.less"
 // include: "type": "less", "files": "scripts/**/*.less"
-</pre>
+
+```
 
 The &#8220;grunt-include-source" module allows to compile this &#8220;app.tpl.less" file and output this file along with a list of less files imports from all over the app.
 	  
 The grunt &#8220;less.js" holds the configuration of how and where to compile the less files from/to.
 
-<pre class="brush:js">module.exports = function(grunt) {
+```typescript
+module.exports = function(grunt) {
 	return {
 		development: {
 		  options: {
@@ -182,11 +191,13 @@ The grunt &#8220;less.js" holds the configuration of how and where to compile th
 		}
 	}
 }
-</pre>
+
+```
 
 Finally, I use a regular grunt &#8220;watch" configuration to recompile and refresh the app when there's a change (edit, remove or adding a less file).
 
-<pre class="brush:js">module.export = function(grunt){
+```typescript
+module.export = function(grunt){
 return {
 	// among other statments of watch
   styles: {
@@ -198,7 +209,8 @@ return {
     },
   }
 }
-</pre>
+
+```
 
 ## Directives Templates - Getting Ready For Production
 
@@ -206,15 +218,18 @@ I like to have a clear separation between html & js. Although writing html as a 
 	  
 When developing directives, if needed, I usually write its html as a regular separated file template:
 
-<pre class="brush:js">directives
+```typescript
+directives
 	--	navbar\
 	----	navbar.mdl.js
 	----	navbar.tpl.html
-	</pre>
+	
+```
 
 In order to use the template file, I have to define it within the directive:
 
-<pre class="brush:js">MyApp.directive('listHeaders', function () {
+```typescript
+MyApp.directive('listHeaders', function () {
 		return {
 			restrict: 'A',
 			replace: true,
@@ -224,7 +239,8 @@ In order to use the template file, I have to define it within the directive:
 			}
 		}
 	});
-	</pre></p> 
+	
+```</p> 
 
 In development mode angular loads the template file. In production, often there's a need to minify the code and concatenate all files to one file.
 	  
@@ -234,7 +250,8 @@ The solution is quite easy. Angular caches a template the first time it is used 
 	  
 So, in order to prepare external templates for production (let it be directives or controller's templates), I use the grunt module &#8220;grunt-angular-templates". This module simply, generates a js code which defines all external html templates with &#8220;$templateCache" service when the app loads (&#8220;angular.run").
 
-<pre class="brush:js">module.exports = function(grunt) {
+```typescript
+module.exports = function(grunt) {
 	return {
 		dist:{
 			cwd: '&lt;%= yeoman.app %>',
@@ -254,7 +271,8 @@ So, in order to prepare external templates for production (let it be directives 
 		}
 	}
 }
-</pre>
+
+```
 
 ## What's Next?
 

@@ -43,13 +43,15 @@ Here are 3 more steps to follow in order to prepare you AngularJS code to Angula
 
 Angular (+2) data binding is by default one-way binding. In order to update a model with new changes, a handler must be defined as such:
 
-<pre class="lang:xhtml decode:true">&lt;input [value]="params" (input)="resetPageToken($event)"&gt;</pre>
+```typescript
+
 
 This requires you to implement a &#8220;resetPageToken()" function in the component's class.
 
 With AngularJS, in order to track changes in ng-model while avoiding using the non-standard &#8220;scope", you would can do something similar - ng-change.
 
-<pre class="lang:default decode:true ">&lt;input ng-model="params" ng-change="resetPageToken($event)"&gt;</pre>
+```typescript
+
 
 This as well, requires you to implement a &#8220;resetPageToken()" function on the controller of this template. Following the first 5 steps, if you're using es2015 classes syntax for controllers - that will require less code to migrate when moving to Angular (+2).
 
@@ -61,13 +63,15 @@ With Angular (+2), it is becoming popular to inject services to components. The 
 
 You should always follow the concept of injecting services to smart components - those that manage a certain section in the app, like the app itself:
 
-<pre class="lang:default decode:true ">&lt;my-app&gt;&lt;/my-app&gt;</pre>
+```typescript
+
 
 In this case, the services are injected inside the javascript definition of &#8220;my-app" class.
 
 While, injecting data as a property to reusable components:
 
-<pre class="lang:default decode:true">&lt;youtube-media [media]="video" (play)="playVideo($event)"&gt;&lt;/youtube-media&gt;</pre>
+```typescript
+
 
 In this case, &#8220;video" is a property of a class and injected via the html attribute &#8220;media".
 
@@ -75,7 +79,8 @@ In this case, &#8220;video" is a property of a class and injected via the html a
 
 <a href="https://github.com/ngUpgraders/ng-forward" target="_blank">ng-forward</a> is a project that aims to provide a tool for writing Angular (+2) syntax with AngularJS.3+ code base. This means that your code will use Es 2015, Angular (+2) Annotations, Decorators and practically almost all of Angular (+2) features. i.e, you can write this code and run it with AngularJS:
 
-<pre class="lang:default decode:true">import 'angular';
+```typescript
+import 'angular';
 import { Component, Input, Output } from 'ng-forward';
 import template from './youtube-media.tpl.html';
 
@@ -86,7 +91,8 @@ import template from './youtube-media.tpl.html';
 export default class YoutubeMedia {
 	@Input() media;
 	@Output() play = new EventEmitter();
-}</pre>
+}
+```
 
 If you have the time of diving into <a href="https://angular.io/docs/ts/latest/index.html" target="_blank">Angular (+2) docs</a>, read articles and tutorials and want to try the syntax on your AngularJS code - ng-forward is an excellent choice.
 

@@ -34,7 +34,8 @@ I started using [jasmine.js](http://jasmine.github.io) back in version 1, when I
 
 These are tests for a player in Echoes Player app:
 
-<pre class="lang:default decode:true ">describe('Youtube Player Settings Service', function() {
+```typescript
+describe('Youtube Player Settings Service', function() {
 		it('queue videos to its playlist', function() {
 			YoutubePlayerSettings.queueVideo(videosResponseMock.items[1]);
 			expect(YoutubePlayerSettings.nowPlaylist.length).toBe(1);
@@ -57,7 +58,8 @@ These are tests for a player in Echoes Player app:
 			YoutubePlayerSettings.playNextTrack();
 			expect(YoutubePlayerSettings.nowPlaying.mediaId).toBe(videosResponseMock.items[2].id);
 		});
-})</pre>
+})
+```
 
 &nbsp;
 
@@ -87,7 +89,8 @@ Karma is an amazing tool. I allows external plugins to process files before runn
 
 For loading json files and use it as fixtures, i found the "[karma-json-fixtures-preprocessor](https://www.npmjs.com/package/karma-json-fixtures-preprocessor)" plugin great for this usecase. Whenever I need to mock a response in my tests, I just refer to the global variable **"window.mocks[&#8216;name.of.file.without.ext.json']"** to get the json i need. This is the configuration:
 
-<pre class="lang:default decode:true" title="relevant configuration for the fixtures plugin">module.exports = function(config) {
+```typescript
+module.exports = function(config) {
 	var client_dir = '';
 
 	config.set({
@@ -117,7 +120,8 @@ For loading json files and use it as fixtures, i found the "[karma-json-fixtures
 	    ]
 	    
   });
-};</pre>
+};
+```
 
 I also use a plugin for loading html templates and some plugins to output the tests results to the console in a nice way.
 
@@ -136,7 +140,8 @@ Sometimes, for debug purposes, I configure karma to run the tests in a Chrome wi
 
 I also defined several other commands in "scripts" object such as: "**e2e**" testing and "**release**" operations. It is very convenience to use with Travis (full [package.json for Echoes](https://github.com/orizens/echoes/blob/master/package.json)):
 
-<pre class="lang:default decode:true">{
+```typescript
+{
 "scripts": {
     "pioneer": "node_modules/pioneer/bin/pioneer",
     "e2e": "protractor protractor.conf.js",
@@ -147,7 +152,8 @@ I also defined several other commands in "scripts" object such as: "**e2e**" te
     "release": "gulp dist && gulp dist:rev && git checkout -f gh-pages && gulp copy:dist",
     "build": "gulp build && gulp style"
   }
-}</pre>
+}
+```
 
 And finally, this is the output in [Travis](https://travis-ci.org/orizens/echoes/builds/65395561):
 
@@ -167,7 +173,8 @@ Currently, Phantom.js for Mac is in version 1.9.8, which is based on the webkit 
 
 Currently, these are the tests that are running as end to end tests by protractor:
 
-<pre class="lang:default decode:true  ">describe('Echotu.be Search', function() {
+```typescript
+describe('Echotu.be Search', function() {
   it('should search and display results', function() {
     browser.get('http://echotu.be');
     // browser.debugger();
@@ -195,13 +202,15 @@ Currently, these are the tests that are running as end to end tests by protracto
           expect(searchResults.count()).toEqual(100);
         })
       });
-});</pre>
+});
+```
 
 ## Binding It All Together
 
 To connect these tools togther - jasmine.js, karma and phantom.js (or other browser), I used the **karma.conf.js** which defines each tool in the relevant configuration place:
 
-<pre class="lang:default decode:true ">var isDebug = process.env.DEBUG || false;
+```typescript
+var isDebug = process.env.DEBUG || false;
 var browsers = [isDebug ? 'Chrome' : 'PhantomJS'];
 
 module.exports = function(config) {
@@ -256,7 +265,8 @@ module.exports = function(config) {
 	    	'mocha'
 	    ]
   });
-};</pre>
+};
+```
 
 ## Final Notes
 

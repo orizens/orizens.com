@@ -31,7 +31,8 @@ Up until now, I was using a [simple and repetitive format](http://orizens.com/wp
 
 Action creators encapsulates the creation of an &#8220;**Action**" object - it makes it safer and easier to create actions by calling the function &#8220;**addVideos(newVideos)**&#8220;, which takes a videos array as the payload of this action. Another action creator is the &#8220;**removeVideo()**" function, which in this case, takes no argument and just delivers an Action object with a &#8220;**type**" property only.
 
-<pre class="lang:js decode:true ">import { Injectable } from '@angular/core';
+```typescript
+import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
 @Injectable()
@@ -53,7 +54,8 @@ export class YoutubeVideosActions {
       type: YoutubeVideosActions.REMOVE
     };
   }
-}</pre>
+}
+```
 
 it's a nice and clear way for defining action creators. However, when more actions are added, the file is getting bigger and the pattern for each action creator is repeated. This makes it hard to maintain and in my opinion, harder to have a glance at all action creators available in this file.
 
@@ -63,7 +65,8 @@ I started to think of a different way for defining action creators - one which w
 
 The first argument of the create function is the action that should be encapsulated. There an optional second argument which is a default value that the payload should be assigned to is no value has been triggered with the action creator.
 
-<pre class="lang:js decode:true">import { Injectable } from '@angular/core';
+```typescript
+import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from '../action-creator.util';
 
@@ -79,7 +82,8 @@ export class YoutubeVideosActions {
   reset = ActionCreatorFactory.create&lt;void&gt;(YoutubeVideosActions.RESET);
   updateMetaData = ActionCreatorFactory.create(YoutubeVideosActions.UPDATE_METADATA);
 }
-</pre>
+
+```
 
 The create function returns a function expression which uses ngrx/store &#8220;**Action**" interface.
 
@@ -89,7 +93,8 @@ First, I'm using the &#8220;**public**" declaration in the ActionCreator class t
 
 Second, i'm using the &#8220;**<T>**" [generic](https://www.typescriptlang.org/docs/handbook/generics.html) annotation, which allows to define a specific Type for the payload when &#8220;create" is used.
 
-<pre class="lang:default decode:true ">import { Action } from '@ngrx/store';
+```typescript
+import { Action } from '@ngrx/store';
 
 class ActionCreator&lt;T&gt; implements Action {
   constructor(
@@ -106,6 +111,7 @@ export class ActionCreatorFactory {
     }
   };
 }
-</pre>
+
+```
 
 Full code for the new [YoutubeVideosActions is available on github](https://github.com/orizens/echoes-ng2/blob/master/src/app/core/store/youtube-videos/youtube-videos.actions.ts).

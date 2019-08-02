@@ -42,7 +42,8 @@ Require.js has support both for the AMD & CommonJS specs for module definition a
 
 AMD syntax uses a function which wraps the module definition with whatever you choose to load. It uses a return value as the exported features  of this module.
 
-<pre class="lang:js decode:true ">define([
+```typescript
+define([
 	'jquery',
 	'underscore',
 	'backbone'
@@ -63,13 +64,15 @@ AMD syntax uses a function which wraps the module definition with whatever you c
 		}
 	});
 	return Loader;
-});</pre>
+});
+```
 
 &nbsp;
 
 CommonJS syntax uses the require syntax and exports modules features using the "module.exports" syntax. Node.js uses the CommonJS spec for module loading.
 
-<pre class="lang:js mark:1,22 decode:true ">var Backbone = require('backbonejs');
+```typescript
+var Backbone = require('backbonejs');
 	
 var Loader = Backbone.View.extend({
 	el: '#loader',
@@ -90,7 +93,8 @@ var Loader = Backbone.View.extend({
 	}
 });
 
-module.exports = Loader;</pre>
+module.exports = Loader;
+```
 
 &nbsp;
 
@@ -98,7 +102,8 @@ module.exports = Loader;</pre>
 
 Overtime, The code of Echoes player started to grow big, so some modules might have to load few files. Some code became hard to maintain. I got tired of using the double variable names for syntax:
 
-<pre class="lang:default decode:true ">define([
+```typescript
+define([
 	'jquery',
 	'underscore',
 	'backbone',
@@ -143,7 +148,8 @@ Overtime, The code of Echoes player started to grow big, so some modules might h
 });
    
 	return PlayerApp;
-});</pre>
+});
+```
 
 Looking up where this module came from in a big list was tedious and hard.
 
@@ -151,7 +157,8 @@ The [build process, r.js](http://orizens.com/wp/topics/requirejs-optimizing-and-
 
 I didn't use all the options. One feature I wasn't able to use was the sourcemaps option and using uglify 2 for minifying.
 
-<pre class="lang:js decode:true">({
+```typescript
+({
 	//- paths are relative to this app.build.js file
 	appDir: "../echoes",
 	baseUrl: "js",
@@ -218,7 +225,8 @@ I didn't use all the options. One feature I wasn't able to use was the sourcemap
 	],
 	removeCombined: false,
 	fileExclusionRegExp: /(\.git)|(app.build.js)|(.sublime-)|(.md)|(node_modules)|(package.json)|(Gruntfile.js)|(web-server.js)|(server.js)/
-})</pre>
+})
+```
 
 ## Enter Browserify
 
@@ -251,14 +259,16 @@ The project still had few challenges that I had to solve:
 
 In Echoes, I currently use Grunt.js as build system. So, solving out the challenges above was quite easy once i've found the grunt-browserify plugin. Using and configuring  backbone.js was a little bit tricky since with the CommonJS version of Backbone.js, you should specify the Backbone.$ / jQuery - so I had to define the $ method manually
 
-<pre class="lang:js mark:5,6 decode:true " title="backbone.cjs.js">var $ = require('jquery');
+```typescript
+var $ = require('jquery');
 var Backbone = require('backbone');
 var exts = require('./backbonepkg.js');
 
 Backbone.$ = $;
 exts(Backbone);
 
-module.exports = Backbone;</pre>
+module.exports = Backbone;
+```
 
 However, that turned out to be well fit into the overall picture, since i also needed to have support for the backbone extension manager I developed back then - [Backbone.Beamer](https://github.com/orizens/Backbone.Beamer).
 

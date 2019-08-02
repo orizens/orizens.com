@@ -29,20 +29,24 @@ All over the internet, the most common example for defining routes is something 
 
 ### When using ngrouter
 
-<pre class="lang:default decode:true">.when('/video/:id', {
+```typescript
+.when('/video/:id', {
 	templateUrl: 'app/youtube-video/youtube.video.tpl.html',
 	controller: 'YoutubeVideoCtrl',
 	controllerAs: 'vm',
-})</pre>
+})
+```
 
 ### When using ui-router
 
-<pre class="lang:default decode:true">.state('video.single', {
+```typescript
+.state('video.single', {
 	url: '/video/:id',
 	templateUrl: 'app/youtube-video/youtube.video.tpl.html',
 	controller: 'YoutubeVideoCtrl',
 	controllerAs: 'vm'
-})</pre>
+})
+```
 
 The recurring pattern that i see is defining the templateUrl, controller and controllerAs.
 
@@ -52,9 +56,11 @@ Now, if one develops in an angular based app with a modular approach in mind, I 
 
 Today, In my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a> &#8220;<a href="http://echotu.be" target="_blank">open the app Echoes Player</a>&#8220;, I started consuming modules in routes using this definiton:
 
-<pre class="lang:default decode:true ">.when('/', {
+```typescript
+.when('/', {
 	template: '&lt;youtube-videos&gt;&lt;/youtube-videos&gt;'
-})</pre>
+})
+```
 
 This way of defintion resembles the <a href="https://angular.github.io/router/" target="_blank">new angular router</a> which embraces the new web components approach.
 
@@ -70,7 +76,8 @@ Also, reusing this module (or rather, its externalisation web-component identi
 
 If you're using ui-router in your project and there are few ui-views in one page, the defintion may become much clearer with this approach:
 
-<pre class="lang:default decode:true ">$stateProvider
+```typescript
+$stateProvider
     .state('home', {
         url: "",
         views: {
@@ -81,7 +88,8 @@ If you're using ui-router in your project and there are few ui-views in one page
                 template: "&lt;now-playlist&gt;&lt;/now-playlist&gt;"
             }
         }
-    });</pre>
+    });
+```
 
 ## Final Notes
 

@@ -59,7 +59,8 @@ tags:
   The “import” keyword is for requiring dependant modules (in commonjs or node.js’ “require” is used):
 </p>
 
-<pre name="1a5e" class="graf--pre">import { Component, Input, Output } from ‘@angular/core’;</pre>
+```typescript
+
 
 <p class="graf--p">
   This is a welcomed feature with es2015, though it is not actually supported by browsers yet, so you’ll have to use 3rd party solutions such as browserify or webpack.
@@ -89,7 +90,8 @@ tags:
   I.e, this “class”:
 </p>
 
-<pre name="0913" class="graf--pre">class Track {
+```typescript
+class Track {
  constructor(track, title){
    this.track = track;
    this.title = title;
@@ -98,13 +100,15 @@ tags:
  getLength(){
    return this.track.length;
   }
-}</pre>
+}
+```
 
 <p class="graf--p">
   If translated to plain ES5, it could be a function with a prototype:
 </p>
 
-<pre name="488b" class="graf--pre">function Track (track, title) {
+```typescript
+function Track (track, title) {
   this.track = track;
   this.title = title;
 }
@@ -112,13 +116,15 @@ Track.prototype = {
   getLength: function () {
     return this.track.length
   }
-}</pre>
+}
+```
 
 <p class="graf--p">
   Since the final outcome is an object, The “Track” function can also be defined as a striped version with the <a href="https://carldanley.com/js-revealing-module-pattern/" target="_blank" rel="noopener">revealing module pattern</a>:
 </p>
 
-<pre name="72c8" class="graf--pre">function Track (track, title) {
+```typescript
+function Track (track, title) {
  var api = {
    getLength: getLength
    title: title
@@ -129,7 +135,8 @@ Track.prototype = {
  function getLength () {
    return track.length;
  }
-}</pre>
+}
+```
 
 ## Understanding The Benefits Of Typescript In Angular2 {.graf--h3}
 
@@ -141,7 +148,8 @@ Track.prototype = {
   I.e, default values for function arguments can be defined in the function signature:
 </p>
 
-<pre name="23d5" class="graf--pre">class Track {
+```typescript
+class Track {
  constructor(track = {}, title = "no name yet..."){
    this.track = track;
    this.title = title;
@@ -153,7 +161,8 @@ Track.prototype = {
 }
 var coolSong = new Track();
 coolSong.track; // outputs empty {}
-coolSong.title; // outputs "no name yet"</pre>
+coolSong.title; // outputs "no name yet"
+```
 
 <p class="graf--p">
   This is an ES2015 feature.
@@ -169,7 +178,8 @@ coolSong.title; // outputs "no name yet"</pre>
   In angular2, there are several methods to inject a service to a class. The easiest for injecting a singleton service is:
 </p>
 
-<pre name="e7bb" class="graf--pre ">class MediaPlayer {
+```typescript
+class MediaPlayer {
  
  // instructing angular2 to inject a singleton of PlaylistService
  constructor(public playlist: PlaylistService){
@@ -179,7 +189,8 @@ coolSong.title; // outputs "no name yet"</pre>
  getLength(){
    return this.track.length;
   }
-}</pre>
+}
+```
 
 <p class="graf--p">
   With this type annotation, you don’t have to instantiate the “playlist” service and you can be sure that the right object will be injected by the framework. This is what dependency injection is about with Angular (+2), and I suggest to read <a href="https://angular.io/docs/ts/latest/tutorial/toh-pt4.html" target="_blank" rel="noopener">more about it on angular website</a>.
@@ -191,7 +202,8 @@ coolSong.title; // outputs "no name yet"</pre>
   With Angular 1.x, I usually tend to inject services and map its functions to a controller’s api scope. I.e (a simple code example):
 </p>
 
-<pre name="9695" class="graf--pre">angular
+```typescript
+angular
  .module(‘media.search’)
  .controller(‘MediaSearchCtrl’, MediaSearchCtrl);
 
@@ -205,7 +217,8 @@ function MediaSearchCtrl(YoutubeSearch) {
      vm.items = res.items;
    })
  }
-}</pre>
+}
+```
 
 <p class="graf--p">
   The important fact to notice here is that this controller doesn’t expose the service “YoutubeSearch” to the view (scope or this), rather, it’s using it as a somewhat “private” variable through javascript closure feature.
@@ -215,7 +228,8 @@ function MediaSearchCtrl(YoutubeSearch) {
   With Typescript, you can declare this service to be available in MediaPlayer “context” as a property, so it will be accessible to this controller via the “this” context. With this definition, It will be available to the view as well. It’s important to note that if we omit the “private” (or “public”) definition, the “playlist” argument is only available inside the constructor function. I.e:
 </p>
 
-<pre name="8c89" class="graf--pre">class MediaPlayer {
+```typescript
+class MediaPlayer {
  
  // instructing angular2 to inject a singleton of PlaylistService
  constructor(private playlist: PlaylistService, cloudStorage: GoogleMusic){
@@ -228,7 +242,8 @@ function MediaSearchCtrl(YoutubeSearch) {
  getTotalTracksCount(){
    return this.playlist.length;
  }
-}</pre>
+}
+```
 
 ### Final Thoughts {.graf--h4}
 

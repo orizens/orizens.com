@@ -51,7 +51,8 @@ Since I added this feature fast, I didn't create a module for it - I used angula
 
 taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90f61f23711cdfcb0234aafff/src/index.html#L150" target="_blank">index.html</a> file:
 
-<pre class="lang:xhtml decode:true ">&lt;ul id="user-playlists" class="nav nav-list xux-maker xnicer-ux user-playlists"
+```typescript
+&lt;ul id="user-playlists" class="nav nav-list xux-maker xnicer-ux user-playlists"
 	ng-class="{ 
 		'transition-in': vm.playlists.length,
 		'slide-down': vm.showPlaylistSaver 
@@ -73,7 +74,8 @@ taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90
 				ng-click="vm.remove($event, video, $index)"&gt;&lt;i class="fa fa-remove"&gt;&lt;/i&gt;&lt;/span&gt;
 		&lt;/a&gt;
 	&lt;/li&gt;
-&lt;/ul&gt;</pre>
+&lt;/ul&gt;
+```
 
 Aside from using angular's built-in directives, this tracks in this playlist are draggable (i'm using the angular-sortable-view module). The tracks can be removed from this list as well.
 
@@ -81,7 +83,8 @@ Aside from using angular's built-in directives, this tracks in this playlist are
 
 The controller for this template is defined above the &#8220;ul" element. This is the &#8220;**UserPlaylistsCtrl**" that can be found in the <a href="https://github.com/orizens/echoes/blob/d08fd328914fdf3b40b04aed756481a090319c74/src/app/user-playlists/user-playlists.ctrl.js#L9" target="_blank">user-playlists.ctrl.js</a>:
 
-<pre class="plain:false plain-toggle:false lang:js mark:13,17,19,25 decode:true">(function() {
+```typescript
+(function() {
     'use strict';
 
     angular
@@ -132,7 +135,8 @@ The controller for this template is defined above the &#8220;ul" element. This i
             }
         }
     }
-})();</pre>
+})();
+```
 
 This controller serves other purposes beside the now playlist feature. The relevant properties and functions that the now playlist uses, are marked with a comment above it.
 
@@ -144,12 +148,14 @@ The inspiration for refactoring the code comes from <a href="https://github.com/
 
 First, I wanted to redefine the html template to be used as a **web-component** (or rather an html tag). After much thought, I came up with this component:
 
-<pre class="lang:default decode:true ">&lt;now-playlist videos="nowPlaying.playlist" 
+```typescript
+&lt;now-playlist videos="nowPlaying.playlist" 
 	filter="nowPlaying.playlistSearch"
 	on-select="nowPlaying.playVideo(video)" 
 	on-remove="nowPlaying.removeVideo($event, video, $index)"
 	on-sort="nowPlaying.updateIndex($item, $indexTo)"
-&gt;&lt;/now-playlist&gt;</pre>
+&gt;&lt;/now-playlist&gt;
+```
 
 I decided to expose the relevant attributes in order to keep the logics in one <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.aanidwnn4" target="_blank">&#8220;smart" component</a> (the &#8220;now-playing" component) and keeping this component as stateless as possible.
 
@@ -161,23 +167,28 @@ The next step was to generate the appropriate boilerplate of files for this comp
 
 Finally, I came up with these files:
 
-<pre class="lang:default decode:true ">index.js
+```typescript
+index.js
 now-playlist.component.js
 now-playlist.ctrl.js
 now-playlist.less
-now-playlist.tpl.html</pre>
+now-playlist.tpl.html
+```
 
 I'm using the &#8220;**index.js**" notation, similar to node.js require syntax, so I can simply import the now-playlist component as such:
 
-<pre class="lang:default decode:true ">import NowPlaylist from './now-playlist';
+```typescript
+import NowPlaylist from './now-playlist';
 // instead of 
-import NowPlaylist from './now-playlist/index.js';</pre>
+import NowPlaylist from './now-playlist/index.js';
+```
 
 #### index.js - Module & Directive Defintion
 
 This file defines the angular module and its accompanied services and directives. This is also the place for importing any dependant modules - like the angular-sortable-view module. Finally, It exports the now-playlist module, so it can be consumed by other modules.
 
-<pre class="lang:default decode:true">import angular from 'angular';
+```typescript
+import angular from 'angular';
 import AngularSortableView from 'angular-sortable-view/src/angular-sortable-view.js';
 import nowPlaylist from './now-playlist.component.js';
 
@@ -185,7 +196,8 @@ export default angular.module('now-playlist', [
 	    'angular-sortable-view'
     ])
     .directive('nowPlaylist', nowPlaylist)
-;</pre>
+;
+```
 
 #### now-playlist.component.js - The Directive Definition
 
@@ -200,7 +212,8 @@ This file imports the controller and template of this directive from an external
 
 There will be less code in this file once the new &#8220;component" function is available. Also, it will need to export an object (json) rather than a function.
 
-<pre class="lang:default decode:true ">import NowPlaylistCtrl from './now-playlist.ctrl.js';
+```typescript
+import NowPlaylistCtrl from './now-playlist.ctrl.js';
 import template from './now-playlist.tpl.html';
 
 /* @ngInject */
@@ -226,13 +239,15 @@ export default function nowPlaylist() {
         restrict: 'E'
     };
     return directive;
-}</pre>
+}
+```
 
 #### now-playlist.ctrl.js - The Component's Controller
 
 This file includes the logics and view model for this component's view. I used ES2015 &#8220;class" defintion, since controllers in AngularJS are created with the &#8220;new" keyword. Notice that &#8220;this" context, is overloaded with more properties that are defined as part of the scope. Apart from the &#8220;constructor" function, I created
 
-<pre class="lang:default decode:true">/* @ngInject */
+```typescript
+/* @ngInject */
 export default class NowPlaylistCtrl {
     /* @ngInject */
     constructor () {
@@ -251,7 +266,8 @@ export default class NowPlaylistCtrl {
     sortVideo($item, $indexTo) {
         this.onSort && this.onSort({ $item, $indexTo });
     }
-}</pre>
+}
+```
 
 #### now-playlist.tpl.html - The Component's html
 
@@ -261,7 +277,8 @@ This file contains the html template that was in the index.html. Few things have
   * The &#8220;ul" is wrapped with a &#8220;section" element
   * The &#8220;css" classes now reflects the correct meaning - &#8220;now-playlist", &#8220;now-playlist-track"
 
-<pre class="lang:xhtml mark:1,10 decode:true ">&lt;section class="now-playlist" ng-class="{ 
+```typescript
+&lt;section class="now-playlist" ng-class="{ 
 			'transition-in': nowPlaylist.videos.length,
 			'slide-down': nowPlaylist.showPlaylistSaver 
 		}"&gt;
@@ -285,7 +302,8 @@ This file contains the html template that was in the index.html. Few things have
 			&lt;/a&gt;
 		&lt;/li&gt;
 	&lt;/ul&gt;
-&lt;/section&gt;</pre>
+&lt;/section&gt;
+```
 
 Eventually, I also moved the relevant css/less rules to the &#8220;now-playlist.less" file.
 
@@ -298,7 +316,8 @@ Finally, the area that contains the now-playlist and 2 other components, has bee
 
 This is the smart component &#8220;**now-playing**" html template code (I still have work to do - this ng-if expression should be changed):
 
-<pre class="lang:xhtml decode:true ">&lt;div class="sidebar-pane"&gt;
+```typescript
+&lt;div class="sidebar-pane"&gt;
 	&lt;now-playlist-filter
 		playlist="nowPlaying.playlist"
 		on-save="nowPlaying.togglePlaylistSaver(show)"
@@ -317,7 +336,8 @@ This is the smart component &#8220;**now-playing**" html template code (I still 
 		on-remove="nowPlaying.removeVideo($event, video, $index)"
 		on-sort="nowPlaying.updateIndex($item, $indexTo)"
 	&gt;&lt;/now-playlist&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+```
 
 ## Final Thoughts
 

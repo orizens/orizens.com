@@ -33,7 +33,8 @@ In a <a title="Backbone.View Patterns – The Relationship with “Model”" hre
 When a model has an array of similar items, where each has some sort of interaction - it is a good practice to render each item as a sub - view. Using a separate view for each item gives the option to control the behavior attached to each - usually, on click I am able to get a reference to the correct model of that specific item rather than trying to get the id of the source element and start querying to DOM.   
 In example, take this blog post's commenting list. If I were to define it using backbone, the Model would be:
 
-<pre class="brush: js">//- considering there's an object with comments data
+```typescript
+//- considering there's an object with comments data
 var CommentsPanel = {
 	postId: 44321,
 	otherData: { /**/ }
@@ -53,13 +54,15 @@ var Comment = Backbone.Model.extend({
 		date: 'date-published',
 		liked: false
 	}
-});</pre>
+});
+```
 
 Identifying that each comment is a separate module will result in a much cleaner, modular and error free code.
 
 ## Why using sub views is good?
 
-  1. If a view of a comment has several events - attaching these events is self contained inside of every view: <pre class="brush:javascript">var CommentView = Backbone.View.extend({
+  1. If a view of a comment has several events - attaching these events is self contained inside of every view: ```typescript
+var CommentView = Backbone.View.extend({
 	
 	events: {
 		'click .collapse': 'toggle',
@@ -72,9 +75,11 @@ Identifying that each comment is a separate module will result in a much cleaner
 	}
 
 });
-</pre>
 
-  2. A comment might be a media comment - an audio or a video. In this case, if the comment model has an attribute of &#8216;type', it is easy for the comments panel view to create an appropriate view: <pre class="brush:javascript">var CommentsPanelView = Backbone.View.extend({
+```
+
+  2. A comment might be a media comment - an audio or a video. In this case, if the comment model has an attribute of &#8216;type', it is easy for the comments panel view to create an appropriate view: ```typescript
+var CommentsPanelView = Backbone.View.extend({
 	
 	render: function() {
 		this.collection.each(function(comment){
@@ -87,7 +92,8 @@ Identifying that each comment is a separate module will result in a much cleaner
 	}
 
 });
-</pre>
+
+```
 
   3. This method of code organization promotes developing reusable and loosely coupled modules.
 
@@ -98,7 +104,8 @@ Sub view is eventually a javascript object - so, there's a need to avoid possibl
 The main view which holds the sub views should dismiss the views when rendering new ones or whenever the main view is dismissed.   
 One best practice is saving sub views in a property as such:
 
-<pre class="brush:js">var CommentsPanelView = Backbone.View.extend({
+```typescript
+var CommentsPanelView = Backbone.View.extend({
 	
 	initialize: function(){
 		//- set views placeholder
@@ -127,7 +134,8 @@ One best practice is saving sub views in a property as such:
 		this.views.length = 0;
 	}
 });
-</pre>
+
+```
 
 <!--RndAds-->
 

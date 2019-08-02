@@ -32,7 +32,8 @@ Apart from setting up karma as I mentioned in the previous article, I found that
 
 Since I'm using several transforms, in particularly - the &#8220;stringify" transform to load html files as strings, the karma configuration file now includes:
 
-<pre class="lang:js decode:true">{
+```typescript
+{
 //... other configurations
     preprocessors: {
         '../tests/mocks/**/*mock.json': ['json_fixtures'],
@@ -48,13 +49,15 @@ Since I'm using several transforms, in particularly - the &#8220;stringify" tran
         sourceMap: 'inline'
       }
     }
-}</pre>
+}
+```
 
 ## Writing Tests For Angular 1.x Controller written in ES2015
 
 As mentioned above, the component i'm testing is written in <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">ES2015 as part of a preparation to Angular (+2)</a>. We're going to explore a test case for the YoutubeVideos Component of the <a href="http://echotu.be" target="_blank">Echoes Player</a> <a href="http://github.com/orizens/echoes" target="_blank">Open Source App</a> that I developed, recently converting the code to use ES2015. The controller is defined as part of the component's properties:
 
-<pre class="lang:js decode:true">import template from './youtube-videos.tpl.html';
+```typescript
+import template from './youtube-videos.tpl.html';
 
 // Usage:
 //  &lt;youtube-videos&gt;&lt;/youtube-videos&gt;
@@ -97,20 +100,23 @@ export let YoutubeVideosComponent = {
 		}
 	}
 };
-</pre>
+
+```
 
 The **YoutubeVideos** component is a **smart component**, responsible for displaying a &#8220;wall" of media cards, originated in a youtube search api request.
 
 First, to allow ES2015 new variables declarations, I need to define <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">&#8216;use strict'</a>. Afterwards, the code imports the relevant component and starts a describe block where I define variables that will be used during the tests:
 
-<pre class="lang:default decode:true ">'use strict';
+```typescript
+'use strict';
 import { YoutubeVideosComponent } from './youtube-videos.component';
 
 describe('Youtube Videos', () =&gt; {
 	let scope, YoutubeSearch, ctrl, YoutubePlayerSettings, controller;
 	let YoutubeVideoInfo = {};
 	let mockVideoItem = {};
-	let mockPlaylistItem = {};</pre>
+	let mockPlaylistItem = {};
+```
 
 Next, inside the &#8220;**describe**" block, comes two definitions of &#8220;**beforeEach**" blocks. The first, defines a mocked module for testing the &#8220;**youtube-videos**" module.
 
@@ -122,7 +128,8 @@ After setting up the spies for the injected services, I'm creating a new instanc
 
 During the actual test, the **&#8220;constructor"** function of &#8220;**YoutubeVideosCtrl**" is injected with the spies that are passed rather than the real services.
 
-<pre class="lang:default decode:true">beforeEach(angular.mock.module('youtube-videos'));
+```typescript
+beforeEach(angular.mock.module('youtube-videos'));
 
 	beforeEach(inject(($injector, $controller, $q) =&gt; {
 		controller = $controller;
@@ -149,22 +156,26 @@ During the actual test, the **&#8220;constructor"** function of &#8220;**Youtub
 		scope.$digest();
 		mockVideoItem = window.mocks['video.item.mock'];
 		mockPlaylistItem = window.mocks['youtube.videos.mock'];
-	}));</pre>
+	}));
+```
 
 That's the code needed for the &#8220;**beforeEach**" phase. Now, we can start writing the actual tests for the controller.
 
 Notice how I refer to a &#8220;**search**" function that i'm expecting to exist on the YoutubeSearch **spy**. As part of this component behaviour, I expect the &#8220;search" method to be invoked only once if there are no items (videos) for the component to render.
 
-<pre class="lang:js decode:true">it('search youtube once when it loads if there are no items to render', () =&gt; {
+```typescript
+it('search youtube once when it loads if there are no items to render', () =&gt; {
 	expect(YoutubeSearch.search).toHaveBeenCalled();
 	expect(YoutubeSearch.search.calls.count()).toBe(1);
-});</pre>
+});
+```
 
 In order to test the opposite case, I took a different approach.
 
 I copied an array of video items to &#8220;**YoutubeSearch.items"** property to mock a populated property, after a &#8220;**search**" response. Then, I create again a new instance of the YoutubeVideos controller, expecting the **&#8220;YoutubeSearch.search"** function not to be called. Eventually, the count of calls for the &#8220;**search**" function should be still 1.
 
-<pre class="lang:default decode:true ">it('should not search when it loads if there are items to render', () =&gt; {
+```typescript
+it('should not search when it loads if there are items to render', () =&gt; {
 	angular.copy(mockPlaylistItem.items, YoutubeSearch.items);
 	controller(YoutubeVideosComponent.controller, {
 		$scope: scope,
@@ -173,7 +184,8 @@ I copied an array of video items to &#8220;**YoutubeSearch.items"** property to 
 		YoutubeVideoInfo: YoutubeVideoInfo
 	});
 	expect(YoutubeSearch.search.calls.count()).toBe(1);
-});</pre>
+});
+```
 
 For testing methods directly on the controller's instance, I can refer to the &#8220;**ctrl**" variable which hold a reference to it.
 
@@ -181,7 +193,8 @@ In the 2nd test described below, I'm testing the &#8220;**playPlaylist**" method
 
 In order to &#8220;invoke" the promise chain, we need to instruct angular to **digest** the changes, an only then, we can expect to write assertions.
 
-<pre class="lang:default decode:true">it('should queue and play video', () =&gt; {
+```typescript
+it('should queue and play video', () =&gt; {
 	ctrl.playVideo(mockVideoItem);
 	expect(YoutubePlayerSettings.queueVideo).toHaveBeenCalled();
 	expect(YoutubePlayerSettings.playVideoId).toHaveBeenCalled();
@@ -191,7 +204,8 @@ it('should play a playlist and queue the videos', () =&gt; {
 	ctrl.playPlaylist(mockPlaylistItem);
 	scope.$digest();
 	expect(YoutubePlayerSettings.playPlaylist.calls.count()).toBe(1);
-});</pre>
+});
+```
 
 ## Final Thoughts
 

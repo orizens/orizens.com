@@ -35,7 +35,8 @@ The challenge was integrating it seamlessly with Echoes Backbone.Model and the B
 
 Since Echoes Player is based on <a title="Require.js Dependency Management" href="requirejs.org" target="_blank">require.js</a> for dependency management, jquery-ui should be defined in the config.js file. That is quite straight forward:
 
-<pre class="brush:js">require.config({
+```typescript
+require.config({
 	deps: ['js/main.js'],
 	shim: {
 		...
@@ -56,11 +57,13 @@ Since Echoes Player is based on <a title="Require.js Dependency Management" href
 		jqueryui: 'libs/jquery/jquery-ui',
 		...
 	},
-});</pre>
+});
+```
 
 In the Echoes <a title="Backbone.js for large scale applications – UI Architecture" href="http://orizens.com/wp/topics/backbone-js-for-large-scale-applications-ui-architecture/" target="_blank">architecture</a> concept, the main.js is the starting point of the application, and it is asking to load "bootstrap" javascript file (aside to other plugins) which requires jquery-ui - so that is how jquery-ui is ready to be used right in the beginning of initialising the whole app:
 
-<pre class="brush:js">require([
+```typescript
+require([
 	'jquery',
 	'bootstrap',
 	'safe',
@@ -72,7 +75,8 @@ In the Echoes <a title="Backbone.js for large scale applications – UI Architec
 	var playerModel = new PlayerModel();
 	var playerView = new PlayerApp({ model: playerModel });
 	var playerRouter = new AppRouter({ model: playerModel });
-});</pre>
+});
+```
 
 <!--RndAds-->
 
@@ -80,7 +84,8 @@ In the Echoes <a title="Backbone.js for large scale applications – UI Architec
 
 Since the auto complete feature belongs to the search box in [Echoes Player](http://echotu.be "Echoes Media Player - alternative ui for youtube"), it has been defined in the MediaSearch View - which is a first level view in Echoes architecture. It is defined once in the constructor of this view:
 
-<pre class="brush:js">var MediaSearch = Backbone.View.extend({
+```typescript
+var MediaSearch = Backbone.View.extend({
 		el: '#media-explorer',
 
 		events: {
@@ -95,13 +100,15 @@ Since the auto complete feature belongs to the search box in [Echoes Player](htt
 			this.activateAutoComplete();
 		},
 ...
-}</pre>
+}
+```
 
 Google's search service functions as the query provider for the searches, and after a little research in google, I found the appropriate url that returns json results for any query term.
   
 The "activateAutoComplete" function first initiates the plugin with the standard jquery-ui auto complete:
 
-<pre class="brush:js">activateAutoComplete: function() {
+```typescript
+activateAutoComplete: function() {
 	this.$search.autocomplete({
 		source: function( request, response ) {
 			$.ajax({
@@ -122,7 +129,8 @@ The "activateAutoComplete" function first initiates the plugin with the standard
 			});
 		},
 		minLength: 2,
-...</pre>
+...
+```
 
 With the above configuration, the plugin suggests results as i wanted with the search view.
   
@@ -141,7 +149,8 @@ The selected term can be retrieved from the "ui" argument by pointing to: "ui.it
   
 To have easy access to Echoes Model, I binded the "select" function with the scope of the MediaSearch View - so i can access to "this.model" within this function - and update the model with the new query:
 
-<pre class="brush:js">activateAutoComplete: function() {
+```typescript
+activateAutoComplete: function() {
 	this.$search.autocomplete({
 		source: function( request, response ) {
 			...
@@ -154,7 +163,8 @@ To have easy access to Echoes Model, I binded the "select" function with the sco
 			}
 		}, this)
 	});
-}</pre>
+}
+```
 
 There are few tweaks and code organisations that should be done in the future:
 

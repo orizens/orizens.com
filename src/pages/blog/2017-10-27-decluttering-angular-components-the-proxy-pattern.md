@@ -30,7 +30,8 @@ I like to write clear and maintainable code. To be honest - sometimes I just don
 
 Often, in code examples for component around the web, services and store are injected via the constructor.
 
-<pre class="lang:default decode:true">@Component({
+```typescript
+@Component({
   selector: 'playlist-view'
   // ... more code truncated
 })
@@ -44,7 +45,8 @@ export class PlaylistViewComponent implements OnInit {
     private appPlayerService: AppPlayerService,
     private route: ActivatedRoute,
   ) { }
-}</pre>
+}
+```
 
 The above code is a snippet of the &#8220;**playlist-view**" component of Echoes Player. This component purpose is to display a YouTube playlist items and more metadata. A user can play or queue the whole playlist as well as play or queue specific media items.
 
@@ -84,7 +86,8 @@ The above list is the actual public api that this component expose to its templa
 
 Lets walkthrough the final implementation that includes the proxy for the playlist component:
 
-<pre class="lang:default decode:true">@Component({
+```typescript
+@Component({
   selector: 'playlist-view',
   styleUrls: ['./playlist-view.component.scss'],
   template: `
@@ -109,17 +112,20 @@ export class PlaylistViewComponent implements OnInit {
 
   constructor(private playlistProxy: PlaylistProxy, private route: ActivatedRoute) {}
   // ...
-}</pre>
+}
+```
 
 Notice how the constructor injects the PlaylistProxy and the ActivatedRoute only. This makes it easier to test this component and mock only these (even the route in the case shouldn't be too hard to mock). We need to mock the route with  &#8220;**RouterTestingModule**" and the proxy with the mocked &#8220;**playlistProxySpy**&#8220;:
 
-<pre class="lang:js decode:true ">TestBed.configureTestingModule({
+```typescript
+TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
         { provide: PlaylistProxy, useValue: playlistProxySpy },
         PlaylistViewComponent
       ]
-});</pre>
+});
+```
 
 Next, on top of the constructor (these statements are actually syntactic sugar and run inside the constructor) are the display properties that this component use in its template.
 
@@ -127,7 +133,8 @@ Each property is an observable and they are all fetched from the proxy object - 
 
 Next, these class methods are the public api that this component expose to the template:
 
-<pre class="lang:default decode:true ">@Component({
+```typescript
+@Component({
   selector: 'playlist-view',
   styleUrls: ['./playlist-view.component.scss'],
   template: `
@@ -169,11 +176,13 @@ export class PlaylistViewComponent implements OnInit {
   unqueueVideo(media: GoogleApiYouTubeVideoResource) {
     this.playlistProxy.unqueueVideo(media);
   }
-}</pre>
+}
+```
 
 Each method of this component delegates to the relevant function inside the PlaylistProxy. Testing these methods is quite easy and mocking these is simply achieved using jasmine's &#8220;**createSpyObj**&#8220;:
 
-<pre class="lang:js decode:true">playlistProxySpy = jasmine.createSpyObj('playlistProxySpy', [
+```typescript
+playlistProxySpy = jasmine.createSpyObj('playlistProxySpy', [
       'playPlaylist',
       'queuePlaylist',
       'playVideo',
@@ -181,7 +190,8 @@ Each method of this component delegates to the relevant function inside the Play
       'fetchPlaylist',
       'fetchPlaylistVideos',
       'fetchPlaylistHeader'
-]);</pre>
+]);
+```
 
 With this spy we can easily check whether function was invoke, which parameters were passed and more.
 
@@ -191,10 +201,12 @@ The Proxy pattern goes beyond a single component. The same pattern (problem) car
 
 I.e, the &#8220;**playVideo**" functionality is a core action in Echoes Player. The method used in the playlistProxy eventually dispatch two actions:
 
-<pre class="lang:default decode:true ">playVideo(media: GoogleApiYouTubeVideoResource) {
+```typescript
+playVideo(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new AppPlayer.LoadAndPlay(media));
     this.store.dispatch(new NowPlaylist.SelectVideo(media));
-}</pre>
+}
+```
 
 This method relies on the store implementation to make a video play. To reuse these lines across the application, there could be few solutions:
 
@@ -209,7 +221,8 @@ With this in mind, i'm introducing the proxy pattern as another layer for exposi
 
 This is a snippet of the final implementation for the PlaylistProxy:
 
-<pre class="lang:default decode:true">// ... code truncated
+```typescript
+// ... code truncated
 
 @Injectable()
 export class PlaylistProxy {
@@ -241,7 +254,8 @@ export class PlaylistProxy {
     this.appPlayerApi.removeVideoFromPlaylist(media);
   }
 }
-</pre>
+
+```
 
 ## What's Next? Proxy The Store
 
@@ -253,7 +267,8 @@ This pattern can be similarly used for the &#8220;**Store**" layer - which benef
 
 I.e, instead of injecting the &#8220;**Store**" and selecting a certain slice using ngrx as in:
 
-<pre class="lang:default decode:true">export class PlaylistProxy {
+```typescript
+export class PlaylistProxy {
   nowPlaylist$ = this.store.let(getPlaylistVideos$);
 
   constructor(
@@ -261,11 +276,13 @@ I.e, instead of injecting the &#8220;**Store**" and selecting a certain slice us
     private appPlayerApi: AppPlayerApi,
   ) { }
   // ...
-}</pre>
+}
+```
 
 An AppStoreApi (Proxy) can be used instead, making the store agnostic to implementation and also easier to test:
 
-<pre class="lang:default decode:true">export class PlaylistProxy {
+```typescript
+export class PlaylistProxy {
   nowPlaylist$ = this.store.getPlaylistVideos();
 
   constructor(
@@ -273,7 +290,8 @@ An AppStoreApi (Proxy) can be used instead, making the store agnostic to impleme
     private appPlayerApi: AppPlayerApi,
   ) { }
   //..
-}</pre>
+}
+```
 
 Again, the code expects the store to rely on observable data structure and that's fine by me. However, this is an idea i'm still considering and still testing the benefits outcome of it.
 

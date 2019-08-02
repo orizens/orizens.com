@@ -46,7 +46,8 @@ Whenever a change has been made following an external event, it wasn't rendered 
 
 Echoes is integrated with [youtube player iframe api](https://developers.google.com/youtube/iframe_api_reference). In order to use it, a player has to be created with the api:
 
-<pre class="lang:js decode:true ">// youtube-player.service.ts
+```typescript
+// youtube-player.service.ts
 createPlayer (callback) {
     const store = this.store;
     const service = this;
@@ -60,7 +61,8 @@ createPlayer (callback) {
             onStateChange: onPlayerStateChange
         }
     });
-}</pre>
+}
+```
 
 In this process, the api creates a player object which interacts with youtube's domain. The actual video playing is played on youtube's domain, so, the actual player (in youtube's domain) notifies a change thru the "**onPlayerStateChange**" callback that is passed in the constructor of this player.
 
@@ -76,19 +78,24 @@ In order to re-enter angular's world, NgZone's "**run**" function should take a 
 
 First I imported NgZone in "**youtube-player.service.ts**":
 
-<pre class="lang:js decode:true ">import { Injectable, NgZone } from '@angular/core';
-</pre>
+```typescript
+import { Injectable, NgZone } from '@angular/core';
+
+```
 
 Then, I injected it to its constructor:
 
-<pre class="lang:less decode:true ">constructor (public store: Store&lt;any&gt;, private zone: NgZone) {
+```typescript
+constructor (public store: Store&lt;any&gt;, private zone: NgZone) {
    // now zone is available via:
    // this.zone
-}</pre>
+}
+```
 
 Then, I updated the "**createPlayer**" function and wrapped the "**onPlayerStateChange**" callback with NgZone's run function. Notice that I also used the **es6/es2015** fat arrow in order to keep the "this" context so I can access the service's zone:
 
-<pre class="lang:js mark:11 decode:true ">createPlayer (callback) {
+```typescript
+createPlayer (callback) {
     const store = this.store;
     const service = this;
     const defaultSizes = this.defaultSizes;
@@ -101,7 +108,8 @@ Then, I updated the "**createPlayer**" function and wrapped the "**onPlayerState
             onStateChange: (ev) =&gt; this.zone.run(() =&gt; onPlayerStateChange(ev))
         }
     });
-}</pre>
+}
+```
 
 ### The Google Sign-in Problem: No User's Playlists
 
@@ -119,14 +127,16 @@ The expected use case is:
 
 The code which is responsible for steps 2-5 starts with assigning a click handler and listeners the the sign-in button:
 
-<pre class="lang:default decode:true">// user-manager.service.ts
+```typescript
+// user-manager.service.ts
 attachSignIn() {
   if (this.auth2 && !this.isSignedIn && !this.isAuthInitiated) {
     this.isAuthInitiated = true;
     // Attach the click handler to the sign-in button
     this.auth2.attachClickHandler('signin-button', {}, this.onLoginSuccess.bind(this), this.onLoginFailed.bind(this));
   }
-}</pre>
+}
+```
 
 Notice that although the "**success**" and "**fail**" functions are bind with "**this**" (service) context, still, these will be invoked asynchronously outside of angular's world - so even, the "**bind**" function isn't the answer to this one.
 
@@ -136,7 +146,8 @@ After the "**success**" callback is invoked, steps 6-7 should be invoked - howev
 
 Similar to the youtube player problem, the solution here is using NgZone's "**run**" function. It is setup and injected in a similar manner to the "**user-manager.service.ts**" and defined as a private member. In this case, I created an expression using es6/es2015 fat arrow to reuse and simplify wrapping the relevant callbacks:
 
-<pre class="lang:default mark:3,7 decode:true ">attachSignIn() {
+```typescript
+attachSignIn() {
   // an experssion for reuse with "this.zone"
   const run = (fn) =&gt; (r) =&gt; this.zone.run(() =&gt; fn(r));
   if (this.auth2 && !this.isSignedIn && !this.isAuthInitiated) {
@@ -144,7 +155,8 @@ Similar to the youtube player problem, the solution here is using NgZone's "**ru
     // Attach the click handler to the sign-in button with "run"
     this.auth2.attachClickHandler('signin-button', {}, run(this.onLoginSuccess.bind(this)), run(this.onLoginFailed.bind(this)));
   }
-}</pre>
+}
+```
 
 That's it - problem is solved for this scenario.
 

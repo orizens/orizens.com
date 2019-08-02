@@ -39,14 +39,16 @@ So, with jquery around, teaching everyone the concept of &#8220;chaining" funct
 
 Another common use case of functional programming in javascript is <a title="Function Closure" href="https://bonsaiden.github.io/JavaScript-Garden/#function.closures" target="_blank">closure</a>: in some of the examples of closures, there is a function that returns a function (again, minimalism at its best, imho):
 
-<pre class="lang:js mark:2 decode:true " title="closure">function guitarBuilder (spec) {
+```typescript
+function guitarBuilder (spec) {
 	return function (options) {
 		return spec + options;
 	}
 }
 
 var lesPaul = guitarBuilder(spec);
-var lesPaulDetails = lesPaul({ color: 'green' });</pre>
+var lesPaulDetails = lesPaul({ color: 'green' });
+```
 
 Douglas Crockford explained quite well how <a href="https://www.youtube.com/watch?v=bo36MrBfTk4#t=975" target="_blank">javascript with ES6 is becoming a truly functional language</a>.
 
@@ -56,64 +58,77 @@ With latest rise of javascript, I see functional programming becoming a part of 
 
 In javascript, there's really no need to introduce the unusual syntax of loops, such as:
 
-<pre class="lang:js decode:true  " title="loops syntax">for (var i = Things.length - 1; i &gt;= 0; i--) {
+```typescript
+for (var i = Things.length - 1; i &gt;= 0; i--) {
   // some statements
 
 };
 while (statment) do {
   // some statements
-}</pre>
+}
+```
 
 There's a function for every loop you'll ever need, starting with: forEach, map, etc.
 
 I started adopting Douglas' approach for iterating json objects using:
 
-<pre class="lang:js decode:true ">Object.keys(someJson).forEach(function(item){
+```typescript
+Object.keys(someJson).forEach(function(item){
   // some statements
-});</pre>
+});
+```
 
 ### Readable and Declarative
 
 Javascript can be written as a story, if one might want to:
 
-<pre class="lang:js decode:true">musicTracks
+```typescript
+musicTracks
   .map(addThumbs)
   .map(addToPlaylist)
-  .forEach(createPlaylistTrack)</pre>
+  .forEach(createPlaylistTrack)
+```
 
 ### Safer Context
 
 The following (famous problem) code will assign the same value of &#8220;i" to every function:
 
-<pre class="lang:js mark:3 decode:true ">for (var i = 0; i &lt; tracks.length; i++) {
+```typescript
+for (var i = 0; i &lt; tracks.length; i++) {
 	tracks[i].onPlay = function () {
 		return i;
 	}
-};</pre>
+};
+```
 
 That's because the &#8220;for" loop run all assignments of the &#8220;onPlay" function in the same execution context. To solve that, prior to modern es5/6 solutions, you could use private context for each (using a closure):
 
-<pre class="lang:js decode:true">for (var i = 0; i &lt; tracks.length; i++) {
+```typescript
+for (var i = 0; i &lt; tracks.length; i++) {
 	tracks[i].onPlay = function (index) {
 		return function() {
 			return index
 		};
 	}(i)
-};</pre>
+};
+```
 
 With functional javascript, you would use a simple &#8220;forEach":
 
-<pre class="lang:js decode:true ">tracks.forEach(function(track, index){
+```typescript
+tracks.forEach(function(track, index){
 	track.onPlay = function() {
 		return index;
 	}
-});</pre>
+});
+```
 
 ### Documented by Nature
 
 This pro perhaps should go with the &#8220;readable and declarative" title, however, I think it should deserve a title of its own - since sometimes, writing functions and naming them appropriately (name is why a function exists), saved those lines of comments:
 
-<pre class="lang:default decode:true">function fillArrayWithNumbersBy(size) {
+```typescript
+function fillArrayWithNumbersBy(size) {
     var ar = [size];
     ar.forEach(addIndex);
     return ar;
@@ -129,7 +144,8 @@ var hoursArray = fillArrayWithNumbersBy(24);
 // checking the expected results, 
 // if not, the messages will be output to the console
 console.assert(hoursArray.length === 24, "length is not correct");
-console.assert(hoursArray[23] === 23, "the 23 cell is not right");</pre>
+console.assert(hoursArray[23] === 23, "the 23 cell is not right");
+```
 
 ## Conclusion
 

@@ -50,10 +50,12 @@ Echoes Player is deployed to github pages (remember - it's a ui based app), so, 
 
 The preparation for release involves several steps to take before pushing to github the new code. For that, I'm using <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm's scripts feature</a> - I defined a custom script - &#8220;release" - script that will run the required operations before i can commit to github.
 
-<pre class="lang:js mark:3 decode:true ">"scripts": {
+```typescript
+"scripts": {
     "test": "gulp test && protractor ./gulp/config/protractor.conf.bs.js",
     "release": "gulp dist:prepare && gulp build && gulp style && gulp assets && gulp dist && gulp dist:rev"
-  },</pre>
+  },
+```
 
 ## Automating Deployment to Github with Travis
 
@@ -69,7 +71,8 @@ Then, I added the secured key to the yml file - Usually, the token generation pr
 
 finally, add this **after_success** step:
 
-<pre class="lang:yaml decode:true">after_success:
+```typescript
+after_success:
 - git config --global user.email "mu-user-name@for-github.com"
 - git config --global user.name "travis-ci"
 - npm run release
@@ -77,7 +80,8 @@ finally, add this **after_success** step:
 - git init
 - git add .
 - git commit -m "deployed new version from travis"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages &gt; /dev/null 2&gt;&1</pre>
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages &gt; /dev/null 2&gt;&1
+```
 
 few notes on the **after_success** flow:
 

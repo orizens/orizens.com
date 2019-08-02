@@ -26,12 +26,14 @@ In the recent article, I used the <a href="http://orizens.com/wp/topics/from-an
 
 In the current production of <a href="http://echotu.be" target="_blank">Echoes Player</a>, in order to add more videos to the result while scrolling, I used &#8220;<a href="https://sroze.github.io/ngInfiniteScroll/" target="_blank">ng-infinite-scroll</a>&#8220;. It has a nice minimal directive api for triggering an infinite scroll - and the usage for Echoes Player is quite simple:
 
-<pre class="lang:default mark:2,3 decode:true ">&lt;div class="view-content youtube-results youtube-videos" 
+```typescript
+&lt;div class="view-content youtube-results youtube-videos" 
 	infinite-scroll="youtubeVideos.searchMore()" 
 	infinite-scroll-distance="2"
 	&gt;
 ....
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+```
 
 There are more attributes as an api for this directive, however, in this case - I didn't use it.
 
@@ -65,8 +67,10 @@ Lets create the Angular (+2) wrapping code for this directive.
 
 First, lets import the relevant dependencies:
 
-<pre class="lang:js decode:true  ">import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
-import { Scroller } from './scroller';</pre>
+```typescript
+import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { Scroller } from './scroller';
+```
 
 The logics and migrated code of AngularJS.x is imported from the &#8220;scroller.ts" class file.
 
@@ -76,15 +80,18 @@ We're going to use some of angular's 2 core objects to define the relevant prope
 
 To declare an attribute as a directive, similar to Component, we use the &#8220;**<a href="https://angular.io/docs/ts/latest/api/core/Directive-decorator.html" target="_blank">@Directive()</a>**" decorator, while specifying an attribute class selector (css selector):
 
-<pre class="lang:default decode:true ">@Directive({
+```typescript
+@Directive({
   selector: '[infinite-scroll]'
-})</pre>
+})
+```
 
 ### Directive Bindings & Events
 
 Next, we'll define the class which will used as a controller for this directive, an input data that we'll expect to get from the element and an event that this directive will expose.
 
-<pre class="lang:js decode:true">export class InfiniteScroll {
+```typescript
+export class InfiniteScroll {
   @Input() set infiniteScrollDistance(distance: Number) {
     this._distance = distance;
   }
@@ -92,15 +99,18 @@ Next, we'll define the class which will used as a controller for this directive,
   @Output() scroll = new EventEmitter();
 
 //...
-}</pre>
+}
+```
 
 The &#8220;**infiniteScrollDistance**" property is expected to be set from outside the directive, as an attribute api. The same goes for the &#8220;**scroll**" event, which will trigger a function that is bind from outside. This means, that we'll use this directive like so:
 
-<pre class="lang:default decode:true">&lt;div class="search-results"
+```typescript
+&lt;div class="search-results"
     infinite-scroll
     [infiniteScrollDistance]="2"
     (scroll)="onScroll()"&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+```
 
 Notice how each attribute in the above &#8220;**div**" element is matching a different declaration in this directive code.
 
@@ -108,21 +118,26 @@ Notice how each attribute in the above &#8220;**div**" element is matching a dif
 
 With AngularJS.x, the DI system allowed us to require &#8220;$element" and expect to get a reference to the directive's DOM element:
 
-<pre class="lang:default decode:true ">controller: function ($element) {
+```typescript
+controller: function ($element) {
 	$element.on('scroll', onScroll);
-}</pre>
+}
+```
 
 With Angular (+2), we use the &#8220;**ElementRef**" type definition. Also with the use of Typescript, we'll attach its property reference to &#8220;**this**" directive context:
 
-<pre class="lang:default decode:true ">constructor(private element: ElementRef) {
+```typescript
+constructor(private element: ElementRef) {
    // now, we can reference to: this.element
-}</pre>
+}
+```
 
 ### Hook the Scroll Event with ngOnInit to Directive's Element
 
 Now, we'll us Angular (+2) hook - &#8220;<a href="https://angular.io/docs/ts/latest/api/core/OnInit-interface.html" target="_blank">ngOnInit</a>" - which will run when the directive is ready and will instantiate a new scroller, only once. Notice that I bind &#8220;this" context to the onScroll function reference to keep the context of this directive when the scroll event will trigger the event emitter's property, scroll:
 
-<pre class="lang:default decode:true ">ngOnInit() {
+```typescript
+ngOnInit() {
     this.scroller = new Scroller(window, setInterval, this.element, this.onScroll.bind(this), this._distance, {});
   }
 
@@ -132,7 +147,8 @@ Now, we'll us Angular (+2) hook - &#8220;<a href="https://angular.io/docs/ts/lat
 
   onScroll() {
     this.scroll.next({});
-  }</pre>
+  }
+```
 
 ### Migration of Scroller Logic
 

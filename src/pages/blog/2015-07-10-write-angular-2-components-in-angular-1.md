@@ -44,15 +44,18 @@ youtube-videos is an anuglar module. It consumes 2 core services:
 
 As I wrote before, in order to use this module, I exposed it a directive, and can simply use it like so:
 
-<pre class="lang:xhtml decode:true">&lt;youtube-videos&gt;&lt;/youtube-videos&gt;
+```typescript
+&lt;youtube-videos&gt;&lt;/youtube-videos&gt;
 
-</pre>
+
+```
 
 ### Angular 1 Directive Definition
 
 In order to user youtube-videos module as a direcive, I defined it as a quite simple directive with this code:
 
-<pre class="lang:default decode:true">(function() {
+```typescript
+(function() {
     'use strict';
 
     angular
@@ -74,7 +77,8 @@ In order to user youtube-videos module as a direcive, I defined it as a quite si
             };
             return directive;
         }
-})();</pre>
+})();
+```
 
 Although, the code is quite minimal, during time, I thought that it can be defined better - better to readiblility and for writing less code.
 
@@ -86,7 +90,8 @@ Following Pascal's post, I saw a great opportunity to try enbracing angular's 2
 
 First, I read through to understand how I can transform the defintion of the directive to component in Angular (+2). I came up with this new syntax for <span style="text-decoration: underline;"><strong>AngularJS</strong></span> approach for defining a module as a directive or a component based on the latest Angular (+2) ES5 syntax:
 
-<pre class="lang:default decode:true">angular
+```typescript
+angular
     .Component({
         selector: 'youtube-videos',
         appInjector: [
@@ -99,16 +104,20 @@ First, I read through to understand how I can transform the defintion of the dir
     })
     .Class({
         constructor: 'YoutubeVideosCtrl'
-    })</pre>
+    })
+```
 
 The code above works seemlessy the same of the AngularJS directive code, that with a little shim that I wrote which should be loaded right after angular.
 
-<pre class="lang:xhtml decode:true ">&lt;script type="text/javascript" src="../bower_components/angular/angular.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="../node_modules/angular2to1/index.js"&gt;&lt;/script&gt;</pre>
+```typescript
+&lt;script type="text/javascript" src="../bower_components/angular/angular.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="../node_modules/angular2to1/index.js"&gt;&lt;/script&gt;
+```
 
 [angular2to1](https://github.com/orizens/angular2to1) is published as an npm module. to install it, simply use npm:
 
-<pre class="lang:sh decode:true">npm install angular2to1</pre>
+```typescript
+
 
 ### angular2to1 Assumptions
 
@@ -126,7 +135,8 @@ Since the angular2to1 shim is in early stages, I have taken few assumtptions wit
 
 Also important to note that the **angular.Component** defintion returns an object which exposes the **directive** definition object:
 
-<pre class="lang:default decode:true">var myAppComponent = angular.Component({
+```typescript
+var myAppComponent = angular.Component({
 	selector: 'my-app'
 	appInjector: [ 
 		'core.services'
@@ -134,7 +144,8 @@ Also important to note that the **angular.Component** defintion returns an objec
 });
 
 console.log(myAppComponent._directive); // access to the _directive object definition to add or change AngularJS directive properties
-</pre>
+
+```
 
 This allows you to still be able to still define AngularJS directive properties (such as &#8220;replace: true" for templates and the directive element).
 

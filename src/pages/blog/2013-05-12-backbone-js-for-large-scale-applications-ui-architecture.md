@@ -42,7 +42,8 @@ I took the very simple concept that Backbone.js applied to Models and Views.
   
 This is a simple Backbone Model that represents of single youtube video:
 
-<pre class="brush:js">var YoutubeItemModel = Backbone.Model.extend({
+```typescript
+var YoutubeItemModel = Backbone.Model.extend({
 		defaults: {
 			//- custom properties not related to json response
 			likeCountDisplay: 0,
@@ -60,11 +61,13 @@ This is a simple Backbone Model that represents of single youtube video:
 			this.set('time', _(duration).secondsToHms());
 		}
 	});
-</pre>
+
+```
 
 This is the Backbone View object that uses the above model:
 
-<pre class="brush:js">var YoutubeItemView = Backbone.View.extend({
+```typescript
+var YoutubeItemView = Backbone.View.extend({
 		tagName: 'li',
 		
 		className: 'youtube-item span3 nicer-ux ux-maker',
@@ -98,11 +101,13 @@ This is the Backbone View object that uses the above model:
 			this.remove();
 		}
 	});
-</pre>
+
+```
 
 This is the view's associated template:
 
-<pre class="brush: html"></pre>
+```typescript
+
 
 
   
@@ -114,7 +119,8 @@ This concept appealed to me in the sense that whenever I update or change the mo
   
 To achieve this, i could simply use it like so:
 
-<pre class="brush: js">var coolVideoModel = new YoutubeItemModel();
+```typescript
+var coolVideoModel = new YoutubeItemModel();
 var coolVideoView = new YoutubeItemView({
 	model: coolVideoModel
 });
@@ -129,7 +135,8 @@ var video2data = {
 // itself according to the changes of the model
 coolVideoModel.set( video1data );
 coolVideoModel.set( video2data );
-</pre>
+
+```
 
 In that moment of understanding, I was really inspired and it became obvious to me that this very basic concept should play along with a larger module - or even a whole application.
 
@@ -141,13 +148,15 @@ I took the very simple concept that I applied to a single youtube item, and i un
   
 To my understanding and experience, I started planning the model of Echoes. I figured out that in the end, I would like to apply the same concept of that "coolVideo" code to a similar minimalstic approach:
 
-<pre class="brush: js">var EchoesModel = new PlayerModel();
+```typescript
+var EchoesModel = new PlayerModel();
 var EchoesView = new PlayerView({
 	model: EchoesModel
 });
 // starting Echoes module to query the search api
 EchoesModel.fetch();
-</pre>
+
+```
 
 With this approach, I can be sure that whenever the model is updated, the changes will be applied to the UI - let it be new search results, playing a new video and asking to query my favorite videos.
   
@@ -161,7 +170,8 @@ In one of my other posts, I explained <a href="http://orizens.com/wp/topics/back
   
 Soon, it appeared to me, in a minimalistic kind of a way, that it only makes sense to pass Echoes Model as a reference.
 
-<pre class="brush:js">var EchoesModel = new PlayerModel();
+```typescript
+var EchoesModel = new PlayerModel();
 var EchoesView = new PlayerView({
 	model: EchoesModel
 });
@@ -169,7 +179,8 @@ var EchoesRouter = new PlayerRouter({
 	model: EchoesModel
 })
 Backbone.history.start();
-</pre>
+
+```
 
 In this way, the application has One Model, and it can be access through the view (or its sub views) or through the router in the form of a url.
   

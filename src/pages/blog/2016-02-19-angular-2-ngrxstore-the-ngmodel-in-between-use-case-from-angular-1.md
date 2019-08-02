@@ -27,7 +27,8 @@ In the <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angu
 
 In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="http://github.com/orizens/echoes" target="_blank">AngularJS</a>, this template is part of the "search-panel" component. It renders the search box to the top of the player:
 
-<pre class="lang:default decode:true">&lt;div class="search-panel"&gt;
+```typescript
+&lt;div class="search-panel"&gt;
 	&lt;form class="navbar-form form-search navbar-left" ng-submit="vm.search()"&gt;
 		&lt;div class="form-group"&gt;
 			&lt;input placeholder="Explore Media" type="search" class="form-control" autocomplete="off"
@@ -39,7 +40,8 @@ In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="ht
 		&lt;/div&gt;
 	&lt;/form&gt;
 
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+```
 
 * I removed some attributes and html code to make this code simpler for this post.
 
@@ -51,7 +53,8 @@ The migration of the html code above is quite simple (I mentioned it in <a href=
 
 Notice the **ngModel** is both bind with a value (using the binding [] brackets) and both syncs back to its variable (as an event with () ) - This the 2-way binding we've been used to from AngularJS. This template goes inside the youtube-videos template. Here is the full template:
 
-<pre class="lang:default decode:true">&lt;div class="navbar-header"&gt;
+```typescript
+&lt;div class="navbar-header"&gt;
 	&lt;div class="search-panel"&gt;
 		&lt;!-- SEARCH FORM --&gt;
 		&lt;form class="navbar-form form-search navbar-left"&gt;
@@ -67,7 +70,8 @@ Notice the **ngModel** is both bind with a value (using the binding [] brackets
 			&lt;/div&gt;
 		&lt;/form&gt;
 	&lt;/div&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+```
 
 ## Updating Youtube Videos Component Class
 
@@ -77,7 +81,8 @@ To support the new search feature, the component's class needs to be updated wit
   2. Updating the search function with the new "**searchQuery**"
   3. "**resetPageToken**" function which will reset the pageToken property when the search query  changes
 
-<pre class="lang:default mark:14,33 decode:true ">import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+```typescript
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NgModel } from '@angular/common'
 import { Store} from '@ngrx/store';
 import { YoutubeSearch } from '../core/services/youtube.search';
@@ -112,7 +117,8 @@ export class YoutubeVideos {
 	resetPageToken() {
 		this.youtubeSearch.resetPageToken();
 	}
-}</pre>
+}
+```
 
 ## Updating Youtube Search Service With a New NgRx Action
 
@@ -122,10 +128,12 @@ I added a new function "**resetPageToken**", which purpose is to reset the pageT
 
 This function also dispatched a new action, &#8216;RESET', which resets the videos list in the store. It is also being called in the search function if a new search is request by Echoes:
 
-<pre class="lang:default decode:true">resetPageToken () {
+```typescript
+resetPageToken () {
 	this._config.set('pageToken', '');
 	this.store.dispatch({ type: RESET });
-}</pre>
+}
+```
 
 This is the result:
 

@@ -77,8 +77,10 @@ In echoes2, the story is different.
 
 First, I import the necessary annotations and directives that the component will use:
 
-<pre class="lang:js decode:true">import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgClass } from '@angular/common';</pre>
+```typescript
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgClass } from '@angular/common';
+```
 
 #### Component Definition
 
@@ -86,7 +88,8 @@ Second, I have to define the component's properties.
 
 In echoes1, a plain object is used:
 
-<pre class="lang:default decode:true ">var directive = {
+```typescript
+var directive = {
 	selector: 'youtube-media',
 	restrict: 'E',
 	template,
@@ -100,13 +103,15 @@ In echoes1, a plain object is used:
 	controller,
 	controllerAs: '$ctrl',
 	bindToController: true
-};</pre>
+};
+```
 
 I'm not actually using the &#8220;selector" property, but rather using it when defining the directive.
 
 In echoes2, this definition is shorter:
 
-<pre class="lang:default decode:true">@Component({
+```typescript
+@Component({
 	selector: 'youtube-media',
 	template: require('./youtube-media.html'),
 	inputs: [
@@ -118,7 +123,8 @@ In echoes2, this definition is shorter:
 	 	'add'
 	],
 	directives: [ NgClass ]
-})</pre>
+})
+```
 
 Notice that the &#8220;**scope**" attributes have been divided to its proper definition properties: &#8216;**media**&#8216; is expected to be passed as a binding from outside. The events that this component expose are: &#8216;**play**&#8216;, &#8216;**queue**&#8216; and &#8216;**add**&#8216;.
 
@@ -126,7 +132,8 @@ Notice that the &#8220;**scope**" attributes have been divided to its proper def
 
 In echoes1, the controller is as:
 
-<pre class="lang:default decode:true">function controller () {
+```typescript
+function controller () {
 	var vm = this;
 	vm.playVideo = playVideo;
 	vm.queueVideo = queueVideo;
@@ -150,7 +157,8 @@ In echoes1, the controller is as:
 	function toggle (showDesc) {
 		vm.showDesc = !showDesc;
 	}
-}</pre>
+}
+```
 
 In echoes2, the controller is a class and it's exported. The default properties are defined and initiated in the class definition.
 
@@ -158,7 +166,8 @@ The &#8220;**video**" property with the &#8220;**@Input()**" annotation is optio
 
 In angular2, access to the external bind property &#8220;media", can be accessed in &#8220;**ngOnInit**" **hook method** (ng2 terminology) rather than in the constructor. The 2 string properties, likeCount and viewCount are converted to numbers, so it can be formatted later in the template using Angular (+2) pipes (the equivalent to AngularJS filters).
 
-<pre class="lang:default decode:true">export class YoutubeMedia {
+```typescript
+export class YoutubeMedia {
 	@Input() media: any;
 	@Output() play = new EventEmitter();
 	@Output() queue = new EventEmitter();
@@ -191,13 +200,15 @@ In angular2, access to the external bind property &#8220;media", can be accessed
 	toggle (showDesc) {
 		this.showDesc = !showDesc;
 	}
-}</pre>
+}
+```
 
 #### Template Conversion
 
 In echoes1, the template is (I dropped the social share feature for now):
 
-<pre class="lang:default decode:true ">&lt;li class="youtube-item card ux-maker col-sm-3 col-xs-12"
+```typescript
+&lt;li class="youtube-item card ux-maker col-sm-3 col-xs-12"
 ng-class="{ 'show-description': $ctrl.showDesc}"&gt;
 	&lt;section class="media-title"&gt;
 		
@@ -310,13 +321,15 @@ ng-class="{ 'show-description': $ctrl.showDesc}"&gt;
 
 	&lt;/section&gt;
 
-&lt;/li&gt;</pre>
+&lt;/li&gt;
+```
 
 &nbsp;
 
 This is the template for echoes2:
 
-<pre class="lang:default decode:true">&lt;li class="youtube-item card ux-maker col-sm-3 col-xs-12"
+```typescript
+&lt;li class="youtube-item card ux-maker col-sm-3 col-xs-12"
 	[class.show-description]="showDesc"&gt;
 	&lt;section class="media-title"&gt;
 
@@ -396,7 +409,8 @@ This is the template for echoes2:
 
 	&lt;/section&gt;
 
-&lt;/li&gt;</pre>
+&lt;/li&gt;
+```
 
 There few noticeable changes that needs to be made:
 
@@ -404,7 +418,8 @@ Change the one-time binding prefixed with **&#8220;::"** to be without it.
 
 Handling the &#8220;**controllerAs: &#8216;$ctrl'**" - either remove it or creating an alias on the ng2 class - this can be easily made with a simple
 
-<pre class="lang:default decode:true ">export class YoutubeMedia {
+```typescript
+export class YoutubeMedia {
 	...
 	$ctrl: any;
 
@@ -412,7 +427,8 @@ Handling the &#8220;**controllerAs: &#8216;$ctrl'**" - either remove it or creat
 		this.$ctrl = this;
 	}
 	....
-}</pre>
+}
+```
 
 but, I decided to drop it.
 
@@ -427,7 +443,8 @@ By <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ngCla
 
 The last change is formatting numbers with filters in Angular (+2). There's a new syntax for filters in Angular (+2). Filters are now Pipes. The &#8220;**Number**" pipe (ng1 filter: number) should be used with the &#8220;**DecimalPipe**&#8220;,  in order to format a number with commas. it should be defined as:
 
-<pre class="lang:default decode:true ">{{ media.statistics.viewCount | number:'2.0-0'}}</pre>
+```typescript
+
 
 The format must be defined with the appropriate digits - I followed the exact <a href="https://angular.io/docs/ts/latest/api/common/DecimalPipe-class.html" target="_blank">instructions in angular2 docs</a> to understand and define each digit.
 
@@ -435,17 +452,21 @@ The format must be defined with the appropriate digits - I followed the exact <a
 
 In **echoes1**, the youtube-media component is used as:
 
-<pre class="lang:default decode:true">&lt;youtube-media 
+```typescript
+&lt;youtube-media 
 	video="video"
 	on-play="vm.playSelectedVideo(video)"
-&gt;&lt;/youtube-media&gt;</pre>
+&gt;&lt;/youtube-media&gt;
+```
 
 In **echoes2**, we can use the new component in echoes2 as such:
 
-<pre class="lang:default decode:true">&lt;youtube-media 
+```typescript
+&lt;youtube-media 
     [media]="videoMock"
     (play)="playSelectedVideo(videoMock)"
-&gt;&lt;/youtube-media&gt;</pre>
+&gt;&lt;/youtube-media&gt;
+```
 
 ## Final Thoughts
 

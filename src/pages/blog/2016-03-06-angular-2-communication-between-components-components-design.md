@@ -174,7 +174,8 @@ The "**now playlist**" store is passed to both components. Each component will o
 
 To create the whole now playlist feature, the components are constructed in this manner:
 
-<pre class="lang:xhtml decode:true">&lt;div class="sidebar-pane"&gt;
+```typescript
+&lt;div class="sidebar-pane"&gt;
 	&lt;now-playlist-filter 
            [ playlist ]="nowPlaylist"
 	&gt;&lt;/now-playlist-filter&gt;
@@ -183,7 +184,8 @@ To create the whole now playlist feature, the components are constructed in this
 		(select)="selectVideo($event)"
 		(sort)="sortVideo($event)"
 	&gt;&lt;/now-playlist&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+```
 
 ### Design Of "Now Playlist Filter" Component
 
@@ -234,7 +236,8 @@ I defined a local variable using the "**#**" syntax - this creates a local templ
 
 This is the template (I removed a button which is related to saving this playlist since its implemented yet):
 
-<pre class="lang:xhtml decode:true">&lt;h3 class="nav-header nav-header-fluid user-playlists-filter"&gt;
+```typescript
+&lt;h3 class="nav-header nav-header-fluid user-playlists-filter"&gt;
 	Now Playing
 	&lt;button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
 		[disabled]="playlist?.videos?.length === 0"
@@ -249,7 +252,8 @@ This is the template (I removed a button which is related to saving this playlis
 			#searchFilter
 			(input)="handleFilterChange(searchFilter.value)"&gt;
 	&lt;/div&gt;
-&lt;/h3&gt;</pre>
+&lt;/h3&gt;
+```
 
 ### Design Of The "Now Playlist" Component
 
@@ -274,7 +278,8 @@ However, we can easily create a filer/search pipe. I decided to create such filt
 
 Here's the full template for this component:
 
-<pre class="lang:xhtml decode:true">&lt;section class="now-playlist"
+```typescript
+&lt;section class="now-playlist"
 	[ngClass]="{
 		'transition-in': playlist?.videos?.length
 	}"&gt;
@@ -296,7 +301,8 @@ Here's the full template for this component:
 			&lt;/a&gt;
 		&lt;/li&gt;
 	&lt;/ul&gt;
-&lt;/section&gt;</pre>
+&lt;/section&gt;
+```
 
 ### Communication Between Components Explained
 

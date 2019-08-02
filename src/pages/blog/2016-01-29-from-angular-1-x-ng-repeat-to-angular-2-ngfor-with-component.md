@@ -35,7 +35,8 @@ The goal for this process was to reuse the recent youtube-media component and cr
 
 The AngularJS.x ES2015 implementation of youtube-list is a <a href="https://github.com/orizens/angular-es2015-styleguide#srccorecomponents" target="_blank">core/component</a> element. It is relatively a minimal component which reuse the youtube-media component. The template uses &#8220;ng-repeat" to render a list of videos:
 
-<pre class="lang:xhtml decode:true">&lt;ul&gt;
+```typescript
+&lt;ul&gt;
 	&lt;youtube-media 
 		ng-repeat="video in vm.videos track by $index"
 		video="video"
@@ -43,11 +44,13 @@ The AngularJS.x ES2015 implementation of youtube-list is a <a href="https://gith
 		on-queue="vm.queueSelectedVideo(video)"
 		on-add="vm.add(video)"&gt;
 	&lt;/youtube-media&gt;
-&lt;/ul&gt;</pre>
+&lt;/ul&gt;
+```
 
 This is the directive definition:
 
-<pre class="lang:c# decode:true ">import template from './youtube-list.tpl.html';
+```typescript
+import template from './youtube-list.tpl.html';
 
 // Usage:
 //	&lt;youtube-list videos on-select="func(video)" on-queue="func(video)"&gt;&lt;/youtube-list&gt;
@@ -82,7 +85,8 @@ export default function youtubeList() {
 		}
 	}
 	return directive;
-}</pre>
+}
+```
 
 ## The Angular (+2) YoutubeList Component
 
@@ -98,9 +102,11 @@ With Angular (+2), each dependancy must be defined. That includes:
 
 Let's import all of these:
 
-<pre class="lang:default decode:true  ">import { Component, EventEmitter, Input, Output } from '@angular/core';
+```typescript
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { YoutubeMedia } from '../youtube-media/youtube-media';</pre>
+import { YoutubeMedia } from '../youtube-media/youtube-media';
+```
 
 Note: &#8220;<a href="https://angular.io/docs/ts/latest/api/common/NgFor-directive.html" target="_blank">NgFor</a>" is the new &#8220;ng-repeat" in Angular (+2). More on that below.
 
@@ -108,14 +114,16 @@ Note: &#8220;<a href="https://angular.io/docs/ts/latest/api/common/NgFor-directi
 
 This code defines how the youtube-list component will be used, its template, its input and which directives it consumes.
 
-<pre class="lang:default decode:true ">@Component({
+```typescript
+@Component({
 	selector: 'youtube-list',
 	template: require('./youtube-list.html'),
 	inputs: [
 		'list'
 	],
 	directives: [NgFor, YoutubeMedia ]
-})</pre>
+})
+```
 
 Notice how &#8220;NgFor" is injected to this component's directives array. If it's not defined as such, Angular (+2) template engine won't use it.
 
@@ -123,7 +131,8 @@ Notice how &#8220;NgFor" is injected to this component's directives array. If it
 
 The controller class in Angular (+2) of this component, is quite similar to its AngularJS.x version. The noticeable addition is the definition of the events that this component exposes.
 
-<pre class="lang:default decode:true ">export class YoutubeList {
+```typescript
+export class YoutubeList {
 	@Output() play = new EventEmitter();
 	@Output() queue = new EventEmitter();
 	@Output() add = new EventEmitter();
@@ -141,19 +150,22 @@ The controller class in Angular (+2) of this component, is quite similar to its 
 	addVideo (media) {
 		this.add.next(media);
 	}
-}</pre>
+}
+```
 
 ### Youtubelist Component Template
 
 This component's template is quite simple. It repeats the youtube-media component following the &#8220;list" property.
 
-<pre class="lang:default decode:true ">&lt;youtube-media
+```typescript
+&lt;youtube-media
 	*ngFor="#media of list"
 	[media]="media"
 	(play)="playSelectedVideo(media)"
 	(queue)="queueSelectedVideo(media)"
 	(add)="addVideo(media)"&gt;
-&lt;/youtube-media&gt;</pre>
+&lt;/youtube-media&gt;
+```
 
 Lets overview the &#8220;**NgFor**" directive usage in this template.
 
@@ -167,7 +179,8 @@ The exposed events: &#8220;**play**&#8220;, &#8220;**queue**" and &#8220;**add**
 
 Using this component should be simple. I designed it so I can use it like so:
 
-<pre class="lang:default decode:true ">&lt;youtube-list [list]="videos" (play)="playSelectedVideo($event)"&gt;&lt;/youtube-list&gt;</pre>
+```typescript
+
 
 Notice how the &#8220;**play**" event passes the &#8220;**$event**" argument - which will eventually be the selected media. This is a very important point to realise. In contrary to the &#8220;**ngFor**&#8220;, there's is no reference in this context to a &#8220;**video**" property, but rather only to &#8220;**videos**" array. Referencing &#8220;**media**" here won't work (as we've probably did in AngularJS.x).
 

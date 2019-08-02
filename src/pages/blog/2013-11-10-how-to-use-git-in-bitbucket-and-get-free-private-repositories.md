@@ -51,7 +51,8 @@ On the right, you'll find the link to this repository (you'll need that later to
 
 If you ever worked with git and github, pushing new commits to github was done using something like:
 
-<pre class="brush:shell">git push origin master</pre>
+```typescript
+
 
 <!--RndAds-->
 
@@ -65,11 +66,13 @@ It is called &#8220;git remote" - a remote repository to which a code can be pus
   
 To setup such a remote we need to open the command line/terminal within the folder of the git we want to setup, and use:
 
-<pre class="brush:shell">git remote add nick-name-for-repository actual-link-to-remote(from step1)</pre>
+```typescript
+
 
 I.e, here we setup a git remote with the nickname of &#8220;orizens" to a certain bitbucket url:
 
-<pre class="brush:shell">git remote add orizens https://orizens@bitbucket.org/orizens/my-special-private-project.git</pre>
+```typescript
+
 
 That's it!
 
@@ -77,7 +80,8 @@ That's it!
 
 Now, in order to push the master branch to the newely defined remote repository &#8220;orizens", we'll simply use:
 
-<pre class="brush:shell">git push orizens master</pre>
+```typescript
+
 
 You can do the same for &#8220;fetch" operation.
   
@@ -89,6 +93,7 @@ A remote repository in git can be renamed, removed and <a href="http://git-scm.c
   
 I.e, in order to see the remotes attached to a certain repository, you can use:
 
-<pre class="brush:shell">git remote -v</pre>
+```typescript
+
 
 The &#8220;-v" switch is optional, and will also print to the console/terminal the url of each remote.

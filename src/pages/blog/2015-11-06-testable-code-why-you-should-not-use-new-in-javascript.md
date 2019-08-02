@@ -49,7 +49,8 @@ There are few steps in order to use the <a href="https://developers.google.com/y
 
 My first implementation was quite naive at the time. I created a directive that served at the placeholder for the youtube iframe. This directive was responsible for listening to the api ready event, and then create the new youtube player object. So, the code was something like this:
 
-<pre class="lang:js decode:true">function youtubePlayer ($rootScope, $window) {
+```typescript
+function youtubePlayer ($rootScope, $window) {
     var directive = {
         link: link,
         controller: controller,
@@ -94,7 +95,8 @@ My first implementation was quite naive at the time. I created a directive that 
         }
         //... more code
     }
-}</pre>
+}
+```
 
 There are 4 problems here:
 
@@ -113,7 +115,8 @@ However, I was still using the &#8220;new YT.player" constructor, and as soon as
 
 So, I took the bdd approach. In order to create a mocked youtube player, one which I can inject and test with it, I created a new factory object - **YoutubePlayerCreator** - which abstracts the **YT.player** constructor object and exposes a clear defined API for creating a new youtube player object::
 
-<pre class="lang:default decode:true ">angular
+```typescript
+angular
     .module('youtube.player')
     .factory('YoutubePlayerCreator', YoutubePlayerCreator);
 
@@ -138,11 +141,13 @@ function YoutubePlayerCreator() {
             }
         });
     }
-}</pre>
+}
+```
 
 Afterwards, I injected this factory to the **YoutubePlayerSettings** service, and I use it in order to create a new object:
 
-<pre class="lang:default decode:true">angular
+```typescript
+angular
     .module('youtube.player')
     .factory('YoutubePlayerSettings', YoutubePlayerSettings);
 
@@ -175,13 +180,15 @@ function YoutubePlayerSettings(localStorageService, YoutubePlayerCreator) {
         }
     }
 // more code....
-}</pre>
+}
+```
 
 The tests that follow along with this approach, allow to inject a mocked **YoutubePlayerCreator** factory, mock its functions and assert any issue that jasmine (in my current setup) allows to assert and track as well.
 
 So, this is where **Dependancy Injection** manifests at is best (and not just in angular). Now, I can mock the case of creating a youtube player as if i actually injected the real script. Notice how I mock the various functions with **jasmine.createSpyObj**:
 
-<pre class="lang:js mark:15,26 decode:true">describe('Youtube Player Module', function() {
+```typescript
+describe('Youtube Player Module', function() {
 	var YoutubePlayerSettings, YoutubeSearch, YoutubePlayerCreator;
 	var videosResponseMock = {};
 
@@ -211,7 +218,8 @@ So, this is where **Dependancy Injection** manifests at is best (and not just in
 			expect(YoutubePlayerSettings.nowPlaying.mediaId).toBe(video.id);
 		});
 	});
-});</pre>
+});
+```
 
 ## Summary
 

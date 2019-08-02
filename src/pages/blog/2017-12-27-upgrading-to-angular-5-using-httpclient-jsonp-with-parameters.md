@@ -23,7 +23,8 @@ tags:
 
 First, lets import the relevant modules. Within src/modules/ngx-typeahead.module.ts, I replaced the code so it will import the new modules. Similar to before, there are 2 modules for using http and jsonp:
 
-<pre class="lang:default decode:true ">// Before: with Angular 4
+```typescript
+// Before: with Angular 4
 import { HttpModule, JsonpModule } from '@angular/http';
 ...
 @NgModule({
@@ -36,11 +37,13 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 @NgModule({
   imports: [CommonModule, HttpClientModule, HttpClientJsonpModule],
 })
-</pre>
+
+```
 
 I also update the src/modules/ngx-typeahead.component.ts to import HttpClient only. Notice that the alternatives to &#8220;RequestOptionsArgs" and &#8220;URLSearchParams" have been updated too and are used inside a utility function (respectively, &#8220;HttpParams" and &#8220;HttpParamsOptions":
 
-<pre class="lang:default decode:true">// Before: with Angular 4
+```typescript
+// Before: with Angular 4
 import {
   RequestOptionsArgs,
   Response,
@@ -51,13 +54,15 @@ import {
 
 // After: with Angular 5
 import { HttpClient } from '@angular/common/http';
-</pre>
+
+```
 
 ## Step 2: Updating The Http Service Injection
 
 In contrary to the previous version, with Angular 5, &#8220;jsonp" is used as a method of the http service. All I had to do is change the injection of the http service to use &#8220;HttpClient" as well as remove the &#8220;Jsonp" injection:
 
-<pre class="lang:default decode:true ">// Before: with Angular 4
+```typescript
+// Before: with Angular 4
 constructor(
       private element: ElementRef,
       private viewContainer: ViewContainerRef,
@@ -72,29 +77,34 @@ constructor(
     private viewContainer: ViewContainerRef,
     private http: HttpClient,
     private cdr: ChangeDetectorRef
-  ) { }</pre>
+  ) { }
+```
 
 ## Step 3: Updating the Jsonp call with parameters
 
 In the old version, i used the jsonp service and had to create an options object which includes the parameters to attach for the request. Eventually, I passed 2 arguments to the jsonp method that was used (&#8220;get" by default):
 
-<pre class="lang:default decode:true">this.jsonp.get(url, options)</pre>
+```typescript
+
 
 With the new HttpClient it's a little bit different. &#8220;jsonp" is a method that performs the jsonp request. It takes the first argument as the url and the callback string name as the second argument.
 
-<pre class="lang:default decode:true ">this.http.jsonp(url, callbackName);</pre>
+```typescript
+
 
 ### Where jsonp request's parameters should be placed with Angular 5?
 
 I had a small challenge with this one: the params in this case should be concatenated as string parameters to the url argument. Since i'm using the new &#8220;HttpParams" to construct a params object, I can use the &#8220;toString()" to get all parameters as url search parameters and add it to the url:
 
-<pre class="lang:default decode:true ">requestJsonp(url, options, callback = 'callback') {
+```typescript
+requestJsonp(url, options, callback = 'callback') {
     // options.params is an HttpParams object
     const params = options.params.toString();
     return this.http.jsonp(`${url}?${params}`, callback)
       .map((response: Response) =&gt; response[1])
       .map((results: any[]) =&gt; results.map((result: string) =&gt; result[0]));
-  }</pre>
+  }
+```
 
 You can see and experiment with ngx-typeahead in this [plunkr demo](http://plnkr.co/edit/gV6kMSRlogjBKnh3JHU3?p=preview) and in production on my open source alternative player to YouTube: [Echoes Player](http://echoesplayer.com)
 

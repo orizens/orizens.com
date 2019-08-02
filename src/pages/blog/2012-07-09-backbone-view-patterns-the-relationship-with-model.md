@@ -29,14 +29,17 @@ Tying a model to a view can be done in more than one way.
 
 When creating a new instance for a view, a ready made backbone model can be passed in the arguments. With this way, you can pass any model to the view (this assumes the view is very generic in its implementation).
 
-<pre class="brush:js">var myMoneyData = { /* json data object */ };
-var userExpenses = new ExpensesView({ model: myMoneyData });</pre>
+```typescript
+var myMoneyData = { /* json data object */ };
+var userExpenses = new ExpensesView({ model: myMoneyData });
+```
 
 ### Encapsulated Reference
 
 I tried to think of a correct title for this method. In this method, we are passing a json object to the view, and the view is responsible for initializing the model. This can be appropriate for creating encapsulated modules that you usually hand on to other developers - while giving them a simple API for using your module.
 
-<pre class="brush:js">var myMoneyData = { /* json data object */ };
+```typescript
+var myMoneyData = { /* json data object */ };
 
 var ExpensesView = Backbone.View.extend({
 	initialize: function() {
@@ -46,7 +49,8 @@ var ExpensesView = Backbone.View.extend({
 	}
 });
 
-var userExpenses = new ExpensesView({ model: myMoneyData });</pre>
+var userExpenses = new ExpensesView({ model: myMoneyData });
+```
 
 Notice that I have also made another &#8220;living" connection between the model and view. This is also a common use of tying a model to view.
 
@@ -60,27 +64,31 @@ So, a common pattern for a view is to listen to a model's change event and invok
   
 One doesn't necessarily has to re-render the whole view. you can choose to re-render only parts of the view with other dedicated render methods - and for this listening to specific &#8220;change" events would also fit:
 
-<pre class="brush:js">var ExpensesView = Backbone.View.extend({
+```typescript
+var ExpensesView = Backbone.View.extend({
 	initialize: function() {
 		this.model = new MoneyAccount(this.options.model);
 		//- tying the model's change event to the view's render method
 		this.model.on("change:permissions", this.renderExpenses, this);
 		this.model.on("change:commisions", this.renderCommisions, this);
 	}
-});</pre>
+});
+```
 
 ## Model to Template
 
 One of the simplest uses of models and views is populating a view's template with the model's data. The [&#8220;render"](http://orizens.com/wp/topics/backbone-view-patterns-the-render-method/ "Backbone.View Patterns – the “render” method") method compiles both template and model's json data:
 
-<pre class="brush:js">var SomeView = Backbone.View.extend({
+```typescript
+var SomeView = Backbone.View.extend({
 	template: _.template("#some-template"),
 
 	render: function() {
 		$(this.el).html(this.template(this.model.toJSON()));
 		return this;
 	}
-});</pre>
+});
+```
 
 ## The Moral of View & Model Story
 

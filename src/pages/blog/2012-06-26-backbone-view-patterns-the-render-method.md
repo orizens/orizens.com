@@ -36,13 +36,15 @@ One of the simplest uses of that kind of view is:
   
 The render method of the a simple TableView which doesn't use a RowView for each row can be something like:
 
-<pre class="brush:js">var TableView = Backbone.View.extend({
+```typescript
+var TableView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.model.toJSON());
 	}
 
-});</pre>
+});
+```
 
 ## An Enhanced Table View
 
@@ -50,20 +52,23 @@ Suppose there's a decision to construct the rows by a RowView in order to enhanc
   
 This RowView should be something like:
 
-<pre class="brush:js">var RowView = Backbone.View.extend({
+```typescript
+var RowView = Backbone.View.extend({
 	events: { /* some level of behavior */ }
 	render: function() {
 		this.$el.html(this.model.toJSON());
 		return this;
 	}
 
-});</pre>
+});
+```
 
 Notice how that I added a &#8220;return this" at the end of the render method. This is a common pattern when using a backbone view: This gives us the ability to reuse the view as a sub view and also use &#8220;pre-render" for preparing it to rendering.
   
 In order to use this RowView, A change is required in the TableView's render method:
 
-<pre class="brush:js">var TableView = Backbone.View.extend({
+```typescript
+var TableView = Backbone.View.extend({
 
 	render: function() {
 		var rows = this.model.get("rows");
@@ -73,7 +78,8 @@ In order to use this RowView, A change is required in the TableView's render met
 		}, this);
 	}
 
-});</pre>
+});
+```
 
 ## What does that do?
 

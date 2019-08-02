@@ -52,7 +52,8 @@ First, we need to define the possible routes that our application will handle.
   
 The &#8216;routes' property is an object of route-handler values.
 
-<pre class="brush:js">var AppRouter = Backbone.Router.extend({
+```typescript
+var AppRouter = Backbone.Router.extend({
 
 		routes: {
 			'': 'explore',
@@ -62,7 +63,8 @@ The &#8216;routes' property is an object of route-handler values.
 			'filter/:feedType': 'filter',
 			'searches/:query': 'search',
 			'play/:type/:mediaId': 'playMedia'
-		},</pre>
+		},
+```
 
 Notice that we can define dynamic parameters for urls and not just static urls.
   
@@ -76,7 +78,8 @@ Each "route handler" is actually a simple javascript method such as the "explore
   
 So, if a user enters "http://myapp.com/#explore", the handler function "explore" will be invoked.
 
-<pre class="brush:js">initialize: function(attributes) {
+```typescript
+initialize: function(attributes) {
 			this.model = attributes.model;
 			Backbone.history.start();
 		},
@@ -88,7 +91,8 @@ So, if a user enters "http://myapp.com/#explore", the handler function "explore"
 		filter: function (feedType) {
 			this.model.feed(feedType);
 		}
-});</pre>
+});
+```
 
 A handler function that supposed to get parameters, such as the "filter" function, should be declared with the right parameres, and as i've mentioned before - with the same argument name (for obvious readibility reasons).
   
@@ -100,11 +104,13 @@ That's not the end.
   
 One simple line should get the router working and start listening to hash change events in the url and that's the line that I wrote in the "initialize" method:
 
-<pre class="brush:js">Backbone.history.start()</pre>
+```typescript
+
 
 As a foot note, if we would like to use the HTML5 feature of "push" state with url (the second option of defining a router), we can pass a boolean argument of "pushState":
 
-<pre class="brush:js">Backbone.history.start({ pushState: true });</pre>
+```typescript
+
 
 Simply enough, we now have a working router.
 
@@ -124,10 +130,12 @@ Usually, in MVC applications, the controller layer handles requests that were su
   
 In order for the router to work in such way, it can be pretty useful to pass a reference of the application's model or application's data manager to the router, so each function handler can pass the requested url to the model. That is why I passed the model to the &#8216;initialize' method - so we'll be able to update the model in each function handler:
 
-<pre class="brush:js">initialize: function(attributes) {
+```typescript
+initialize: function(attributes) {
 			this.model = attributes.model;
 			Backbone.history.start();
-	}</pre>
+	}
+```
 
 ### Other uses of Router as a Controller
 
@@ -155,7 +163,8 @@ You're welcome to share your thoughts and comments below.
 
 This is the full code for the code that is shown in the examples above:
 
-<pre class="brush:js">var AppRouter = Backbone.Router.extend({
+```typescript
+var AppRouter = Backbone.Router.extend({
 
 	routes: {
 		'': 'explore',
@@ -183,4 +192,5 @@ This is the full code for the code that is shown in the examples above:
 	playMedia: function(mediaType, mediaId) {
 		//statements
 	}
-})</pre>
+})
+```

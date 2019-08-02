@@ -40,9 +40,11 @@ The setup takes few minutes:
   * install babel as a dependency in your project - `npm i babel-core babel-preset-es2015 --save-dev`
   * create a **.babelrc** file, and paste this code:
 
-<pre class="lang:default decode:true">{
+```typescript
+{
   "presets": ["es2015"]
-}</pre>
+}
+```
 
   * rename **gulpfile.js** to **gulpfile.babel.js**
 
@@ -51,16 +53,19 @@ The setup takes few minutes:
 You can just run any gulp task, and it will work right out of the box. It's needless to say that the current code, if written in es5, would work as well. Now you can experiment the various features of es 2015. i.e, using the **import** keyword to require the gulp module:
 
 <div class="highlight highlight-source-js">
-  <pre class="lang:js decode:true">// instead of this code
+  ```typescript
+// instead of this code
 var gulp = require('gulp');
 // you can write this one
-import gulp from 'gulp';</pre>
+import gulp from 'gulp';
+```
 </div>
 
 In my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">echoes player</a>, I converted all the gulp task files to use es 2015. so, i.e, I used fat arrow callback instead of function:
 
 <div class="highlight highlight-source-js">
-  <pre class="lang:default decode:true ">// gulp/style.js
+  ```typescript
+// gulp/style.js
 import gulp from 'gulp';
 import less from 'gulp-less';
 import concat from 'gulp-concat';
@@ -77,7 +82,8 @@ gulp.task('style', () =&gt; {
     .pipe(concat('style.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('.tmp'));
-});</pre>
+});
+```
   
   <p>
     &nbsp;
@@ -89,7 +95,8 @@ gulp.task('style', () =&gt; {
     For the test task, I added the <strong>const</strong> variable keyword as well as used the fat arrow with the async callback argument:
   </p>
   
-  <pre class="lang:default decode:true ">// gulp/test.js
+  ```typescript
+// gulp/test.js
 import gulp from 'gulp';
 import karma from 'karma';
 
@@ -101,7 +108,8 @@ gulp.task('test', (done) =&gt; {
     configFile: pathToKarmaConf + '/karma.conf.js',
     singleRun: isTravis
   }, done);
-});</pre>
+});
+```
   
   <p>
     <span style="font-family: Raleway, Arial, Helvetica, sans-serif; font-size: 1em; line-height: 1.5; background-color: #ffffff;">There are plenty of new features as well as syntactic sugar to experiment with in es 2015. In my opinion, some syntactic sugar is writing less code - which is good enough for me.</span>

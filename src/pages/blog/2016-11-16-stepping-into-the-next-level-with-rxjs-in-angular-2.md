@@ -45,7 +45,8 @@ Aside from that, if the user is already authorized, these steps should happen be
 
 The code responsible for authorization and sign belongs to the &#8220;**authorization.service.ts**" file, which is a core (shared) service in Echoes Player (located in **src/app/core/services**). This is a snapshot ([full commit here](https://github.com/orizens/echoes-ng2/blob/6423350c319b224eabbf5b2e9a86500f01aa1134/src/app/core/services/authorization.service.ts)) of the &#8220;**loadAuth()**" function that was available during early development of the authorization service:
 
-<pre class="lang:js decode:true ">loadAuth() {
+```typescript
+loadAuth() {
     this.gapiLoader
       .load('auth2')
       .subscribe((authInstance: any) =&gt; {
@@ -70,7 +71,8 @@ The code responsible for authorization and sign belongs to the &#8220;**authoriz
           });
       });
   }
-</pre>
+
+```
 
 Few important points to understand in this function (which is not so &#8220;RxJSified", or functional enough):
 
@@ -96,7 +98,8 @@ I was also concerned about the &#8220;**if**" statement somewhere in the middle 
 
 The first action I took was unifying all functions return interface to use observables as a return value rather than a promise. The &#8220;**authorize**" and  &#8220;**signIn**" have been refactored to use observables. This step requires to import the &#8220;**Observable**" object and &#8220;fromPromise" operator ([full commit here](https://github.com/orizens/echoes-ng2/blob/1f86f963ac86d34709019f5cd440a64ec95617ee/src/app/core/services/authorization.service.ts)):
 
-<pre class="lang:default decode:true">import { Observable } from 'rxjs/Observable';
+```typescript
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 
 // .... inside the authorization class:
@@ -115,13 +118,15 @@ authorize() {
       Observable.fromPromise(this._googleAuth.signIn(signOptions))
         .subscribe(this.handleSuccessLogin, this.handleFailedLogin);
     }
-  }</pre>
+  }
+```
 
 ### 3.2 refactor with RxJS SwitchMap
 
 Next, I realized the &#8220;**authorize()**" can be chained to the &#8220;**load()**&#8220;. Since both functions return an observable - it's the prefect use case for utilizing the &#8220;**switchMap**" operator. The &#8220;switchMap" operator in this case, maps the value of &#8220;response" to a different (or new) observable, which is then projected (is **switch**ed) to the rest of the execution. To make it more clear, &#8220;**authorize()**" initiates a request and returns an observable. &#8220;**switchMap**" waits for this &#8220;request" to emit a notification through the observable and moves on to new refactored &#8220;**subscribe()**&#8220;. This is another step towards a more organized authorization flow ([full code commit](https://github.com/orizens/echoes-ng2/blob/71f1f3f3b320c13c43da2a183319aadeb681d844/src/app/core/services/authorization.service.ts)):
 
-<pre class="lang:default decode:true ">loadAuth() {
+```typescript
+loadAuth() {
   // attempt to SILENT authorize
   this.gapiLoader
     .load('auth2')
@@ -138,13 +143,15 @@ Next, I realized the &#8220;**authorize()**" can be chained to the &#8220;**load
         this.zone.run(() =&gt; this.handleSuccessLogin(authResponse));
       }
     });
-}</pre>
+}
+```
 
 ### 3.3 from &#8220;if" to RxJs &#8220;filter"
 
 Now, the authorization process started to look clearer, as a proper **stream**. The next step I wanted to refactor much is that &#8220;if" statement. It seems like a very good fit for filtering an RxJs stream. Breaking the conditions inside the if statement into smaller, testable functions, allowed to stop (filter) the stream from invoking the &#8220;**handleSuccessLogin()**" when it shouldn't run in more neatly way. To be even more useful and prevent unnecessary code to be run, I chose to apply the &#8220;filter" operator for each condition:
 
-<pre class="lang:default decode:true">loadAuth() {
+```typescript
+loadAuth() {
   // attempt to SILENT authorize
   this.gapiLoader
     .load('auth2')
@@ -158,13 +165,15 @@ Now, the authorization process started to look clearer, as a proper **stream**. 
       this._googleAuth = googleAuth;
       this.zone.run(() =&gt; this.handleSuccessLogin(authResponse));
     });
-}</pre>
+}
+```
 
 ### 3.4 simple functions with RxJS &#8220;do" operator
 
 Now, the code is left with an assignment and attaching a listener. For these operations, the RxJs &#8220;**do**" operator is a nice fit. The &#8220;do" operator is good for intercepting in a stream in order to run some code and get back to the original stream with the observable. According to the [docs of &#8220;do"](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-do), it is concerned as a &#8220;side effect" - which perhaps is a good candidate for moving this code later to the ngrx/effects layer. This is the final refactored &#8220;**loadAuth()**" function ([full code commit](https://github.com/orizens/echoes-ng2/blob/4ee45bf75c1e0fe8f69464f9d4470d612779f911/src/app/core/services/authorization.service.ts)):
 
-<pre class="lang:default decode:true">loadAuth() {
+```typescript
+loadAuth() {
     // attempt to SILENT authorize
     this.gapiLoader
       .load('auth2')
@@ -177,7 +186,8 @@ Now, the code is left with an assignment and attaching a listener. For these ope
       .subscribe((googleUser: GoogleAuthCurrentUser) =&gt; {
         this.zone.run(() =&gt; this.handleSuccessLogin(googleUser));
       });
-  }</pre>
+  }
+```
 
 ## Conclusions From Refactoring Code Using RxJs
 

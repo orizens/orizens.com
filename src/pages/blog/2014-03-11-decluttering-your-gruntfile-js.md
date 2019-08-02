@@ -41,7 +41,8 @@ While I was working on creating a build task, I've found out that this structure
 
 First, I created an empty object and named it "gruntConfig".
 
-<pre class="brush:js">var gruntConfig = {};</pre></p> 
+```typescript
+ 
 
 ## 2nd Step - Divide configuration to modules
 
@@ -67,7 +68,8 @@ It turned to be quite an easy and small code to write, so I ended up writing a c
   
 Then, I initialized grunt with:
 
-<pre class="brush:js">grunt.initConfig(gruntConfig);</pre></p> 
+```typescript
+ 
 
 ## Conclusion - Enlightenment
 
