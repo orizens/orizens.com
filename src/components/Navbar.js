@@ -9,7 +9,7 @@ import NavbarItem from './NavbarItem';
 const navItems = [
   {
     label: 'Blog',
-    link: 'http://orizens.com'
+    link: '/'
   },
   {
     label: 'About',
@@ -24,24 +24,28 @@ const navItems = [
     link: '#',
     items: [
       {
+        label: 'Browse All Tags',
+        link: '/tags'
+      },
+      {
         label: 'Angular Articles Series',
-        link: '/angular-2-article-series'
+        link: '/tags/angular-2-article-series'
       },
       {
         label: 'NgRx',
-        link: '/categories/ngrx'
+        link: '/tags/categories/ngrx'
       },
       {
         label: 'RxJS',
-        link: '/categories/rxjs'
+        link: '/tags/categories/rxjs'
       },
       {
         label: 'Testing',
-        link: '/categories/testing'
+        link: '/tags/categories/testing'
       },
       {
         label: 'Typescript',
-        link: '/categories/typescript'
+        link: '/tags/categories/typescript'
       }
     ]
   },
