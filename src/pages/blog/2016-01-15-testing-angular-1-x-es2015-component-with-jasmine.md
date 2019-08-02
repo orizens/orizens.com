@@ -28,9 +28,9 @@ In the previous article, I wrote about how to <a href="http://orizens.com/wp/top
 
 _tldr; the test code can be found <a href="https://github.com/orizens/echoes/blob/9e4cd2acfa5b389a9d9e193eab9221725376408a/src/components/youtube-videos/youtube-videos.component.spec.js" target="_blank">here</a>._
 
-Apart from setting up karma as I mentioned in the previous article, I found that it is necessary to define the relevant transforms that the browserify task is using (and rather not &#8220;plugins" as i've written before) in karma's configuration.
+Apart from setting up karma as I mentioned in the previous article, I found that it is necessary to define the relevant transforms that the browserify task is using (and rather not "plugins" as i've written before) in karma's configuration.
 
-Since I'm using several transforms, in particularly - the &#8220;stringify" transform to load html files as strings, the karma configuration file now includes:
+Since I'm using several transforms, in particularly - the "stringify" transform to load html files as strings, the karma configuration file now includes:
 
 ```typescript
 {
@@ -103,7 +103,7 @@ export let YoutubeVideosComponent = {
 
 ```
 
-The **YoutubeVideos** component is a **smart component**, responsible for displaying a &#8220;wall" of media cards, originated in a youtube search api request.
+The **YoutubeVideos** component is a **smart component**, responsible for displaying a "wall" of media cards, originated in a youtube search api request.
 
 First, to allow ES2015 new variables declarations, I need to define <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">&#8216;use strict'</a>. Afterwards, the code imports the relevant component and starts a describe block where I define variables that will be used during the tests:
 
@@ -118,15 +118,15 @@ describe('Youtube Videos', () => {
 	let mockPlaylistItem = {};
 ```
 
-Next, inside the &#8220;**describe**" block, comes two definitions of &#8220;**beforeEach**" blocks. The first, defines a mocked module for testing the &#8220;**youtube-videos**" module.
+Next, inside the "**describe**" block, comes two definitions of "**beforeEach**" blocks. The first, defines a mocked module for testing the "**youtube-videos**" module.
 
-The 2nd, is a setup that will run for **every** test (&#8220;it()") inside this describe block. Since it's a smart component, it uses core services of the app that are injected to the controller of the component. These should be mocked since we really don't want to invoke these services and, i.e,  calling youtube api for every test.
+The 2nd, is a setup that will run for **every** test ("it()") inside this describe block. Since it's a smart component, it uses core services of the app that are injected to the controller of the component. These should be mocked since we really don't want to invoke these services and, i.e,  calling youtube api for every test.
 
-For mocking the services, I'm using jasmine's **<a href="http://jasmine.github.io/2.3/introduction.html#section-Spies:_<code>createSpy</code>" target="_blank">&#8220;createSpyObj"</a>**, which create a mocked object with the set of &#8220;methods" that is passed in the 2nd argument as an array. These methods are defined as trackable functions which I can test and &#8220;spy" later.
+For mocking the services, I'm using jasmine's **<a href="http://jasmine.github.io/2.3/introduction.html#section-Spies:_<code>createSpy</code>" target="_blank">"createSpyObj"</a>**, which create a mocked object with the set of "methods" that is passed in the 2nd argument as an array. These methods are defined as trackable functions which I can test and "spy" later.
 
-After setting up the spies for the injected services, I'm creating a new instance of the component's controller. The **actual function** is passed as an argument - that is part of the api of <a href="https://docs.angularjs.org/api/ngMock/service/$controller" target="_blank">&#8220;$controller"</a> mock service, as well as the mocked services are passed for this controller.
+After setting up the spies for the injected services, I'm creating a new instance of the component's controller. The **actual function** is passed as an argument - that is part of the api of <a href="https://docs.angularjs.org/api/ngMock/service/$controller" target="_blank">"$controller"</a> mock service, as well as the mocked services are passed for this controller.
 
-During the actual test, the **&#8220;constructor"** function of &#8220;**YoutubeVideosCtrl**" is injected with the spies that are passed rather than the real services.
+During the actual test, the **"constructor"** function of "**YoutubeVideosCtrl**" is injected with the spies that are passed rather than the real services.
 
 ```typescript
 beforeEach(angular.mock.module('youtube-videos'));
@@ -159,9 +159,9 @@ beforeEach(angular.mock.module('youtube-videos'));
 	}));
 ```
 
-That's the code needed for the &#8220;**beforeEach**" phase. Now, we can start writing the actual tests for the controller.
+That's the code needed for the "**beforeEach**" phase. Now, we can start writing the actual tests for the controller.
 
-Notice how I refer to a &#8220;**search**" function that i'm expecting to exist on the YoutubeSearch **spy**. As part of this component behaviour, I expect the &#8220;search" method to be invoked only once if there are no items (videos) for the component to render.
+Notice how I refer to a "**search**" function that i'm expecting to exist on the YoutubeSearch **spy**. As part of this component behaviour, I expect the "search" method to be invoked only once if there are no items (videos) for the component to render.
 
 ```typescript
 it('search youtube once when it loads if there are no items to render', () => {
@@ -172,7 +172,7 @@ it('search youtube once when it loads if there are no items to render', () => {
 
 In order to test the opposite case, I took a different approach.
 
-I copied an array of video items to &#8220;**YoutubeSearch.items"** property to mock a populated property, after a &#8220;**search**" response. Then, I create again a new instance of the YoutubeVideos controller, expecting the **&#8220;YoutubeSearch.search"** function not to be called. Eventually, the count of calls for the &#8220;**search**" function should be still 1.
+I copied an array of video items to "**YoutubeSearch.items"** property to mock a populated property, after a "**search**" response. Then, I create again a new instance of the YoutubeVideos controller, expecting the **"YoutubeSearch.search"** function not to be called. Eventually, the count of calls for the "**search**" function should be still 1.
 
 ```typescript
 it('should not search when it loads if there are items to render', () => {
@@ -187,11 +187,11 @@ it('should not search when it loads if there are items to render', () => {
 });
 ```
 
-For testing methods directly on the controller's instance, I can refer to the &#8220;**ctrl**" variable which hold a reference to it.
+For testing methods directly on the controller's instance, I can refer to the "**ctrl**" variable which hold a reference to it.
 
-In the 2nd test described below, I'm testing the &#8220;**playPlaylist**" method which supposed to invoke a promise based service. The &#8220;**getPlaylist**" method has been mocked in the &#8220;beforeEach" block, and suppose to return a mocked promise. That, in order to test that the &#8220;**YoutubePlayerSettings**" is expected to be called once as a reaction to a resolved promise.
+In the 2nd test described below, I'm testing the "**playPlaylist**" method which supposed to invoke a promise based service. The "**getPlaylist**" method has been mocked in the "beforeEach" block, and suppose to return a mocked promise. That, in order to test that the "**YoutubePlayerSettings**" is expected to be called once as a reaction to a resolved promise.
 
-In order to &#8220;invoke" the promise chain, we need to instruct angular to **digest** the changes, an only then, we can expect to write assertions.
+In order to "invoke" the promise chain, we need to instruct angular to **digest** the changes, an only then, we can expect to write assertions.
 
 ```typescript
 it('should queue and play video', () => {

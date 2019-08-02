@@ -21,7 +21,7 @@ tags:
   - gulpjs
   - web framework
 ---
-At <a href="http://tikalk.com" target="_blank">Tikal</a>, we are conducting 2 times a year something called &#8220;Fuseday" - a day where we choose some technologies to experiment with while building a small application. In this post, i'de like to share my group's focus on Google's Web Starter Kit - it's pros and cons.
+At <a href="http://tikalk.com" target="_blank">Tikal</a>, we are conducting 2 times a year something called "Fuseday" - a day where we choose some technologies to experiment with while building a small application. In this post, i'de like to share my group's focus on Google's Web Starter Kit - it's pros and cons.
   
 <!--more-->
 
@@ -49,7 +49,7 @@ After briefly reading the introduction page, I downloaded the zip file - which c
   1. 2 html templates for starting a project
   2. A ready to use gulpfile with configuration for running builds, server task and more
   3. a style guide directory - which includes a demonstration of the various ui elements included in this kit
-  4. sass source files - for tweaking the settings of the ui elements in order to create a different &#8220;skin"
+  4. sass source files - for tweaking the settings of the ui elements in order to create a different "skin"
 
 as a foot note - after reading carefully the documentation of this kit, I discovered that you can clone the repo of this kit and follow a more organized procedure in order to get started.
 
@@ -88,12 +88,12 @@ The css classes definitions follows the nice BEM concept - while keeping the sem
 
 Starting to code with react.js was a challenge. I did find the tutorial on their website quite easy easy to follow. Still, the syntax feels a little bit awkward, but the overall concept may free your mind and lead you to think - component style.
 
-I do see the benefit gained from using react in large scale app like facebook, however - one has to design his component slowly as well as understand and getting to know react.js deeper. The data binding feature (let it be &#8220;state" - future binding - or &#8220;props") works as expected.
+I do see the benefit gained from using react in large scale app like facebook, however - one has to design his component slowly as well as understand and getting to know react.js deeper. The data binding feature (let it be "state" - future binding - or "props") works as expected.
 
-I was missing the good old html templating integration in react. Also, the use of almost html syntax inside javascript did led to confusion when you need to add attributes - and you need to start thinking again in js terms. i.e, if you need to add the attribute of a class to an &#8220;html" template in a react component, you would have to address it as &#8220;className" (as in pure javascript).
+I was missing the good old html templating integration in react. Also, the use of almost html syntax inside javascript did led to confusion when you need to add attributes - and you need to start thinking again in js terms. i.e, if you need to add the attribute of a class to an "html" template in a react component, you would have to address it as "className" (as in pure javascript).
 
 ## Gulp.js
 
-Although gulp.js was intended to be investigated, we didn't quite reach it too much. We used it mostly for local server solution rather than its build task - which was broken (on Mac). Overall, it's &#8220;watch" task and live reload worked as expected and with any code change, the browser refreshed automatically.
+Although gulp.js was intended to be investigated, we didn't quite reach it too much. We used it mostly for local server solution rather than its build task - which was broken (on Mac). Overall, it's "watch" task and live reload worked as expected and with any code change, the browser refreshed automatically.
 
 You can find the <a href="https://github.com/orizens/fuse-jun14-loitfos-client" target="_blank">sources and code for the POC at github</a>.

@@ -1,6 +1,6 @@
 ---
 id: 456
-title: 'Backbone.View Patterns - The Relationship with &#8220;Model"'
+title: 'Backbone.View Patterns - The Relationship with "Model"'
 date: 2012-07-09T06:39:21+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -52,17 +52,17 @@ var ExpensesView = Backbone.View.extend({
 var userExpenses = new ExpensesView({ model: myMoneyData });
 ```
 
-Notice that I have also made another &#8220;living" connection between the model and view. This is also a common use of tying a model to view.
+Notice that I have also made another "living" connection between the model and view. This is also a common use of tying a model to view.
 
-## Model &#8220;Change" Event
+## Model "Change" Event
 
-Another key in the relationship of Model & View is tying the view to the model's change event. what is a &#8220;change" event?
+Another key in the relationship of Model & View is tying the view to the model's change event. what is a "change" event?
   
-Whenever a model's data is updated - let it be by a the &#8220;fetch" method or manually by some other code, the model's fires a custom event &#8220;change" - much like a simple jquery custom event.
+Whenever a model's data is updated - let it be by a the "fetch" method or manually by some other code, the model's fires a custom event "change" - much like a simple jquery custom event.
   
 So, a common pattern for a view is to listen to a model's change event and invoke the render method to reflect the changes in the DOM & the UI.
   
-One doesn't necessarily has to re-render the whole view. you can choose to re-render only parts of the view with other dedicated render methods - and for this listening to specific &#8220;change" events would also fit:
+One doesn't necessarily has to re-render the whole view. you can choose to re-render only parts of the view with other dedicated render methods - and for this listening to specific "change" events would also fit:
 
 ```typescript
 var ExpensesView = Backbone.View.extend({
@@ -77,7 +77,7 @@ var ExpensesView = Backbone.View.extend({
 
 ## Model to Template
 
-One of the simplest uses of models and views is populating a view's template with the model's data. The [&#8220;render"](http://orizens.com/wp/topics/backbone-view-patterns-the-render-method/ "Backbone.View Patterns – the “render” method") method compiles both template and model's json data:
+One of the simplest uses of models and views is populating a view's template with the model's data. The ["render"](http://orizens.com/wp/topics/backbone-view-patterns-the-render-method/ "Backbone.View Patterns – the “render” method") method compiles both template and model's json data:
 
 ```typescript
 var SomeView = Backbone.View.extend({

@@ -23,15 +23,15 @@ tags:
   - javascript
   - patterns
 ---
-Backbone.View doesn't implement the &#8220;render" method. According to [Backbone's Documentation](http://documentcloud.github.com/backbone/#View-render "Backbone Documentation"):
+Backbone.View doesn't implement the "render" method. According to [Backbone's Documentation](http://documentcloud.github.com/backbone/#View-render "Backbone Documentation"):
   
-&#8220;Backbone is agnostic with respect to your preferred method of HTML templating".
+"Backbone is agnostic with respect to your preferred method of HTML templating".
   
 So, when it comes to rendering a collection of items (or simply, a backbone collection), there's a need to implement a method for it. In this post, I'm sharing the best practices I learned when it comes to rendering collections with Backbone.
   
 <!--more-->
 
-## The &#8220;renderCollection" method
+## The "renderCollection" method
 
 For rendering views we can simply add a new method to Backbone.View that will take care of rendering a Backbone.Collection instance.
 
@@ -68,21 +68,21 @@ There's a need for a container view to hold all views of the collection.
   
 This can be a Backbone.View object that will get the collection as a reference and will render <a href="http://orizens.com/wp/topics/backbone-view-patterns-how-why-to-use-subviews/" title="Backbone.View Patterns – How & Why Use Subviews" target="_blank">subviews</a> into it.
   
-The &#8220;options.target" (line 3) allows us to specify a certain &#8220;target" element to append the views to.
+The "options.target" (line 3) allows us to specify a certain "target" element to append the views to.
 
 ### Tracking Views
 
 We need to track the instances of these views in order to prevent memory leaks when destroying the container view.
   
-The &#8220;reset views" block (line 6), ensures to clean any old views that were rendered the last time or creates a new placeholder for the new views.
+The "reset views" block (line 6), ensures to clean any old views that were rendered the last time or creates a new placeholder for the new views.
   
-The &#8220;disposeViews" method, simply cleans (the safe way) any subviews that were rendered before.
+The "disposeViews" method, simply cleans (the safe way) any subviews that were rendered before.
 
 ### Rendering The Collection
 
 Finally, the method iterates the collection and uses 2 methods to render each view & model within the collection.
   
-The &#8220;_renderView" method renders a view to any given model as well as appending it to the selected &#8220;target" that was configured in the &#8220;options" object.
+The "_renderView" method renders a view to any given model as well as appending it to the selected "target" that was configured in the "options" object.
 
 ```typescript
 _renderView: function(model) {
@@ -93,7 +93,7 @@ _renderView: function(model) {
 
 ```
 
-This method uses the &#8220;createView" method which instantiates a view to a given model and optional arguments (using a regular Backbone.View constructor). The newly created instance is added to the internal array (for tracking) of subviews.
+This method uses the "createView" method which instantiates a view to a given model and optional arguments (using a regular Backbone.View constructor). The newly created instance is added to the internal array (for tracking) of subviews.
 
 ```typescript
 createView: function(model, options) {
@@ -112,12 +112,12 @@ createView: function(model, options) {
 
 Eventually, when we want to destroy the views created with the collection, we would have to clean the references to the instances.
   
-To achieve that, we will use the &#8220;disposeViews" method which will take care of calling the &#8220;destroy" and &#8220;dispose" method for each view.
+To achieve that, we will use the "disposeViews" method which will take care of calling the "destroy" and "dispose" method for each view.
   
-The &#8220;disposeViews" will also have to reset the temporary &#8220;this._subviews" array that holds references to the created views instances.
+The "disposeViews" will also have to reset the temporary "this._subviews" array that holds references to the created views instances.
 
 ### What's Next?
 
-Today (March 21st, 2013), Backbone version 1.0.0 has been released. Backbone.Collection object has been revamped with a <a href="http://backbonejs.org/#Collection-set" title="Backbone.Collection "set" Documentation">&#8220;set" method</a> (which replaced the &#8216;update' method). This method performs a &#8220;smart" update to an already existing collection, while removing and adding relevant data - as well as firing the relevant events &#8220;add" and &#8220;remove".
+Today (March 21st, 2013), Backbone version 1.0.0 has been released. Backbone.Collection object has been revamped with a <a href="http://backbonejs.org/#Collection-set" title="Backbone.Collection "set" Documentation">"set" method</a> (which replaced the &#8216;update' method). This method performs a "smart" update to an already existing collection, while removing and adding relevant data - as well as firing the relevant events "add" and "remove".
   
 In future posts, I will elaborate on working with collection views in my media center project - <a href="http://echotu.be" title="Echoes Media Center - the new experience for media listening " target="_blank">Echoes Media Center</a> - an open source media center/player UX & UI to youtube media for personal laptops, or your living room TV.

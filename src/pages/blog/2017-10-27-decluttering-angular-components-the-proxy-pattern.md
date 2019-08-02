@@ -48,11 +48,11 @@ export class PlaylistViewComponent implements OnInit {
 }
 ```
 
-The above code is a snippet of the &#8220;**playlist-view**" component of Echoes Player. This component purpose is to display a YouTube playlist items and more metadata. A user can play or queue the whole playlist as well as play or queue specific media items.
+The above code is a snippet of the "**playlist-view**" component of Echoes Player. This component purpose is to display a YouTube playlist items and more metadata. A user can play or queue the whole playlist as well as play or queue specific media items.
 
 The injection in this component's constructor is quite verbose:
 
-  1. The **Store** is injected in order to connect the &#8220;nowPlaylist" store to this component,
+  1. The **Store** is injected in order to connect the "nowPlaylist" store to this component,
   2. The **NowPlaylistActions** is injected to allow playlist related functionality: queue, play etc.
   3. The **appPlayerService** is injected to allow interaction with the player's api
   4. the **nowPlaylistService** is injected to allow youtube playlist related api calls
@@ -115,7 +115,7 @@ export class PlaylistViewComponent implements OnInit {
 }
 ```
 
-Notice how the constructor injects the PlaylistProxy and the ActivatedRoute only. This makes it easier to test this component and mock only these (even the route in the case shouldn't be too hard to mock). We need to mock the route with  &#8220;**RouterTestingModule**" and the proxy with the mocked &#8220;**playlistProxySpy**&#8220;:
+Notice how the constructor injects the PlaylistProxy and the ActivatedRoute only. This makes it easier to test this component and mock only these (even the route in the case shouldn't be too hard to mock). We need to mock the route with  "**RouterTestingModule**" and the proxy with the mocked "**playlistProxySpy**":
 
 ```typescript
 TestBed.configureTestingModule({
@@ -179,7 +179,7 @@ export class PlaylistViewComponent implements OnInit {
 }
 ```
 
-Each method of this component delegates to the relevant function inside the PlaylistProxy. Testing these methods is quite easy and mocking these is simply achieved using jasmine's &#8220;**createSpyObj**&#8220;:
+Each method of this component delegates to the relevant function inside the PlaylistProxy. Testing these methods is quite easy and mocking these is simply achieved using jasmine's "**createSpyObj**":
 
 ```typescript
 playlistProxySpy = jasmine.createSpyObj('playlistProxySpy', [
@@ -197,9 +197,9 @@ With this spy we can easily check whether function was invoke, which parameters 
 
 ## Beyond: The Proxy to the app's proxies
 
-The Proxy pattern goes beyond a single component. The same pattern (problem) carries through to the entire app - the &#8220;**NowPlaylistService**&#8220;, the &#8220;**AppPlayerService**" and other services are in use in several components around the application.
+The Proxy pattern goes beyond a single component. The same pattern (problem) carries through to the entire app - the "**NowPlaylistService**", the "**AppPlayerService**" and other services are in use in several components around the application.
 
-I.e, the &#8220;**playVideo**" functionality is a core action in Echoes Player. The method used in the playlistProxy eventually dispatch two actions:
+I.e, the "**playVideo**" functionality is a core action in Echoes Player. The method used in the playlistProxy eventually dispatch two actions:
 
 ```typescript
 playVideo(media: GoogleApiYouTubeVideoResource) {
@@ -210,12 +210,12 @@ playVideo(media: GoogleApiYouTubeVideoResource) {
 
 This method relies on the store implementation to make a video play. To reuse these lines across the application, there could be few solutions:
 
-  1. Expose the &#8220;**PlaylistProxy**" as an application wide service
-  2. Create a dedicated &#8220;**AppPlayer**" proxy (selected)
+  1. Expose the "**PlaylistProxy**" as an application wide service
+  2. Create a dedicated "**AppPlayer**" proxy (selected)
 
-Since the &#8220;**PlaylistView**" is a feature module I chose to go with the second approach.
+Since the "**PlaylistView**" is a feature module I chose to go with the second approach.
 
-Similar to server-client approach, where client request data from the server using an api - &#8220;**/api/playlist/41da6521fdafs41**" - I decided to create an app wide &#8220;**AppPlayerApi**&#8220;. All calls related to interact with the app player actions should use this api and not interact directly with the store. Again, this allows the code that handles these to be reused and managed in once object.
+Similar to server-client approach, where client request data from the server using an api - "**/api/playlist/41da6521fdafs41**" - I decided to create an app wide "**AppPlayerApi**". All calls related to interact with the app player actions should use this api and not interact directly with the store. Again, this allows the code that handles these to be reused and managed in once object.
 
 With this in mind, i'm introducing the proxy pattern as another layer for exposing the app's services to feature modules - while consuming it via a feature's proxy.
 
@@ -263,9 +263,9 @@ Using this proxy approach promotes towards a reusable design for services and ap
 
 This pattern may not solve other problems, however, it does instruct to think [**DRY**](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) and organize code in a way that makes sense and intuitive to use and search for.
 
-This pattern can be similarly used for the &#8220;**Store**" layer - which benefits in not relying on a specific store implementation and also make it easier to test and mock the State layer.
+This pattern can be similarly used for the "**Store**" layer - which benefits in not relying on a specific store implementation and also make it easier to test and mock the State layer.
 
-I.e, instead of injecting the &#8220;**Store**" and selecting a certain slice using ngrx as in:
+I.e, instead of injecting the "**Store**" and selecting a certain slice using ngrx as in:
 
 ```typescript
 export class PlaylistProxy {

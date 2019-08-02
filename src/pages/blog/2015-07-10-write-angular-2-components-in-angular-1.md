@@ -82,7 +82,7 @@ In order to user youtube-videos module as a direcive, I defined it as a quite si
 
 Although, the code is quite minimal, during time, I thought that it can be defined better - better to readiblility and for writing less code.
 
-After reading Pascal Precht post &#8220;<a href="http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html" target="_blank">Even better ES5 code for Angular (+2)</a>&#8220;, I was quite happy to find out that syntactical improvments for ES5 have been integrated to the latest alpha version of Angular (+2). These improvments goes back to a more minimal code defintion in Angular (+2), while not having the need for annotations or a more complex code for creating an &#8220;annotation" object for each purpose.
+After reading Pascal Precht post "<a href="http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html" target="_blank">Even better ES5 code for Angular (+2)</a>", I was quite happy to find out that syntactical improvments for ES5 have been integrated to the latest alpha version of Angular (+2). These improvments goes back to a more minimal code defintion in Angular (+2), while not having the need for annotations or a more complex code for creating an "annotation" object for each purpose.
 
 ### Angular (+2) Component with Angular 1
 
@@ -123,15 +123,15 @@ The code above works seemlessy the same of the AngularJS directive code, that wi
 
 Since the angular2to1 shim is in early stages, I have taken few assumtptions with it:
 
-  1. a component is an element by default - unless the &#8220;selector" defines it as an attribute
+  1. a component is an element by default - unless the "selector" defines it as an attribute
   2. Currently, it supports an element and an attribute (no support for nested selectors, class selectors and multiple selectors)
-  3. the resulted directive definition always use: &#8220;controller **as** vm"
-  4. &#8220;bindToController" is always true (currently)
+  3. the resulted directive definition always use: "controller **as** vm"
+  4. "bindToController" is always true (currently)
   5. Each components is defined with a private scope (scope: {}) by default (can be changed)
   6. template syntax is still AngularJS (that's why I currently prefer currently to use the templateUrl property"
   7. the &#8216;appInjector' currently uses strings rather than objects (which defers form Angular (+2))
-  8. &#8220;constructor" in Class annotation, can be a reference to an actual function (rather than a string)
-  9. the custom element is not &#8220;replaced" after render - so actually, the &#8220;replace" property of AngularJS directive is false by default (it can be changed, see below).
+  8. "constructor" in Class annotation, can be a reference to an actual function (rather than a string)
+  9. the custom element is not "replaced" after render - so actually, the "replace" property of AngularJS directive is false by default (it can be changed, see below).
 
 Also important to note that the **angular.Component** defintion returns an object which exposes the **directive** definition object:
 
@@ -147,7 +147,7 @@ console.log(myAppComponent._directive); // access to the _directive object defin
 
 ```
 
-This allows you to still be able to still define AngularJS directive properties (such as &#8220;replace: true" for templates and the directive element).
+This allows you to still be able to still define AngularJS directive properties (such as "replace: true" for templates and the directive element).
 
 ### Pros
 
@@ -163,7 +163,7 @@ I realize the migration depends on other factors as well. However, taking few st
 
 Embracing the CommonJs module approach - with browserify (<a href="http://benclinkinbeard.com/talks/2014/ng-conf/" target="_blank">as described by Ben Clinckinbeard</a>) or webpack), takes the code to plain javascript functions that can be used regardless the framework you use.
 
-Using the &#8220;controllerAs" enhancements (along with bindToController) directs to write the resulted code of the controller as javascript function, agnostic to any other angular or framework.
+Using the "controllerAs" enhancements (along with bindToController) directs to write the resulted code of the controller as javascript function, agnostic to any other angular or framework.
 
 Keeping the definition of the component in a seperate file (or following Ben's slide to work with browserifiy) will help in following the seperation of concerns.
 

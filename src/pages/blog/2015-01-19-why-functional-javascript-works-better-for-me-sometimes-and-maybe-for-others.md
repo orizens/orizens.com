@@ -33,9 +33,9 @@ The syntax is readable, simple, familiar (as in actionscript), however - the nee
 
 Being a dynamic language with which, one can do everything on the fly - made it to be the favourite tool for web apps and a rising force for ligth rich internet applications (remember <a title="RIA - rich internet application" href="https://en.wikipedia.org/wiki/Rich_Internet_application" target="_blank">RIA</a>?).
 
-After discovering how prototype works in javascript (it's a function&#8230;) - I really getting used to this idea minimalism - using &#8220;function" - you can define a reusable class, singleton, method and quite everything else that is needed.
+After discovering how prototype works in javascript (it's a function&#8230;) - I really getting used to this idea minimalism - using "function" - you can define a reusable class, singleton, method and quite everything else that is needed.
 
-So, with jquery around, teaching everyone the concept of &#8220;chaining" functions - without knowing, myself and probably everyone that used jquery, was actually writing <a title="functional programming" href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank">functional javascript code</a>.
+So, with jquery around, teaching everyone the concept of "chaining" functions - without knowing, myself and probably everyone that used jquery, was actually writing <a title="functional programming" href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank">functional javascript code</a>.
 
 Another common use case of functional programming in javascript is <a title="Function Closure" href="https://bonsaiden.github.io/JavaScript-Garden/#function.closures" target="_blank">closure</a>: in some of the examples of closures, there is a function that returns a function (again, minimalism at its best, imho):
 
@@ -91,7 +91,7 @@ musicTracks
 
 ### Safer Context
 
-The following (famous problem) code will assign the same value of &#8220;i" to every function:
+The following (famous problem) code will assign the same value of "i" to every function:
 
 ```typescript
 for (var i = 0; i < tracks.length; i++) {
@@ -101,7 +101,7 @@ for (var i = 0; i < tracks.length; i++) {
 };
 ```
 
-That's because the &#8220;for" loop run all assignments of the &#8220;onPlay" function in the same execution context. To solve that, prior to modern es5/6 solutions, you could use private context for each (using a closure):
+That's because the "for" loop run all assignments of the "onPlay" function in the same execution context. To solve that, prior to modern es5/6 solutions, you could use private context for each (using a closure):
 
 ```typescript
 for (var i = 0; i < tracks.length; i++) {
@@ -113,7 +113,7 @@ for (var i = 0; i < tracks.length; i++) {
 };
 ```
 
-With functional javascript, you would use a simple &#8220;forEach":
+With functional javascript, you would use a simple "forEach":
 
 ```typescript
 tracks.forEach(function(track, index){
@@ -125,7 +125,7 @@ tracks.forEach(function(track, index){
 
 ### Documented by Nature
 
-This pro perhaps should go with the &#8220;readable and declarative" title, however, I think it should deserve a title of its own - since sometimes, writing functions and naming them appropriately (name is why a function exists), saved those lines of comments:
+This pro perhaps should go with the "readable and declarative" title, however, I think it should deserve a title of its own - since sometimes, writing functions and naming them appropriately (name is why a function exists), saved those lines of comments:
 
 ```typescript
 function fillArrayWithNumbersBy(size) {

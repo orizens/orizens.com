@@ -46,14 +46,14 @@ Angular (+2) data binding is by default one-way binding. In order to update a mo
 ```typescript
 
 
-This requires you to implement a &#8220;resetPageToken()" function in the component's class.
+This requires you to implement a "resetPageToken()" function in the component's class.
 
-With AngularJS, in order to track changes in ng-model while avoiding using the non-standard &#8220;scope", you would can do something similar - ng-change.
+With AngularJS, in order to track changes in ng-model while avoiding using the non-standard "scope", you would can do something similar - ng-change.
 
 ```typescript
 
 
-This as well, requires you to implement a &#8220;resetPageToken()" function on the controller of this template. Following the first 5 steps, if you're using es2015 classes syntax for controllers - that will require less code to migrate when moving to Angular (+2).
+This as well, requires you to implement a "resetPageToken()" function on the controller of this template. Following the first 5 steps, if you're using es2015 classes syntax for controllers - that will require less code to migrate when moving to Angular (+2).
 
 ## Use Services To Store any State and inject it to modules
 
@@ -66,14 +66,14 @@ You should always follow the concept of injecting services to smart components -
 ```typescript
 
 
-In this case, the services are injected inside the javascript definition of &#8220;my-app" class.
+In this case, the services are injected inside the javascript definition of "my-app" class.
 
 While, injecting data as a property to reusable components:
 
 ```typescript
 
 
-In this case, &#8220;video" is a property of a class and injected via the html attribute &#8220;media".
+In this case, "video" is a property of a class and injected via the html attribute "media".
 
 ## Use ng-forward for Angular (+2) syntax in AngularJS
 

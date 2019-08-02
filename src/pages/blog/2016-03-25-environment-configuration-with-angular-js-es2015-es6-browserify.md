@@ -22,7 +22,7 @@ After converting <a href="http://github.com/orizens/echoes" target="_blank">Echo
 
 ## <!--more-->Why Environment Variables / Configuration Is Good
 
-There are many times where we need to have one place where several variables are defined, and upon its values, the app can perform operations - let it be actions, display components and more. Usually these are called environment variables. In nodejs platform, these can be access via the &#8220;**process.env.NAME\_OF\_VARIABLE**&#8220;.
+There are many times where we need to have one place where several variables are defined, and upon its values, the app can perform operations - let it be actions, display components and more. Usually these are called environment variables. In nodejs platform, these can be access via the "**process.env.NAME\_OF\_VARIABLE**".
 
 In example, the most common usage of different values are referring to the environments: production and development. It is a common practice to prefer different settings in apps in these environments.
 
@@ -32,7 +32,7 @@ Another common separate environment is test environment configuration. We might 
 
 Before I dive into the several solutions that I found, I'de like to describe the current use of environment variables in my open source project - <a href="http://echotu.be" target="_blank">Echoes Player</a>.
 
-Currently, to optimize angularjs v1.x in production, you can disable debug information. This will save your app few DOM operations like adding/changing classes - and will prevent some repaints and hopefully reflows as well. Disabling the debug information also removes certain global references such as accessing &#8220;**scope**" through &#8220;**angular.element**&#8220;. Setting the debug information to off should be applied in the &#8220;**config**" phase of the app:
+Currently, to optimize angularjs v1.x in production, you can disable debug information. This will save your app few DOM operations like adding/changing classes - and will prevent some repaints and hopefully reflows as well. Disabling the debug information also removes certain global references such as accessing "**scope**" through "**angular.element**". Setting the debug information to off should be applied in the "**config**" phase of the app:
 
 ```typescript
 function config ($compileProvider) {
@@ -52,7 +52,7 @@ During my search for an appropriate solution, I found various methods that I can
 
 ### envify
 
-<a href="https://github.com/hughsk/envify" target="_blank">envify</a> is a transform for browserify which replaces references of &#8220;**process.env.***" to a string. At first, I seemed like a really good candidate, however, its last update is a year ago and it didn't work with my current build.
+<a href="https://github.com/hughsk/envify" target="_blank">envify</a> is a transform for browserify which replaces references of "**process.env.***" to a string. At first, I seemed like a really good candidate, however, its last update is a year ago and it didn't work with my current build.
 
 ## Selected Solution
 
@@ -71,7 +71,7 @@ const currentEnvironment = process.env.ENV !== undefined ? process.env.ENV : Env
 const configuraionFile = `./src/config/${currentEnvironment}.config.js`;
 ```
 
-Later on this file, I just added the &#8220;configurationFile" path to the browserify bundler code:
+Later on this file, I just added the "configurationFile" path to the browserify bundler code:
 
 ```typescript
 let bundler = browserify({
@@ -83,9 +83,9 @@ let bundler = browserify({
 });
 ```
 
-Currently, these configuration files includes the a &#8220;config" function which is defined on the app's namespace. Although this is not the defacto way to define a separate configuration file, it is good enough for the purpose of this project. In a more scalable perspective, I would have created a file that exports a literal object or an angular module that can be consumed at config phase and then use it.
+Currently, these configuration files includes the a "config" function which is defined on the app's namespace. Although this is not the defacto way to define a separate configuration file, it is good enough for the purpose of this project. In a more scalable perspective, I would have created a file that exports a literal object or an angular module that can be consumed at config phase and then use it.
 
-This is the &#8220;**production.config.js**" that is loaded when the build process compiles the code for a release:
+This is the "**production.config.js**" that is loaded when the build process compiles the code for a release:
 
 ```typescript
 import angular from 'angular';

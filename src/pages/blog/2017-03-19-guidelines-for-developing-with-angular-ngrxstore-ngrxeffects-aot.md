@@ -22,7 +22,7 @@ tags:
   - aot
   - ngrx
 ---
-With [angular-cli tool](https://github.com/angular/angular-cli) entering RC-1, I decided to start migrating my [open source project](http://github.com/orizens/echoes-ng2) &#8220;[Echoes Player](http://github.orizens.io/echoes-ng2)" from [angular class boilerplate](https://github.com/AngularClass/angular2-webpack-starter/). Some of the code in &#8220;Echoes Player" wasn't AOT compatible. As a result, compilation logged errors to the console. In this post I'm sharing guidelines for making your [ngrx](http://github.com/ngrx) related code compatible with AOT.
+With [angular-cli tool](https://github.com/angular/angular-cli) entering RC-1, I decided to start migrating my [open source project](http://github.com/orizens/echoes-ng2) "[Echoes Player](http://github.orizens.io/echoes-ng2)" from [angular class boilerplate](https://github.com/AngularClass/angular2-webpack-starter/). Some of the code in "Echoes Player" wasn't AOT compatible. As a result, compilation logged errors to the console. In this post I'm sharing guidelines for making your [ngrx](http://github.com/ngrx) related code compatible with AOT.
 
 <!--more-->
 
@@ -47,7 +47,7 @@ There are few benefits for compiling with AOT:
 
 ### Compiling With AOT
 
-Compiling with AOT is triggered via a terminal/cmd command. The &#8220;**@angular/compiler-cli**" and the &#8220;**@angular/platform-server**" packages are required. Since i'm using the &#8220;angular-cli" tool in my project, these are already included.
+Compiling with AOT is triggered via a terminal/cmd command. The "**@angular/compiler-cli**" and the "**@angular/platform-server**" packages are required. Since i'm using the "angular-cli" tool in my project, these are already included.
 
 To compile, this command should run in the terminal:
 
@@ -59,15 +59,15 @@ To compile for production and get the benefits of minifying and others, you shou
 ```typescript
 
 
-Please note that the flag &#8220;-prod" includes compiles with AOT (thanks for [the update](https://github.com/angular/angular-cli/blob/master/CHANGELOG.md#breaking-changes-3) [@shiny](https://disqus.com/by/disqus_cCRtlEGXCj/))
+Please note that the flag "-prod" includes compiles with AOT (thanks for [the update](https://github.com/angular/angular-cli/blob/master/CHANGELOG.md#breaking-changes-3) [@shiny](https://disqus.com/by/disqus_cCRtlEGXCj/))
 
 Now, lets overview the **guidelines** that we should follow when working with **ngrx/store** and **ngrx/effects**, which will allow AOT compilation to compile without any errors.
 
 ## AOT Guidelines With ngrx
 
-In &#8220;Echoes Player", I chose to sync the store's state to the localstorage. In order to achieve that, I installed? the &#8220;ngrx-store-localstorage" npm package, which exports the &#8220;**localStorageSync()**" function. This function is supposed to be used as a middleware reducer which saves the current store's state to the localstorage with any dispatched action.
+In "Echoes Player", I chose to sync the store's state to the localstorage. In order to achieve that, I installed? the "ngrx-store-localstorage" npm package, which exports the "**localStorageSync()**" function. This function is supposed to be used as a middleware reducer which saves the current store's state to the localstorage with any dispatched action.
 
-In order to combine reducers, the &#8220;**compose**()" function from the &#8220;@ngrx/core/compose" should be used along with the &#8220;**combineReducers**" from &#8220;@ngrx/store". In the end, the compose return value should be stored in a variable:
+In order to combine reducers, the "**compose**()" function from the "@ngrx/core/compose" should be used along with the "**combineReducers**" from "@ngrx/store". In the end, the compose return value should be stored in a variable:
 
 ```typescript
 const reducers = {
@@ -80,9 +80,9 @@ const reducers = {
 const appReducer = compose(localStorageSync(Object.keys(reducers), true), combineReducers)(reducers);
 ```
 
-### Guideline #1: Using &#8220;compose" in ngrx/store
+### Guideline #1: Using "compose" in ngrx/store
 
-Normally, the &#8220;**appReducer**" which holds a reference the new composed reducer, should be used as the argument for &#8220;StoreModule.provideStore(productionReducer)" to bootstrap the store. However, that approach is not compatible with **AOT**. In order to use &#8220;**compose**" in a way that is compatible with AOT, the &#8220;appReducer" is required to be wrapped with a function which will be sent as an argument to the &#8220;**provideStore**()". This is required for the AOT compiler to statically analyze the code and compile and produce the AOT ready code.
+Normally, the "**appReducer**" which holds a reference the new composed reducer, should be used as the argument for "StoreModule.provideStore(productionReducer)" to bootstrap the store. However, that approach is not compatible with **AOT**. In order to use "**compose**" in a way that is compatible with AOT, the "appReducer" is required to be wrapped with a function which will be sent as an argument to the "**provideStore**()". This is required for the AOT compiler to statically analyze the code and compile and produce the AOT ready code.
 
 ```typescript
 const actions = []; // array of app's action classes
@@ -122,7 +122,7 @@ As a rule of thumb for AOT in general (and not just for ngrx), exported arrow fu
 
 ### Guideline #3: AOT compatible ngrx/effects
 
-I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using &#8220;**EffectsModule.run()**" which creates a provider for each effect . Since in &#8220;Echoes Player" there are few effects classes, I chose to use a dynamic creation using a simple functional &#8220;map":
+I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using "**EffectsModule.run()**" which creates a provider for each effect . Since in "Echoes Player" there are few effects classes, I chose to use a dynamic creation using a simple functional "map":
 
 ```typescript
 @NgModule({
@@ -134,7 +134,7 @@ I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxst
 export class CoreModule {}
 ```
 
-Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the &#8220;imports" array:
+Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the "imports" array:
 
 ```typescript
 const AppEffectModules = [

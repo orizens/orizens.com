@@ -32,12 +32,12 @@ Bitbucket is a cloud hosting for repositories (same concept as Github). It can h
 
 Creating a repository is quite easy.
   
-After login to bitbucket, there's a &#8220;create" button on the top.
+After login to bitbucket, there's a "create" button on the top.
   
 The screen will show a form for creating a new repository. There are 2 important fields to notice:
 
-  1. Make sure the &#8220;Access Level" field with the checkbox of &#8220;This is a private repository" is checked.
-  2. Make sure the &#8220;Respository type" is selected with the option of &#8220;Git"
+  1. Make sure the "Access Level" field with the checkbox of "This is a private repository" is checked.
+  2. Make sure the "Respository type" is selected with the option of "Git"
 
 [<img class="aligncenter size-full wp-image-632" alt="new-repo" src=".../../img/uploads/2013/11/new-repo.png" width="635" height="644" srcset=".../../img/uploads/2013/11/new-repo.png 635w, .../../img/uploads/2013/11/new-repo-295x300.png 295w" sizes="(max-width: 635px) 100vw, 635px" />](.../../img/uploads/2013/11/new-repo.png)
 
@@ -47,7 +47,7 @@ On the right, you'll find the link to this repository (you'll need that later to
   
 <img class="aligncenter size-full wp-image-633" alt="repo-link" src=".../../img/uploads/2013/11/repo-link.png" width="461" height="542" srcset=".../../img/uploads/2013/11/repo-link.png 461w, .../../img/uploads/2013/11/repo-link-255x300.png 255w" sizes="(max-width: 461px) 100vw, 461px" />
 
-## Step 2 - Setup bitbucket to your git with &#8220;git remote"
+## Step 2 - Setup bitbucket to your git with "git remote"
 
 If you ever worked with git and github, pushing new commits to github was done using something like:
 
@@ -58,18 +58,18 @@ If you ever worked with git and github, pushing new commits to github was done u
 
 
   
-This means that git will push the current local commited branch (in this case - &#8220;master")
+This means that git will push the current local commited branch (in this case - "master")
   
 Amongst its many features, Git can have several destinations to which a code can be pushed.
   
-It is called &#8220;git remote" - a remote repository to which a code can be pushed.
+It is called "git remote" - a remote repository to which a code can be pushed.
   
 To setup such a remote we need to open the command line/terminal within the folder of the git we want to setup, and use:
 
 ```typescript
 
 
-I.e, here we setup a git remote with the nickname of &#8220;orizens" to a certain bitbucket url:
+I.e, here we setup a git remote with the nickname of "orizens" to a certain bitbucket url:
 
 ```typescript
 
@@ -78,12 +78,12 @@ That's it!
 
 ## Step 3 - Push Git to Bitbucket
 
-Now, in order to push the master branch to the newely defined remote repository &#8220;orizens", we'll simply use:
+Now, in order to push the master branch to the newely defined remote repository "orizens", we'll simply use:
 
 ```typescript
 
 
-You can do the same for &#8220;fetch" operation.
+You can do the same for "fetch" operation.
   
 <!--RndAds-->
 
@@ -96,4 +96,4 @@ I.e, in order to see the remotes attached to a certain repository, you can use:
 ```typescript
 
 
-The &#8220;-v" switch is optional, and will also print to the console/terminal the url of each remote.
+The "-v" switch is optional, and will also print to the console/terminal the url of each remote.

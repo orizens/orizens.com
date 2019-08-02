@@ -13,13 +13,13 @@ categories:
   - resources
   - services
 ---
-[Plunker](http://plunker.no.de/) is another &#8220;jsfiddle" competitor.
+[Plunker](http://plunker.no.de/) is another "jsfiddle" competitor.
 
 ## Why you should try it?
 
   1. it's editor has a cool elegant design
   2. is uses - [ACE/Cloud9](http://ace.ajax.org/) as its [code editor](http://plunker.no.de/edit) (based on mozilla's bespin open source project).
   3. its uses twitter's bootstrap for css.
-  4. it has built-in boilerplates for starting your own &#8220;plunker" such as - backbone, angular, bootstrap etc.
+  4. it has built-in boilerplates for starting your own "plunker" such as - backbone, angular, bootstrap etc.
   5. it has a live preview pane which shows the review of the code
   6. it also has a nice [restful api](http://plunker.no.de/documentation) for developers

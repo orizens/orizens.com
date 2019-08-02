@@ -57,15 +57,15 @@ MyApp/
 
 The main modules of the application environment are placed each in its own sandbox.
   
-&#8220;src" holds the source code for the client. All 3rd party libraries and app code goes in here.
+"src" holds the source code for the client. All 3rd party libraries and app code goes in here.
   
-&#8220;grunt" holds organized separated configuration for each grunt module as I wrote in <a href="http://orizens.com/wp/topics/decluttering-your-gruntfile-js/" title="Decluttering your Gruntfile.js (organizing grunt)" target="_blank">declutter Gruntfile.js using grunt.js</a>.
+"grunt" holds organized separated configuration for each grunt module as I wrote in <a href="http://orizens.com/wp/topics/decluttering-your-gruntfile-js/" title="Decluttering your Gruntfile.js (organizing grunt)" target="_blank">declutter Gruntfile.js using grunt.js</a>.
   
-&#8220;test" holds everything related to test the &#8220;src" code (usually the javascript logics).
+"test" holds everything related to test the "src" code (usually the javascript logics).
 
 Modularize with Angular.js
   
-Lets focus on the &#8220;src" directory.
+Lets focus on the "src" directory.
 
 ```typescript
 src/
@@ -85,7 +85,7 @@ src/
 
 ```
 
-I like the &#8220;package by feature" development concept. This is why i like having a &#8220;common" directory, where all data providers and common consumed services (factories, resources and others) can be used from anywhere in the app. To make a long story short - the &#8220;common" modules are consumed by the app modules.
+I like the "package by feature" development concept. This is why i like having a "common" directory, where all data providers and common consumed services (factories, resources and others) can be used from anywhere in the app. To make a long story short - the "common" modules are consumed by the app modules.
 
 My app, requires the various application modules with dependency injection when it is defined:
 
@@ -102,17 +102,17 @@ angular.module('MyApp', [
 
 ## Organizing Less Compilation
 
-I.e, The concept of &#8220;package by features" dictates the concept of keeping all relevant files of the guests module in one folder. This means that all js, less and html files relevant to a certain module - are placed in the same directory. 
+I.e, The concept of "package by features" dictates the concept of keeping all relevant files of the guests module in one folder. This means that all js, less and html files relevant to a certain module - are placed in the same directory. 
 
-The &#8220;guests.ctrl.js" also holds the guests module configuration. This is the point where the module ask to consume any &#8220;common" services, resources or directives.
+The "guests.ctrl.js" also holds the guests module configuration. This is the point where the module ask to consume any "common" services, resources or directives.
 
-A common question that arises is - how do I get the &#8220;less" files to be added and compiled each time I create a new file or edit an existing one?
+A common question that arises is - how do I get the "less" files to be added and compiled each time I create a new file or edit an existing one?
 	  
 The answer is quite simple - I use Grunt.js to automate this process:
 
-  1. include any cross application &#8220;less" dependencies (bootstrap.less, font-awesome.less, variables.less etc..)
+  1. include any cross application "less" dependencies (bootstrap.less, font-awesome.less, variables.less etc..)
   2. concatenate all less files from anywhere to one temporary file
-  3. for debugging purposes, keep a source map file for each &#8220;less" file
+  3. for debugging purposes, keep a source map file for each "less" file
   4. recompile all when there's a change or a new less
   5. finally, output the results to a style.css file
   6. refresh the browser 
@@ -123,7 +123,7 @@ To be more specific, I use these grunt modules to automate all of the above:
   2. assemble-less
   3. grunt-contrib-watch
 
-I created a &#8220;app.tpl.less" file in the root of &#8220;src" directory which imports cross application environment files as well as configuration for importing all &#8220;less" from the app's common and modules directories.
+I created a "app.tpl.less" file in the root of "src" directory which imports cross application environment files as well as configuration for importing all "less" from the app's common and modules directories.
 
 ```typescript
 @import url('bower_components/bootstrap/less/bootstrap.less');
@@ -141,9 +141,9 @@ I created a &#8220;app.tpl.less" file in the root of &#8220;src" directory which
 
 ```
 
-The &#8220;grunt-include-source" module allows to compile this &#8220;app.tpl.less" file and output this file along with a list of less files imports from all over the app.
+The "grunt-include-source" module allows to compile this "app.tpl.less" file and output this file along with a list of less files imports from all over the app.
 	  
-The grunt &#8220;less.js" holds the configuration of how and where to compile the less files from/to.
+The grunt "less.js" holds the configuration of how and where to compile the less files from/to.
 
 ```typescript
 module.exports = function(grunt) {
@@ -194,7 +194,7 @@ module.exports = function(grunt) {
 
 ```
 
-Finally, I use a regular grunt &#8220;watch" configuration to recompile and refresh the app when there's a change (edit, remove or adding a less file).
+Finally, I use a regular grunt "watch" configuration to recompile and refresh the app when there's a change (edit, remove or adding a less file).
 
 ```typescript
 module.export = function(grunt){
@@ -246,9 +246,9 @@ In development mode angular loads the template file. In production, often there'
 	  
 However, we can't simply concatenate the html template file. The challenge with concatenating html files in angular is the need to define the template contents as an angular template.
 	  
-The solution is quite easy. Angular caches a template the first time it is used - and it does that using the &#8220;$templateCache" service. Finally, there's a map object which points each template &#8220;id" to its relevant html string contents.
+The solution is quite easy. Angular caches a template the first time it is used - and it does that using the "$templateCache" service. Finally, there's a map object which points each template "id" to its relevant html string contents.
 	  
-So, in order to prepare external templates for production (let it be directives or controller's templates), I use the grunt module &#8220;grunt-angular-templates". This module simply, generates a js code which defines all external html templates with &#8220;$templateCache" service when the app loads (&#8220;angular.run").
+So, in order to prepare external templates for production (let it be directives or controller's templates), I use the grunt module "grunt-angular-templates". This module simply, generates a js code which defines all external html templates with "$templateCache" service when the app loads ("angular.run").
 
 ```typescript
 module.exports = function(grunt) {

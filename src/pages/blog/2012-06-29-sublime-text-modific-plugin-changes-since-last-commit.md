@@ -1,6 +1,6 @@
 ---
 id: 436
-title: 'Sublime Text &#8220;Modific" Plugin - Changes since last commit'
+title: 'Sublime Text "Modific" Plugin - Changes since last commit'
 date: 2012-06-29T08:34:09+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -30,7 +30,7 @@ Sublime Text doesn't. But, since it can be customized easily with python and a d
   
 <!--more-->
 
-## The &#8220;Modific" Plugin
+## The "Modific" Plugin
 
 So, github's user <a title="Modific Plugin" href="https://github.com/gornostal/" target="_blank">gornostal</a> has created this amazing <a title="Modific for Sublime Text" href="https://github.com/gornostal/Modific#readme" target="_blank">Modific</a> plugin for sublime text.
   
@@ -48,16 +48,16 @@ It highlights changes in your code since the last commit with little green/yello
 
 ### Shows the Diff's of the code
 
-With the magic shortcut of &#8220;ctrl + alt + D", a new tab will be opened in sublime, with a full detailed log of the current differences - added, changed or deleted - highlighted as well in this files with corresponding color.
+With the magic shortcut of "ctrl + alt + D", a new tab will be opened in sublime, with a full detailed log of the current differences - added, changed or deleted - highlighted as well in this files with corresponding color.
   
 <a href=".../../img/uploads/2012/06/diff.png" rel="lightbox"><img title="Modific &quot;Diff&quot; screenshot" src=".../../img/uploads/2012/06/diff-300x200.png" alt="" width="300" height="200" /></a>
 
 ### Preview Changes In Console
 
-Again, with a magic shortcut of &#8220;ctrl + alt + C", a sublime console will opened at the bottom, displaying the last committed code in your repository respectively to the current selected row.
+Again, with a magic shortcut of "ctrl + alt + C", a sublime console will opened at the bottom, displaying the last committed code in your repository respectively to the current selected row.
   
 <a href=".../../img/uploads/2012/06/preview.png" rel="lightbox"><img class="alignnone size-medium wp-image-445" title="preview" src=".../../img/uploads/2012/06/preview-300x161.png" alt="" width="300" height="161" srcset=".../../img/uploads/2012/06/preview-300x161.png 300w, .../../img/uploads/2012/06/preview.png 884w" sizes="(max-width: 300px) 100vw, 300px" /></a>
 
 ## Summary
 
-<a title="Modific Plugin for Sublime Text Editor" href="https://github.com/gornostal/Modific#readme" target="_blank">&#8220;Modific"</a> is a great tool for tracking down changes in the current file you're working on, or as an overall tracker for changes made in you project since last commit. Installation and usage instructions are provided within <a href="https://github.com/gornostal/Modific#readme" target="_blank">the github's project page.</a>
+<a title="Modific Plugin for Sublime Text Editor" href="https://github.com/gornostal/Modific#readme" target="_blank">"Modific"</a> is a great tool for tracking down changes in the current file you're working on, or as an overall tracker for changes made in you project since last commit. Installation and usage instructions are provided within <a href="https://github.com/gornostal/Modific#readme" target="_blank">the github's project page.</a>

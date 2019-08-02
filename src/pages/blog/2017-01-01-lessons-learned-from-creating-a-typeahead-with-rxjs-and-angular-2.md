@@ -33,18 +33,18 @@ I had a clear vision of how the typeahead feature should work:
   3. it should expose a selected result event
   4. it should support keyboard navigation in suggestions list
   5. it should support custom template for suggestions list
-  6. it should cancel suggestions when &#8220;Escape" key is pressed
+  6. it should cancel suggestions when "Escape" key is pressed
   7. it should cancel suggestions when clicking outside the suggestions container
 
 I wrote on my experience with [RxJs and Angular (+2)](http://orizens.com/wp/topics/stepping-into-the-next-level-with-rxjs-in-angular-2/) before, and this article takes this approach further.
 
 ## Typeahead - Implementation
 
-I decided to use the &#8220;@Component()" decorator, as it allows to have template - which I wanted to have for this implementation.
+I decided to use the "@Component()" decorator, as it allows to have template - which I wanted to have for this implementation.
 
 ### 1. typeahead as an attribute
 
-defining a component as an attribute is simple since the @Component's &#8220;selector" values are parsed as css selectors:
+defining a component as an attribute is simple since the @Component's "selector" values are parsed as css selectors:
 
 ```typescript
 @Component({
@@ -67,9 +67,9 @@ In order to achieve this, I had to define this component with the @Component() d
 I took a slightly different approach with this challenge. I remembered seeing few videos on youtube (Rob Warmwald) explaining about the strengths of the template engine within Angular and how it can be used to achieve complex ideas. At first, the template for the typeahead was quite simple. The template supports the following:
 
   1. declare a name for the template
-  2. toggle the template contents with &#8220;ngIf" boolean statement
+  2. toggle the template contents with "ngIf" boolean statement
   3. rendering a simple array of suggestions (referred as results)
-  4. marking the currently active result with an &#8220;active" css class
+  4. marking the currently active result with an "active" css class
   5. handle a click event for selecting a result
 
 ```typescript
@@ -96,7 +96,7 @@ Lets define the class which handles this template.
 
 In order to support the typeahead selected event, I defined an event of string with the @Output() decorator. The rest of the following properties, match the variables that are referenced from the template aside from subscriptions and activeResult.
 
-&#8220;subscriptions" is an array of subscriptions which this component use to store rxjs subscriptions which should be disposed once this component is destroyed (we'll get to these later).
+"subscriptions" is an array of subscriptions which this component use to store rxjs subscriptions which should be disposed once this component is destroyed (we'll get to these later).
 
 ```typescript
 export class TypeAheadComponent implements OnInit, OnDestroy {
@@ -152,19 +152,19 @@ ngOnInit() {
   }
 ```
 
-Before we dive into each function, I want to explain the &#8220;**renderTemplate()**" function.
+Before we dive into each function, I want to explain the "**renderTemplate()**" function.
 
-With this function, i'm using the &#8220;viewContainer" in order to render the template as a sibling to the actual element. The &#8220;createEmbeddedView" function takes a template reference and inserts it, compiled with the data, into the last view position in the html container. The actual &#8220;viewContainer" is the element that wraps the input element (in this case). A second argument determines the index at which this template should be rendered.
+With this function, i'm using the "viewContainer" in order to render the template as a sibling to the actual element. The "createEmbeddedView" function takes a template reference and inserts it, compiled with the data, into the last view position in the html container. The actual "viewContainer" is the element that wraps the input element (in this case). A second argument determines the index at which this template should be rendered.
 
 ### cdr - ChangeDetectorRef for change detection
 
-The use of &#8220;cdr" turned out to be useful for detecting changes and telling angular to render this component again. Since i'm using a parent component (PlayerSearch Component) with a change detection strategy set to &#8220;OnPush" - using &#8220;**markForCheck()**" is a way of telling angular that there are changes within this component which are not originated from the &#8220;Input()"s, so it needs to re-render the component.
+The use of "cdr" turned out to be useful for detecting changes and telling angular to render this component again. Since i'm using a parent component (PlayerSearch Component) with a change detection strategy set to "OnPush" - using "**markForCheck()**" is a way of telling angular that there are changes within this component which are not originated from the "Input()"s, so it needs to re-render the component.
 
 ### 4 - Keyboard Support
 
 lets go over the actual rxjs code which creates the typeahead behavior for this component.
 
-In order to support selection of a result with the enter key, this code listens to keydown strokes on the input element, allows only Enter key to pass on to the stream and then invokes the &#8220;handleSelectSuggestion" which eventually - emits an event for the selected result.
+In order to support selection of a result with the enter key, this code listens to keydown strokes on the input element, allows only Enter key to pass on to the stream and then invokes the "handleSelectSuggestion" which eventually - emits an event for the selected result.
 
 ```typescript
 filterEnterEvent() {
@@ -177,13 +177,13 @@ filterEnterEvent() {
   }
 ```
 
-The actual logics which makes a jsonp call to get the list of suggestions according to the value of the input, is implemented in the &#8220;**listenAndSuggest()**" function.
+The actual logics which makes a jsonp call to get the list of suggestions according to the value of the input, is implemented in the "**listenAndSuggest()**" function.
 
-This time, the code listens to keyup strokes (since we do want to allow a character to apply into the input), filtering out any non characters keys with &#8220;**validateKeyCode()**&#8220;. Here I set a debounce of 400ms as a reasonable time for not doing too many request in a given time. I use &#8220;**distinctUntilChanged()**" to filter the stream for the same value - which again prevents unnecessary requests. Then, the filter for an empty string becomes relevant before the code makes the actual request.
+This time, the code listens to keyup strokes (since we do want to allow a character to apply into the input), filtering out any non characters keys with "**validateKeyCode()**". Here I set a debounce of 400ms as a reasonable time for not doing too many request in a given time. I use "**distinctUntilChanged()**" to filter the stream for the same value - which again prevents unnecessary requests. Then, the filter for an empty string becomes relevant before the code makes the actual request.
 
-Now, i'm using &#8220;switchMap" since i'm expecting to pass a new observable which should be returned from the &#8220;**suggest(query)**" function.
+Now, i'm using "switchMap" since i'm expecting to pass a new observable which should be returned from the "**suggest(query)**" function.
 
-The subscribe starts the execution of this stream, saves the results and sets the suggestions box to show the relevant view. Since this code is not connected to angular, I have to use the &#8220;**markForCheck()**" to instruct angular to re-render the component and its parent, regardless of the change detection strategy that is used. An **important** note in this context is that in order to achieve this chain of operations and decisions, **without** RxJs, I would have written a much more complex code, probably one that would not fit a single short function like this one.
+The subscribe starts the execution of this stream, saves the results and sets the suggestions box to show the relevant view. Since this code is not connected to angular, I have to use the "**markForCheck()**" to instruct angular to re-render the component and its parent, regardless of the change detection strategy that is used. An **important** note in this context is that in order to achieve this chain of operations and decisions, **without** RxJs, I would have written a much more complex code, probably one that would not fit a single short function like this one.
 
 ```typescript
 listenAndSuggest() {
@@ -203,12 +203,12 @@ listenAndSuggest() {
   }
 ```
 
-**NOTE**: Currently, this component is not reusable anywhere else, so I hardcoded the url and the params of the http.jsonp request to the &#8220;suggest()" function. However, if I had to make this component reusable, I would have have few ways to take out hard coded &#8220;suggest()" function:
+**NOTE**: Currently, this component is not reusable anywhere else, so I hardcoded the url and the params of the http.jsonp request to the "suggest()" function. However, if I had to make this component reusable, I would have have few ways to take out hard coded "suggest()" function:
 
-  1. Pass &#8220;suggest" as an @Input() which should get an observable.
-  2. Pass &#8220;url" and &#8220;searchParams" as @Inputs - this would restrict the typeahead component to jsonp requests only.
+  1. Pass "suggest" as an @Input() which should get an observable.
+  2. Pass "url" and "searchParams" as @Inputs - this would restrict the typeahead component to jsonp requests only.
 
-Achieving one of the two is pretty straight forward - you can take this a good exercise. Here is the **suggest** code extracted to a **&#8220;requestJsonp()"** method (taken from the latest [ngx-typeahead](https://github.com/orizens/ngx-typeahead/blob/master/src/modules/ngx-typeahead.component.ts#L281) npm package):
+Achieving one of the two is pretty straight forward - you can take this a good exercise. Here is the **suggest** code extracted to a **"requestJsonp()"** method (taken from the latest [ngx-typeahead](https://github.com/orizens/ngx-typeahead/blob/master/src/modules/ngx-typeahead.component.ts#L281) npm package):
 
 ```typescript
 ) {
@@ -221,7 +221,7 @@ Achieving one of the two is pretty straight forward - you can take this a good e
 
 accessible navigation with arrows
 
-To achieve this feature, the code listens to the &#8216;keydown' key strokes allowing only arrow keys to pass. The &#8220;subscribe" method starts the execution of this stream and applies logics for marking the relevant suggestion as active.
+To achieve this feature, the code listens to the &#8216;keydown' key strokes allowing only arrow keys to pass. The "subscribe" method starts the execution of this stream and applies logics for marking the relevant suggestion as active.
 
 ```typescript
 navigateWithArrows() {
@@ -255,7 +255,7 @@ First, I added a new Input which gets a template reference:
 ```typescript
 
 
-Then I added a template inside the button element to allow rendering this template ref when present. In order to render a template reference, the &#8220;**ngTemplateOutlet**" directive is used with the template tag. In order to add a context for the external template, so the result value can be referenced, Angular supplies the &#8220;**ngTemplateOutletContext**" directive. This directive should receive a literal object with the special &#8220;**$implicit**" property. This property is used as the contect for the contents of the ng-template tag (the one in this button) - then, the &#8220;result" and &#8220;index" variables can be used as expressions within the template that is passed through from outside.
+Then I added a template inside the button element to allow rendering this template ref when present. In order to render a template reference, the "**ngTemplateOutlet**" directive is used with the template tag. In order to add a context for the external template, so the result value can be referenced, Angular supplies the "**ngTemplateOutletContext**" directive. This directive should receive a literal object with the special "**$implicit**" property. This property is used as the contect for the contents of the ng-template tag (the one in this button) - then, the "result" and "index" variables can be used as expressions within the template that is passed through from outside.
 
 ```typescript
 <button type="button" class="list-group-item"
@@ -278,9 +278,9 @@ A good example for defining a template and passing it as a reference is describe
 </ng-template>
 ```
 
-### 6 - &#8220;@HostListener" cancel suggestions box with Escape key
+### 6 - "@HostListener" cancel suggestions box with Escape key
 
-For achieving this feature, I chose to use the &#8220;@HostListener()" decorator - a simple function for filtering the Escape key (not rxjs for this one, though this has changed in the latest [ngx-typeahead](https://github.com/orizens/ngx-typeahead/blob/master/src/modules/ngx-typeahead.component.ts#L148)). From this snippet we can learn that the event object can be passed as an argument to any function as well as other members or properties of this component's context (i.e, &#8216;results' can be sent as a second argument).
+For achieving this feature, I chose to use the "@HostListener()" decorator - a simple function for filtering the Escape key (not rxjs for this one, though this has changed in the latest [ngx-typeahead](https://github.com/orizens/ngx-typeahead/blob/master/src/modules/ngx-typeahead.component.ts#L148)). From this snippet we can learn that the event object can be passed as an argument to any function as well as other members or properties of this component's context (i.e, &#8216;results' can be sent as a second argument).
 
 ```typescript
 @HostListener('keydown', ['$event'])
@@ -294,7 +294,7 @@ For achieving this feature, I chose to use the &#8220;@HostListener()" decorator
 
 ### 7 - cancel suggestions when clicking outside
 
-The suggestions box is similar to a dropdown. To allow this feature, I took the approach of having a transparent background - &#8220;**typeahead-backdrop**" div below the box, combined with a simple click event which will hide (cancel) the suggestions box - a reuse to this function. This is simply done with adding a div element to the template along with the relevant click event:
+The suggestions box is similar to a dropdown. To allow this feature, I took the approach of having a transparent background - "**typeahead-backdrop**" div below the box, combined with a simple click event which will hide (cancel) the suggestions box - a reuse to this function. This is simply done with adding a div element to the template along with the relevant click event:
 
 ```typescript
 @Component({
@@ -325,7 +325,7 @@ You can see the end result live on [Echoes Player App](http://echoesplayer.com)�
 
 To summarize the great benefits came out form this experience, we learned these:
 
-  1. use **changeDetectionRef** to force a re render inside an &#8220;OnPush" defined component
+  1. use **changeDetectionRef** to force a re render inside an "OnPush" defined component
   2. Angular's template engine can be reused to achieve greater power in creating complex components 
       1. reuse templates with **ngTemplateOutlet **directive
       2. apply different context to template with **ngTemplateOutletContext** directive

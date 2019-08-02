@@ -24,7 +24,7 @@ In a former article, I wrote <a href="http://orizens.com/wp/topics/angular-2-ngr
 
 ## The User Profile Component
 
-_[UPDATED: October, 5th, 2016]_ This article's focus is on the <a href="http://orizens.github.io/echoes-ng2/#/user" target="_blank">user profile component in Echoes Player</a>.  This component is rendered on the &#8220;**My Playlists**" screen and its goal is to allow the user to sign in to the youtube account and display his/hers playlists.
+_[UPDATED: October, 5th, 2016]_ This article's focus is on the <a href="http://orizens.github.io/echoes-ng2/#/user" target="_blank">user profile component in Echoes Player</a>.  This component is rendered on the "**My Playlists**" screen and its goal is to allow the user to sign in to the youtube account and display his/hers playlists.
 
 This component involves several actions:
 
@@ -37,7 +37,7 @@ In order to achieve these, the user profile component uses theses services:
 
   1. **UserManager** - fetch any user profile related information
   2. **Authorization** - authorize the user in youtube and google sign in
-  3. **Ngrx/Store** - connect the &#8220;**playlist**" and &#8220;**user**" reducers to the view
+  3. **Ngrx/Store** - connect the "**playlist**" and "**user**" reducers to the view
 
 There are more actions in this component which require other services to be included:
 
@@ -102,7 +102,7 @@ export class GapiLoader {
 }
 ```
 
-There's some **Typescript** here. Clearly, aside from the constructor method, the only public method that is allowed to be used is the &#8220;**load**" method, which takes an api name and simply returns an observable that the consumer can subscribe to.
+There's some **Typescript** here. Clearly, aside from the constructor method, the only public method that is allowed to be used is the "**load**" method, which takes an api name and simply returns an observable that the consumer can subscribe to.
 
 The consumer of this service is the **Authorization** service. It is injected with the **gapiLoader** service, so it can load the relevant api for authorizing a google user - &#8216;**auth2**&#8216; api. Once the **gapiLoader** has loaded the auth2 api, the subscribed function is invoked, so it can continue to try and authorize the user. Even more than that, this function reacts to the gapiLoader's observable stream. If at some point, the user signs out, this function should handle that. However, this is not regarded for now.
 
@@ -152,11 +152,11 @@ export class Authorization {
 }
 ```
 
-I won't go in detail of the code that runs in the &#8220;then" block, since, currently, google's &#8216;**auth2**&#8216; api doesn't allow to &#8220;silently" authenticate the user as it did in the previous version of &#8220;**auth**" (at least, in the client side). <del>so this code currently doesn't trigger the <strong>signIn</strong> function (if you are familiar with a way to silently authenticate the user with auth2 - please do let me know in the comments or through the contact page).</del> _[UPDATED: October, 5th, 2016]_ I added the &#8220;**scope**" entry to the authOptions in the &#8220;**authorize**&#8220;. Now, if the user is already authenticated, the &#8220;**loadAuth**" runs the &#8220;**handleSuccessLogin**"  and sends the authResponse as if the user clicked the sign-in button.
+I won't go in detail of the code that runs in the "then" block, since, currently, google's &#8216;**auth2**&#8216; api doesn't allow to "silently" authenticate the user as it did in the previous version of "**auth**" (at least, in the client side). <del>so this code currently doesn't trigger the <strong>signIn</strong> function (if you are familiar with a way to silently authenticate the user with auth2 - please do let me know in the comments or through the contact page).</del> _[UPDATED: October, 5th, 2016]_ I added the "**scope**" entry to the authOptions in the "**authorize**". Now, if the user is already authenticated, the "**loadAuth**" runs the "**handleSuccessLogin**"  and sends the authResponse as if the user clicked the sign-in button.
 
 The **signIn** function is an **important** take out of the user profile service. It eliminated the code in the user profile service which attached a click handler for signing in the user (a copy paste from google's guide).  Once the signIn process has successfully been completed, the app needs to save the access token.
 
-I use **ngrx/store** in order to dispatch an action for saving the token. Notice that I use NgZone to wrap the &#8220;**handleSuccessLogin**" function handler since the google authorization signIn api is external to angular (I wrote about <a href="http://orizens.com/wp/topics/angular-2-ngzone-intro-the-new-scope-apply/" target="_blank">using NgZone for 3rd party external api</a> before):
+I use **ngrx/store** in order to dispatch an action for saving the token. Notice that I use NgZone to wrap the "**handleSuccessLogin**" function handler since the google authorization signIn api is external to angular (I wrote about <a href="http://orizens.com/wp/topics/angular-2-ngzone-intro-the-new-scope-apply/" target="_blank">using NgZone for 3rd party external api</a> before):
 
 ```typescript
 export class Authorization {
@@ -218,7 +218,7 @@ export class UserProfileEffects {
 }
 ```
 
-The &#8220;updateData" method, saves a playlists response in store. This is the json response from the getPlaylist request:
+The "updateData" method, saves a playlists response in store. This is the json response from the getPlaylist request:
 
 ```typescript
 {
@@ -235,8 +235,8 @@ The &#8220;updateData" method, saves a playlists response in store. This is the 
 
 Several actions should be taken upon this response arrival:
 
-  1. On the one hand, The &#8220;**items**" array holds some of all of the user's playlists - this should be put in to the user's playlists store
-  2. On the second hand, the &#8220;**nextPageToken**" value should be stored in the user's profile store
+  1. On the one hand, The "**items**" array holds some of all of the user's playlists - this should be put in to the user's playlists store
+  2. On the second hand, the "**nextPageToken**" value should be stored in the user's profile store
 
 These 2 actions are decoupled and not connected to each other. In contrary to the effect that we declared for updating the token, these can be declared each in an effect. Separating them will allow to test them each on its own as well as invoke more actions, if needed:
 

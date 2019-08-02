@@ -48,7 +48,7 @@ With this setup, whenever there were errors in tests or in build, I was informed
 
 Echoes Player is deployed to github pages (remember - it's a ui based app), so, all I had to do is push a new version of bundled code to <a href="https://github.com/orizens/echoes/tree/gh-pages" target="_blank">gh-pages branch</a> of my repository.
 
-The preparation for release involves several steps to take before pushing to github the new code. For that, I'm using <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm's scripts feature</a> - I defined a custom script - &#8220;release" - script that will run the required operations before i can commit to github.
+The preparation for release involves several steps to take before pushing to github the new code. For that, I'm using <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm's scripts feature</a> - I defined a custom script - "release" - script that will run the required operations before i can commit to github.
 
 ```typescript
 "scripts": {
@@ -87,7 +87,7 @@ few notes on the **after_success** flow:
 
 **First**, I setup my username email of github in travis virtual machine.
 
-**Second**, I'm using &#8220;**npm run release**" script that I defined. Eventually, this script created a &#8220;dist" directory, which includes a bundled minified version of the app (ready to deploy).
+**Second**, I'm using "**npm run release**" script that I defined. Eventually, this script created a "dist" directory, which includes a bundled minified version of the app (ready to deploy).
 
 **Finally**, the process shifts to the dist directory, creates a new git repository, add & commit the files to the local repository and with the new secured github token, push this directory contents to echoes repository (and also overrides the history for this branch).
 

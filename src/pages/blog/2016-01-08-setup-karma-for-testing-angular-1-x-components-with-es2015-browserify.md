@@ -143,30 +143,30 @@ gulp.task('browserify', () => {
 });
 ```
 
-In a birds eye-view, the &#8220;browserify" gulp task handles several duties:
+In a birds eye-view, the "browserify" gulp task handles several duties:
 
   1. Module loading by Loader spec (previously ES2015 Spec)
   2. ES2015 syntax with babel
   3. Annotating Modules with <a href="https://www.npmjs.com/package/browserify-ngannotate" target="_blank">ng-annotate</a> (browserify version) properly to ES2015 classes and to ES5 functions
   4. Loading html files and converting it to strings
-  5. In development mode, &#8220;watching" for changes and recompiles with the 4 steps above
+  5. In development mode, "watching" for changes and recompiles with the 4 steps above
 
 The final product of this task is a ES5 javascript file (browserified) bundled with all the code needed for the app to run. That includes 3rd party libraries as well.
 
 ## Setup Karma to Work With Browserify & ES2015
 
-There are few steps needed for running the new &#8220;browserified" bundled code in karma and running the tests with it.
+There are few steps needed for running the new "browserified" bundled code in karma and running the tests with it.
 
-Since browserify creates a private scope for each module and since we're using ES2015 modules, tests need to be run inside a module aware environment and be &#8220;modularized" with browserify as well.
+Since browserify creates a private scope for each module and since we're using ES2015 modules, tests need to be run inside a module aware environment and be "modularized" with browserify as well.
 
 Fortunately, this process is easily achieved with configuring the karma.conf.js file with new plugins.
 
 First, we need to add <a href="https://www.npmjs.com/package/karma-browserify" target="_blank">karma-browserify</a> plugin, which allows to run the specs (tests) inside browserify world. After installing this plugin with npm, make sure you do the following in karma.conf.js file:
 
-  1. add &#8220;browserify" to the &#8220;framworks" array property.
-  2. add &#8220;karma-browserify" to the &#8220;plugins" array.
-  3. configure the pre-processor to browserify the specs files in the &#8220;preprocessors" property.
-  4. add a new property, &#8220;browserify" which holds the configuration setting to allow **source maps** and compile specs with **babel** - so you can write specs with ES2015.
+  1. add "browserify" to the "framworks" array property.
+  2. add "karma-browserify" to the "plugins" array.
+  3. configure the pre-processor to browserify the specs files in the "preprocessors" property.
+  4. add a new property, "browserify" which holds the configuration setting to allow **source maps** and compile specs with **babel** - so you can write specs with ES2015.
 
 i.e., This is the setup that I use in echoes:
 

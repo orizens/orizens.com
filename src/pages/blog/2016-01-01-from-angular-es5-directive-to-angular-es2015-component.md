@@ -43,11 +43,11 @@ Lets Start!
 
 I'll use one of the modules i've written in Echoes Player with ES2015, and will convert it to a directive/component with ES2015.
 
-<a href="http://echotu.be" target="_blank">Echoes Player</a> is a media player that is based on youtube api (it's open source as well). In its layout, it consists a sidebar, a top search bar and a content area. The sidebar include the &#8220;now playing" playlist that lists the tracks that currently queued to play.
+<a href="http://echotu.be" target="_blank">Echoes Player</a> is a media player that is based on youtube api (it's open source as well). In its layout, it consists a sidebar, a top search bar and a content area. The sidebar include the "now playing" playlist that lists the tracks that currently queued to play.
 
 Since I added this feature fast, I didn't create a module for it - I used angular's directives (ng-repeat) and added few more properties to the controller of this scope.
 
-### &#8220;Now Playlist" Html Template
+### "Now Playlist" Html Template
 
 taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90f61f23711cdfcb0234aafff/src/index.html#L150" target="_blank">index.html</a> file:
 
@@ -79,9 +79,9 @@ taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90
 
 Aside from using angular's built-in directives, this tracks in this playlist are draggable (i'm using the angular-sortable-view module). The tracks can be removed from this list as well.
 
-### &#8220;Now Playlist" Controller
+### "Now Playlist" Controller
 
-The controller for this template is defined above the &#8220;ul" element. This is the &#8220;**UserPlaylistsCtrl**" that can be found in the <a href="https://github.com/orizens/echoes/blob/d08fd328914fdf3b40b04aed756481a090319c74/src/app/user-playlists/user-playlists.ctrl.js#L9" target="_blank">user-playlists.ctrl.js</a>:
+The controller for this template is defined above the "ul" element. This is the "**UserPlaylistsCtrl**" that can be found in the <a href="https://github.com/orizens/echoes/blob/d08fd328914fdf3b40b04aed756481a090319c74/src/app/user-playlists/user-playlists.ctrl.js#L9" target="_blank">user-playlists.ctrl.js</a>:
 
 ```typescript
 (function() {
@@ -142,9 +142,9 @@ This controller serves other purposes beside the now playlist feature. The relev
 
 ## 2. Decisions Taken Before Converting ES5 to Es2015
 
-The inspiration for refactoring the code comes from <a href="https://github.com/AngularClass/NG6-starter" target="_blank">angular-class boilerplate of using angular with es2015</a>. In the process of refactoring this code and converting it to ES2015, I had to decide how to isolate the several features in this area. Creating the &#8220;**Now Playlist**" component is one of these decisions.
+The inspiration for refactoring the code comes from <a href="https://github.com/AngularClass/NG6-starter" target="_blank">angular-class boilerplate of using angular with es2015</a>. In the process of refactoring this code and converting it to ES2015, I had to decide how to isolate the several features in this area. Creating the "**Now Playlist**" component is one of these decisions.
 
-### Defining A New Component For &#8220;Now Playlist"
+### Defining A New Component For "Now Playlist"
 
 First, I wanted to redefine the html template to be used as a **web-component** (or rather an html tag). After much thought, I came up with this component:
 
@@ -157,13 +157,13 @@ First, I wanted to redefine the html template to be used as a **web-component**
 ></now-playlist>
 ```
 
-I decided to expose the relevant attributes in order to keep the logics in one <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.aanidwnn4" target="_blank">&#8220;smart" component</a> (the &#8220;now-playing" component) and keeping this component as stateless as possible.
+I decided to expose the relevant attributes in order to keep the logics in one <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.aanidwnn4" target="_blank">"smart" component</a> (the "now-playing" component) and keeping this component as stateless as possible.
 
-### Creating Files For &#8220;Now Playlist" Component
+### Creating Files For "Now Playlist" Component
 
-The next step was to generate the appropriate boilerplate of files for this component. For generating these files, I used <a href="https://www.npmjs.com/package/gulp-dogen" target="_blank">&#8220;gulp-dogen"</a> - an npm module I wrote for this repetitive task of generating directories and files for a certain purpose.
+The next step was to generate the appropriate boilerplate of files for this component. For generating these files, I used <a href="https://www.npmjs.com/package/gulp-dogen" target="_blank">"gulp-dogen"</a> - an npm module I wrote for this repetitive task of generating directories and files for a certain purpose.
 
-&#8220;gulp-dogen" takes the name of the component from a cli command, then it adds this name in all of the files where you specify it, and created a new directory with the new files in it.
+"gulp-dogen" takes the name of the component from a cli command, then it adds this name in all of the files where you specify it, and created a new directory with the new files in it.
 
 Finally, I came up with these files:
 
@@ -175,7 +175,7 @@ now-playlist.less
 now-playlist.tpl.html
 ```
 
-I'm using the &#8220;**index.js**" notation, similar to node.js require syntax, so I can simply import the now-playlist component as such:
+I'm using the "**index.js**" notation, similar to node.js require syntax, so I can simply import the now-playlist component as such:
 
 ```typescript
 import NowPlaylist from './now-playlist';
@@ -201,16 +201,16 @@ export default angular.module('now-playlist', [
 
 #### now-playlist.component.js - The Directive Definition
 
-This file includes the directive/component definition for this module. Currently, I'm using angular v.1.4.8, where the new &#8220;component" syntax for creating an element directive isn't included.
+This file includes the directive/component definition for this module. Currently, I'm using angular v.1.4.8, where the new "component" syntax for creating an element directive isn't included.
 
-This file imports the controller and template of this directive from an external file. I defined this directive with all of the properties that will be included within the &#8220;component" syntax -
+This file imports the controller and template of this directive from an external file. I defined this directive with all of the properties that will be included within the "component" syntax -
 
-  * bindToController: true - binds external attributes to &#8220;this" context in the controller
-  * restrict: &#8216;E' - since it's a &#8220;component" - it's an element tag
+  * bindToController: true - binds external attributes to "this" context in the controller
+  * restrict: &#8216;E' - since it's a "component" - it's an element tag
   * replace: true - since there is no support for real web components yet
   * controllerAs: &#8216;nowPlaylist' - this follows Angular (+2) convention as well - exposing this as the camel-case version of this element tag.
 
-There will be less code in this file once the new &#8220;component" function is available. Also, it will need to export an object (json) rather than a function.
+There will be less code in this file once the new "component" function is available. Also, it will need to export an object (json) rather than a function.
 
 ```typescript
 import NowPlaylistCtrl from './now-playlist.ctrl.js';
@@ -244,7 +244,7 @@ export default function nowPlaylist() {
 
 #### now-playlist.ctrl.js - The Component's Controller
 
-This file includes the logics and view model for this component's view. I used ES2015 &#8220;class" defintion, since controllers in AngularJS are created with the &#8220;new" keyword. Notice that &#8220;this" context, is overloaded with more properties that are defined as part of the scope. Apart from the &#8220;constructor" function, I created
+This file includes the logics and view model for this component's view. I used ES2015 "class" defintion, since controllers in AngularJS are created with the "new" keyword. Notice that "this" context, is overloaded with more properties that are defined as part of the scope. Apart from the "constructor" function, I created
 
 ```typescript
 /* @ngInject */
@@ -273,9 +273,9 @@ export default class NowPlaylistCtrl {
 
 This file contains the html template that was in the index.html. Few things have changed:
 
-  * The code now references to the &#8216;controllerAs' alias &#8220;nowPlaylist"
-  * The &#8220;ul" is wrapped with a &#8220;section" element
-  * The &#8220;css" classes now reflects the correct meaning - &#8220;now-playlist", &#8220;now-playlist-track"
+  * The code now references to the &#8216;controllerAs' alias "nowPlaylist"
+  * The "ul" is wrapped with a "section" element
+  * The "css" classes now reflects the correct meaning - "now-playlist", "now-playlist-track"
 
 ```typescript
 <section class="now-playlist" ng-class="{ 
@@ -305,16 +305,16 @@ This file contains the html template that was in the index.html. Few things have
 </section>
 ```
 
-Eventually, I also moved the relevant css/less rules to the &#8220;now-playlist.less" file.
+Eventually, I also moved the relevant css/less rules to the "now-playlist.less" file.
 
-### Usage of &#8220;Now Playlist" In A Broader Context
+### Usage of "Now Playlist" In A Broader Context
 
 Finally, the area that contains the now-playlist and 2 other components, has been also refactored in the same way-
 
   * a small toolbar for filtering the playlist, clearing the tracks and save the playlist
   * a form component for typing a name to save the playlist to the current signed-in youtube's user
 
-This is the smart component &#8220;**now-playing**" html template code (I still have work to do - this ng-if expression should be changed):
+This is the smart component "**now-playing**" html template code (I still have work to do - this ng-if expression should be changed):
 
 ```typescript
 <div class="sidebar-pane">
@@ -349,4 +349,4 @@ The source code for Echoes Player with ES2015 is still a <a href="https://github
 
 However, this is not all. I plan on writing more articles on this process - as it contains much more preparation and adjustments.
 
-I started gathering these concepts in an <a href="https://github.com/orizens/angular-es2015-styleguide" target="_blank">&#8220;Angular ES2015 Style Guide"</a> - You are welcome to collaborate on this style-guide - suggest and add your thoughts.
+I started gathering these concepts in an <a href="https://github.com/orizens/angular-es2015-styleguide" target="_blank">"Angular ES2015 Style Guide"</a> - You are welcome to collaborate on this style-guide - suggest and add your thoughts.

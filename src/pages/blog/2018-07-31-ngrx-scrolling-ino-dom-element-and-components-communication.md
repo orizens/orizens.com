@@ -21,15 +21,15 @@ tags:
   - architecture
 ---
 
-My open source app, [Echoes Player](http://github.com/orizens/echoes-player), allows to consume and create a &#8220;now" playlist - where you can queue media to the playlist that is currently playing. A somewhat not too visible feature in [Echoes](http://echoesplayer.com) is the ability to &#8220;reveal" the now playing track in the playlist. This article shows how I integrated ngrx, angular's ng-for and the DOM's scrollTo feature to support the functionality for this feature.<!--more-->
+My open source app, [Echoes Player](http://github.com/orizens/echoes-player), allows to consume and create a "now" playlist - where you can queue media to the playlist that is currently playing. A somewhat not too visible feature in [Echoes](http://echoesplayer.com) is the ability to "reveal" the now playing track in the playlist. This article shows how I integrated ngrx, angular's ng-for and the DOM's scrollTo feature to support the functionality for this feature.<!--more-->
 
-## Now Playlist &#8220;Reveal" Feature
+## Now Playlist "Reveal" Feature
 
-As a consumer of Echoes Player, I have found it useful to find the active now playing media in the &#8220;now playlist" component.
+As a consumer of Echoes Player, I have found it useful to find the active now playing media in the "now playlist" component.
 
-Interacting with DOM in Angular is usually achieved with the &#8220;Renderer2" service - that is considered to be one of the best practices, exposing one solid api to interact with the view - let it be DOM or other.
+Interacting with DOM in Angular is usually achieved with the "Renderer2" service - that is considered to be one of the best practices, exposing one solid api to interact with the view - let it be DOM or other.
 
-The &#8220;reveal" functionality is tied to the &#8220;NOW PLAYING" title, above the list of all tracks (where it also indicate the amount of total tracks in the current playlist". An active track is marked with a colored right border - depending on the applied theme - this color is matched to the primary color (blue, orange or yellow).
+The "reveal" functionality is tied to the "NOW PLAYING" title, above the list of all tracks (where it also indicate the amount of total tracks in the current playlist". An active track is marked with a colored right border - depending on the applied theme - this color is matched to the primary color (blue, orange or yellow).
 
 Simply put - Clicking this title will scroll the playlist to the active track (when possible).
 
@@ -53,13 +53,13 @@ const initialState: INowPlaylist = {
 };
 ```
 
-The reveal feature is using the &#8220;selectedId" and the list of videos to determine which DOM element it refers to.
+The reveal feature is using the "selectedId" and the list of videos to determine which DOM element it refers to.
 
 ## Now Playing Component
 
-The &#8220;Now **Playlist**" component is a component of the &#8220;Now **Playing**" component. The &#8220;now-playlist" should get the entire &#8220;nowPlaylist" state from the store, as it needs the list of tracks and the selectedId for the reveal feature.
+The "Now **Playlist**" component is a component of the "Now **Playing**" component. The "now-playlist" should get the entire "nowPlaylist" state from the store, as it needs the list of tracks and the selectedId for the reveal feature.
 
-**BONUS** **info**: The &#8220;now-playlist-filter" also gets the &#8220;nowPlaylist" state - and so - this is a nice example which shows how these two separate components are operating on the same source of data, and manipulate it (by dispatching actions to the store) accordingly, thus, communicating via this data.
+**BONUS** **info**: The "now-playlist-filter" also gets the "nowPlaylist" state - and so - this is a nice example which shows how these two separate components are operating on the same source of data, and manipulate it (by dispatching actions to the store) accordingly, thus, communicating via this data.
 
 ```typescript
 @Component({
@@ -86,9 +86,9 @@ The &#8220;Now **Playlist**" component is a component of the &#8220;Now **Playin
 })
 ```
 
-The &#8220;now playlist" component is responsible for rendering the list of tracks (filtered if there's any filter), mark the current playing track. It is a presentation component, defined with an &#8220;OnPush" strategy for its change detection.
+The "now playlist" component is responsible for rendering the list of tracks (filtered if there's any filter), mark the current playing track. It is a presentation component, defined with an "OnPush" strategy for its change detection.
 
-The &#8220;**scrollToActiveTrack**()" method is responsible for scrolling the container to the currently active track. The activeTrackElement property is a pointer to the active track as a DOM element. This DOM element is saved into this property when the list is rendered. I decided to save a pointer to this element during the the phase where it is rendered - the &#8220;**isActiveMedia**()" method is invoked for each track - and it gets the media id and its associated DOM element via an angular template reference achieved with &#8220;#playlistTrack".
+The "**scrollToActiveTrack**()" method is responsible for scrolling the container to the currently active track. The activeTrackElement property is a pointer to the active track as a DOM element. This DOM element is saved into this property when the list is rendered. I decided to save a pointer to this element during the the phase where it is rendered - the "**isActiveMedia**()" method is invoked for each track - and it gets the media id and its associated DOM element via an angular template reference achieved with "#playlistTrack".
 
 ```typescript
 @Component({
@@ -185,7 +185,7 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
 
 ## Scrolling To The Active Track
 
-There are 2 possible scenarios where the &#8220;scrollToActiveTrack()" method is used.
+There are 2 possible scenarios where the "scrollToActiveTrack()" method is used.
 
 <div>
   <h3>
@@ -201,11 +201,11 @@ There are 2 possible scenarios where the &#8220;scrollToActiveTrack()" method is
 ```
   
   <p>
-    When the active media is changed via the now playlist store, the &#8220;<strong>selectedId</strong>" is updated, thus triggering a change detection down to the &#8220;now playlist component", which is the, renders the component and updates the active media in view.
+    When the active media is changed via the now playlist store, the "<strong>selectedId</strong>" is updated, thus triggering a change detection down to the "now playlist component", which is the, renders the component and updates the active media in view.
   </p>
   
   <p>
-    This strategy is mostly useful for an initial render and for the &#8220;<strong>selectedId</strong>" is updated within the store. It was also used to trigger a scroll automatically when the next track is activated, however, ux wise, it didn't feel right and was a little bit annoying - so I decided to disable it for the time being. Nevertheless, it's a nice example which demonstrates using <a href="https://github.com/ngrx/platform/blob/master/docs/store/README.md"><strong>ngrx</strong> store</a> with auto scrolling dom elements.
+    This strategy is mostly useful for an initial render and for the "<strong>selectedId</strong>" is updated within the store. It was also used to trigger a scroll automatically when the next track is activated, however, ux wise, it didn't feel right and was a little bit annoying - so I decided to disable it for the time being. Nevertheless, it's a nice example which demonstrates using <a href="https://github.com/ngrx/platform/blob/master/docs/store/README.md"><strong>ngrx</strong> store</a> with auto scrolling dom elements.
   </p>
   
   <p>
@@ -219,9 +219,9 @@ There are 2 possible scenarios where the &#8220;scrollToActiveTrack()" method is
 
 This strategy demonstrates the usage of accessing a component's public methods, thus manipulating it directly. This can be considered a tightly coupled architecture, however, for the purpose of this feature - it achieves a nice effect easily and can be disabled without affecting the robustness of the app.
 
-This strategy is used inside the &#8220;now playing" component. The component queries the &#8220;now playlist" component with &#8220;**@ViewChild**" decorator, thus, saving a reference to the component's instance within the &#8220;nowPlaylistComponent" property.
+This strategy is used inside the "now playing" component. The component queries the "now playlist" component with "**@ViewChild**" decorator, thus, saving a reference to the component's instance within the "nowPlaylistComponent" property.
 
-Now, whenever the &#8220;**onHeaderClick**()" method is invoked in response to the &#8220;now-playlist-filter" component event, the &#8220;**nowPlaylistComponent.scrollToActiveTrack**()" method is invoked directly, scrolling the playlist to the active track element.
+Now, whenever the "**onHeaderClick**()" method is invoked in response to the "now-playlist-filter" component event, the "**nowPlaylistComponent.scrollToActiveTrack**()" method is invoked directly, scrolling the playlist to the active track element.
 
 ```typescript
 export class NowPlayingComponent implements OnInit {
@@ -240,14 +240,14 @@ export class NowPlayingComponent implements OnInit {
 }
 ```
 
-The benefit of using this strategy is by not triggering any re-render inside the &#8220;now-playlist" component - and just using the DOM's api.
+The benefit of using this strategy is by not triggering any re-render inside the "now-playlist" component - and just using the DOM's api.
 
 ## Summary: Putting It All Together
 
-The &#8220;**now playing**" feature is a nice component featuring few key concepts that can be achieved with Angular and ngrx:
+The "**now playing**" feature is a nice component featuring few key concepts that can be achieved with Angular and ngrx:
 
 1. using **state management** with **ngrx**
-2. **sharing state** between components - using the &#8220;now playlist" state - sharing the &#8220;playlist" and &#8220;filter"
+2. **sharing state** between components - using the "now playlist" state - sharing the "playlist" and "filter"
 3. **communicating** between **components** - using a wrapper component (now playlist)
 4. leveraging **@ViewChild** to be able to **interact** with a component's public interface, eventually interacting with **DOM** only api's
 

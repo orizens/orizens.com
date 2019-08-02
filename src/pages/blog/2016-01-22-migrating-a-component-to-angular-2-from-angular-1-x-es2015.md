@@ -37,7 +37,7 @@ In order to start Echoes Player development with Angular (+2), I cloned AngularC
 
 In <a href="https://github.com/orizens/echoes/issues/84" target="_blank">Echoes Player angular1 ES2015</a> version, i'm using a slightly different directory structure (which I wrote about and present in the <a href="https://github.com/orizens/angular-es2015-styleguide" target="_blank">angualr1 ES2015 style guide</a>).
 
-In order to align with the first version of Echoes and ease <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">the migration process</a>, I added a new &#8220;core" directory, where I differentiate between core components and core services that the application will consume.
+In order to align with the first version of Echoes and ease <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">the migration process</a>, I added a new "core" directory, where I differentiate between core components and core services that the application will consume.
 
 I also added a less loader to webpack-config in order to support loading less files. However, currently, the app loads the production style.css file of Echoes.
 
@@ -45,9 +45,9 @@ I also added a copy instruction to webpack-config to handle the fontAwesome font
 
 ## Converting YoutubeMedia Component
 
-I created a new directory in &#8220;**core/components/youtube-media**&#8220;. I'm using the convention of naming the directory name the same as the selector of the component. It makes it easier to spot and find it.
+I created a new directory in "**core/components/youtube-media**". I'm using the convention of naming the directory name the same as the selector of the component. It makes it easier to spot and find it.
 
-From this point, in this article, i'll refer to Echoes angular1 with ES2015 as &#8220;**echoes1**&#8220;, while referring to the new angular2 conversion, &#8220;**echoes2**&#8220;.
+From this point, in this article, i'll refer to Echoes angular1 with ES2015 as "**echoes1**", while referring to the new angular2 conversion, "**echoes2**".
 
 ### File Naming
 
@@ -57,7 +57,7 @@ In echoes1, i'm using these file naming for the youtube-media component:
   * youtube.media.less
   * youtube.media.tpl.html
 
-Note: This is in contrary to other components, where I use the &#8220;kebab" notation / dash (meaning, I should change that in echoes1 as well).
+Note: This is in contrary to other components, where I use the "kebab" notation / dash (meaning, I should change that in echoes1 as well).
 
 In echoes2, I  updated the files:
 
@@ -65,9 +65,9 @@ In echoes2, I  updated the files:
   * youtube-media.less
   * youtueb-media.html
 
-I find it easier to maintain and spot the youtube-media.ts file in my code editor, other than using just plain &#8220;index.js". Also note, I'm using the &#8220;ts" extension now for &#8220;typescript" files rather than &#8220;js" for ES2015 javascript.
+I find it easier to maintain and spot the youtube-media.ts file in my code editor, other than using just plain "index.js". Also note, I'm using the "ts" extension now for "typescript" files rather than "js" for ES2015 javascript.
 
-I decided to drop the &#8220;tpl" postfix, since in 99% of cases, the project uses &#8220;html" extension for templates.
+I decided to drop the "tpl" postfix, since in 99% of cases, the project uses "html" extension for templates.
 
 ### Defining Angular (+2) Component for YoutubeMedia
 
@@ -106,7 +106,7 @@ var directive = {
 };
 ```
 
-I'm not actually using the &#8220;selector" property, but rather using it when defining the directive.
+I'm not actually using the "selector" property, but rather using it when defining the directive.
 
 In echoes2, this definition is shorter:
 
@@ -126,7 +126,7 @@ In echoes2, this definition is shorter:
 })
 ```
 
-Notice that the &#8220;**scope**" attributes have been divided to its proper definition properties: &#8216;**media**&#8216; is expected to be passed as a binding from outside. The events that this component expose are: &#8216;**play**&#8216;, &#8216;**queue**&#8216; and &#8216;**add**&#8216;.
+Notice that the "**scope**" attributes have been divided to its proper definition properties: &#8216;**media**&#8216; is expected to be passed as a binding from outside. The events that this component expose are: &#8216;**play**&#8216;, &#8216;**queue**&#8216; and &#8216;**add**&#8216;.
 
 #### Controller/Class Definition
 
@@ -162,9 +162,9 @@ function controller () {
 
 In echoes2, the controller is a class and it's exported. The default properties are defined and initiated in the class definition.
 
-The &#8220;**video**" property with the &#8220;**@Input()**" annotation is optionally defined here (just to make a point). This definition can be either instead of the &#8220;**inputs**" array in the component definition. However, defining it here with the correct type, will aid if the code editor is content aware and supports Typescript parsing. The same goes for the events that are defined with &#8220;EventEmitter".
+The "**video**" property with the "**@Input()**" annotation is optionally defined here (just to make a point). This definition can be either instead of the "**inputs**" array in the component definition. However, defining it here with the correct type, will aid if the code editor is content aware and supports Typescript parsing. The same goes for the events that are defined with "EventEmitter".
 
-In angular2, access to the external bind property &#8220;media", can be accessed in &#8220;**ngOnInit**" **hook method** (ng2 terminology) rather than in the constructor. The 2 string properties, likeCount and viewCount are converted to numbers, so it can be formatted later in the template using Angular (+2) pipes (the equivalent to AngularJS filters).
+In angular2, access to the external bind property "media", can be accessed in "**ngOnInit**" **hook method** (ng2 terminology) rather than in the constructor. The 2 string properties, likeCount and viewCount are converted to numbers, so it can be formatted later in the template using Angular (+2) pipes (the equivalent to AngularJS filters).
 
 ```typescript
 export class YoutubeMedia {
@@ -414,9 +414,9 @@ This is the template for echoes2:
 
 There few noticeable changes that needs to be made:
 
-Change the one-time binding prefixed with **&#8220;::"** to be without it.
+Change the one-time binding prefixed with **"::"** to be without it.
 
-Handling the &#8220;**controllerAs: &#8216;$ctrl'**" - either remove it or creating an alias on the ng2 class - this can be easily made with a simple
+Handling the "**controllerAs: &#8216;$ctrl'**" - either remove it or creating an alias on the ng2 class - this can be easily made with a simple
 
 ```typescript
 export class YoutubeMedia {
@@ -432,7 +432,7 @@ export class YoutubeMedia {
 
 but, I decided to drop it.
 
-Handling events with the new brackets syntax - &#8220;**ng-click**" is converted to &#8220;**(click)**&#8220;.
+Handling events with the new brackets syntax - "**ng-click**" is converted to "**(click)**".
 
 For ng-class, since I imported the NgClass directive in the component, there are 2 ways to it:
 
@@ -441,7 +441,7 @@ For ng-class, since I imported the NgClass directive in the component, there are
 
 By <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ngClass" target="_blank">Angular (+2) ngClass docs</a>, for 1 class binding, the 1st method  (class binding) is preferred.
 
-The last change is formatting numbers with filters in Angular (+2). There's a new syntax for filters in Angular (+2). Filters are now Pipes. The &#8220;**Number**" pipe (ng1 filter: number) should be used with the &#8220;**DecimalPipe**&#8220;,  in order to format a number with commas. it should be defined as:
+The last change is formatting numbers with filters in Angular (+2). There's a new syntax for filters in Angular (+2). Filters are now Pipes. The "**Number**" pipe (ng1 filter: number) should be used with the "**DecimalPipe**",  in order to format a number with commas. it should be defined as:
 
 ```typescript
 
@@ -470,7 +470,7 @@ In **echoes2**, we can use the new component in echoes2 as such:
 
 ## Final Thoughts
 
-My overall experience is quite good. This &#8220;small" migration process went well enough - and still - a lot of work and exploration is left to complete the full Echoes app.
+My overall experience is quite good. This "small" migration process went well enough - and still - a lot of work and exploration is left to complete the full Echoes app.
 
 You can overview <a href="http://github.com/orizens/echoes-ng2" target="_blank">the complete code on github</a> - you can watch <a href="http://github.com/orizens/echoes-ng2/issues" target="_blank">the issues for any progress</a> on a specific component, service or other. As I stated in the beginning of this article, I intend to write a series of articles about the migration process of Echoes Player from AngularJS to Angular (+2).
 

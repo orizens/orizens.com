@@ -1,6 +1,6 @@
 ---
 id: 429
-title: 'Backbone.View Patterns - the &#8220;render" method'
+title: 'Backbone.View Patterns - the "render" method'
 date: 2012-06-26T15:08:45+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -24,9 +24,9 @@ tags:
 ---
 Since I started working with Backbone, I discovered an amazing piece of javascript toolbox which allows me to shape my code base and organize it.
   
-Backbone's &#8220;View" class is usually a manifestation of some Model's data - or just a really implementation of creating DOM elements with custom behavior.
+Backbone's "View" class is usually a manifestation of some Model's data - or just a really implementation of creating DOM elements with custom behavior.
   
-I've found that I use a certain pattern in some of the views in order make it reusable in other &#8220;parent" views.
+I've found that I use a certain pattern in some of the views in order make it reusable in other "parent" views.
   
 <!--more-->
 
@@ -63,7 +63,7 @@ var RowView = Backbone.View.extend({
 });
 ```
 
-Notice how that I added a &#8220;return this" at the end of the render method. This is a common pattern when using a backbone view: This gives us the ability to reuse the view as a sub view and also use &#8220;pre-render" for preparing it to rendering.
+Notice how that I added a "return this" at the end of the render method. This is a common pattern when using a backbone view: This gives us the ability to reuse the view as a sub view and also use "pre-render" for preparing it to rendering.
   
 In order to use this RowView, A change is required in the TableView's render method:
 
@@ -83,19 +83,19 @@ var TableView = Backbone.View.extend({
 
 ## What does that do?
 
-  1. **&#8220;var rows.."** - Suppose the model of the TableView has a &#8220;rows" property which is an array of row object (json).
-  2. **&#8220;_.each&#8230;"** - I'm using underscore iteration utility to loop through each of the rows. I'm also sending &#8220;this" as an argument so i'll the function argument in this method will be called in the TableView's context.
-  3. **&#8220;var rowView&#8230;**" - i'm creating a new instance of a RowView passing it a model object which is passed as the &#8220;row" argument for this function.
-  4. **&#8220;this.$el.append.."** - finally, the rowView's DOM element is append after is has been rendered to memory. Within this line, the pattern of **&#8220;return this"** is getting useful - the rowView renders its model (it can more complex operations other than the example i put here), while afterwards, I ask for it's output - &#8220;el" the DOM element.
+  1. **"var rows.."** - Suppose the model of the TableView has a "rows" property which is an array of row object (json).
+  2. **"_.each&#8230;"** - I'm using underscore iteration utility to loop through each of the rows. I'm also sending "this" as an argument so i'll the function argument in this method will be called in the TableView's context.
+  3. **"var rowView&#8230;**" - i'm creating a new instance of a RowView passing it a model object which is passed as the "row" argument for this function.
+  4. **"this.$el.append.."** - finally, the rowView's DOM element is append after is has been rendered to memory. Within this line, the pattern of **"return this"** is getting useful - the rowView renders its model (it can more complex operations other than the example i put here), while afterwards, I ask for it's output - "el" the DOM element.
 
 ## Why not&#8230;?
 
-Maybe an eyebrow is raised with the question: why don't you return &#8220;el" instead of &#8220;this"?
+Maybe an eyebrow is raised with the question: why don't you return "el" instead of "this"?
   
-The answer is: you can, however - you won't always want to append the el to an element at the point of calling the render method. Another possible answer is: the output might not be an &#8220;el" element, but rather a &#8220;canvas" element, a &#8220;file" object etc.
+The answer is: you can, however - you won't always want to append the el to an element at the point of calling the render method. Another possible answer is: the output might not be an "el" element, but rather a "canvas" element, a "file" object etc.
 
-## Summary: The View's &#8220;render" method Pattern
+## Summary: The View's "render" method Pattern
 
 usecase: If you plan to iterate through a collection of identical models and render it.
   
-pattern: for each view, construct the &#8220;render" method so it will return &#8220;this" at the end.
+pattern: for each view, construct the "render" method so it will return "this" at the end.

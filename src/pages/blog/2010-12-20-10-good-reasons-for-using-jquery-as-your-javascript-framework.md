@@ -32,11 +32,11 @@ There are many good reasons for why using <a title="Jquery javascript framework"
 
   1. Easy to use
   
-    if you have a hidden element (of any kind - li, div, td, etc) - in order to show it, it's &#8220;display" property has to set the its proper &#8220;block" state. Each element has its own native &#8220;block" state. Jquery does that simply with the show() method:
+    if you have a hidden element (of any kind - li, div, td, etc) - in order to show it, it's "display" property has to set the its proper "block" state. Each element has its own native "block" state. Jquery does that simply with the show() method:
   
     **$(&#8216;div').show()**.
   
-    So - if it's a &#8220;td" element, in modern browsers (such as firefox, chrome, webkit etc..) this method will set its display property to &#8220;table-cell".
+    So - if it's a "td" element, in modern browsers (such as firefox, chrome, webkit etc..) this method will set its display property to "table-cell".
   2. Performance
   
     Jquery uses a <a title="javascript document fragment" href="http://ejohn.org/blog/dom-documentfragments/" target="_blank">document fragment</a> for some inner dom processing - which results in faster dom manipulations such as: appending html content, removing elements etc.
@@ -44,7 +44,7 @@ There are many good reasons for why using <a title="Jquery javascript framework"
   
     one of the most common actions in jquery is to get a set of elements (or one element) and perform one or more actions on it. Jquery uses the sizzle engine to retrieve dom elements. Sizzle uses the convenient simple css syntax to describe the elements it will try to retrieve.
   
-    i.e., if i want to retrieve all elements with class &#8220;my-class", which has a div ancestor: **$(&#8216;div .my-class')**.
+    i.e., if i want to retrieve all elements with class "my-class", which has a div ancestor: **$(&#8216;div .my-class')**.
   4. Easy Ajax
   
     Jquery has implemented a very convenient and easy cross-browser ajax. Handling callbacks, passing values as json or other data format is straight forward. Moreover, there are simplified versions of the **$.****ajax()** method for just **$.****get()** for loading a url, **$.****getJSON()** for loading json data and **$.****post()** method for posting data to the  server (using POST method).
@@ -59,7 +59,7 @@ There are many good reasons for why using <a title="Jquery javascript framework"
   
      **$(&#8216;#myId').bind(&#8216;click.anyObject')**.
   
-    Now, when myId is clicked, it will trigger a click with the additional property of &#8220;anyObject" as a namespace. In fact, you can use this namspace again for more objects.
+    Now, when myId is clicked, it will trigger a click with the additional property of "anyObject" as a namespace. In fact, you can use this namspace again for more objects.
   9. Getting form element values
   
     Again. the elegant way of getting values from any form element is simply as: **$(&#8216;#someFormElement').val()**.

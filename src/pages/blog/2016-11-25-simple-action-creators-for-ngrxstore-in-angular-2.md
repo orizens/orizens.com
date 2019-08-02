@@ -27,9 +27,9 @@ In the development of [Echoes Player](http://orizens.github.io/echoes-ng2) ([ng
 
 [**UPDATE 26/12/2016**]: you can now use ActionCreatorFactory via npm at <https://github.com/orizens/ngrx-action-creator-factory>
 
-Up until now, I was using a [simple and repetitive format](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) for defining action creators. This is the &#8220;YoutubeVideosActions" which includes the available actions for managing the state of the videos store in Echoes Player.
+Up until now, I was using a [simple and repetitive format](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) for defining action creators. This is the "YoutubeVideosActions" which includes the available actions for managing the state of the videos store in Echoes Player.
 
-Action creators encapsulates the creation of an &#8220;**Action**" object - it makes it safer and easier to create actions by calling the function &#8220;**addVideos(newVideos)**&#8220;, which takes a videos array as the payload of this action. Another action creator is the &#8220;**removeVideo()**" function, which in this case, takes no argument and just delivers an Action object with a &#8220;**type**" property only.
+Action creators encapsulates the creation of an "**Action**" object - it makes it safer and easier to create actions by calling the function "**addVideos(newVideos)**", which takes a videos array as the payload of this action. Another action creator is the "**removeVideo()**" function, which in this case, takes no argument and just delivers an Action object with a "**type**" property only.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -61,7 +61,7 @@ it's a nice and clear way for defining action creators. However, when more actio
 
 ## After: Action Creator Factory
 
-I started to think of a different way for defining action creators - one which will allow me to have a better readable format, write less while keeping the useful typing of the payload argument. I came up with &#8220;**ActionCreatorFactory.create()**" - it creates a action creator function while the payload type is defined after the &#8220;**create**" function.
+I started to think of a different way for defining action creators - one which will allow me to have a better readable format, write less while keeping the useful typing of the payload argument. I came up with "**ActionCreatorFactory.create()**" - it creates a action creator function while the payload type is defined after the "**create**" function.
 
 The first argument of the create function is the action that should be encapsulated. There an optional second argument which is a default value that the payload should be assigned to is no value has been triggered with the action creator.
 
@@ -85,13 +85,13 @@ export class YoutubeVideosActions {
 
 ```
 
-The create function returns a function expression which uses ngrx/store &#8220;**Action**" interface.
+The create function returns a function expression which uses ngrx/store "**Action**" interface.
 
 I'm using two useful Typescript features:
 
-First, I'm using the &#8220;**public**" declaration in the ActionCreator class to attach both arguments to the instance. A new instance of ActionCreator is a javascript object and this aligns with the contract of the &#8220;**Action**" interface.
+First, I'm using the "**public**" declaration in the ActionCreator class to attach both arguments to the instance. A new instance of ActionCreator is a javascript object and this aligns with the contract of the "**Action**" interface.
 
-Second, i'm using the &#8220;**<T>**" [generic](https://www.typescriptlang.org/docs/handbook/generics.html) annotation, which allows to define a specific Type for the payload when &#8220;create" is used.
+Second, i'm using the "**<T>**" [generic](https://www.typescriptlang.org/docs/handbook/generics.html) annotation, which allows to define a specific Type for the payload when "create" is used.
 
 ```typescript
 import { Action } from '@ngrx/store';

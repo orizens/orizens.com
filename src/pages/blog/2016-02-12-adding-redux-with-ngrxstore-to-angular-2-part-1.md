@@ -42,7 +42,7 @@ Lets start adding NgRx to Echoes Player.
 
 ### Creating the main Store
 
-First, I created a new directory in &#8220;**src/app/core/store**" for defining the store. In this directory i'm defining the store, storing the reducers and defining the data model structure of Echoes.
+First, I created a new directory in "**src/app/core/store**" for defining the store. In this directory i'm defining the store, storing the reducers and defining the data model structure of Echoes.
 
 The **index.ts** is:
 
@@ -94,7 +94,7 @@ export class AppModule {}
 
 The first reducer that I have created handles the videos search results. Currently, it handles **3 actions**: add, remove and reset.
 
-Notice how the &#8220;**videos**" function is a pure function: it gets **2 arguments** and is expected to return a value.
+Notice how the "**videos**" function is a pure function: it gets **2 arguments** and is expected to return a value.
 
 ```typescript
 import { ActionReducer, Action } from '@ngrx/store';
@@ -127,11 +127,11 @@ export function addVideos(state: EchoesVideos, videos: GoogleApiYouTubeSearchRes
 }
 ```
 
-The main (and currently only) action that is implemented here is the &#8220;**add**" action with addVideos function. The &#8220;**addVideos**" function simply returns a new array that includes a copy of the source array concatenated with a new videos array.
+The main (and currently only) action that is implemented here is the "**add**" action with addVideos function. The "**addVideos**" function simply returns a new array that includes a copy of the source array concatenated with a new videos array.
 
 ### Using Store In Angular2 Component
 
-In order to use the ngrx store in the &#8220;**youtube-videos.ts**" component, I need to import the Store - which is a &#8220;**singletone**" object, and inject it.
+In order to use the ngrx store in the "**youtube-videos.ts**" component, I need to import the Store - which is a "**singletone**" object, and inject it.
 
 ```typescript
 // youtube-videos.ts
@@ -158,9 +158,9 @@ export class YoutubeVideos {
 }
 ```
 
-I also imported the &#8220;**ChangeDetectionStrategy**&#8220;, so I can instruct angular to evaluate changes once.
+I also imported the "**ChangeDetectionStrategy**", so I can instruct angular to evaluate changes once.
 
-In order to use the result of the youtube search action, I attach the store's reducer result to the &#8220;**videos**" property in this class. Since this operation is async, the template of youtube-videos component has been defined with a pipe of **async**:
+In order to use the result of the youtube search action, I attach the store's reducer result to the "**videos**" property in this class. Since this operation is async, the template of youtube-videos component has been defined with a pipe of **async**:
 
 ```typescript
 
@@ -176,9 +176,9 @@ import { Store } from '@ngrx/store';
 import { ADD } from '../store/youtube-videos';
 ```
 
-Similarly to the youtube-videos component, the &#8220;**Store**" is injected to this service constructor and attached to the &#8220;**this.store**" context.
+Similarly to the youtube-videos component, the "**Store**" is injected to this service constructor and attached to the "**this.store**" context.
 
-In order to update the store state, once the response is ready, the &#8220;**ADD**" event is dispatched with the expected payload:
+In order to update the store state, once the response is ready, the "**ADD**" event is dispatched with the expected payload:
 
 ```typescript
 search(query: string, dontReset: Boolean){
@@ -204,7 +204,7 @@ search(query: string, dontReset: Boolean){
 }
 ```
 
-This closes a circle and invokes the &#8220;**videos**" reducer mentioned above, which afterwards updates the youtube-videos components, which in turn, displays the current state of the &#8220;**store.videos**" property.
+This closes a circle and invokes the "**videos**" reducer mentioned above, which afterwards updates the youtube-videos components, which in turn, displays the current state of the "**store.videos**" property.
 
 ## What's Next
 

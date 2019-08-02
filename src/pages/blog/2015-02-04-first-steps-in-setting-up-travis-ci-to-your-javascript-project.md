@@ -30,7 +30,7 @@ tags:
 ---
 I've been developing my projects with <a title="Decluttering your Gruntfile.js (organizing grunt)" href="http://orizens.com/wp/topics/decluttering-your-gruntfile-js/" target="_blank">build processes</a> for quite some time now. At some point I added unit tests and end to end to my javascript project. In this post i'd like to share some simple steps I did in order to add Continuous Integration to my <a title="Echoes Player" href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>, using <a title="Travis CI in the cloud" href="http://travis-ci.org" target="_blank">Travis</a>.<!--more-->
 
-From the docs of Travis: &#8220;Travis CI is a hosted continuous integration service. It is integrated with GitHub and offers first class support" - For many programming languages.
+From the docs of Travis: "Travis CI is a hosted continuous integration service. It is integrated with GitHub and offers first class support" - For many programming languages.
 
 With Travis, you actually get a machine on the cloud (Ubuntu) that you can use it to run tests for your Github projects on each push as well as pull request.
 
@@ -46,7 +46,7 @@ Travis works well (and only) with github - and the steps for adding it are quite
 
 First, you need to setup few configurations in your github project.
 
-Travis uses a &#8220;.travis.yaml" configuration file to tell Travis what kind of environment the tests run (nodejs).
+Travis uses a ".travis.yaml" configuration file to tell Travis what kind of environment the tests run (nodejs).
 
 ```typescript
 language: node_js
@@ -65,9 +65,9 @@ before_script:
   - gulp style
 ```
 
-Aside from being self explanatory, at this point i wanted Travis to run tests on the angular branch only - so i easily marked that with the &#8220;**branches**" section.
+Aside from being self explanatory, at this point i wanted Travis to run tests on the angular branch only - so i easily marked that with the "**branches**" section.
 
-Also, since the unit tests require some npm modules to be installed on the environment it will run, I indicated the actual npm modules installation commands that will run before Travis runs the test in the &#8220;**before_script**" section. Those will run prior to the &#8220;**npm install**" that Travis will run in order to install additional npm modules that are configured in the project's &#8220;**package.json**" file.
+Also, since the unit tests require some npm modules to be installed on the environment it will run, I indicated the actual npm modules installation commands that will run before Travis runs the test in the "**before_script**" section. Those will run prior to the "**npm install**" that Travis will run in order to install additional npm modules that are configured in the project's "**package.json**" file.
 
 I like the yaml addition, because aside from Travis using it to understand the requirements to run the tests, It is also serves as a requirements documentation for my project - in case someone wants to fork and run the tests on a different machine.
 
@@ -79,9 +79,9 @@ For historical reasons, the yaml file needs to be present in all the **active**
 
 Since my project is based on javascript and the tests run on the nodejs platform, it already has a package.json file.
 
-Travis uses the convention of &#8220;**npm test**" to run the tests. I configured this command within the &#8220;scripts" property to actually run &#8220;**gulp test**" (configured in <a href="https://github.com/orizens/echoes/blob/angular/gulp/test.js" target="_blank">test.js</a>)**.**
+Travis uses the convention of "**npm test**" to run the tests. I configured this command within the "scripts" property to actually run "**gulp test**" (configured in <a href="https://github.com/orizens/echoes/blob/angular/gulp/test.js" target="_blank">test.js</a>)**.**
 
-Up until using Travis, the tests were configured to run with karma runner, and never end (so i can develop with tdd in practice). In karma runner, the flag for this is &#8220;singleRun" set to false. In Travis, the tests need to run once. Travis expose an environmental variable in nodejs process. So, in order to adjust to it, I simple read the TRAVIS variable and set the &#8220;singleRun" to true when running in TRAVIS.
+Up until using Travis, the tests were configured to run with karma runner, and never end (so i can develop with tdd in practice). In karma runner, the flag for this is "singleRun" set to false. In Travis, the tests need to run once. Travis expose an environmental variable in nodejs process. So, in order to adjust to it, I simple read the TRAVIS variable and set the "singleRun" to true when running in TRAVIS.
 
 ```typescript
 var gulp = require('gulp');

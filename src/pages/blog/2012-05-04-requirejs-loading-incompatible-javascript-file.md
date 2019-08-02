@@ -33,7 +33,7 @@ What do you do when you need to load javascript files with [requirejs](http://re
 
 
   
-**UPDATE:** [requirejs version 2 released](https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.0#wiki-shim "RequireJS version 2") - it includes a built in solution for the &#8220;order" plugin functionality as well as other new and useful features.
+**UPDATE:** [requirejs version 2 released](https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.0#wiki-shim "RequireJS version 2") - it includes a built in solution for the "order" plugin functionality as well as other new and useful features.
   
 I'm working on a project based on [backbone](http://documentcloud.github.com/backbone) and [underscore](http://documentcloud.github.com/underscore). On the beginning, we had to find a properly compatible ports of these libraries in order to make them work with requirejs.
 
@@ -41,15 +41,15 @@ Soon, when both libraries released new versions, we have found out that its port
 
 Obviously, this solution isn't maintainable & good enough.
 
-## Solution 1: The &#8220;use" Plugin
+## Solution 1: The "use" Plugin
 
-Tim Branyen has put up the &#8220;use!" plugin for requirejs. This plugin, with the proper configuration, loads incompatible javascript files:
+Tim Branyen has put up the "use!" plugin for requirejs. This plugin, with the proper configuration, loads incompatible javascript files:
 
 [AMD/RequireJS Shim Plugin for Loading Incompatible JavaScript | Tim Branyen @tbranyen](http://tbranyen.com/post/amdrequirejs-shim-plugin-for-loading-incompatible-javascript)
 
 ## Solution 2: Without a Plugin
 
-There is a method for loading incompatible javascript files without any dedicated plugin (aside for the offical &#8220;order" plugin - for special cases).
+There is a method for loading incompatible javascript files without any dedicated plugin (aside for the offical "order" plugin - for special cases).
   
 First, I configured requirejs with aliases to my backbone & underscore libraries to specific loaders (main.js):
 
@@ -64,7 +64,7 @@ require.config({
 });
 ```
 
-I created a customized &#8220;underscore-loader.js" javascript file. This file loads the original underscore library - this gives me the option to replace underscore versions (development/production/other builds) without affecting the general application configuration (_underscore-loader.js_):
+I created a customized "underscore-loader.js" javascript file. This file loads the original underscore library - this gives me the option to replace underscore versions (development/production/other builds) without affecting the general application configuration (_underscore-loader.js_):
 
 ```typescript
 define(["libs/underscore/underscore-orig"], function() {
@@ -72,7 +72,7 @@ define(["libs/underscore/underscore-orig"], function() {
 });
 ```
 
-To load backbone, I had to use the [&#8220;order" plugin](http://requirejs.org/docs/1.0/docs/download.html#order) - which tells require js to load the depended files by the order of the array, and then invoking the callback. In backbone's case, I have to specify underscore once again to make sure the underscore-orig will be loaded if it hasn't (_backbone-loader.j_s).
+To load backbone, I had to use the ["order" plugin](http://requirejs.org/docs/1.0/docs/download.html#order) - which tells require js to load the depended files by the order of the array, and then invoking the callback. In backbone's case, I have to specify underscore once again to make sure the underscore-orig will be loaded if it hasn't (_backbone-loader.j_s).
 
 ```typescript
 define(["order!jquery", "order!libs/underscore/underscore-orig", "order!libs/backbone/backbone-orig"], function() {

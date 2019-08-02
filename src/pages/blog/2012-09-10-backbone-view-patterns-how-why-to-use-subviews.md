@@ -23,7 +23,7 @@ tags:
   - javascript
 ---
 Backbone.View is a very useful javascript class when it comes to rendering data and attach a behavior to DOM elements. Today, I cannot imagine front end javascript code without some kind of a view class.   
-Often, I tend to keep my views as small as possible. Sometimes it is hard to determine what is a view and how to break big chunk of data to smaller views. In this post I want to point out some useful cases where it is beneficial to use &#8220;sub-views" and the benefits of such methodology.<!--more-->
+Often, I tend to keep my views as small as possible. Sometimes it is hard to determine what is a view and how to break big chunk of data to smaller views. In this post I want to point out some useful cases where it is beneficial to use "sub-views" and the benefits of such methodology.<!--more-->
 
 <!--RndAds-->
 

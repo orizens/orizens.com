@@ -80,8 +80,8 @@ So, the js folder might include hundreds of js files - and we wouldn't want to l
 It is a good practice to keep any build related files and generally, ant other files that are not required for the application, in a separate dedicated folder.
 
   1. Install <a title="nodejs" href="http://nodejs.org/" target="_blank">nodejs</a>.
-  2. Create a new folder outside your application and name it - &#8220;build" or some other name related to build. In this folder we'll keep the files that are necessary to the build process.
-  3. Download <a title="r.js build tool" href="http://requirejs.org/docs/download.html#rjs" target="_blank">r.js</a> file and put inside the &#8220;build" folder.
+  2. Create a new folder outside your application and name it - "build" or some other name related to build. In this folder we'll keep the files that are necessary to the build process.
+  3. Download <a title="r.js build tool" href="http://requirejs.org/docs/download.html#rjs" target="_blank">r.js</a> file and put inside the "build" folder.
 
 <!--RndAds-->
 
@@ -89,22 +89,22 @@ It is a good practice to keep any build related files and generally, ant other f
   
 Now we're going to create a configuration file for the build process. This file includes information that is relevant for the build process. It tells the build where to start, what to do etc.
   
-Create a new file inside the &#8220;build" folder and name it: &#8220;app.build.js".
+Create a new file inside the "build" folder and name it: "app.build.js".
   
 this is a working example of my app.build.js file:
   
 
 
-Please notice that the files of my application are located in the &#8220;app" folder. Additional options for this build json can be found in the <a href="https://github.com/jrburke/r.js/blob/master/build/example.build.js" title="example.build.js configuration file" target="_blank">r.js example github</a>.
+Please notice that the files of my application are located in the "app" folder. Additional options for this build json can be found in the <a href="https://github.com/jrburke/r.js/blob/master/build/example.build.js" title="example.build.js configuration file" target="_blank">r.js example github</a>.
 
 ## Running The Build
 
-All you have to do now is open your console (i.e, cmd in windows), navigate to the &#8220;build" folder and run this command:
+All you have to do now is open your console (i.e, cmd in windows), navigate to the "build" folder and run this command:
 
 ```typescript
 
 
-You can find the new files in the folder that is defined in the &#8220;dir" property in app.build.js.
+You can find the new files in the folder that is defined in the "dir" property in app.build.js.
   
 Additional help configuration can be found on the <a href="http://requirejs.org/docs/optimization.html" target="_blank">requirejs optimizer page</a>.
   
@@ -122,8 +122,8 @@ Since i'm working with <a href="http://orizens.com/wp/topics/javascript-ides-yes
 }
 ```
 
-  3. Save the new configuration build with a preferred name - I used **&#8220;RequireJS Optimization"**. 
+  3. Save the new configuration build with a preferred name - I used **"RequireJS Optimization"**. 
 
 To use it, make sure the new reuqirejs build is checked in this menu - Tools -> Build System.
   
-Press **&#8220;Ctrl + B"** or **Tools -> Build**.
+Press **"Ctrl + B"** or **Tools -> Build**.

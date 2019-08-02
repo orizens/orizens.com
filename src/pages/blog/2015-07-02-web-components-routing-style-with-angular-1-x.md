@@ -54,7 +54,7 @@ Now, if one develops in an angular based app with a modular approach in mind, I 
 
 ### Clear Vision for Routing
 
-Today, In my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a> &#8220;<a href="http://echotu.be" target="_blank">open the app Echoes Player</a>&#8220;, I started consuming modules in routes using this definiton:
+Today, In my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a> "<a href="http://echotu.be" target="_blank">open the app Echoes Player</a>", I started consuming modules in routes using this definiton:
 
 ```typescript
 .when('/', {
