@@ -11,51 +11,47 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section className="section is-padding-less">
+        <section className="section">
           <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
-            {posts.slice(0, 5).map(({ node: post }) => (
-              <div
-                className="content"
-                style={{ padding: '2em 4em' }}
-                key={post.id}
-              >
-                <p>
-                  <Link
-                    className="post-header"
-                    to={post.frontmatter.permalink}
+            <h1 className="has-text-weight-bold is-size-2 index-primary-title">
+              Latest Articles
+            </h1>
+            {posts
+              .slice(0, 5)
+              .map(
+                ({
+                  node: {
+                    id,
+                    excerpt,
+                    frontmatter: { title, date, permalink, image }
+                  }
+                }) => (
+                  <div
+                    className="content"
+                    style={{ padding: '2em 4em' }}
+                    key={id}
                   >
-                    {post.frontmatter.title}
-                  </Link>
-                  <div>{post.frontmatter.date}</div>
-                  <a
-                    href={post.frontmatter.permalink}
-                    title={post.frontmatter.title}
-                  >
-                    <Img
-                      fixed={post.frontmatter.image.childImageSharp.fixed}
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                      className="single-featured wp-post-image"
-                      alt=""
-                    />
-                  </a>
-                </p>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link
-                    className="btn-keep-reading"
-                    to={post.frontmatter.permalink}
-                  >
-                    Keep Reading →
-                  </Link>
-                </p>
-              </div>
-            ))}
+                    <p>
+                      <Link className="post-header" to={permalink}>
+                        {title}
+                      </Link>
+                      <div>{date}</div>
+                      <a href={permalink} title={title}>
+                        <Img
+                          fixed={image.childImageSharp.fixed}
+                          objectFit="cover"
+                          objectPosition="50% 50%"
+                          className="single-featured wp-post-image"
+                        />
+                      </a>
+                    </p>
+                    <p>{excerpt}</p>
+                    <Link className="btn-keep-reading" to={permalink}>
+                      Keep Reading →
+                    </Link>
+                  </div>
+                )
+              )}
           </div>
         </section>
       </Layout>

@@ -27,6 +27,11 @@
   text-align: center
   position: relative
 
+  .promo
+    width: 60%
+    margin: 0 auto
+    padding: 0rem
+
   .main-logo
     display: block
     height: 300px
@@ -34,13 +39,12 @@
     background-size: contain
     mix-blend-mode: color-dodge
 
-    #logo .main-tagline
+  .main-tagline
     color: $white
-    margin: 15px auto
+    margin-top: $size-3
 
-    #logo .tagline
+  .tagline
     color: $white
-    margin: 10px auto
 
   @media (min-width: 360px)
     .btn-consulting-package
@@ -50,10 +54,11 @@
     .btn-consulting-package
       display: block
       text-transform: capitalize
-      width: 30%
       margin: 0 auto
-      font-size: $size-6
+      font-size: $size-5
+      margin-bottom: $size-7
+      font-weight: $weight-medium
 
-  @media (min-width: 1024px)
-    .btn-consulting-package
-    margin: 15px auto 30px
+      &:hover
+        background-color: $white
+        

@@ -33,19 +33,19 @@ const navItems = [
       },
       {
         label: 'NgRx',
-        link: '/tags/categories/ngrx'
+        link: '/tags/ngrx'
       },
       {
         label: 'RxJS',
-        link: '/tags/categories/rxjs'
+        link: '/tags/rxjs'
       },
       {
         label: 'Testing',
-        link: '/tags/categories/testing'
+        link: '/tags/testing'
       },
       {
         label: 'Typescript',
-        link: '/tags/categories/typescript'
+        link: '/tags/typescript'
       }
     ]
   },
@@ -140,16 +140,18 @@ const Navbar = class extends React.Component {
         {!isBlogPostWithFeaturedImage && (
           <div id="logo">
             <a className="main-logo" href="/" />
-            <h1 className="main-tagline">Front End Consulting Services </h1>
-            <div className="tagline">
-              Javascript, Angular, UI Development, Web Technologies and Trends
-            </div>
-            <a
-              href="https://goo.gl/RJgihR"
-              className="btn btn-default btn-consulting-package"
-            >
-              Get Custom Angular Consulting Package
-            </a>
+            <section className="promo">
+              <h1 className="main-tagline">Front End Consulting Services </h1>
+              <h2 className="tagline">
+                Javascript, Angular, UI Development, Web Technologies and Trends
+              </h2>
+              <a
+                href="https://goo.gl/RJgihR"
+                className="btn btn-default btn-consulting-package"
+              >
+                Ask For Angular/React Consulting Package
+              </a>
+            </section>
           </div>
         )}
         {isBlogPostWithFeaturedImage && (
