@@ -22,7 +22,7 @@ tags:
   - ngrx
   - typescript
 ---
-I like to write clear and maintainable code. To be honest &#8211; sometimes I just don&#8217;t. However, I always look for how to make the code that I write to be better. While developing and enhancing my [open source media player](http://github.com/orizens/echoes-player), [Echoes Player](http://echoesplayer.com), I tend to look again at the code and think of how to make it better in terms of being reusable, clearer and maintainable. The project is build with Angular and NgRx as a state management. In contrary to examples you can find in articles about Angular and NgRx, I chose to use a similar approach of the <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank" rel="noopener">Proxy Pattern</a> to make components and state management less verbose.
+I like to write clear and maintainable code. To be honest - sometimes I just don't. However, I always look for how to make the code that I write to be better. While developing and enhancing my [open source media player](http://github.com/orizens/echoes-player), [Echoes Player](http://echoesplayer.com), I tend to look again at the code and think of how to make it better in terms of being reusable, clearer and maintainable. The project is build with Angular and NgRx as a state management. In contrary to examples you can find in articles about Angular and NgRx, I chose to use a similar approach of the <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank" rel="noopener">Proxy Pattern</a> to make components and state management less verbose.
 
 <!--more-->
 
@@ -46,19 +46,19 @@ export class PlaylistViewComponent implements OnInit {
   ) { }
 }</pre>
 
-The above code is a snippet of the &#8220;**playlist-view**&#8221; component of Echoes Player. This component purpose is to display a YouTube playlist items and more metadata. A user can play or queue the whole playlist as well as play or queue specific media items.
+The above code is a snippet of the &#8220;**playlist-view**" component of Echoes Player. This component purpose is to display a YouTube playlist items and more metadata. A user can play or queue the whole playlist as well as play or queue specific media items.
 
-The injection in this component&#8217;s constructor is quite verbose:
+The injection in this component's constructor is quite verbose:
 
-  1. The **Store** is injected in order to connect the &#8220;nowPlaylist&#8221; store to this component,
+  1. The **Store** is injected in order to connect the &#8220;nowPlaylist" store to this component,
   2. The **NowPlaylistActions** is injected to allow playlist related functionality: queue, play etc.
-  3. The **appPlayerService** is injected to allow interaction with the player&#8217;s api
+  3. The **appPlayerService** is injected to allow interaction with the player's api
   4. the **nowPlaylistService** is injected to allow youtube playlist related api calls
   5. the **ActivatedRoute** is for fetching resolved playlist data
 
-That&#8217;s a lot!
+That's a lot!
 
-Imagine setting up a test for this component &#8211; all of these injections should be mocked or supplied for this component to function correctly. Some of these services include observables & http requests.
+Imagine setting up a test for this component - all of these injections should be mocked or supplied for this component to function correctly. Some of these services include observables & http requests.
 
 Also, the components has to know the Store implementation to interact with the state layer. It also has to interact with few services and be familiar with its internals.
 
@@ -70,12 +70,12 @@ The Proxy design pattern was suggested to solve recurring design problems and ad
   2. easy to change
   3. easy to reuse
 
-There are more problems this design pattern may solve &#8211; the benefits come with the design and we&#8217;ll discuss them soon.
+There are more problems this design pattern may solve - the benefits come with the design and we'll discuss them soon.
 
 Considering the original design of this component, this component should do the following:
 
   1. Display the Playlist meta data
-  2. Display the Playlist&#8217;s tracks
+  2. Display the Playlist's tracks
   3. Indicate which tracks are already queued to the now playlist
   4. Allow to play/queue a playlist
   5. Allow to play/queue a specific track
@@ -111,7 +111,7 @@ export class PlaylistViewComponent implements OnInit {
   // ...
 }</pre>
 
-Notice how the constructor injects the PlaylistProxy and the ActivatedRoute only. This makes it easier to test this component and mock only these (even the route in the case shouldn&#8217;t be too hard to mock). We need to mock the route with  &#8220;**RouterTestingModule**&#8221; and the proxy with the mocked &#8220;**playlistProxySpy**&#8220;:
+Notice how the constructor injects the PlaylistProxy and the ActivatedRoute only. This makes it easier to test this component and mock only these (even the route in the case shouldn't be too hard to mock). We need to mock the route with  &#8220;**RouterTestingModule**" and the proxy with the mocked &#8220;**playlistProxySpy**&#8220;:
 
 <pre class="lang:js decode:true ">TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -123,7 +123,7 @@ Notice how the constructor injects the PlaylistProxy and the ActivatedRoute only
 
 Next, on top of the constructor (these statements are actually syntactic sugar and run inside the constructor) are the display properties that this component use in its template.
 
-Each property is an observable and they are all fetched from the proxy object &#8211; meaning, this component takes the state from the proxy object only and doesn&#8217;t rely on a specific implementation (aside from using observables a state mechanism).
+Each property is an observable and they are all fetched from the proxy object - meaning, this component takes the state from the proxy object only and doesn't rely on a specific implementation (aside from using observables a state mechanism).
 
 Next, these class methods are the public api that this component expose to the template:
 
@@ -171,7 +171,7 @@ export class PlaylistViewComponent implements OnInit {
   }
 }</pre>
 
-Each method of this component delegates to the relevant function inside the PlaylistProxy. Testing these methods is quite easy and mocking these is simply achieved using jasmine&#8217;s &#8220;**createSpyObj**&#8220;:
+Each method of this component delegates to the relevant function inside the PlaylistProxy. Testing these methods is quite easy and mocking these is simply achieved using jasmine's &#8220;**createSpyObj**&#8220;:
 
 <pre class="lang:js decode:true">playlistProxySpy = jasmine.createSpyObj('playlistProxySpy', [
       'playPlaylist',
@@ -185,11 +185,11 @@ Each method of this component delegates to the relevant function inside the Play
 
 With this spy we can easily check whether function was invoke, which parameters were passed and more.
 
-## Beyond: The Proxy to the app&#8217;s proxies
+## Beyond: The Proxy to the app's proxies
 
-The Proxy pattern goes beyond a single component. The same pattern (problem) carries through to the entire app &#8211; the &#8220;**NowPlaylistService**&#8220;, the &#8220;**AppPlayerService**&#8221; and other services are in use in several components around the application.
+The Proxy pattern goes beyond a single component. The same pattern (problem) carries through to the entire app - the &#8220;**NowPlaylistService**&#8220;, the &#8220;**AppPlayerService**" and other services are in use in several components around the application.
 
-I.e, the &#8220;**playVideo**&#8221; functionality is a core action in Echoes Player. The method used in the playlistProxy eventually dispatch two actions:
+I.e, the &#8220;**playVideo**" functionality is a core action in Echoes Player. The method used in the playlistProxy eventually dispatch two actions:
 
 <pre class="lang:default decode:true ">playVideo(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new AppPlayer.LoadAndPlay(media));
@@ -198,14 +198,14 @@ I.e, the &#8220;**playVideo**&#8221; functionality is a core action in Echoes Pl
 
 This method relies on the store implementation to make a video play. To reuse these lines across the application, there could be few solutions:
 
-  1. Expose the &#8220;**PlaylistProxy**&#8221; as an application wide service
-  2. Create a dedicated &#8220;**AppPlayer**&#8221; proxy (selected)
+  1. Expose the &#8220;**PlaylistProxy**" as an application wide service
+  2. Create a dedicated &#8220;**AppPlayer**" proxy (selected)
 
-Since the &#8220;**PlaylistView**&#8221; is a feature module I chose to go with the second approach.
+Since the &#8220;**PlaylistView**" is a feature module I chose to go with the second approach.
 
-Similar to server-client approach, where client request data from the server using an api &#8211; &#8220;**/api/playlist/41da6521fdafs41**&#8221; &#8211; I decided to create an app wide &#8220;**AppPlayerApi**&#8220;. All calls related to interact with the app player actions should use this api and not interact directly with the store. Again, this allows the code that handles these to be reused and managed in once object.
+Similar to server-client approach, where client request data from the server using an api - &#8220;**/api/playlist/41da6521fdafs41**" - I decided to create an app wide &#8220;**AppPlayerApi**&#8220;. All calls related to interact with the app player actions should use this api and not interact directly with the store. Again, this allows the code that handles these to be reused and managed in once object.
 
-With this in mind, i&#8217;m introducing the proxy pattern as another layer for exposing the app&#8217;s services to feature modules &#8211; while consuming it via a feature&#8217;s proxy.
+With this in mind, i'm introducing the proxy pattern as another layer for exposing the app's services to feature modules - while consuming it via a feature's proxy.
 
 This is a snippet of the final implementation for the PlaylistProxy:
 
@@ -243,15 +243,15 @@ export class PlaylistProxy {
 }
 </pre>
 
-## What&#8217;s Next? Proxy The Store
+## What's Next? Proxy The Store
 
 Using this proxy approach promotes towards a reusable design for services and apis uses across the application.
 
 This pattern may not solve other problems, however, it does instruct to think [**DRY**](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) and organize code in a way that makes sense and intuitive to use and search for.
 
-This pattern can be similarly used for the &#8220;**Store**&#8221; layer &#8211; which benefits in not relying on a specific store implementation and also make it easier to test and mock the State layer.
+This pattern can be similarly used for the &#8220;**Store**" layer - which benefits in not relying on a specific store implementation and also make it easier to test and mock the State layer.
 
-I.e, instead of injecting the &#8220;**Store**&#8221; and selecting a certain slice using ngrx as in:
+I.e, instead of injecting the &#8220;**Store**" and selecting a certain slice using ngrx as in:
 
 <pre class="lang:default decode:true">export class PlaylistProxy {
   nowPlaylist$ = this.store.let(getPlaylistVideos$);
@@ -275,7 +275,7 @@ An AppStoreApi (Proxy) can be used instead, making the store agnostic to impleme
   //..
 }</pre>
 
-Again, the code expects the store to rely on observable data structure and that&#8217;s fine by me. However, this is an idea i&#8217;m still considering and still testing the benefits outcome of it.
+Again, the code expects the store to rely on observable data structure and that's fine by me. However, this is an idea i'm still considering and still testing the benefits outcome of it.
 
 You can view the full source code in [echoes player github repository](https://github.com/orizens/echoes-player/tree/master/src/app/containers/playlist-view).
 

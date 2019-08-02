@@ -20,7 +20,7 @@ Lately, I am surprised of how javascript is perceived with people who are not so
   
 Javascript has stepped up in its significance as a development language quite high in the last 3-4 years and it still does.
   
-With javascript becoming so popular for developing almost any field: server side, database, client, mobile devices, cable boxes, games (and I can continue wit this list &#8211; but i won’t), the need for a proper IDE arises.
+With javascript becoming so popular for developing almost any field: server side, database, client, mobile devices, cable boxes, games (and I can continue wit this list - but i won’t), the need for a proper IDE arises.
   
 <!--more-->
 
@@ -44,7 +44,7 @@ By definition, an IDE consists of:
   4. a debugger
 
 <h2 dir="ltr">
-  So &#8211; What these have to do with javascript?
+  So - What these have to do with javascript?
 </h2>
 
 <h3 dir="ltr">
@@ -59,7 +59,7 @@ All of the above exist for javascript as well.
   Compiler/Interpreter
 </h3>
 
-Until the rise of popular compilers for javascript such as CoffeeScript, the compiler javascript developers worked with was actually a JIT compiler-  “just in time” compiler &#8211; or to put in simple words &#8211; the browser.
+Until the rise of popular compilers for javascript such as CoffeeScript, the compiler javascript developers worked with was actually a JIT compiler-  “just in time” compiler - or to put in simple words - the browser.
   
 The browser compiles and interpret javascript code to machine code, which is usually formalize in what the end user sees as UI interactions (off course, there are also unseen operations that may run in the background).
 
@@ -69,13 +69,13 @@ The browser compiles and interpret javascript code to machine code, which is usu
 
 To put in simple words, build automation tools are macros which make repetitive tasks a breeze. Such tasks may include packaging, running tests, deployments, creating documentations etc.
   
-Nowadays, there are tools for packaging javascript code &#8211; compressing, obfuscating, combining files by dependencies and more. There are also tools for generating documentations and running some tests on the code.
+Nowadays, there are tools for packaging javascript code - compressing, obfuscating, combining files by dependencies and more. There are also tools for generating documentations and running some tests on the code.
 
 <h3 dir="ltr">
   Debugger
 </h3>
 
-Again, the debugger feature goes to the browser &#8211; which is the most common method for debugging javascript &#8211; and practically, the most convenient.
+Again, the debugger feature goes to the browser - which is the most common method for debugging javascript - and practically, the most convenient.
   
 Javascript debuggers such as Chrome Developer Tools and Firebug offer: breakpoints and conditional breakpoints, watch expressions, logging requests and responses, live editing and more. There are several IDE’s which offer built in debuggers as well.
   
@@ -137,7 +137,7 @@ There are many more fine code editors for javascript. As I stated above, I see a
   
 Currently, my editor of choice is notepad++.
   
-it offers code completion for more than 30 languages, color syntax, object class browser (a plugin), FTP, file system integration, command line integration, command line scripts integration (i.e., I integrated a script for integration with TFS version control, plugins, low CPU consuming and world wide community support.There is also a movement towards online “cloud” based code editors, amongst &#8211; [Cloud9](http://c9.io/) and [akshell](http://www.akshell.com/).
+it offers code completion for more than 30 languages, color syntax, object class browser (a plugin), FTP, file system integration, command line integration, command line scripts integration (i.e., I integrated a script for integration with TFS version control, plugins, low CPU consuming and world wide community support.There is also a movement towards online “cloud” based code editors, amongst - [Cloud9](http://c9.io/) and [akshell](http://www.akshell.com/).
 
 <h3 dir="ltr">
   <a href="http://www.sublimetext.com/">Sublime Text</a> (commercial/free)
@@ -171,4 +171,4 @@ it offers code completion for more than 30 languages, color syntax, object class
  18. saving folders as project, ftp plugin.
  19. It is a free trial and after 30 days – you can still use it – however, it has a nag screen which prompts you that “you have to buy a license in order to use it”.
 
-There are plenty other good IDE’s / editors which didn’t fit in to this post such as &#8211; Eclipse, Spekt, Komodo and more. If you feel you’re working with a good editor &#8211; let us know in the comments.
+There are plenty other good IDE’s / editors which didn’t fit in to this post such as - Eclipse, Spekt, Komodo and more. If you feel you’re working with a good editor - let us know in the comments.

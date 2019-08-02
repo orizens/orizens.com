@@ -21,15 +21,15 @@ tags:
   - ngrx
   - typescript
 ---
-In the development of [Echoes Player](http://orizens.github.io/echoes-ng2) ([ng2 version](http://github.com/orizens/echoes-ng2)),  I&#8217;m using [ngrx/store](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) for state management and [ngrx/effects for logics](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) with [side effects](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/). I&#8217;m always looking for better and simpler ways to write code &#8211; just experimenting with how code can be written differently. In this post I like to share a nice way for defining action creator functions which support typed arguments.
+In the development of [Echoes Player](http://orizens.github.io/echoes-ng2) ([ng2 version](http://github.com/orizens/echoes-ng2)),  I'm using [ngrx/store](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) for state management and [ngrx/effects for logics](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) with [side effects](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/). I'm always looking for better and simpler ways to write code - just experimenting with how code can be written differently. In this post I like to share a nice way for defining action creator functions which support typed arguments.
 
 ## Before: Creating Action Creators
 
 [**UPDATE 26/12/2016**]: you can now use ActionCreatorFactory via npm at <https://github.com/orizens/ngrx-action-creator-factory>
 
-Up until now, I was using a [simple and repetitive format](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) for defining action creators. This is the &#8220;YoutubeVideosActions&#8221; which includes the available actions for managing the state of the videos store in Echoes Player.
+Up until now, I was using a [simple and repetitive format](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) for defining action creators. This is the &#8220;YoutubeVideosActions" which includes the available actions for managing the state of the videos store in Echoes Player.
 
-Action creators encapsulates the creation of an &#8220;**Action**&#8221; object &#8211; it makes it safer and easier to create actions by calling the function &#8220;**addVideos(newVideos)**&#8220;, which takes a videos array as the payload of this action. Another action creator is the &#8220;**removeVideo()**&#8221; function, which in this case, takes no argument and just delivers an Action object with a &#8220;**type**&#8221; property only.
+Action creators encapsulates the creation of an &#8220;**Action**" object - it makes it safer and easier to create actions by calling the function &#8220;**addVideos(newVideos)**&#8220;, which takes a videos array as the payload of this action. Another action creator is the &#8220;**removeVideo()**" function, which in this case, takes no argument and just delivers an Action object with a &#8220;**type**" property only.
 
 <pre class="lang:js decode:true ">import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
@@ -55,11 +55,11 @@ export class YoutubeVideosActions {
   }
 }</pre>
 
-it&#8217;s a nice and clear way for defining action creators. However, when more actions are added, the file is getting bigger and the pattern for each action creator is repeated. This makes it hard to maintain and in my opinion, harder to have a glance at all action creators available in this file.
+it's a nice and clear way for defining action creators. However, when more actions are added, the file is getting bigger and the pattern for each action creator is repeated. This makes it hard to maintain and in my opinion, harder to have a glance at all action creators available in this file.
 
 ## After: Action Creator Factory
 
-I started to think of a different way for defining action creators &#8211; one which will allow me to have a better readable format, write less while keeping the useful typing of the payload argument. I came up with &#8220;**ActionCreatorFactory.create()**&#8221; &#8211; it creates a action creator function while the payload type is defined after the &#8220;**create**&#8221; function.
+I started to think of a different way for defining action creators - one which will allow me to have a better readable format, write less while keeping the useful typing of the payload argument. I came up with &#8220;**ActionCreatorFactory.create()**" - it creates a action creator function while the payload type is defined after the &#8220;**create**" function.
 
 The first argument of the create function is the action that should be encapsulated. There an optional second argument which is a default value that the payload should be assigned to is no value has been triggered with the action creator.
 
@@ -81,13 +81,13 @@ export class YoutubeVideosActions {
 }
 </pre>
 
-The create function returns a function expression which uses ngrx/store &#8220;**Action**&#8221; interface.
+The create function returns a function expression which uses ngrx/store &#8220;**Action**" interface.
 
-I&#8217;m using two useful Typescript features:
+I'm using two useful Typescript features:
 
-First, I&#8217;m using the &#8220;**public**&#8221; declaration in the ActionCreator class to attach both arguments to the instance. A new instance of ActionCreator is a javascript object and this aligns with the contract of the &#8220;**Action**&#8221; interface.
+First, I'm using the &#8220;**public**" declaration in the ActionCreator class to attach both arguments to the instance. A new instance of ActionCreator is a javascript object and this aligns with the contract of the &#8220;**Action**" interface.
 
-Second, i&#8217;m using the &#8220;**<T>**&#8221; [generic](https://www.typescriptlang.org/docs/handbook/generics.html) annotation, which allows to define a specific Type for the payload when &#8220;create&#8221; is used.
+Second, i'm using the &#8220;**<T>**" [generic](https://www.typescriptlang.org/docs/handbook/generics.html) annotation, which allows to define a specific Type for the payload when &#8220;create" is used.
 
 <pre class="lang:default decode:true ">import { Action } from '@ngrx/store';
 

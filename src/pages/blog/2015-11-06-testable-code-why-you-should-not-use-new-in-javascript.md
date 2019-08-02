@@ -1,6 +1,6 @@
 ---
 id: 822
-title: 'Testable Code: Why You Should Not Use &#8220;new&#8221; In Javascript'
+title: 'Testable Code: Why You Should Not Use &#8220;new" In Javascript'
 date: 2015-11-06T14:40:44+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -25,11 +25,11 @@ tags:
   - javascript
   - patterns
 ---
-Since I started writing tests for my javascript projects, I feel it is much more robust and uncovers problems both in design and implementation in the right time. In this post, i&#8217;de like to share a use case i discovered few days ago, one which demonstrates why the &#8220;new&#8221; keyword shouldn&#8217;t be used when creating objects and how dependency injection assists in this matter &#8211; that, in order to write testable and robust code.
+Since I started writing tests for my javascript projects, I feel it is much more robust and uncovers problems both in design and implementation in the right time. In this post, i'de like to share a use case i discovered few days ago, one which demonstrates why the &#8220;new" keyword shouldn't be used when creating objects and how dependency injection assists in this matter - that, in order to write testable and robust code.
 
 <!--more-->
 
-## The Problem of &#8220;new&#8221; in javascript
+## The Problem of &#8220;new" in javascript
 
 My [open source project](http://github.com/orizens/echoes), <a href="http://echotu.be" target="_blank">Echoes Player</a>, is built of several modules. The current version uses angular as the framework for the app (last version was based on <a href="http://backbonejs.org" target="_blank">Backbone.js</a>). One of the main modules is the youtube-player module. It has several purposes:
 
@@ -45,7 +45,7 @@ There are few steps in order to use the <a href="https://developers.google.com/y
 
   1. embedding the script of the player.
   2. listen to the api ready event
-  3. creating a new youtube player object with the &#8220;**YT**&#8221; global object
+  3. creating a new youtube player object with the &#8220;**YT**" global object
 
 My first implementation was quite naive at the time. I created a directive that served at the placeholder for the youtube iframe. This directive was responsible for listening to the api ready event, and then create the new youtube player object. So, the code was something like this:
 
@@ -98,20 +98,20 @@ My first implementation was quite naive at the time. I created a directive that 
 
 There are 4 problems here:
 
-  1. the directive&#8217;s controller is creating the new youtube player object (use of logic) &#8211; this should be handled in a service
-  2. the new youtube player object is saved **outside** of the controller&#8217;s function
-  3. The new youtube player object is saved in the **YoutubePlayerSettings** service &#8211; That&#8217;s hard to test
+  1. the directive's controller is creating the new youtube player object (use of logic) - this should be handled in a service
+  2. the new youtube player object is saved **outside** of the controller's function
+  3. The new youtube player object is saved in the **YoutubePlayerSettings** service - That's hard to test
   4. This code is not testable
 
 ## Refactoring The Code To Testable Code
 
 To solve some of the problems, I refactored the code.
 
-I moved the &#8220;**createPlayer**&#8221; function to **YoutubePlayerSettings** &#8211; This helped me in reducing the code logic that was in the controller.
+I moved the &#8220;**createPlayer**" function to **YoutubePlayerSettings** - This helped me in reducing the code logic that was in the controller.
 
-However, I was still using the &#8220;new YT.player&#8221; constructor, and as soon as i ran the tests for the **YoutubePlayerSettings** service, I realised that I have no control over this &#8220;foreign&#8221; object (YT). There&#8217;s no need to create a new youtube player object in tests &#8211; that should and could be mocked easily (i&#8217;m using **<a href="http://jasmine.github.io/2.3/introduction.html" target="_blank">jasmine</a>** for tests).
+However, I was still using the &#8220;new YT.player" constructor, and as soon as i ran the tests for the **YoutubePlayerSettings** service, I realised that I have no control over this &#8220;foreign" object (YT). There's no need to create a new youtube player object in tests - that should and could be mocked easily (i'm using **<a href="http://jasmine.github.io/2.3/introduction.html" target="_blank">jasmine</a>** for tests).
 
-So, I took the bdd approach. In order to create a mocked youtube player, one which I can inject and test with it, I created a new factory object &#8211; **YoutubePlayerCreator** &#8211; which abstracts the **YT.player** constructor object and exposes a clear defined API for creating a new youtube player object::
+So, I took the bdd approach. In order to create a mocked youtube player, one which I can inject and test with it, I created a new factory object - **YoutubePlayerCreator** - which abstracts the **YT.player** constructor object and exposes a clear defined API for creating a new youtube player object::
 
 <pre class="lang:default decode:true ">angular
     .module('youtube.player')
@@ -215,6 +215,6 @@ So, this is where **Dependancy Injection** manifests at is best (and not just in
 
 ## Summary
 
-To summarise this adventure, this is a single case among many, where you should use a factory to create new objects rather than just creating new objects with the &#8220;new&#8221; keyword. Being true to the nature of writing tests for each scenario in the code, should result in creating factory objects. Perhaps there are some cases where you can still use the &#8220;**new**&#8221; keyword, i.e,  internal framework level or rather an environment where you can &#8220;**import**&#8221; objects and mock them easily.
+To summarise this adventure, this is a single case among many, where you should use a factory to create new objects rather than just creating new objects with the &#8220;new" keyword. Being true to the nature of writing tests for each scenario in the code, should result in creating factory objects. Perhaps there are some cases where you can still use the &#8220;**new**" keyword, i.e,  internal framework level or rather an environment where you can &#8220;**import**" objects and mock them easily.
 
-I can&#8217;t think of a thumb rule, however I can point to concentrate in writing the story of the objects in the specs (using **bdd** approach along writing the code). Remember, you&#8217;re always testing the outcome &#8211; if not in code, then manually &#8211; and in this case &#8211; think again, make that **extra mile** to write a test. I&#8217;m positive this extra **mile** will save you 100 miles ahead.
+I can't think of a thumb rule, however I can point to concentrate in writing the story of the objects in the specs (using **bdd** approach along writing the code). Remember, you're always testing the outcome - if not in code, then manually - and in this case - think again, make that **extra mile** to write a test. I'm positive this extra **mile** will save you 100 miles ahead.

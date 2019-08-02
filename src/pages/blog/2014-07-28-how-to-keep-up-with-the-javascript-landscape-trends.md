@@ -21,9 +21,9 @@ tags:
   - learning
   - resources
 ---
-Often, friends ask me how I keep up with all the news and trends in the javascript world. They wonder about the extensive knowledge, answers and information I have about web development today, and specifically &#8211; front end web development.
+Often, friends ask me how I keep up with all the news and trends in the javascript world. They wonder about the extensive knowledge, answers and information I have about web development today, and specifically - front end web development.
   
-Well, It&#8217;s not a secret &#8211; there is a certain path you can follow along and be point of reference by yourself. You just need to embrace this certain path.
+Well, It's not a secret - there is a certain path you can follow along and be point of reference by yourself. You just need to embrace this certain path.
   
 <!--more-->
 
@@ -43,26 +43,26 @@ These are the main resources I use to read such news and trends are:
 
 Besides, I use social networks to follow such websites or syndications from various interesting sources. I use [my twitter](http://twitter.com/orizens) to follow any interesting personas in the world of javascript, such as: Addy Osmani, daily js blog, echojs (has a twitter account, smashing magazine, angularjs and much much more.
   
-In twitter, I created lists of interest, and each time I follow someone new, it&#8217;s being added to a relevant list.
+In twitter, I created lists of interest, and each time I follow someone new, it's being added to a relevant list.
   
 The 2 most useful lists that I follow and read are: <a title="Twitter Javascript Orizens List" href="https://twitter.com/orizens/lists/javascript" target="_blank" rel="noopener">The Javascript List</a> and <a title="The Web Dev Orizens Twitter List" href="https://twitter.com/orizens/lists/webdev" target="_blank" rel="noopener">The WebDev List</a>.
   
-I also use the <a title="Oren Farhi Goolge Plus Profile" href="https://plus.google.com/u/0/+OrenFarhi1/posts" target="_blank" rel="noopener">Google Plus Platform</a> as well for following and reading interseting news and trends &#8211; using various circles i created for following Javascript related news (angularjs, google chrome and more).
+I also use the <a title="Oren Farhi Goolge Plus Profile" href="https://plus.google.com/u/0/+OrenFarhi1/posts" target="_blank" rel="noopener">Google Plus Platform</a> as well for following and reading interseting news and trends - using various circles i created for following Javascript related news (angularjs, google chrome and more).
   
 I use Chrome application <a title="Tweetdeck Chrome Application" href="https://chrome.google.com/webstore/detail/tweetdeck-by-twitter/hbdpomandigafcibbmofojjchbcdagbl?hl=en-US&utm_source=chrome-ntp-launcher" target="_blank" rel="noopener">Tweetdeck</a> to better read and follow my list on demand.
 
 ### Practicals
 
-Althought it&#8217;s a lot of information to grasp, it&#8217;s not enough just to be aware of it. Some of it has to be absorbed within one self, and in my opinion, the best and most effective way of getting into something is to experience it. Many of the news and trends I get from the resource above, often includes links to tutorials & lessons learned. times I find the time to actually play with code, write a little POC. Sometimes reading the code along with a blog post is enough.
+Althought it's a lot of information to grasp, it's not enough just to be aware of it. Some of it has to be absorbed within one self, and in my opinion, the best and most effective way of getting into something is to experience it. Many of the news and trends I get from the resource above, often includes links to tutorials & lessons learned. times I find the time to actually play with code, write a little POC. Sometimes reading the code along with a blog post is enough.
   
-My <a title="Oren Farhi's Github Profile - Orizens" href="http://github.com/orizens/echoes" target="_blank" rel="noopener">open source project</a>, <a title="Echoes Player" href="http://echotu.be" target="_blank" rel="noopener">Echoes Player</a>, allows me to listen to some good music while learning something new. This project allows me to take its concept and apply it each time &#8211; with various technologies and solutions. So far, I used Echoes Player concept to experiment with Backbone.js, Require.js, Bootstrap, Node.js, Google Api&#8217;s, Angular.js, React.js and browserify. This gives me a good perspective of teh technology I choose and how it can be integrated to any project.
+My <a title="Oren Farhi's Github Profile - Orizens" href="http://github.com/orizens/echoes" target="_blank" rel="noopener">open source project</a>, <a title="Echoes Player" href="http://echotu.be" target="_blank" rel="noopener">Echoes Player</a>, allows me to listen to some good music while learning something new. This project allows me to take its concept and apply it each time - with various technologies and solutions. So far, I used Echoes Player concept to experiment with Backbone.js, Require.js, Bootstrap, Node.js, Google Api's, Angular.js, React.js and browserify. This gives me a good perspective of teh technology I choose and how it can be integrated to any project.
 
 ### Timing
 
-I know it&#8217;s a lot. It&#8217;s a lot to read, experiment and be aware of. I often find the time during the day to read, sometimes during the evening.
+I know it's a lot. It's a lot to read, experiment and be aware of. I often find the time during the day to read, sometimes during the evening.
   
 Sometimes I clear some time and limit myself to certain range of time to start coding and exploring.
   
-However, It&#8217;s important to know when it&#8217;s time to just skim the news and mark few of them for later in depth reading (here comes a gazilion of opened tabs on my desktop, smartphone and tablet), and when it&#8217;s time to do that further deep learning.
+However, It's important to know when it's time to just skim the news and mark few of them for later in depth reading (here comes a gazilion of opened tabs on my desktop, smartphone and tablet), and when it's time to do that further deep learning.
 
-The main point is for one to realize is to keep up with follow the flow &#8211; be familiar with the trending various solutions out there, how to find it and how to get it.
+The main point is for one to realize is to keep up with follow the flow - be familiar with the trending various solutions out there, how to find it and how to get it.

@@ -20,11 +20,11 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
   <div class="gdc_column gdc_ctwo-thirds">
     <div class="gdc_inner">
       <h2>
-        Orizen&#8217;s Angular (2, 4, 5) Articles Series
+        Orizen's Angular (2, 4, 5) Articles Series
       </h2>
       
       <p>
-        This page includes the full series of high quality articles on working with <a href="https://angular.io">Angular</a> published in <a href="http://orizens.com">Orizen&#8217;s</a> blog.
+        This page includes the full series of high quality articles on working with <a href="https://angular.io">Angular</a> published in <a href="http://orizens.com">Orizen's</a> blog.
       </p>
       
       <p>
@@ -49,7 +49,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
       </h2>
       
       <p>
-        <a href="https://goo.gl/WirC74" target="_blank" rel="noopener">Sign Up Today</a> to the Orizen&#8217;s Online Angular (2+) and NGRX Workshop which includes: getting familiar with ngrx/store and ngrx/effects in Angular.
+        <a href="https://goo.gl/WirC74" target="_blank" rel="noopener">Sign Up Today</a> to the Orizen's Online Angular (2+) and NGRX Workshop which includes: getting familiar with ngrx/store and ngrx/effects in Angular.
       </p>
     </div>
   </div>
@@ -114,7 +114,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      My open source app, Echoes Player, allows to consume and create a &#8220;now&#8221; playlist &#8211; where you can queue media
+                      My open source app, Echoes Player, allows to consume and create a "now" playlist - where you can queue media
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/ngrx-scrolling-ino-dom-element-and-components-communication/">Read more.</a>
@@ -132,7 +132,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      Angular released version 5 &#8211; deprecating the old http module &#8220;@angular/http&#8221; with the replacement of &#8220;@angular/common/http&#8220;. Along with the http
+                      Angular released version 5 - deprecating the old http module "@angular/http" with the replacement of "@angular/common/http". Along with the http
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/upgrading-to-angular-5-using-httpclient-jsonp-with-parameters/">Read more.</a>
@@ -150,7 +150,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      I like to write clear and maintainable code. To be honest &#8211; sometimes I just don&#8217;t. However, I always look
+                      I like to write clear and maintainable code. To be honest - sometimes I just don't. However, I always look
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/decluttering-angular-components-the-proxy-pattern/">Read more.</a>
@@ -168,7 +168,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      After upgrading my open source project, &#8220;Echoes Player&#8220;, to work with the latest stable angular-cli 1.0 version (wrote an article
+                      After upgrading my open source project, "Echoes Player", to work with the latest stable angular-cli 1.0 version (wrote an article
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/reusing-ngrxeffects-in-angular-communicating-between-reducers/">Read more.</a>
@@ -186,7 +186,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      With angular-cli tool entering RC-1, I decided to start migrating my open source project &#8220;Echoes Player&#8221; from angular class boilerplate.
+                      With angular-cli tool entering RC-1, I decided to start migrating my open source project "Echoes Player" from angular class boilerplate.
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/">Read more.</a>
@@ -222,7 +222,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      In the development of Echoes Player (ng2 version),  I&#8217;m using ngrx/store for state management and ngrx/effects for logics with side effects.
+                      In the development of Echoes Player (ng2 version),  I'm using ngrx/store for state management and ngrx/effects for logics with side effects.
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/simple-action-creators-for-ngrxstore-in-angular-2/">Read more.</a>
@@ -258,7 +258,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      In a former article, I wrote an introduction for integrating ngrx/effects with Angular (+2) &#8211; a functional approach for reacting to
+                      In a former article, I wrote an introduction for integrating ngrx/effects with Angular (+2) - a functional approach for reacting to
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/">Read more.</a>
@@ -272,11 +272,11 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                   
                   <div class="layer-content">
                     <div class="element element_0 title"  >
-                      Angular 2 Final Version Is Live &#8211; Resource: Start With Ngrx Tools
+                      Angular 2 Final Version Is Live - Resource: Start With Ngrx Tools
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      It&#8217;s official &#8211; Angular version 2.0.0 is live. It&#8217;s been a long ride until the official announcement, and so until then,
+                      It's official - Angular version 2.0.0 is live. It's been a long ride until the official announcement, and so until then,
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/angular-2-final-version-is-live-start-with-ngrx-tools/">Read more.</a>
@@ -290,7 +290,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                   
                   <div class="layer-content">
                     <div class="element element_0 title"  >
-                      Angular (2+), Ngrx/Store & Ngrx/Effects &#8211; Intro To Functional Approach For A Chain Of Actions
+                      Angular (2+), Ngrx/Store & Ngrx/Effects - Intro To Functional Approach For A Chain Of Actions
                     </div>
                     
                     <div class="element element_1 excerpt"  >
@@ -308,7 +308,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                   
                   <div class="layer-content">
                     <div class="element element_0 title"  >
-                      Angular (2+) NgZone Intro &#8211; The new &#8220;scope.apply&#8221;
+                      Angular (2+) NgZone Intro - The new "scope.apply"
                     </div>
                     
                     <div class="element element_1 excerpt"  >
@@ -326,7 +326,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                   
                   <div class="layer-content">
                     <div class="element element_0 title"  >
-                      Angular (2+) &#8211; Communication Between Components & Components Design
+                      Angular (2+) - Communication Between Components & Components Design
                     </div>
                     
                     <div class="element element_1 excerpt"  >
@@ -344,7 +344,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                   
                   <div class="layer-content">
                     <div class="element element_0 title"  >
-                      Adding Redux with NgRx/store to Angular (2+) &#8211; Part 2 (Testing Reducers)
+                      Adding Redux with NgRx/store to Angular (2+) - Part 2 (Testing Reducers)
                     </div>
                     
                     <div class="element element_1 excerpt"  >
@@ -380,11 +380,11 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                   
                   <div class="layer-content">
                     <div class="element element_0 title"  >
-                      Adding Redux with NgRx/Store to Angular (2+) &#8211; Part 1
+                      Adding Redux with NgRx/Store to Angular (2+) - Part 1
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      The recent trend in state management has rise thanks to the popular library &#8211; Redux. I was very interested in
+                      The recent trend in state management has rise thanks to the popular library - Redux. I was very interested in
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/">Read more.</a>
@@ -402,7 +402,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      In the recent article, I used the new &#8220;ng-repeat&#8221; in Angular (+2), &#8220;NgFor&#8220;, and created component that consumes other custom component. In
+                      In the recent article, I used the new "ng-repeat" in Angular (+2), "NgFor", and created component that consumes other custom component. In
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/angular-2-attribute-directive-creating-an-infinite-scroll-directive/">Read more.</a>
@@ -456,7 +456,7 @@ image: ../../img/uploads/2016/11/orizens.com-banners.png
                     </div>
                     
                     <div class="element element_1 excerpt"  >
-                      Recently, I started refactoring Echoes Player, my open source project, from angular ES5 to AngularJS with ES2015 (former ES6). I&#8217;m following
+                      Recently, I started refactoring Echoes Player, my open source project, from angular ES5 to AngularJS with ES2015 (former ES6). I'm following
                     </div>
                     
                     <a target="" class="element element_2 read_more"  href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/">Read more.</a>

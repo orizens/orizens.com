@@ -1,6 +1,6 @@
 ---
 id: 1229
-title: 'Guidelines For developing with Angular, ngrx/store, ngrx/effects &#038; AOT'
+title: 'Guidelines For developing with Angular, ngrx/store, ngrx/effects & AOT'
 date: 2017-03-19T13:57:23+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -22,32 +22,32 @@ tags:
   - aot
   - ngrx
 ---
-With [angular-cli tool](https://github.com/angular/angular-cli) entering RC-1, I decided to start migrating my [open source project](http://github.com/orizens/echoes-ng2) &#8220;[Echoes Player](http://github.orizens.io/echoes-ng2)&#8221; from [angular class boilerplate](https://github.com/AngularClass/angular2-webpack-starter/). Some of the code in &#8220;Echoes Player&#8221; wasn&#8217;t AOT compatible. As a result, compilation logged errors to the console. In this post I&#8217;m sharing guidelines for making your [ngrx](http://github.com/ngrx) related code compatible with AOT.
+With [angular-cli tool](https://github.com/angular/angular-cli) entering RC-1, I decided to start migrating my [open source project](http://github.com/orizens/echoes-ng2) &#8220;[Echoes Player](http://github.orizens.io/echoes-ng2)" from [angular class boilerplate](https://github.com/AngularClass/angular2-webpack-starter/). Some of the code in &#8220;Echoes Player" wasn't AOT compatible. As a result, compilation logged errors to the console. In this post I'm sharing guidelines for making your [ngrx](http://github.com/ngrx) related code compatible with AOT.
 
 <!--more-->
 
-## Why I&#8217;m Using Angular-cli
+## Why I'm Using Angular-cli
 
 The AngularClass boilerplate is a great all in one source for starting a project with Angular. It includes many features and abilities that makes development with Typescript and Angular very comfortable and easy to use.
 
-**Angular-cli** is a command line tool for starting a new Angular app &#8211; its creates a new local repository while providing an interface for adding components, directives, services and all other Angular entities through command line commands. Instead of cloning a repository from github, the cli tool provides a one liner method for starting a project.
+**Angular-cli** is a command line tool for starting a new Angular app - its creates a new local repository while providing an interface for adding components, directives, services and all other Angular entities through command line commands. Instead of cloning a repository from github, the cli tool provides a one liner method for starting a project.
 
 With this tool growing popularity, I decided to experiment with it and understand how to work with it, so I can better understand how teams may benefit form using it as the tool of choice for starting and maintaining an Angular project.
 
 ## AOT Refresher
 
-**AOT** stands for **A**head **O**f **T**ime compilation. The AOT compiler, creates a statically ready code to run in the browser. This means that when the application runs in the browser, the compilation phase is not needed. In contrary, compiling without AOT is JIT &#8211; Just In Time &#8211; where code is compiled at runtime, within the browser.
+**AOT** stands for **A**head **O**f **T**ime compilation. The AOT compiler, creates a statically ready code to run in the browser. This means that when the application runs in the browser, the compilation phase is not needed. In contrary, compiling without AOT is JIT - Just In Time - where code is compiled at runtime, within the browser.
 
 There are few benefits for compiling with AOT:
 
   1. Less code in the final production bundles
-  2. Faster rendering &#8211; as the code is ready to use
-  3. template&#8217;s errors are catch in compile time
-  4. better security &#8211; html injection is prevented since templates are compiled to code.
+  2. Faster rendering - as the code is ready to use
+  3. template's errors are catch in compile time
+  4. better security - html injection is prevented since templates are compiled to code.
 
 ### Compiling With AOT
 
-Compiling with AOT is triggered via a terminal/cmd command. The &#8220;**@angular/compiler-cli**&#8221; and the &#8220;**@angular/platform-server**&#8221; packages are required. Since i&#8217;m using the &#8220;angular-cli&#8221; tool in my project, these are already included.
+Compiling with AOT is triggered via a terminal/cmd command. The &#8220;**@angular/compiler-cli**" and the &#8220;**@angular/platform-server**" packages are required. Since i'm using the &#8220;angular-cli" tool in my project, these are already included.
 
 To compile, this command should run in the terminal:
 
@@ -57,15 +57,15 @@ To compile for production and get the benefits of minifying and others, you shou
 
 <pre class="lang:default decode:true">ng build -prod</pre>
 
-Please note that the flag &#8220;-prod&#8221; includes compiles with AOT (thanks for [the update](https://github.com/angular/angular-cli/blob/master/CHANGELOG.md#breaking-changes-3) [@shiny](https://disqus.com/by/disqus_cCRtlEGXCj/))
+Please note that the flag &#8220;-prod" includes compiles with AOT (thanks for [the update](https://github.com/angular/angular-cli/blob/master/CHANGELOG.md#breaking-changes-3) [@shiny](https://disqus.com/by/disqus_cCRtlEGXCj/))
 
 Now, lets overview the **guidelines** that we should follow when working with **ngrx/store** and **ngrx/effects**, which will allow AOT compilation to compile without any errors.
 
 ## AOT Guidelines With ngrx
 
-In &#8220;Echoes Player&#8221;, I chose to sync the store&#8217;s state to the localstorage. In order to achieve that, I installed? the &#8220;ngrx-store-localstorage&#8221; npm package, which exports the &#8220;**localStorageSync()**&#8221; function. This function is supposed to be used as a middleware reducer which saves the current store&#8217;s state to the localstorage with any dispatched action.
+In &#8220;Echoes Player", I chose to sync the store's state to the localstorage. In order to achieve that, I installed? the &#8220;ngrx-store-localstorage" npm package, which exports the &#8220;**localStorageSync()**" function. This function is supposed to be used as a middleware reducer which saves the current store's state to the localstorage with any dispatched action.
 
-In order to combine reducers, the &#8220;**compose**()&#8221; function from the &#8220;@ngrx/core/compose&#8221; should be used along with the &#8220;**combineReducers**&#8221; from &#8220;@ngrx/store&#8221;. In the end, the compose return value should be stored in a variable:
+In order to combine reducers, the &#8220;**compose**()" function from the &#8220;@ngrx/core/compose" should be used along with the &#8220;**combineReducers**" from &#8220;@ngrx/store". In the end, the compose return value should be stored in a variable:
 
 <pre class="lang:default decode:true">const reducers = {
   player,
@@ -76,9 +76,9 @@ In order to combine reducers, the &#8220;**compose**()&#8221; function from the 
 };
 const appReducer = compose(localStorageSync(Object.keys(reducers), true), combineReducers)(reducers);</pre>
 
-### Guideline #1: Using &#8220;compose&#8221; in ngrx/store
+### Guideline #1: Using &#8220;compose" in ngrx/store
 
-Normally, the &#8220;**appReducer**&#8221; which holds a reference the new composed reducer, should be used as the argument for &#8220;StoreModule.provideStore(productionReducer)&#8221; to bootstrap the store. However, that approach is not compatible with **AOT**. In order to use &#8220;**compose**&#8221; in a way that is compatible with AOT, the &#8220;appReducer&#8221; is required to be wrapped with a function which will be sent as an argument to the &#8220;**provideStore**()&#8221;. This is required for the AOT compiler to statically analyze the code and compile and produce the AOT ready code.
+Normally, the &#8220;**appReducer**" which holds a reference the new composed reducer, should be used as the argument for &#8220;StoreModule.provideStore(productionReducer)" to bootstrap the store. However, that approach is not compatible with **AOT**. In order to use &#8220;**compose**" in a way that is compatible with AOT, the &#8220;appReducer" is required to be wrapped with a function which will be sent as an argument to the &#8220;**provideStore**()". This is required for the AOT compiler to statically analyze the code and compile and produce the AOT ready code.
 
 <pre class="lang:default decode:true">const actions = []; // array of app's action classes
 const reducers = {
@@ -114,7 +114,7 @@ As a rule of thumb for AOT in general (and not just for ngrx), exported arrow fu
 
 ### Guideline #3: AOT compatible ngrx/effects
 
-I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using &#8220;**EffectsModule.run()**&#8221; which creates a provider for each effect . Since in &#8220;Echoes Player&#8221; there are few effects classes, I chose to use a dynamic creation using a simple functional &#8220;map&#8221;:
+I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using &#8220;**EffectsModule.run()**" which creates a provider for each effect . Since in &#8220;Echoes Player" there are few effects classes, I chose to use a dynamic creation using a simple functional &#8220;map":
 
 <pre class="lang:default decode:true">@NgModule({
   imports: [
@@ -124,7 +124,7 @@ I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxst
 })
 export class CoreModule {}</pre>
 
-Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the &#8220;imports&#8221; array:
+Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the &#8220;imports" array:
 
 <pre class="lang:default decode:true ">const AppEffectModules = [
   EffectsModule.run(AppEffects[0]),
@@ -144,17 +144,17 @@ export class CoreModule {}</pre>
 
 I has a very positive experience from the migration process of moving to angular-cli. This turned out to be an opportunity to learn new skills:
 
-  1. Rethinking and restructuring the application&#8217;s directories
+  1. Rethinking and restructuring the application's directories
   2. Learning  how to work with angular-cli features
   3. Learning [several techniques from the community](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories) on migrating to angular-cli
   4. Using the build in scss compilation
   5. Diving into [AOT principles](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
 
-As of the time of writing this post, I haven&#8217;t switched to using angular-cli completely yet. I have some thoughts in mind for finding a simpler way of moving between repositories/tools.
+As of the time of writing this post, I haven't switched to using angular-cli completely yet. I have some thoughts in mind for finding a simpler way of moving between repositories/tools.
 
 You can [view the history of commits](https://github.com/orizens/echoes-ng2/commits/ng-cli) of the migration process to angular-cli.
 
-If you&#8217;re looking for **Angular Consulting** / **Front End Consulting**, please consider to approach via the promotion packages below (no strings attached):
+If you're looking for **Angular Consulting** / **Front End Consulting**, please consider to approach via the promotion packages below (no strings attached):
 
 <div class="row orizens-consulting-packages">
   <div class="col-md-4">

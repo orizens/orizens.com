@@ -1,6 +1,6 @@
 ---
 id: 946
-title: 'Adding Redux with NgRx/Store to Angular (2+) &#8211; Part 1'
+title: 'Adding Redux with NgRx/Store to Angular (2+) - Part 1'
 date: 2016-02-12T12:20:18+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -18,13 +18,13 @@ categories:
   - redux
   - typescript
 ---
-The recent trend in state management has rise thanks to the popular library &#8211; <a href="http://redux.js.org/" target="_blank">Redux</a>. I was very interested in integrating a redux solution to angular in my <a href="http://echotu.be" target="_blank">Echoes Player project</a>. I followed few examples that I have found <a href="https://github.com/ngrx/store" target="_blank">NgRx.js</a>. These are my first steps with integrating it to Echoes.<!--more-->
+The recent trend in state management has rise thanks to the popular library - <a href="http://redux.js.org/" target="_blank">Redux</a>. I was very interested in integrating a redux solution to angular in my <a href="http://echotu.be" target="_blank">Echoes Player project</a>. I followed few examples that I have found <a href="https://github.com/ngrx/store" target="_blank">NgRx.js</a>. These are my first steps with integrating it to Echoes.<!--more-->
 
 ## Short Intro To Redux
 
 **UPDATED: RC.6, 9/1/2016**
 
-In a one liner &#8211; Redux implements the concept of state management using Flux design pattern. It does that using pure functions (reducers) that return a new state given a certain event (type of action) and its event data (payload of action).
+In a one liner - Redux implements the concept of state management using Flux design pattern. It does that using pure functions (reducers) that return a new state given a certain event (type of action) and its event data (payload of action).
 
 The benefits of using Redux are:
 
@@ -42,7 +42,7 @@ Lets start adding NgRx to Echoes Player.
 
 ### Creating the main Store
 
-First, I created a new directory in &#8220;**src/app/core/store**&#8221; for defining the store. In this directory i&#8217;m defining the store, storing the reducers and defining the data model structure of Echoes.
+First, I created a new directory in &#8220;**src/app/core/store**" for defining the store. In this directory i'm defining the store, storing the reducers and defining the data model structure of Echoes.
 
 The **index.ts** is:
 
@@ -57,7 +57,7 @@ let EchoesStore = {
 export default compose(
 )({ videos });</pre>
 
-In order to attach this store to the app, i&#8217;m importing it in the **app.module.ts** (i&#8217;m using the excellent <a href="https://github.com/AngularClass/angular2-webpack-starter" target="_blank">Angular2Class angular2 starter kit</a>) as such:
+In order to attach this store to the app, i'm importing it in the **app.module.ts** (i'm using the excellent <a href="https://github.com/AngularClass/angular2-webpack-starter" target="_blank">Angular2Class angular2 starter kit</a>) as such:
 
 <pre class="lang:js decode:true">// other imports were removed for this example
 import { Store, StoreModule } from '@ngrx/store';
@@ -90,7 +90,7 @@ export class AppModule {}
 
 The first reducer that I have created handles the videos search results. Currently, it handles **3 actions**: add, remove and reset.
 
-Notice how the &#8220;**videos**&#8221; function is a pure function: it gets **2 arguments** and is expected to return a value.
+Notice how the &#8220;**videos**" function is a pure function: it gets **2 arguments** and is expected to return a value.
 
 <pre class="lang:js decode:true">import { ActionReducer, Action } from '@ngrx/store';
 
@@ -121,11 +121,11 @@ export function addVideos(state: EchoesVideos, videos: GoogleApiYouTubeSearchRes
     return state.concat(videos);
 }</pre>
 
-The main (and currently only) action that is implemented here is the &#8220;**add**&#8221; action with addVideos function. The &#8220;**addVideos**&#8221; function simply returns a new array that includes a copy of the source array concatenated with a new videos array.
+The main (and currently only) action that is implemented here is the &#8220;**add**" action with addVideos function. The &#8220;**addVideos**" function simply returns a new array that includes a copy of the source array concatenated with a new videos array.
 
 ### Using Store In Angular2 Component
 
-In order to use the ngrx store in the &#8220;**youtube-videos.ts**&#8221; component, I need to import the Store &#8211; which is a &#8220;**singletone**&#8221; object, and inject it.
+In order to use the ngrx store in the &#8220;**youtube-videos.ts**" component, I need to import the Store - which is a &#8220;**singletone**" object, and inject it.
 
 <pre class="lang:default decode:true">// youtube-videos.ts
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
@@ -152,7 +152,7 @@ export class YoutubeVideos {
 
 I also imported the &#8220;**ChangeDetectionStrategy**&#8220;, so I can instruct angular to evaluate changes once.
 
-In order to use the result of the youtube search action, I attach the store&#8217;s reducer result to the &#8220;**videos**&#8221; property in this class. Since this operation is async, the template of youtube-videos component has been defined with a pipe of **async**:
+In order to use the result of the youtube search action, I attach the store's reducer result to the &#8220;**videos**" property in this class. Since this operation is async, the template of youtube-videos component has been defined with a pipe of **async**:
 
 <pre class="lang:xhtml decode:true">&lt;youtube-list [list]="videos$ | async" (play)="playSelectedVideo($event)"&gt;&lt;/youtube-list&gt;</pre>
 
@@ -165,9 +165,9 @@ I first import the Store and the actions needed for new states:
 <pre class="lang:default decode:true ">import { Store } from '@ngrx/store';
 import { ADD } from '../store/youtube-videos';</pre>
 
-Similarly to the youtube-videos component, the &#8220;**Store**&#8221; is injected to this service constructor and attached to the &#8220;**this.store**&#8221; context.
+Similarly to the youtube-videos component, the &#8220;**Store**" is injected to this service constructor and attached to the &#8220;**this.store**" context.
 
-In order to update the store state, once the response is ready, the &#8220;**ADD**&#8221; event is dispatched with the expected payload:
+In order to update the store state, once the response is ready, the &#8220;**ADD**" event is dispatched with the expected payload:
 
 <pre class="lang:js decode:true ">search(query: string, dontReset: Boolean){
 	const isNewSearch = query && query !== this._config.get('q');
@@ -191,9 +191,9 @@ In order to update the store state, once the response is ready, the &#8220;**ADD
 		});
 }</pre>
 
-This closes a circle and invokes the &#8220;**videos**&#8221; reducer mentioned above, which afterwards updates the youtube-videos components, which in turn, displays the current state of the &#8220;**store.videos**&#8221; property.
+This closes a circle and invokes the &#8220;**videos**" reducer mentioned above, which afterwards updates the youtube-videos components, which in turn, displays the current state of the &#8220;**store.videos**" property.
 
-## What&#8217;s Next
+## What's Next
 
 This is merely just the beginning of integrating NgRx to Echoes. Right after the start, I noticed the benefits of using it. There are more decisions to take in this project using ngrx as well as adding more reducers.
 

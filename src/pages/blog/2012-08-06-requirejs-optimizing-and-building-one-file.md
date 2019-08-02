@@ -1,6 +1,6 @@
 ---
 id: 475
-title: 'RequireJS &#8211; Optimizing and Building One File'
+title: 'RequireJS - Optimizing and Building One File'
 date: 2012-08-06T08:31:44+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -30,7 +30,7 @@ In this post I want to show how requirejs allows us to minify all files into one
 
 ## Typical Structure of a RequireJS Web Application
 
-When writing a web app using requirejs, it&#8217;s important to separate each module to its own file. So, a typical file may look like this (I used backbone for this example):
+When writing a web app using requirejs, it's important to separate each module to its own file. So, a typical file may look like this (I used backbone for this example):
 
 <pre class="brush:js">//- SearchModel.js
 define(
@@ -69,37 +69,37 @@ The folder structure of the application may be as followed:
 
 
   
-So, the js folder might include hundreds of js files &#8211; and we wouldn&#8217;t want to load all of them one by one. Locally it works fine, but serving it for others when remotely will result in low user experience and performance.
+So, the js folder might include hundreds of js files - and we wouldn't want to load all of them one by one. Locally it works fine, but serving it for others when remotely will result in low user experience and performance.
 
 ## Preparations for building one master file
 
 It is a good practice to keep any build related files and generally, ant other files that are not required for the application, in a separate dedicated folder.
 
   1. Install <a title="nodejs" href="http://nodejs.org/" target="_blank">nodejs</a>.
-  2. Create a new folder outside your application and name it &#8211; &#8220;build&#8221; or some other name related to build. In this folder we&#8217;ll keep the files that are necessary to the build process.
-  3. Download <a title="r.js build tool" href="http://requirejs.org/docs/download.html#rjs" target="_blank">r.js</a> file and put inside the &#8220;build&#8221; folder.
+  2. Create a new folder outside your application and name it - &#8220;build" or some other name related to build. In this folder we'll keep the files that are necessary to the build process.
+  3. Download <a title="r.js build tool" href="http://requirejs.org/docs/download.html#rjs" target="_blank">r.js</a> file and put inside the &#8220;build" folder.
 
 <!--RndAds-->
 
 
   
-Now we&#8217;re going to create a configuration file for the build process. This file includes information that is relevant for the build process. It tells the build where to start, what to do etc.
+Now we're going to create a configuration file for the build process. This file includes information that is relevant for the build process. It tells the build where to start, what to do etc.
   
-Create a new file inside the &#8220;build&#8221; folder and name it: &#8220;app.build.js&#8221;.
+Create a new file inside the &#8220;build" folder and name it: &#8220;app.build.js".
   
 this is a working example of my app.build.js file:
   
 
 
-Please notice that the files of my application are located in the &#8220;app&#8221; folder. Additional options for this build json can be found in the <a href="https://github.com/jrburke/r.js/blob/master/build/example.build.js" title="example.build.js configuration file" target="_blank">r.js example github</a>.
+Please notice that the files of my application are located in the &#8220;app" folder. Additional options for this build json can be found in the <a href="https://github.com/jrburke/r.js/blob/master/build/example.build.js" title="example.build.js configuration file" target="_blank">r.js example github</a>.
 
 ## Running The Build
 
-All you have to do now is open your console (i.e, cmd in windows), navigate to the &#8220;build&#8221; folder and run this command:
+All you have to do now is open your console (i.e, cmd in windows), navigate to the &#8220;build" folder and run this command:
 
 <pre class="brush:shell">node r.js -o app.build.js</pre>
 
-You can find the new files in the folder that is defined in the &#8220;dir&#8221; property in app.build.js.
+You can find the new files in the folder that is defined in the &#8220;dir" property in app.build.js.
   
 Additional help configuration can be found on the <a href="http://requirejs.org/docs/optimization.html" target="_blank">requirejs optimizer page</a>.
   
@@ -107,16 +107,16 @@ Additional help configuration can be found on the <a href="http://requirejs.org/
 
 ## Bonus: Automating Build Process with SublimeText
 
-Since i&#8217;m working with <a href="http://orizens.com/wp/topics/javascript-ides-yes/" title="Javascript IDE’s? yes!" target="_blank">SublimeText</a> for code editing, I would like to have the option to build my project from. Fortunately, it&#8217;s easy to accomplish.
+Since i'm working with <a href="http://orizens.com/wp/topics/javascript-ides-yes/" title="Javascript IDE’s? yes!" target="_blank">SublimeText</a> for code editing, I would like to have the option to build my project from. Fortunately, it's easy to accomplish.
 
-  1. From sublime&#8217;s menu, go to -> **Tools -> Build System -> New Build System &#8230;**. 
+  1. From sublime's menu, go to -> **Tools -> Build System -> New Build System &#8230;**. 
   2. Paste this code to the new created file:</p> <pre class="brush:javascript">{
 	"cmd": ["node r.js -o app.build.js"],
 	"shell": true
 }</pre>
 
-  3. Save the new configuration build with a preferred name &#8211; I used **&#8220;RequireJS Optimization&#8221;**. 
+  3. Save the new configuration build with a preferred name - I used **&#8220;RequireJS Optimization"**. 
 
-To use it, make sure the new reuqirejs build is checked in this menu &#8211; Tools -> Build System.
+To use it, make sure the new reuqirejs build is checked in this menu - Tools -> Build System.
   
-Press **&#8220;Ctrl + B&#8221;** or **Tools -> Build**.
+Press **&#8220;Ctrl + B"** or **Tools -> Build**.

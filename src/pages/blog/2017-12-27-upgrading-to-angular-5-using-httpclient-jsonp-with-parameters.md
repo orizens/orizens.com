@@ -17,7 +17,7 @@ categories:
 tags:
   - angular2
 ---
-[Angular](https://blog.angular.io/version-5-0-0-of-angular-now-available-37e414935ced) released **version 5** &#8211; deprecating the old http module &#8220;**@angular/http**&#8221; with the replacement of &#8220;**@angular/common/http**&#8220;. Along with the http module, the jsonp module was also deprecated in favor of a better replacement which is included with the new HttpClient. The usage of jsonp is a little bit different with this version. My open source project, [ngx-typeahead](https://www.npmjs.com/package/ngx-typeahead) &#8211; is an auto suggest directive for Angular-  allowing to query a remote source either with jsonp or http (and with version 0.1.0 &#8211; static list as well). In this article, i&#8217;m sharing the steps I took for upgrading the package to use HttpClient and performing a jsonp request with parameters.<!--more-->
+[Angular](https://blog.angular.io/version-5-0-0-of-angular-now-available-37e414935ced) released **version 5** - deprecating the old http module &#8220;**@angular/http**" with the replacement of &#8220;**@angular/common/http**&#8220;. Along with the http module, the jsonp module was also deprecated in favor of a better replacement which is included with the new HttpClient. The usage of jsonp is a little bit different with this version. My open source project, [ngx-typeahead](https://www.npmjs.com/package/ngx-typeahead) - is an auto suggest directive for Angular-  allowing to query a remote source either with jsonp or http (and with version 0.1.0 - static list as well). In this article, i'm sharing the steps I took for upgrading the package to use HttpClient and performing a jsonp request with parameters.<!--more-->
 
 ## Step 1: Updating The Module Imports
 
@@ -38,7 +38,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 })
 </pre>
 
-I also update the src/modules/ngx-typeahead.component.ts to import HttpClient only. Notice that the alternatives to &#8220;RequestOptionsArgs&#8221; and &#8220;URLSearchParams&#8221; have been updated too and are used inside a utility function (respectively, &#8220;HttpParams&#8221; and &#8220;HttpParamsOptions&#8221;:
+I also update the src/modules/ngx-typeahead.component.ts to import HttpClient only. Notice that the alternatives to &#8220;RequestOptionsArgs" and &#8220;URLSearchParams" have been updated too and are used inside a utility function (respectively, &#8220;HttpParams" and &#8220;HttpParamsOptions":
 
 <pre class="lang:default decode:true">// Before: with Angular 4
 import {
@@ -55,7 +55,7 @@ import { HttpClient } from '@angular/common/http';
 
 ## Step 2: Updating The Http Service Injection
 
-In contrary to the previous version, with Angular 5, &#8220;jsonp&#8221; is used as a method of the http service. All I had to do is change the injection of the http service to use &#8220;HttpClient&#8221; as well as remove the &#8220;Jsonp&#8221; injection:
+In contrary to the previous version, with Angular 5, &#8220;jsonp" is used as a method of the http service. All I had to do is change the injection of the http service to use &#8220;HttpClient" as well as remove the &#8220;Jsonp" injection:
 
 <pre class="lang:default decode:true ">// Before: with Angular 4
 constructor(
@@ -76,17 +76,17 @@ constructor(
 
 ## Step 3: Updating the Jsonp call with parameters
 
-In the old version, i used the jsonp service and had to create an options object which includes the parameters to attach for the request. Eventually, I passed 2 arguments to the jsonp method that was used (&#8220;get&#8221; by default):
+In the old version, i used the jsonp service and had to create an options object which includes the parameters to attach for the request. Eventually, I passed 2 arguments to the jsonp method that was used (&#8220;get" by default):
 
 <pre class="lang:default decode:true">this.jsonp.get(url, options)</pre>
 
-With the new HttpClient it&#8217;s a little bit different. &#8220;jsonp&#8221; is a method that performs the jsonp request. It takes the first argument as the url and the callback string name as the second argument.
+With the new HttpClient it's a little bit different. &#8220;jsonp" is a method that performs the jsonp request. It takes the first argument as the url and the callback string name as the second argument.
 
 <pre class="lang:default decode:true ">this.http.jsonp(url, callbackName);</pre>
 
-### Where jsonp request&#8217;s parameters should be placed with Angular 5?
+### Where jsonp request's parameters should be placed with Angular 5?
 
-I had a small challenge with this one: the params in this case should be concatenated as string parameters to the url argument. Since i&#8217;m using the new &#8220;HttpParams&#8221; to construct a params object, I can use the &#8220;toString()&#8221; to get all parameters as url search parameters and add it to the url:
+I had a small challenge with this one: the params in this case should be concatenated as string parameters to the url argument. Since i'm using the new &#8220;HttpParams" to construct a params object, I can use the &#8220;toString()" to get all parameters as url search parameters and add it to the url:
 
 <pre class="lang:default decode:true ">requestJsonp(url, options, callback = 'callback') {
     // options.params is an HttpParams object

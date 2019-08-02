@@ -1,6 +1,6 @@
 ---
 id: 1058
-title: 'Angular 2 Final Version Is Live &#8211; Resource: Start With Ngrx Tools'
+title: 'Angular 2 Final Version Is Live - Resource: Start With Ngrx Tools'
 date: 2016-09-15T14:14:32+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -18,21 +18,21 @@ tags:
   - angular2
   - ngrx
 ---
-It&#8217;s official &#8211; Angular version 2.0.0 is live. It&#8217;s been a long ride until the official announcement, and so until then, we had the chance to experiment with it, learn appropriate best practices and common solutions and sharing knowledge as a community.
+It's official - Angular version 2.0.0 is live. It's been a long ride until the official announcement, and so until then, we had the chance to experiment with it, learn appropriate best practices and common solutions and sharing knowledge as a community.
 
-I&#8217;ve started experimenting with Angular (+2) since the alpha versions. I started exploring its api even before by creating an npm module for writing an [AngularJS component with Angular (+2) ES5](https://www.npmjs.com/package/angular2to1) api.
+I've started experimenting with Angular (+2) since the alpha versions. I started exploring its api even before by creating an npm module for writing an [AngularJS component with Angular (+2) ES5](https://www.npmjs.com/package/angular2to1) api.
 
-However, I experimented with Angular (+2) in depth by embracing reactive programming with the rxjs patterns and the awesome [ngrx project](https://github.com/ngrx/) &#8211; and eventually shared my insights in my blog and on github.<!--more-->
+However, I experimented with Angular (+2) in depth by embracing reactive programming with the rxjs patterns and the awesome [ngrx project](https://github.com/ngrx/) - and eventually shared my insights in my blog and on github.<!--more-->
 
 ## Where can I start?
 
 I recommend starting from the [official getting started guide at angular.io](https://angular.io/docs/ts/latest/quickstart.html).
 
-There&#8217;s a huge list of resources at [awesome-angular repository](https://github.com/AngularClass/awesome-angular2) and another list on [angular-education repository](https://github.com/timjacobi/angular2-education).
+There's a huge list of resources at [awesome-angular repository](https://github.com/AngularClass/awesome-angular2) and another list on [angular-education repository](https://github.com/timjacobi/angular2-education).
 
 Aside from that, here is a list of articles that I wrote up until now.
 
-Be sure to checkout my open source live project, <a href="http://orizens.github.io/echoes-ng2" target="_blank">Echoes Player</a> &#8211; which I converted from <a href="http://github.com/orizens/echoes" target="_blank">AngularJS</a> (<a href="http://echotu.be" target="_blank">production app</a>) to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Angular (+2)</a>.
+Be sure to checkout my open source live project, <a href="http://orizens.github.io/echoes-ng2" target="_blank">Echoes Player</a> - which I converted from <a href="http://github.com/orizens/echoes" target="_blank">AngularJS</a> (<a href="http://echotu.be" target="_blank">production app</a>) to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Angular (+2)</a>.
 
 ## Prepare Angular 1 Code To Angular (+2)
 

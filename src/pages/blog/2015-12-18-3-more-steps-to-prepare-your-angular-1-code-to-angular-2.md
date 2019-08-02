@@ -31,7 +31,7 @@ Aside from taking a few steps to prepare the code, Angular (+2) holds a variety 
 
 Its <a href="https://angular.io/docs/ts/latest/api/core/Component-var.html" target="_blank">component based architecture</a> leads to applying software architecture best practices right from the start.
 
-It has broaden its capabilities and has become universal javascript framework &#8211; it can be used in server side and in mobile platforms.
+It has broaden its capabilities and has become universal javascript framework - it can be used in server side and in mobile platforms.
 
 One of the most important benefits of using Angular (+2) is performance (<a href="http://angularjs.blogspot.co.il/2015/12/angular-2-beta.html" target="_blank">from the blog post</a>). The angular team has put in a lot of effort to boost performance regardless the platform it runs on. The digest and change detection features along with the new template syntax has been optimized wisely enough to make changes apply fast.
 
@@ -45,13 +45,13 @@ Angular (+2) data binding is by default one-way binding. In order to update a mo
 
 <pre class="lang:xhtml decode:true">&lt;input [value]="params" (input)="resetPageToken($event)"&gt;</pre>
 
-This requires you to implement a &#8220;resetPageToken()&#8221; function in the component&#8217;s class.
+This requires you to implement a &#8220;resetPageToken()" function in the component's class.
 
-With AngularJS, in order to track changes in ng-model while avoiding using the non-standard &#8220;scope&#8221;, you would can do something similar &#8211; ng-change.
+With AngularJS, in order to track changes in ng-model while avoiding using the non-standard &#8220;scope", you would can do something similar - ng-change.
 
 <pre class="lang:default decode:true ">&lt;input ng-model="params" ng-change="resetPageToken($event)"&gt;</pre>
 
-This as well, requires you to implement a &#8220;resetPageToken()&#8221; function on the controller of this template. Following the first 5 steps, if you&#8217;re using es2015 classes syntax for controllers &#8211; that will require less code to migrate when moving to Angular (+2).
+This as well, requires you to implement a &#8220;resetPageToken()" function on the controller of this template. Following the first 5 steps, if you're using es2015 classes syntax for controllers - that will require less code to migrate when moving to Angular (+2).
 
 ## Use Services To Store any State and inject it to modules
 
@@ -59,17 +59,17 @@ This advice follows best practices as well as the recent trendy Flux design patt
 
 With Angular (+2), it is becoming popular to inject services to components. The key point is that these services should be singletons.
 
-You should always follow the concept of injecting services to smart components &#8211; those that manage a certain section in the app, like the app itself:
+You should always follow the concept of injecting services to smart components - those that manage a certain section in the app, like the app itself:
 
 <pre class="lang:default decode:true ">&lt;my-app&gt;&lt;/my-app&gt;</pre>
 
-In this case, the services are injected inside the javascript definition of &#8220;my-app&#8221; class.
+In this case, the services are injected inside the javascript definition of &#8220;my-app" class.
 
 While, injecting data as a property to reusable components:
 
 <pre class="lang:default decode:true">&lt;youtube-media [media]="video" (play)="playVideo($event)"&gt;&lt;/youtube-media&gt;</pre>
 
-In this case, &#8220;video&#8221; is a property of a class and injected via the html attribute &#8220;media&#8221;.
+In this case, &#8220;video" is a property of a class and injected via the html attribute &#8220;media".
 
 ## Use ng-forward for Angular (+2) syntax in AngularJS
 
@@ -88,14 +88,14 @@ export default class YoutubeMedia {
 	@Output() play = new EventEmitter();
 }</pre>
 
-If you have the time of diving into <a href="https://angular.io/docs/ts/latest/index.html" target="_blank">Angular (+2) docs</a>, read articles and tutorials and want to try the syntax on your AngularJS code &#8211; ng-forward is an excellent choice.
+If you have the time of diving into <a href="https://angular.io/docs/ts/latest/index.html" target="_blank">Angular (+2) docs</a>, read articles and tutorials and want to try the syntax on your AngularJS code - ng-forward is an excellent choice.
 
 Some of the benefits are code organization and easier migration to Angular (+2). You also get to play with the syntax and experience immediate results.
 
 ## Final Thoughts
 
-With Angular (+2) already in beta version, I believe it&#8217;s time to move on. I also believe in sticking into standards and best practices with it.
+With Angular (+2) already in beta version, I believe it's time to move on. I also believe in sticking into standards and best practices with it.
 
 Using Ecmascript 2015 should become the first step with any javascript development today, and regardless of the framework you use for developing apps, eventually, writing with standards in mind will allow to experiment with frameworks more easily.
 
-This means that while using Angular (+2) syntax, you should always remember that its syntax should wrap vanilla ecmascript code rather than tiding the code to the framework&#8217;s features. You should be thinking how you can implement good and solid code architecture to a component or a service, and then allow to wrap it with any framework of choice. This is a challenging task, however it should benefit to the long term.
+This means that while using Angular (+2) syntax, you should always remember that its syntax should wrap vanilla ecmascript code rather than tiding the code to the framework's features. You should be thinking how you can implement good and solid code architecture to a component or a service, and then allow to wrap it with any framework of choice. This is a challenging task, however it should benefit to the long term.

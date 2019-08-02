@@ -1,6 +1,6 @@
 ---
 id: 490
-title: 'Backbone.View Patterns &#8211; How &#038; Why Use Subviews'
+title: 'Backbone.View Patterns - How & Why Use Subviews'
 date: 2012-09-10T07:58:30+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -23,15 +23,15 @@ tags:
   - javascript
 ---
 Backbone.View is a very useful javascript class when it comes to rendering data and attach a behavior to DOM elements. Today, I cannot imagine front end javascript code without some kind of a view class.   
-Often, I tend to keep my views as small as possible. Sometimes it is hard to determine what is a view and how to break big chunk of data to smaller views. In this post I want to point out some useful cases where it is beneficial to use &#8220;sub-views&#8221; and the benefits of such methodology.<!--more-->
+Often, I tend to keep my views as small as possible. Sometimes it is hard to determine what is a view and how to break big chunk of data to smaller views. In this post I want to point out some useful cases where it is beneficial to use &#8220;sub-views" and the benefits of such methodology.<!--more-->
 
 <!--RndAds-->
 
 ## How to Identify the need for a sub view
 
-In a <a title="Backbone.View Patterns – The Relationship with “Model”" href="http://orizens.com/wp/topics/backbone-view-patterns-the-relationship-with-model/" target="_blank">recent post</a>, I explained the relationship between Backbone&#8217;s Model and View.   
-When a model has an array of similar items, where each has some sort of interaction &#8211; it is a good practice to render each item as a sub &#8211; view. Using a separate view for each item gives the option to control the behavior attached to each &#8211; usually, on click I am able to get a reference to the correct model of that specific item rather than trying to get the id of the source element and start querying to DOM.   
-In example, take this blog post&#8217;s commenting list. If I were to define it using backbone, the Model would be:
+In a <a title="Backbone.View Patterns – The Relationship with “Model”" href="http://orizens.com/wp/topics/backbone-view-patterns-the-relationship-with-model/" target="_blank">recent post</a>, I explained the relationship between Backbone's Model and View.   
+When a model has an array of similar items, where each has some sort of interaction - it is a good practice to render each item as a sub - view. Using a separate view for each item gives the option to control the behavior attached to each - usually, on click I am able to get a reference to the correct model of that specific item rather than trying to get the id of the source element and start querying to DOM.   
+In example, take this blog post's commenting list. If I were to define it using backbone, the Model would be:
 
 <pre class="brush: js">//- considering there's an object with comments data
 var CommentsPanel = {
@@ -59,7 +59,7 @@ Identifying that each comment is a separate module will result in a much cleaner
 
 ## Why using sub views is good?
 
-  1. If a view of a comment has several events &#8211; attaching these events is self contained inside of every view: <pre class="brush:javascript">var CommentView = Backbone.View.extend({
+  1. If a view of a comment has several events - attaching these events is self contained inside of every view: <pre class="brush:javascript">var CommentView = Backbone.View.extend({
 	
 	events: {
 		'click .collapse': 'toggle',
@@ -74,7 +74,7 @@ Identifying that each comment is a separate module will result in a much cleaner
 });
 </pre>
 
-  2. A comment might be a media comment &#8211; an audio or a video. In this case, if the comment model has an attribute of &#8216;type&#8217;, it is easy for the comments panel view to create an appropriate view: <pre class="brush:javascript">var CommentsPanelView = Backbone.View.extend({
+  2. A comment might be a media comment - an audio or a video. In this case, if the comment model has an attribute of &#8216;type', it is easy for the comments panel view to create an appropriate view: <pre class="brush:javascript">var CommentsPanelView = Backbone.View.extend({
 	
 	render: function() {
 		this.collection.each(function(comment){
@@ -94,7 +94,7 @@ Identifying that each comment is a separate module will result in a much cleaner
 ## How to manage sub views
 
 Managing sub views with Backbone should take in consideration few issues.   
-Sub view is eventually a javascript object &#8211; so, there&#8217;s a need to avoid possible memory leaks.   
+Sub view is eventually a javascript object - so, there's a need to avoid possible memory leaks.   
 The main view which holds the sub views should dismiss the views when rendering new ones or whenever the main view is dismissed.   
 One best practice is saving sub views in a property as such:
 
@@ -131,6 +131,6 @@ One best practice is saving sub views in a property as such:
 
 <!--RndAds-->
 
-This is one way of managing sub views. It&#8217;s important to note that each sub view can have its own sub views &#8211; so, the code above can be used as a somewhat boilerplate for views that have sub views &#8211; no matter the hierarchy level.
+This is one way of managing sub views. It's important to note that each sub view can have its own sub views - so, the code above can be used as a somewhat boilerplate for views that have sub views - no matter the hierarchy level.
 
 <!--RndAds-->

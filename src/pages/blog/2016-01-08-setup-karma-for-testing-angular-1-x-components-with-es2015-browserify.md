@@ -1,6 +1,6 @@
 ---
 id: 908
-title: 'Setup Karma For Testing Angular 1.x Components With ES2015 &#038; Browserify'
+title: 'Setup Karma For Testing Angular 1.x Components With ES2015 & Browserify'
 date: 2016-01-08T11:32:43+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -26,25 +26,25 @@ tags:
   - learning
   - tests
 ---
-<a href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">Converting AngularJS.x code to use ES2015</a> is one thing. It&#8217;s an iterative process that should be taken with great care. However, aside from converting the code, you should also convert the tests to the setup environment. In this article I share the setup I use for running Echoes Player tests with karma & browserify.<!--more-->
+<a href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">Converting AngularJS.x code to use ES2015</a> is one thing. It's an iterative process that should be taken with great care. However, aside from converting the code, you should also convert the tests to the setup environment. In this article I share the setup I use for running Echoes Player tests with karma & browserify.<!--more-->
 
 ## Tests Setup
 
-To simply put &#8211; <a href="http://orizens.com/wp/topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">I believe in writing tests for code</a>. It promotes robustness of the code that you write, healthy mentality as a developer and assurance that your code does what it&#8217;s supposed to do, covering edge cases as well.
+To simply put - <a href="http://orizens.com/wp/topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">I believe in writing tests for code</a>. It promotes robustness of the code that you write, healthy mentality as a developer and assurance that your code does what it's supposed to do, covering edge cases as well.
 
 For my <a href="https://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>, I use a testing environment setup that includes:
 
-  * karma runner &#8211; for running tests and loading testing environments
-  * Chrome &#8211; as the js engine to run the tests on
-  * Phantomjs &#8211; a js engine ro run the tests in the terminal
-  * jasmine &#8211; for writing tests
-  * Babel &#8211; for writing ES2015 in tests
+  * karma runner - for running tests and loading testing environments
+  * Chrome - as the js engine to run the tests on
+  * Phantomjs - a js engine ro run the tests in the terminal
+  * jasmine - for writing tests
+  * Babel - for writing ES2015 in tests
 
 ## Angular 1.x with ES2015 & Browserify
 
-In a previous article, I <a href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">wrote about writing AngularJS.x with ES2015</a> and <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">preparing AngularJS.x code to Angular (+2)</a>. Yet, browsers don&#8217;t know to parse some ES2015 features &#8211; for that &#8211; the code needs to be parsed and compiled to ES5.
+In a previous article, I <a href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">wrote about writing AngularJS.x with ES2015</a> and <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">preparing AngularJS.x code to Angular (+2)</a>. Yet, browsers don't know to parse some ES2015 features - for that - the code needs to be parsed and compiled to ES5.
 
-For <a href="http://echotu.be" target="_blank">Echoes Player</a>, I&#8217;m currently using <a href="http://browserify.org/" target="_blank">browserify</a> to achieve the above (webpack is an alternative and out of the scope of this article). I&#8217;m using a modified gulp task that I&#8217;ve found in various projects:
+For <a href="http://echotu.be" target="_blank">Echoes Player</a>, I'm currently using <a href="http://browserify.org/" target="_blank">browserify</a> to achieve the above (webpack is an alternative and out of the scope of this article). I'm using a modified gulp task that I've found in various projects:
 
 <pre class="lang:js decode:true">'use strict';
 
@@ -141,30 +141,30 @@ gulp.task('browserify', () =&gt; {
   return buildScript('bundle-bfy.js');
 });</pre>
 
-In a birds eye-view, the &#8220;browserify&#8221; gulp task handles several duties:
+In a birds eye-view, the &#8220;browserify" gulp task handles several duties:
 
   1. Module loading by Loader spec (previously ES2015 Spec)
   2. ES2015 syntax with babel
   3. Annotating Modules with <a href="https://www.npmjs.com/package/browserify-ngannotate" target="_blank">ng-annotate</a> (browserify version) properly to ES2015 classes and to ES5 functions
   4. Loading html files and converting it to strings
-  5. In development mode, &#8220;watching&#8221; for changes and recompiles with the 4 steps above
+  5. In development mode, &#8220;watching" for changes and recompiles with the 4 steps above
 
 The final product of this task is a ES5 javascript file (browserified) bundled with all the code needed for the app to run. That includes 3rd party libraries as well.
 
 ## Setup Karma to Work With Browserify & ES2015
 
-There are few steps needed for running the new &#8220;browserified&#8221; bundled code in karma and running the tests with it.
+There are few steps needed for running the new &#8220;browserified" bundled code in karma and running the tests with it.
 
-Since browserify creates a private scope for each module and since we&#8217;re using ES2015 modules, tests need to be run inside a module aware environment and be &#8220;modularized&#8221; with browserify as well.
+Since browserify creates a private scope for each module and since we're using ES2015 modules, tests need to be run inside a module aware environment and be &#8220;modularized" with browserify as well.
 
 Fortunately, this process is easily achieved with configuring the karma.conf.js file with new plugins.
 
 First, we need to add <a href="https://www.npmjs.com/package/karma-browserify" target="_blank">karma-browserify</a> plugin, which allows to run the specs (tests) inside browserify world. After installing this plugin with npm, make sure you do the following in karma.conf.js file:
 
-  1. add &#8220;browserify&#8221; to the &#8220;framworks&#8221; array property.
-  2. add &#8220;karma-browserify&#8221; to the &#8220;plugins&#8221; array.
-  3. configure the pre-processor to browserify the specs files in the &#8220;preprocessors&#8221; property.
-  4. add a new property, &#8220;browserify&#8221; which holds the configuration setting to allow **source maps** and compile specs with **babel** &#8211; so you can write specs with ES2015.
+  1. add &#8220;browserify" to the &#8220;framworks" array property.
+  2. add &#8220;karma-browserify" to the &#8220;plugins" array.
+  3. configure the pre-processor to browserify the specs files in the &#8220;preprocessors" property.
+  4. add a new property, &#8220;browserify" which holds the configuration setting to allow **source maps** and compile specs with **babel** - so you can write specs with ES2015.
 
 i.e., This is the setup that I use in echoes:
 
@@ -220,7 +220,7 @@ var options = {
     	]
 };</pre>
 
-That&#8217;s it.
+That's it.
 
 After setting up karma with these, specs will run with the ES2015.
 
@@ -228,9 +228,9 @@ After setting up karma with these, specs will run with the ES2015.
 
 The full <a href="https://github.com/orizens/echoes/blob/fe8d8d8006f4f36a6bb22bbebd3237a986bbecf1/karma.conf.js" target="_blank">configuration of karma with browserify and babel, can be found in github</a>.
 
-Although the tests run with ES2015 and the new code of AngularJS.x ES2015 based components, the old tests need to be updated according to the changes I made to the code. It should be a simpler task for testing controllers and services &#8211; since the tests will simply check functions. As for testing directives/components that render to the DOM &#8211; that&#8217;s for another future post.
+Although the tests run with ES2015 and the new code of AngularJS.x ES2015 based components, the old tests need to be updated according to the changes I made to the code. It should be a simpler task for testing controllers and services - since the tests will simply check functions. As for testing directives/components that render to the DOM - that's for another future post.
 
-I hope to write about converting tests to tests Angular 1.x components written with ES2015 which covers all aspects by the <a href="https://github.com/orizens/angular-es2015-styleguide" target="_blank">style guide I wrote writing AngularJS.x components with ES2015</a> &#8211; please feel free to collaborate.
+I hope to write about converting tests to tests Angular 1.x components written with ES2015 which covers all aspects by the <a href="https://github.com/orizens/angular-es2015-styleguide" target="_blank">style guide I wrote writing AngularJS.x components with ES2015</a> - please feel free to collaborate.
 
 &nbsp;
 

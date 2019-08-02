@@ -1,6 +1,6 @@
 ---
 id: 951
-title: 'Angular (2+) &#038; NgRx/store: The NgModel In Between Use Case (from Angular 1)'
+title: 'Angular (2+) & NgRx/store: The NgModel In Between Use Case (from Angular 1)'
 date: 2016-02-19T13:51:39+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -21,11 +21,11 @@ tags:
   - ngrx
   - typescript
 ---
-In the <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article</a>, I integrated ngrx/store as a redux implementation to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. Until this article, the search was static with one hard coded search query. In this article, I&#8217;m sharing my insights on migrating more features from AngularJS and implementing ng-model with ngrx.<!--more-->
+In the <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article</a>, I integrated ngrx/store as a redux implementation to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. Until this article, the search was static with one hard coded search query. In this article, I'm sharing my insights on migrating more features from AngularJS and implementing ng-model with ngrx.<!--more-->
 
 ## From Angular 1 To Angular (+2): NgModel Template Syntax
 
-In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="http://github.com/orizens/echoes" target="_blank">AngularJS</a>, this template is part of the &#8220;search-panel&#8221; component. It renders the search box to the top of the player:
+In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="http://github.com/orizens/echoes" target="_blank">AngularJS</a>, this template is part of the "search-panel" component. It renders the search box to the top of the player:
 
 <pre class="lang:default decode:true">&lt;div class="search-panel"&gt;
 	&lt;form class="navbar-form form-search navbar-left" ng-submit="vm.search()"&gt;
@@ -49,7 +49,7 @@ The migration of the html code above is quite simple (I mentioned it in <a href=
   2. **ng-change** is converted to **(input)**
   3. instead of using **ng-submit**, I used a simple **(click)** event on the search button
 
-Notice the **ngModel** is both bind with a value (using the binding [] brackets) and both syncs back to its variable (as an event with () ) &#8211; This the 2-way binding we&#8217;ve been used to from AngularJS. This template goes inside the youtube-videos template. Here is the full template:
+Notice the **ngModel** is both bind with a value (using the binding [] brackets) and both syncs back to its variable (as an event with () ) - This the 2-way binding we've been used to from AngularJS. This template goes inside the youtube-videos template. Here is the full template:
 
 <pre class="lang:default decode:true">&lt;div class="navbar-header"&gt;
 	&lt;div class="search-panel"&gt;
@@ -71,11 +71,11 @@ Notice the **ngModel** is both bind with a value (using the binding [] brackets
 
 ## Updating Youtube Videos Component Class
 
-To support the new search feature, the component&#8217;s class needs to be updated with:
+To support the new search feature, the component's class needs to be updated with:
 
-  1. &#8220;**searchQuery**&#8221; property which will hold the search string value
-  2. Updating the search function with the new &#8220;**searchQuery**&#8220;
-  3. &#8220;**resetPageToken**&#8221; function which will reset the pageToken property when the search query  changes
+  1. "**searchQuery**" property which will hold the search string value
+  2. Updating the search function with the new "**searchQuery**"
+  3. "**resetPageToken**" function which will reset the pageToken property when the search query  changes
 
 <pre class="lang:default mark:14,33 decode:true ">import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NgModel } from '@angular/common'
@@ -116,11 +116,11 @@ export class YoutubeVideos {
 
 ## Updating Youtube Search Service With a New NgRx Action
 
-The last change goes to the youtube search service &#8211; this is where the actual search logics happens and where <a href="https://github.com/ngrx/store" target="_blank">NgRx/store</a> goes into action.
+The last change goes to the youtube search service - this is where the actual search logics happens and where <a href="https://github.com/ngrx/store" target="_blank">NgRx/store</a> goes into action.
 
-I added a new function &#8220;**resetPageToken**&#8220;, which purpose is to reset the pageToken property in the configuration object that is used in the youtube search request.
+I added a new function "**resetPageToken**", which purpose is to reset the pageToken property in the configuration object that is used in the youtube search request.
 
-This function also dispatched a new action, &#8216;RESET&#8217;, which resets the videos list in the store. It is also being called in the search function if a new search is request by Echoes:
+This function also dispatched a new action, &#8216;RESET', which resets the videos list in the store. It is also being called in the search function if a new search is request by Echoes:
 
 <pre class="lang:default decode:true">resetPageToken () {
 	this._config.set('pageToken', '');

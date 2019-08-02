@@ -1,6 +1,6 @@
 ---
 id: 939
-title: 'Angular (2+): Attribute @Directive() &#038; Creating An Infinite Scroll Directive'
+title: 'Angular (2+): Attribute @Directive() & Creating An Infinite Scroll Directive'
 date: 2016-02-05T10:25:01+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -20,11 +20,11 @@ tags:
   - es2015
   - typescript
 ---
-In the recent article, I used the <a href="http://orizens.com/wp/topics/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/" target="_blank">new &#8220;<strong>ng-repeat</strong>&#8221; in Angular (+2), &#8220;<strong>NgFor</strong>&#8220;</a>, and created component that consumes other custom component. In this article, I continue to show further development for <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a> with Angular (+2), this time &#8211; making it more dynamic by adding infinite scroll directive as what is known in angular2 as an attribute directive.<!--more-->
+In the recent article, I used the <a href="http://orizens.com/wp/topics/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/" target="_blank">new &#8220;<strong>ng-repeat</strong>" in Angular (+2), &#8220;<strong>NgFor</strong>&#8220;</a>, and created component that consumes other custom component. In this article, I continue to show further development for <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a> with Angular (+2), this time - making it more dynamic by adding infinite scroll directive as what is known in angular2 as an attribute directive.<!--more-->
 
 ## Angular 1.x Infinite Scroll
 
-In the current production of <a href="http://echotu.be" target="_blank">Echoes Player</a>, in order to add more videos to the result while scrolling, I used &#8220;<a href="https://sroze.github.io/ngInfiniteScroll/" target="_blank">ng-infinite-scroll</a>&#8220;. It has a nice minimal directive api for triggering an infinite scroll &#8211; and the usage for Echoes Player is quite simple:
+In the current production of <a href="http://echotu.be" target="_blank">Echoes Player</a>, in order to add more videos to the result while scrolling, I used &#8220;<a href="https://sroze.github.io/ngInfiniteScroll/" target="_blank">ng-infinite-scroll</a>&#8220;. It has a nice minimal directive api for triggering an infinite scroll - and the usage for Echoes Player is quite simple:
 
 <pre class="lang:default mark:2,3 decode:true ">&lt;div class="view-content youtube-results youtube-videos" 
 	infinite-scroll="youtubeVideos.searchMore()" 
@@ -33,9 +33,9 @@ In the current production of <a href="http://echotu.be" target="_blank">Echoes P
 ....
 &lt;/div&gt;</pre>
 
-There are more attributes as an api for this directive, however, in this case &#8211; I didn&#8217;t use it.
+There are more attributes as an api for this directive, however, in this case - I didn't use it.
 
-As of this time of writing this post, I didn&#8217;t found any Angular (+2) infinite scroll directive / component, so, I figured it is a great opportunity to migrate &#8220;**ng-infinite-scroll**&#8221; directive from AngularJS.x to Angular (+2) while learning how to create one.
+As of this time of writing this post, I didn't found any Angular (+2) infinite scroll directive / component, so, I figured it is a great opportunity to migrate &#8220;**ng-infinite-scroll**" directive from AngularJS.x to Angular (+2) while learning how to create one.
 
 Please note that the source code for this AngularJS.x infinite scroll directive is written with &#8220;**coffeescript**&#8220;. However, the production ready code is compiled eventually to ES5.
 
@@ -43,23 +43,23 @@ Please note that the source code for this AngularJS.x infinite scroll directive 
 
 After converting the source code back to javascript (using <a href="http://js2.coffee/" target="_blank">http://js2.coffee/</a>), I started isolating the code to understand what it does and being able to migrate it to ES2015 class.
 
-Most of the important logics is written as an AngularJS.x controller. I figured this code should be an ES2015 class. Actually, I wanted the migrate the logics of this controller to an ES2015, So it will be agnostic to any framework/library, being able to use it anywhere &#8211; the same principal applied to ponyfoo&#8217;s dragula and his other awesome components.
+Most of the important logics is written as an AngularJS.x controller. I figured this code should be an ES2015 class. Actually, I wanted the migrate the logics of this controller to an ES2015, So it will be agnostic to any framework/library, being able to use it anywhere - the same principal applied to ponyfoo's dragula and his other awesome components.
 
 But first, I had to understand Angular (+2) directive concepts.
 
 ## Angular (+2) Directive In a Nutshell
 
-In Angular (+2), aside from components, there are still directives. There are built-in directive to the framework, such as: NgFor, NgIf, NgModel, NgClass and there&#8217;s an api for creating custom directives.
+In Angular (+2), aside from components, there are still directives. There are built-in directive to the framework, such as: NgFor, NgIf, NgModel, NgClass and there's an api for creating custom directives.
 
 Essentially, a directive is something like a component.
 
 There are 3 kinds of directives:
 
-  1. A Component &#8211; using **@Component()**
-  2. A Structural Directive &#8211; using **@Directive()** &#8211; usually changes the DOM of an element &#8211; **NgIf**
-  3. An Attribute Directive &#8211; using **@Directive()** &#8211; doesn&#8217;t change the DOM, but adding behaviour
+  1. A Component - using **@Component()**
+  2. A Structural Directive - using **@Directive()** - usually changes the DOM of an element - **NgIf**
+  3. An Attribute Directive - using **@Directive()** - doesn't change the DOM, but adding behaviour
 
-Infinite Scroll fits well to an <a href="https://angular.io/docs/ts/latest/guide/attribute-directives.html" target="_blank">Attribute Directive (More on that on the official documentation)</a> &#8211; It adds a scroll event (behaviour) to an element and acts upon it.
+Infinite Scroll fits well to an <a href="https://angular.io/docs/ts/latest/guide/attribute-directives.html" target="_blank">Attribute Directive (More on that on the official documentation)</a> - It adds a scroll event (behaviour) to an element and acts upon it.
 
 Lets create the Angular (+2) wrapping code for this directive.
 
@@ -68,13 +68,13 @@ First, lets import the relevant dependencies:
 <pre class="lang:js decode:true  ">import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { Scroller } from './scroller';</pre>
 
-The logics and migrated code of AngularJS.x is imported from the &#8220;scroller.ts&#8221; class file.
+The logics and migrated code of AngularJS.x is imported from the &#8220;scroller.ts" class file.
 
-We&#8217;re going to use some of angular&#8217;s 2 core objects to define the relevant properties.
+We're going to use some of angular's 2 core objects to define the relevant properties.
 
 ### Directive Definition
 
-To declare an attribute as a directive, similar to Component, we use the &#8220;**<a href="https://angular.io/docs/ts/latest/api/core/Directive-decorator.html" target="_blank">@Directive()</a>**&#8221; decorator, while specifying an attribute class selector (css selector):
+To declare an attribute as a directive, similar to Component, we use the &#8220;**<a href="https://angular.io/docs/ts/latest/api/core/Directive-decorator.html" target="_blank">@Directive()</a>**" decorator, while specifying an attribute class selector (css selector):
 
 <pre class="lang:default decode:true ">@Directive({
   selector: '[infinite-scroll]'
@@ -82,7 +82,7 @@ To declare an attribute as a directive, similar to Component, we use the &#8220;
 
 ### Directive Bindings & Events
 
-Next, we&#8217;ll define the class which will used as a controller for this directive, an input data that we&#8217;ll expect to get from the element and an event that this directive will expose.
+Next, we'll define the class which will used as a controller for this directive, an input data that we'll expect to get from the element and an event that this directive will expose.
 
 <pre class="lang:js decode:true">export class InfiniteScroll {
   @Input() set infiniteScrollDistance(distance: Number) {
@@ -94,7 +94,7 @@ Next, we&#8217;ll define the class which will used as a controller for this dire
 //...
 }</pre>
 
-The &#8220;**infiniteScrollDistance**&#8221; property is expected to be set from outside the directive, as an attribute api. The same goes for the &#8220;**scroll**&#8221; event, which will trigger a function that is bind from outside. This means, that we&#8217;ll use this directive like so:
+The &#8220;**infiniteScrollDistance**" property is expected to be set from outside the directive, as an attribute api. The same goes for the &#8220;**scroll**" event, which will trigger a function that is bind from outside. This means, that we'll use this directive like so:
 
 <pre class="lang:default decode:true">&lt;div class="search-results"
     infinite-scroll
@@ -102,25 +102,25 @@ The &#8220;**infiniteScrollDistance**&#8221; property is expected to be set from
     (scroll)="onScroll()"&gt;
 &lt;/div&gt;</pre>
 
-Notice how each attribute in the above &#8220;**div**&#8221; element is matching a different declaration in this directive code.
+Notice how each attribute in the above &#8220;**div**" element is matching a different declaration in this directive code.
 
-### Referencing Directive&#8217;s Element in Angular (+2)
+### Referencing Directive's Element in Angular (+2)
 
-With AngularJS.x, the DI system allowed us to require &#8220;$element&#8221; and expect to get a reference to the directive&#8217;s DOM element:
+With AngularJS.x, the DI system allowed us to require &#8220;$element" and expect to get a reference to the directive's DOM element:
 
 <pre class="lang:default decode:true ">controller: function ($element) {
 	$element.on('scroll', onScroll);
 }</pre>
 
-With Angular (+2), we use the &#8220;**ElementRef**&#8221; type definition. Also with the use of Typescript, we&#8217;ll attach its property reference to &#8220;**this**&#8221; directive context:
+With Angular (+2), we use the &#8220;**ElementRef**" type definition. Also with the use of Typescript, we'll attach its property reference to &#8220;**this**" directive context:
 
 <pre class="lang:default decode:true ">constructor(private element: ElementRef) {
    // now, we can reference to: this.element
 }</pre>
 
-### Hook the Scroll Event with ngOnInit to Directive&#8217;s Element
+### Hook the Scroll Event with ngOnInit to Directive's Element
 
-Now, we&#8217;ll us Angular (+2) hook &#8211; &#8220;<a href="https://angular.io/docs/ts/latest/api/core/OnInit-interface.html" target="_blank">ngOnInit</a>&#8221; &#8211; which will run when the directive is ready and will instantiate a new scroller, only once. Notice that I bind &#8220;this&#8221; context to the onScroll function reference to keep the context of this directive when the scroll event will trigger the event emitter&#8217;s property, scroll:
+Now, we'll us Angular (+2) hook - &#8220;<a href="https://angular.io/docs/ts/latest/api/core/OnInit-interface.html" target="_blank">ngOnInit</a>" - which will run when the directive is ready and will instantiate a new scroller, only once. Notice that I bind &#8220;this" context to the onScroll function reference to keep the context of this directive when the scroll event will trigger the event emitter's property, scroll:
 
 <pre class="lang:default decode:true ">ngOnInit() {
     this.scroller = new Scroller(window, setInterval, this.element, this.onScroll.bind(this), this._distance, {});
@@ -136,11 +136,11 @@ Now, we&#8217;ll us Angular (+2) hook &#8211; &#8220;<a href="https://angular.io
 
 ### Migration of Scroller Logic
 
-The &#8220;scroller.ts&#8221; is an <a href="https://github.com/orizens/angular2-infinite-scroll/blob/master/src/scroller.ts" target="_blank">ES2015 class (full source code)</a>. Much of this code has been copied from the source implementation of &#8220;ng-infinite-scroll&#8221; of AngularJS.x and has been adapted to follow ES2015 syntax and relevant updates to the code as much as possible.
+The &#8220;scroller.ts" is an <a href="https://github.com/orizens/angular2-infinite-scroll/blob/master/src/scroller.ts" target="_blank">ES2015 class (full source code)</a>. Much of this code has been copied from the source implementation of &#8220;ng-infinite-scroll" of AngularJS.x and has been adapted to follow ES2015 syntax and relevant updates to the code as much as possible.
 
 ## Final Thoughts
 
-Still, the infinite-scroll directive is not complete and there are more features to port from the original AngularJS.x version. There are also some points in the code where it is points to Angular (+2) specific &#8220;**this.$elementRef.nativeElement**&#8221; in order to get the actual DOM element.
+Still, the infinite-scroll directive is not complete and there are more features to port from the original AngularJS.x version. There are also some points in the code where it is points to Angular (+2) specific &#8220;**this.$elementRef.nativeElement**" in order to get the actual DOM element.
 
 Echoes Player implementation with <a href="https://github.com/orizens/echoes-ng2" target="_blank">ng2 is open source</a>. You can also fork <a href="https://github.com/orizens/echoes/tree/es2015" target="_blank">Echoes ES2015 with AngularJS.x version</a> and follow the complete <a href="https://github.com/orizens/echoes/issues/84" target="_blank">conversion from ES5 to ES2015</a> of this project.
 

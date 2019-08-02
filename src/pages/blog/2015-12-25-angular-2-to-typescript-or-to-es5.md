@@ -40,7 +40,7 @@ tags:
 </p>
 
 <p class="graf--p">
-  Finally, I forked <a href="https://github.com/johnpapa/angular2-go" target="_blank" rel="noopener">john&#8217;s papa repo of angular2go</a> and started writing Angular (+2) code myself.
+  Finally, I forked <a href="https://github.com/johnpapa/angular2-go" target="_blank" rel="noopener">john's papa repo of angular2go</a> and started writing Angular (+2) code myself.
 </p>
 
 ## Getting Started With ES2015 (es6) syntax {.graf--h3}

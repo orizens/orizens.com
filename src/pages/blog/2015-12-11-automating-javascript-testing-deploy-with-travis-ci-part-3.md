@@ -1,6 +1,6 @@
 ---
 id: 865
-title: 'Automating Javascript Testing, Deploy with npm &#038; Travis CI to Github (part 3)'
+title: 'Automating Javascript Testing, Deploy with npm & Travis CI to Github (part 3)'
 date: 2015-12-11T15:07:42+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -26,15 +26,15 @@ tags:
   - javascript
   - travis
 ---
-Not long ago, I wrote about <a href="http://orizens.com/wp/topics/first-steps-in-setting-up-travis-ci-to-your-javascript-project/" target="_blank">my experience</a> and <a href="http://orizens.com/wp/topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">setup of Travis CI</a> for running javascript testing (on an angular based web application) on my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>. On last week, I completed my setup with an auto deployment &#8211; in which I share the solution that worked for me.<!--more-->
+Not long ago, I wrote about <a href="http://orizens.com/wp/topics/first-steps-in-setting-up-travis-ci-to-your-javascript-project/" target="_blank">my experience</a> and <a href="http://orizens.com/wp/topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">setup of Travis CI</a> for running javascript testing (on an angular based web application) on my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>. On last week, I completed my setup with an auto deployment - in which I share the solution that worked for me.<!--more-->
 
 ## Initial Setup
 
-<a href="http://echotu.be" target="_blank">Echoes Player</a> is a pure web ui application for playing and managing media from youtube. The backend for this app is <a href="https://developers.google.com/youtube/v3/docs/" target="_blank">youtube&#8217;s data api</a>. The current version of Echoes is wrapped with <a href="http://angularjs.org" target="_blank">angularjs</a>.
+<a href="http://echotu.be" target="_blank">Echoes Player</a> is a pure web ui application for playing and managing media from youtube. The backend for this app is <a href="https://developers.google.com/youtube/v3/docs/" target="_blank">youtube's data api</a>. The current version of Echoes is wrapped with <a href="http://angularjs.org" target="_blank">angularjs</a>.
 
 It is developed with bdd in mind, using <a href="http://jasmine.github.io/2.3/introduction.html" target="_blank">jasmine.js</a> as a testing framework in order to write tests, spy on functions and setup expectations.
 
-To run the tests, I use <a href="http://karma-runner.github.io/" target="_blank">karma test runner</a> &#8211; which orchestrates the environment setup to run the tests.
+To run the tests, I use <a href="http://karma-runner.github.io/" target="_blank">karma test runner</a> - which orchestrates the environment setup to run the tests.
 
 When the project is developed or run in Travis, I use <a href="http://phantomjs.org/" target="_blank">Phantomjs</a> as the javascript engine to run the tests on. Karma also <a href="http://karma-runner.github.io/0.13/config/preprocessors.html" target="_blank">preprocesses</a> some source files in order to compile code from es2015 to es5, convert templates to compiled templates (optimisation for angular) and more.
 
@@ -46,9 +46,9 @@ With this setup, whenever there were errors in tests or in build, I was informed
 
 ## Release with npm
 
-Echoes Player is deployed to github pages (remember &#8211; it&#8217;s a ui based app), so, all I had to do is push a new version of bundled code to <a href="https://github.com/orizens/echoes/tree/gh-pages" target="_blank">gh-pages branch</a> of my repository.
+Echoes Player is deployed to github pages (remember - it's a ui based app), so, all I had to do is push a new version of bundled code to <a href="https://github.com/orizens/echoes/tree/gh-pages" target="_blank">gh-pages branch</a> of my repository.
 
-The preparation for release involves several steps to take before pushing to github the new code. For that, I&#8217;m using <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm&#8217;s scripts feature</a> &#8211; I defined a custom script &#8211; &#8220;release&#8221; &#8211; script that will run the required operations before i can commit to github.
+The preparation for release involves several steps to take before pushing to github the new code. For that, I'm using <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm's scripts feature</a> - I defined a custom script - &#8220;release" - script that will run the required operations before i can commit to github.
 
 <pre class="lang:js mark:3 decode:true ">"scripts": {
     "test": "gulp test && protractor ./gulp/config/protractor.conf.bs.js",
@@ -57,15 +57,15 @@ The preparation for release involves several steps to take before pushing to git
 
 ## Automating Deployment to Github with Travis
 
-The new addition to echoes ci scripts added automatic deployment to github after a successful unit tests session. Adding this step was a bit of challenge, after reading a <a href="https://gist.github.com/domenic/ec8b0fc8ab45f39403dd" target="_blank">few</a> <a href="http://benlimmer.com/2013/12/26/automatically-publish-javadoc-to-gh-pages-with-travis-ci/" target="_blank">articles</a> things still didn&#8217;t work as expected. Only after experimenting with my own configuration and understanding, I finally completed the ci flow to be complete with Travis.
+The new addition to echoes ci scripts added automatic deployment to github after a successful unit tests session. Adding this step was a bit of challenge, after reading a <a href="https://gist.github.com/domenic/ec8b0fc8ab45f39403dd" target="_blank">few</a> <a href="http://benlimmer.com/2013/12/26/automatically-publish-javadoc-to-gh-pages-with-travis-ci/" target="_blank">articles</a> things still didn't work as expected. Only after experimenting with my own configuration and understanding, I finally completed the ci flow to be complete with Travis.
 
 I took the approach of pushing a new version of code to gh-pages while not keeping the history. This approach simply worked after many other tries.
 
 ## The steps for adding Auto Deployment in Travis
 
-First, create a new <a href="https://github.com/settings/tokens" target="_blank">github token for travis</a> and <a href="https://docs.travis-ci.com/user/encryption-keys/" target="_blank">generate an encrypted travis key</a> (there&#8217;s also an <a href="https://www.npmjs.com/package/travis-encrypt" target="_blank">npm package</a> for generating Travis tokens with **node**).
+First, create a new <a href="https://github.com/settings/tokens" target="_blank">github token for travis</a> and <a href="https://docs.travis-ci.com/user/encryption-keys/" target="_blank">generate an encrypted travis key</a> (there's also an <a href="https://www.npmjs.com/package/travis-encrypt" target="_blank">npm package</a> for generating Travis tokens with **node**).
 
-Then, I added the secured key to the yml file &#8211; Usually, the token generation process will **prompt** to add the new key to your project&#8217;s yml file.
+Then, I added the secured key to the yml file - Usually, the token generation process will **prompt** to add the new key to your project's yml file.
 
 finally, add this **after_success** step:
 
@@ -83,13 +83,13 @@ few notes on the **after_success** flow:
 
 **First**, I setup my username email of github in travis virtual machine.
 
-**Second**, I&#8217;m using &#8220;**npm run release**&#8221; script that I defined. Eventually, this script created a &#8220;dist&#8221; directory, which includes a bundled minified version of the app (ready to deploy).
+**Second**, I'm using &#8220;**npm run release**" script that I defined. Eventually, this script created a &#8220;dist" directory, which includes a bundled minified version of the app (ready to deploy).
 
 **Finally**, the process shifts to the dist directory, creates a new git repository, add & commit the files to the local repository and with the new secured github token, push this directory contents to echoes repository (and also overrides the history for this branch).
 
 #### A Note about not keeping the history:
 
-I tried several commands for checking out the actual gh-pages of echoes in order to keep the history, but have come to a dead end each time. I do see a reason to keep history of production version with some strategy (release tags, commit messaged or other) so I&#8217;m still investigating this.
+I tried several commands for checking out the actual gh-pages of echoes in order to keep the history, but have come to a dead end each time. I do see a reason to keep history of production version with some strategy (release tags, commit messaged or other) so I'm still investigating this.
 
 ## Final Notes
 

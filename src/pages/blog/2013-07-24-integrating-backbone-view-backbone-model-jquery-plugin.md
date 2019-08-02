@@ -1,6 +1,6 @@
 ---
 id: 603
-title: 'Integrating Backbone.View, Backbone.Model &#038; jQuery plugin'
+title: 'Integrating Backbone.View, Backbone.Model & jQuery plugin'
 date: 2013-07-24T06:41:24+00:00
 author: Oren Farhi 
 templateKey: blog-post
@@ -58,7 +58,7 @@ Since Echoes Player is based on <a title="Require.js Dependency Management" href
 	},
 });</pre>
 
-In the Echoes <a title="Backbone.js for large scale applications – UI Architecture" href="http://orizens.com/wp/topics/backbone-js-for-large-scale-applications-ui-architecture/" target="_blank">architecture</a> concept, the main.js is the starting point of the application, and it is asking to load &#8220;bootstrap&#8221; javascript file (aside to other plugins) which requires jquery-ui &#8211; so that is how jquery-ui is ready to be used right in the beginning of initialising the whole app:
+In the Echoes <a title="Backbone.js for large scale applications – UI Architecture" href="http://orizens.com/wp/topics/backbone-js-for-large-scale-applications-ui-architecture/" target="_blank">architecture</a> concept, the main.js is the starting point of the application, and it is asking to load "bootstrap" javascript file (aside to other plugins) which requires jquery-ui - so that is how jquery-ui is ready to be used right in the beginning of initialising the whole app:
 
 <pre class="brush:js">require([
 	'jquery',
@@ -78,7 +78,7 @@ In the Echoes <a title="Backbone.js for large scale applications – UI Architec
 
 ## Putting the plugin into place
 
-Since the auto complete feature belongs to the search box in [Echoes Player](http://echotu.be "Echoes Media Player - alternative ui for youtube"), it has been defined in the MediaSearch View &#8211; which is a first level view in Echoes architecture. It is defined once in the constructor of this view:
+Since the auto complete feature belongs to the search box in [Echoes Player](http://echotu.be "Echoes Media Player - alternative ui for youtube"), it has been defined in the MediaSearch View - which is a first level view in Echoes architecture. It is defined once in the constructor of this view:
 
 <pre class="brush:js">var MediaSearch = Backbone.View.extend({
 		el: '#media-explorer',
@@ -97,9 +97,9 @@ Since the auto complete feature belongs to the search box in [Echoes Player](htt
 ...
 }</pre>
 
-Google&#8217;s search service functions as the query provider for the searches, and after a little research in google, I found the appropriate url that returns json results for any query term.
+Google's search service functions as the query provider for the searches, and after a little research in google, I found the appropriate url that returns json results for any query term.
   
-The &#8220;activateAutoComplete&#8221; function first initiates the plugin with the standard jquery-ui auto complete:
+The "activateAutoComplete" function first initiates the plugin with the standard jquery-ui auto complete:
 
 <pre class="brush:js">activateAutoComplete: function() {
 	this.$search.autocomplete({
@@ -128,18 +128,18 @@ With the above configuration, the plugin suggests results as i wanted with the s
   
 The next challenge I had was related to usability when using this auto complete feature. The expected behaviour when choosing a certain suggestion of the result (pressing enter on the result) results in 2 operations:
 
-  * Updating the input box with the selected suggested term &#8211; This is handled by the plugin.
+  * Updating the input box with the selected suggested term - This is handled by the plugin.
   * Notifying Echoes about the new query so it can fetch the appropriate results form youtube.
 
 <!--RndAds-->
 
 ## Connecting the suggestion to the Backbone.Model
 
-The auto complete plugin exposes a &#8220;select&#8221; function api. This function runs whenever a selection of the suggested results has been made. This function receives 2 arguments: event & ui.
+The auto complete plugin exposes a "select" function api. This function runs whenever a selection of the suggested results has been made. This function receives 2 arguments: event & ui.
   
-The selected term can be retrieved from the &#8220;ui&#8221; argument by pointing to: &#8220;ui.item.value&#8221;.
+The selected term can be retrieved from the "ui" argument by pointing to: "ui.item.value".
   
-To have easy access to Echoes Model, I binded the &#8220;select&#8221; function with the scope of the MediaSearch View &#8211; so i can access to &#8220;this.model&#8221; within this function &#8211; and update the model with the new query:
+To have easy access to Echoes Model, I binded the "select" function with the scope of the MediaSearch View - so i can access to "this.model" within this function - and update the model with the new query:
 
 <pre class="brush:js">activateAutoComplete: function() {
 	this.$search.autocomplete({
@@ -160,7 +160,7 @@ There are few tweaks and code organisations that should be done in the future:
 
   * integrating the ajax call with a Backbone.Model or a Backbone.Collection to keep the separation of model and view.
   * converting the select function to a referenced named function defined on the view
-  * Perhaps &#8211; having a more encapsulated integration with the MediaSearch View, so the plugin may be easily toggled, or for other plugins to be integrated in the same transparent way.
+  * Perhaps - having a more encapsulated integration with the MediaSearch View, so the plugin may be easily toggled, or for other plugins to be integrated in the same transparent way.
 
 Overall, in this way, the autocomplete is integrated nicely into the MediaSearch view and can be easily toggled or replaced, if needed.
   

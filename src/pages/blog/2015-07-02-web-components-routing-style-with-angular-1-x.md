@@ -19,7 +19,7 @@ tags:
   - angular.js
   - architecture
 ---
-I really like the web components approach that has recently got a hugh attention. It&#8217;s easy to design a solution that solves an encapsulated problem, while exporting it as an html tag. After working much with angular, I saw a recurring pattern in defining routes either with the default ng-router or ui-router. In this post I share my preference for consuming modules and defining them in the routing module.
+I really like the web components approach that has recently got a hugh attention. It's easy to design a solution that solves an encapsulated problem, while exporting it as an html tag. After working much with angular, I saw a recurring pattern in defining routes either with the default ng-router or ui-router. In this post I share my preference for consuming modules and defining them in the routing module.
 
 <!--more-->
 
@@ -68,7 +68,7 @@ Thinking about the routing in the design phase, before coding, promotes one to t
 
 Also, reusing this module (or rather, its externalisation web-component identity), becomes seamless and easy.
 
-If you&#8217;re using ui-router in your project and there are few ui-views in one page, the defintion may become much clearer with this approach:
+If you're using ui-router in your project and there are few ui-views in one page, the defintion may become much clearer with this approach:
 
 <pre class="lang:default decode:true ">$stateProvider
     .state('home', {

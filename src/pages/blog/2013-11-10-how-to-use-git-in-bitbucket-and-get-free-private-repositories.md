@@ -20,7 +20,7 @@ tags:
 ---
 I mostly use git & github for my projects. Git is very useful, easy to learn and handle. Github is great for cloud repositories, has very clean and useful user interface while adding useful features like: wiki, team collaboration, issues system, cloude ide to edit files and more.
   
-Private repositories in Github aren&#8217;t free. However, there&#8217;s a way to enjoy git with having free private repositories using bitbucket &#8211; setup is quite easy.<!--more-->
+Private repositories in Github aren't free. However, there's a way to enjoy git with having free private repositories using bitbucket - setup is quite easy.<!--more-->
 
 ## What is BitBucket
 
@@ -28,26 +28,26 @@ Bitbucket is a cloud hosting for repositories (same concept as Github). It can h
   
 <!--RndAds-->
 
-## Step 1 &#8211; Create A Private Repository in Bitbucket
+## Step 1 - Create A Private Repository in Bitbucket
 
 Creating a repository is quite easy.
   
-After login to bitbucket, there&#8217;s a &#8220;create&#8221; button on the top.
+After login to bitbucket, there's a &#8220;create" button on the top.
   
 The screen will show a form for creating a new repository. There are 2 important fields to notice:
 
-  1. Make sure the &#8220;Access Level&#8221; field with the checkbox of &#8220;This is a private repository&#8221; is checked.
-  2. Make sure the &#8220;Respository type&#8221; is selected with the option of &#8220;Git&#8221;
+  1. Make sure the &#8220;Access Level" field with the checkbox of &#8220;This is a private repository" is checked.
+  2. Make sure the &#8220;Respository type" is selected with the option of &#8220;Git"
 
 [<img class="aligncenter size-full wp-image-632" alt="new-repo" src=".../../img/uploads/2013/11/new-repo.png" width="635" height="644" srcset=".../../img/uploads/2013/11/new-repo.png 635w, .../../img/uploads/2013/11/new-repo-295x300.png 295w" sizes="(max-width: 635px) 100vw, 635px" />](.../../img/uploads/2013/11/new-repo.png)
 
-Upon successful creation, you&#8217;ll be taken to the newely created repository page.
+Upon successful creation, you'll be taken to the newely created repository page.
   
-On the right, you&#8217;ll find the link to this repository (you&#8217;ll need that later to add it to git).
+On the right, you'll find the link to this repository (you'll need that later to add it to git).
   
 <img class="aligncenter size-full wp-image-633" alt="repo-link" src=".../../img/uploads/2013/11/repo-link.png" width="461" height="542" srcset=".../../img/uploads/2013/11/repo-link.png 461w, .../../img/uploads/2013/11/repo-link-255x300.png 255w" sizes="(max-width: 461px) 100vw, 461px" />
 
-## Step 2 &#8211; Setup bitbucket to your git with &#8220;git remote&#8221;
+## Step 2 - Setup bitbucket to your git with &#8220;git remote"
 
 If you ever worked with git and github, pushing new commits to github was done using something like:
 
@@ -57,29 +57,29 @@ If you ever worked with git and github, pushing new commits to github was done u
 
 
   
-This means that git will push the current local commited branch (in this case &#8211; &#8220;master&#8221;)
+This means that git will push the current local commited branch (in this case - &#8220;master")
   
 Amongst its many features, Git can have several destinations to which a code can be pushed.
   
-It is called &#8220;git remote&#8221; &#8211; a remote repository to which a code can be pushed.
+It is called &#8220;git remote" - a remote repository to which a code can be pushed.
   
 To setup such a remote we need to open the command line/terminal within the folder of the git we want to setup, and use:
 
 <pre class="brush:shell">git remote add nick-name-for-repository actual-link-to-remote(from step1)</pre>
 
-I.e, here we setup a git remote with the nickname of &#8220;orizens&#8221; to a certain bitbucket url:
+I.e, here we setup a git remote with the nickname of &#8220;orizens" to a certain bitbucket url:
 
 <pre class="brush:shell">git remote add orizens https://orizens@bitbucket.org/orizens/my-special-private-project.git</pre>
 
-That&#8217;s it!
+That's it!
 
-## Step 3 &#8211; Push Git to Bitbucket
+## Step 3 - Push Git to Bitbucket
 
-Now, in order to push the master branch to the newely defined remote repository &#8220;orizens&#8221;, we&#8217;ll simply use:
+Now, in order to push the master branch to the newely defined remote repository &#8220;orizens", we'll simply use:
 
 <pre class="brush:shell">git push orizens master</pre>
 
-You can do the same for &#8220;fetch&#8221; operation.
+You can do the same for &#8220;fetch" operation.
   
 <!--RndAds-->
 
@@ -91,4 +91,4 @@ I.e, in order to see the remotes attached to a certain repository, you can use:
 
 <pre class="brush:shell">git remote -v</pre>
 
-The &#8220;-v&#8221; switch is optional, and will also print to the console/terminal the url of each remote.
+The &#8220;-v" switch is optional, and will also print to the console/terminal the url of each remote.
