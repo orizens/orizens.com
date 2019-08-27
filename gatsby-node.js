@@ -29,8 +29,20 @@ exports.createPages = ({ actions, graphql }) => {
       result.errors.forEach(e => console.error(e.toString()));
       return Promise.reject(result.errors);
     }
-
+    const paginationPath = (path, page, totalPages) => {
+      if (page === 0) {
+        return path;
+      } else if (page < 0 || page >= totalPages) {
+        return '';
+      } else {
+        return `${path}/${page + 1}`;
+      }
+    };
     const posts = result.data.allMarkdownRemark.edges;
+    const blogPostsPerPaginatedPage = 10;
+    const paginatedPagesCount = Math.ceil(
+      posts.length / blogPostsPerPaginatedPage
+    );
 
     posts.forEach(edge => {
       const id = edge.node.id;
@@ -46,6 +58,22 @@ exports.createPages = ({ actions, graphql }) => {
         }
       });
     });
+    // BLOG
+    // posts.forEach((edge, index) => {
+    //   const id = edge.node.id;
+    //   console.log('=======> BLOG <=======', index, edge);
+    //   createPage({
+    //     path: paginationPath('/blog', index, paginatedPagesCount),
+    //     tags: edge.node.frontmatter.tags,
+    //     component: path.resolve(
+    //       `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+    //     ),
+    //     // additional data can be passed via context
+    //     context: {
+    //       id
+    //     }
+    //   });
+    // });
 
     // Tag pages:
     let tags = [];
