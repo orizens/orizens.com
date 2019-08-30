@@ -61,7 +61,7 @@ export default function Navbar({ path }) {
       </div>
       <button
         style={{ marginTop: "4px" }}
-        className="navbar-burger burger"
+        className="navbar-burger burger has-text-white-bis"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasic"
