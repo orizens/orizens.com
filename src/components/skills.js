@@ -41,14 +41,14 @@ export const Skills = () => {
   return (
     <article className="columns content">
       {skills.map(({ icon, label, content }) => (
-        <section className="column">
+        <section className="column" key={`skill-${icon}`}>
           <h2>
             <i className={`fa fa-${icon}`}></i> {label}
           </h2>
           <div className="content">
             <ul>
               {content.map(link => (
-                <li>
+                <li key={`skill-link-${link.label}`}>
                   <a href={link.link} target="_blank" rel="noopener noreferrer">
                     {link.label}
                   </a>

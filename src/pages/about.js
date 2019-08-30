@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Logger } from "../components/logger"
 import Image from "gatsby-image"
 import { rhythm } from "../utils/typography"
 import { Link } from "gatsby"

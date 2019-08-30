@@ -68,6 +68,7 @@ export default function Layout(props) {
           },
         ].map(({ icon, href, text, tooltip }) => (
           <a
+            key={`footer-link-${href}`}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
