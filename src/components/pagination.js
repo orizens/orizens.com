@@ -12,14 +12,14 @@ export const Pagination = ({ index, first, pageCount, header }) => {
       role="navigation"
       aria-label="pagination"
     >
-      {!first && (
-        <Link
-          to={`/${nextIndex}`}
-          className="pagination-previous button is-success is-outlined"
-        >
-          <span className="fa fa-angle-left"></span> Next
-        </Link>
-      )}
+      <Link
+        to={`/${nextIndex}`}
+        className={`pagination-previous button is-success is-outlined ${
+          nextIndex === 0 ? "is-invisible" : ""
+        }`}
+      >
+        <span className="fa fa-angle-left"></span> Next
+      </Link>
       {hasNextPage && (
         <Link
           to={`/${previousIndex}`}

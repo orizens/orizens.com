@@ -7,8 +7,6 @@ templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1352
 permalink: /topics/ngrx-scrolling-ino-dom-element-and-components-communication/
-post_grid_post_settings:
-  - 'a:10:{s:9:"post_skin";s:4:"flat";s:19:"custom_thumb_source";s:93:"./img/plugins/post-grid/assets/frontend/css/images/placeholder.png";s:17:"font_awesome_icon";s:0:"";s:23:"font_awesome_icon_color";s:7:"#737272";s:22:"font_awesome_icon_size";s:4:"50px";s:17:"custom_youtube_id";s:0:"";s:15:"custom_vimeo_id";s:0:"";s:21:"custom_dailymotion_id";s:0:"";s:14:"custom_mp3_url";s:0:"";s:20:"custom_soundcloud_id";s:0:"";}'
 dsq_thread_id:
   - "6826788041"
 image: ../img/uploads/2018/07/scroll-post.jpg

@@ -2,7 +2,7 @@
 id: 1109
 title: Angular Articles Series
 date: 2016-11-30T09:45:17+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: page
 guid: http://orizens.com/wp/?page_id=1109
@@ -14,6 +14,7 @@ dsq_thread_id:
   - "5351681316"
 image: ../img/uploads/2016/11/orizens.com-banners.png
 ---
+
 <div class="gdc_row">
   </p> 
   
@@ -76,22 +77,6 @@ image: ../img/uploads/2016/11/orizens.com-banners.png
         
         <p>
           </div> 
-          
-          <div>
-            <div class="row orizens-consulting-packages">
-              <div class="col-md-4">
-                <a href="https://goo.gl/RJgihR" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-premium-angular-consutling.png" alt="angular consulting development" /></a>
-              </div>
-              
-              <div class="col-md-4">
-                <a href="https://goo.gl/7zg4y9" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-reinvented-code-with-ng-ngrx.png" alt="angular ngrx consulting" /></a>
-              </div>
-              
-              <div class="col-md-4">
-                <a href="https://goo.gl/6iAYIi" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-reactive-ngrx.png" alt="reactive programming angular ngrx cosulting packages" /></a>
-              </div>
-            </div>
-          </div>
           
           <h2>
             Angular (2, 4, 5 and above) Article Series
@@ -517,28 +502,6 @@ image: ../img/uploads/2016/11/orizens.com-banners.png
                   </div>
                 </div>
               </div>
-              
-              <div class="grid-nav-bottom">
-                <div class="pagination dark">
-                  <div class="paginate">
-                  </div >
-                </div >
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <div class="row orizens-consulting-packages">
-              <div class="col-md-4">
-                <a href="https://goo.gl/RJgihR" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-premium-angular-consutling.png" alt="angular consulting development" /></a>
-              </div>
-              
-              <div class="col-md-4">
-                <a href="https://goo.gl/7zg4y9" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-reinvented-code-with-ng-ngrx.png" alt="angular ngrx consulting" /></a>
-              </div>
-              
-              <div class="col-md-4">
-                <a href="https://goo.gl/6iAYIi" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-reactive-ngrx.png" alt="reactive programming angular ngrx cosulting packages" /></a>
-              </div>
+
             </div>
           </div>

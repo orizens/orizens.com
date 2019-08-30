@@ -2,7 +2,7 @@
 id: 1151
 title: Lessons Learned from Creating A Typeahead With RxJs And Angular
 date: 2017-01-01T14:29:36+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1151
@@ -22,19 +22,20 @@ tags:
   - architecture
   - rxjs
 ---
+
 Following recent articles on development of [Echoes Player](http://echoesplayer.com), my [open source media player](http://echoesplayer.com) built with Angular, I really wanted to implement a typeahead feature for this version. There are some great ng2-typeahead out-there (available in npm), however, I wanted to take this opportunity to built something from scratch - exploring deeper concepts in Angular. I learned quite a few from implementing a typeahead component and i'm sharing these in this article.
 
 ## Typeahead - Design
 
 I had a clear vision of how the typeahead feature should work:
 
-  1. it should be used as an attribute to an input element
-  2. it should be rendered as a sibling to the input element
-  3. it should expose a selected result event
-  4. it should support keyboard navigation in suggestions list
-  5. it should support custom template for suggestions list
-  6. it should cancel suggestions when "Escape" key is pressed
-  7. it should cancel suggestions when clicking outside the suggestions container
+1. it should be used as an attribute to an input element
+2. it should be rendered as a sibling to the input element
+3. it should expose a selected result event
+4. it should support keyboard navigation in suggestions list
+5. it should support custom template for suggestions list
+6. it should cancel suggestions when "Escape" key is pressed
+7. it should cancel suggestions when clicking outside the suggestions container
 
 I wrote on my experience with [RxJs and Angular (+2)](http://orizens.com/wp/topics/stepping-into-the-next-level-with-rxjs-in-angular-2/) before, and this article takes this approach further.
 
@@ -66,11 +67,11 @@ In order to achieve this, I had to define this component with the @Component() d
 
 I took a slightly different approach with this challenge. I remembered seeing few videos on youtube (Rob Warmwald) explaining about the strengths of the template engine within Angular and how it can be used to achieve complex ideas. At first, the template for the typeahead was quite simple. The template supports the following:
 
-  1. declare a name for the template
-  2. toggle the template contents with "ngIf" boolean statement
-  3. rendering a simple array of suggestions (referred as results)
-  4. marking the currently active result with an "active" css class
-  5. handle a click event for selecting a result
+1. declare a name for the template
+2. toggle the template contents with "ngIf" boolean statement
+3. rendering a simple array of suggestions (referred as results)
+4. marking the currently active result with an "active" css class
+5. handle a click event for selecting a result
 
 ```typescript
 @Component({
@@ -114,10 +115,10 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
 
 The constructor injects these:
 
-  1. element - to listen for input events
-  2. viewContainer - in order to render the template as a sibling (bullet #2)
-  3. jsonp - start requests as a jsonp to google's search api
-  4. cdr - change detection reference to apply changes within this component and its siblings
+1. element - to listen for input events
+2. viewContainer - in order to render the template as a sibling (bullet #2)
+3. jsonp - start requests as a jsonp to google's search api
+4. cdr - change detection reference to apply changes within this component and its siblings
 
 ```typescript
 constructor(private element: ElementRef,
@@ -205,8 +206,8 @@ listenAndSuggest() {
 
 **NOTE**: Currently, this component is not reusable anywhere else, so I hardcoded the url and the params of the http.jsonp request to the "suggest()" function. However, if I had to make this component reusable, I would have have few ways to take out hard coded "suggest()" function:
 
-  1. Pass "suggest" as an @Input() which should get an observable.
-  2. Pass "url" and "searchParams" as @Inputs - this would restrict the typeahead component to jsonp requests only.
+1. Pass "suggest" as an @Input() which should get an observable.
+2. Pass "url" and "searchParams" as @Inputs - this would restrict the typeahead component to jsonp requests only.
 
 Achieving one of the two is pretty straight forward - you can take this a good exercise. Here is the **suggest** code extracted to a **"requestJsonp()"** method (taken from the latest [ngx-typeahead](https://github.com/orizens/ngx-typeahead/blob/master/src/modules/ngx-typeahead.component.ts#L281) npm package):
 
@@ -252,7 +253,7 @@ To achieve this challenge, I had to use more angular template engine feature - 
 
 First, I added a new Input which gets a template reference:
 
-```typescript
+````typescript
 
 
 Then I added a template inside the button element to allow rendering this template ref when present. In order to render a template reference, the "**ngTemplateOutlet**" directive is used with the template tag. In order to add a context for the external template, so the result value can be referenced, Angular supplies the "**ngTemplateOutletContext**" directive. This directive should receive a literal object with the special "**$implicit**" property. This property is used as the contect for the contents of the ng-template tag (the one in this button) - then, the "result" and "index" variables can be used as expressions within the template that is passed through from outside.
@@ -264,11 +265,11 @@ Then I added a template inside the button element to allow rendering this templa
       (click)="handleSelectSuggestion(result)">
       <span *ngIf="!typeaheadItemTpl"><i class="fa fa-search"></i> {{ result }}</span>
       <ng-template
-        [ngTemplateOutlet]="typeaheadItemTpl" 
+        [ngTemplateOutlet]="typeaheadItemTpl"
         [ngTemplateOutletContext]="{ $implicit: {result: result, index: i} }"
       ></ng-template>
 </button>
-```
+````
 
 A good example for defining a template and passing it as a reference is described in this snippet:
 
@@ -325,12 +326,12 @@ You can see the end result live on [Echoes Player App](http://echoesplayer.com)�
 
 To summarize the great benefits came out form this experience, we learned these:
 
-  1. use **changeDetectionRef** to force a re render inside an "OnPush" defined component
-  2. Angular's template engine can be reused to achieve greater power in creating complex components 
-      1. reuse templates with **ngTemplateOutlet **directive
-      2. apply different context to template with **ngTemplateOutletContext** directive
-  3. **@HostListener()** can pass more arguments other than the event object
-  4. **RxJS** can reduce the amount of code dramatically and make it maintainable as well
+1. use **changeDetectionRef** to force a re render inside an "OnPush" defined component
+2. Angular's template engine can be reused to achieve greater power in creating complex components
+   1. reuse templates with **ngTemplateOutlet **directive
+   2. apply different context to template with **ngTemplateOutletContext** directive
+3. **@HostListener()** can pass more arguments other than the event object
+4. **RxJS** can reduce the amount of code dramatically and make it maintainable as well
 
 There are few optimizations that I can make to this code and other ways to achieve it. However, this is a great way to experiment with other concepts, open your (or mine) mind and dig more into the source, understanding how it runs and how features might serve us in achieving various tasks and components features.
 
@@ -339,17 +340,3 @@ The full source code is available at Angular (ngx) Typeahead Component [github]
 For more articles about Angular, please check out the [Angular Article Series Page](http://orizens.com/wp/angular-2-article-series/).
 
 [Contact to get a special offer for Angular consulting](https://docs.google.com/forms/d/e/1FAIpQLSc341_p9YiUeMHipBMDujCv0bHJfQD1NKWFvoYkcJiFeMm4Ig/viewform)
-
-<div class="row orizens-consulting-packages">
-  <div class="col-md-4">
-    <a href="https://goo.gl/RJgihR" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-premium-angular-consutling.png" alt="angular consulting development" /></a>
-  </div>
-  
-  <div class="col-md-4">
-    <a href="https://goo.gl/7zg4y9" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-reinvented-code-with-ng-ngrx.png" alt="angular ngrx consulting" /></a>
-  </div>
-  
-  <div class="col-md-4">
-    <a href="https://goo.gl/6iAYIi" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-reactive-ngrx.png" alt="reactive programming angular ngrx cosulting packages" /></a>
-  </div>
-</div>

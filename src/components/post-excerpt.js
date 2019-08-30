@@ -28,11 +28,13 @@ export const PostExcerpt = ({
       <section>
         {image && (
           <Link to={permalink}>
-            <Image
-              className="image"
-              fluid={image.childImageSharp.fluid}
-              style={{ height: "8rem" }}
-            />
+            {image && (
+              <Image
+                className="image"
+                fluid={image.childImageSharp.fluid}
+                style={{ height: "8rem" }}
+              />
+            )}
           </Link>
         )}
         <p

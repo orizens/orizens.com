@@ -2,7 +2,7 @@
 id: 1094
 title: Stepping Into The Next Level With RxJs In Angular (2+)
 date: 2016-11-16T10:58:19+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1094
@@ -23,6 +23,7 @@ tags:
   - rxjs
   - typescript
 ---
+
 Since I started developing the new version of Echoes with Angular (+2), I was vey interested in taking advantage of rxjs. To be more specific, I was interested to see how it can be used to reduce complexity and lead to a better, maintainable code. In this article i'm sharing a code refactor walk through, where I used RxJs operators to achieve better maintainable code with Angular (+2).<!--more-->
 
 I experimented a lot with [ngrx/store](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) and [ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) - these concepts led me to think differently about state management in front end development - where to [store data](http://orizens.com/wp/topics/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/), [how to change](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/) it  and where to write [complex logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) that might affect the state.
@@ -35,9 +36,9 @@ From time to time, I looked into the source code of store and effects. These con
 
 The sign-in process has been a challenge during development. There are few things that need to happen before the google sign in method can take place:
 
-  1. assure google's "auth2" client is loaded
-  2. make an authorization request
-  3. sign-in the user
+1. assure google's "auth2" client is loaded
+2. make an authorization request
+3. sign-in the user
 
 Aside from that, if the user is already authorized, these steps should happen behind the scenes.
 
@@ -196,21 +197,3 @@ This refactoring process, allowed me to dive into rxjs docs, understanding more 
 In my opinion, the code is much clearer than the first source. Moreover, I can think now of another few refinements I can take on this new refactored code that perhaps will make the "**loadAuth()**" process much simpler and focused - after all, it actually does load the authorization api, signs in the user and do more operations.
 
 I have thoughts of dispatching events such as "auth success" and "sign-in success", and handle its side effects in the ngrx/effects layer - however - that is saved for another refactoring adventure.
-
-<div>
-  <div>
-    <div class="row orizens-consulting-packages">
-      <div class="col-md-4">
-        <a href="https://goo.gl/RJgihR" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-premium-angular-consutling.png" alt="angular consulting development" /></a>
-      </div>
-      
-      <div class="col-md-4">
-        <a href="https://goo.gl/7zg4y9" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-reinvented-code-with-ng-ngrx.png" alt="angular ngrx consulting" /></a>
-      </div>
-      
-      <div class="col-md-4">
-        <a href="https://goo.gl/6iAYIi" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-reactive-ngrx.png" alt="reactive programming angular ngrx cosulting packages" /></a>
-      </div>
-    </div>
-  </div>
-</div>

@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
-              excerpt
+              excerpt(pruneLength: 200)
               fields {
                 slug
               }

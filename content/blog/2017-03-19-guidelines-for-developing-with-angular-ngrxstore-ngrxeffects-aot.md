@@ -1,8 +1,8 @@
 ---
 id: 1229
-title: 'Guidelines For developing with Angular, ngrx/store, ngrx/effects & AOT'
+title: "Guidelines For developing with Angular, ngrx/store, ngrx/effects & AOT"
 date: 2017-03-19T13:57:23+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1229
@@ -22,6 +22,7 @@ tags:
   - aot
   - ngrx
 ---
+
 With [angular-cli tool](https://github.com/angular/angular-cli) entering RC-1, I decided to start migrating my [open source project](http://github.com/orizens/echoes-ng2) "[Echoes Player](http://github.orizens.io/echoes-ng2)" from [angular class boilerplate](https://github.com/AngularClass/angular2-webpack-starter/). Some of the code in "Echoes Player" wasn't AOT compatible. As a result, compilation logged errors to the console. In this post I'm sharing guidelines for making your [ngrx](http://github.com/ngrx) related code compatible with AOT.
 
 <!--more-->
@@ -40,10 +41,10 @@ With this tool growing popularity, I decided to experiment with it and understan
 
 There are few benefits for compiling with AOT:
 
-  1. Less code in the final production bundles
-  2. Faster rendering - as the code is ready to use
-  3. template's errors are catch in compile time
-  4. better security - html injection is prevented since templates are compiled to code.
+1. Less code in the final production bundles
+2. Faster rendering - as the code is ready to use
+3. template's errors are catch in compile time
+4. better security - html injection is prevented since templates are compiled to code.
 
 ### Compiling With AOT
 
@@ -51,7 +52,7 @@ Compiling with AOT is triggered via a terminal/cmd command. The "**@angular/com
 
 To compile, this command should run in the terminal:
 
-```typescript
+````typescript
 
 
 To compile for production and get the benefits of minifying and others, you should run:
@@ -78,7 +79,7 @@ const reducers = {
   appLayout,
 };
 const appReducer = compose(localStorageSync(Object.keys(reducers), true), combineReducers)(reducers);
-```
+````
 
 ### Guideline #1: Using "compose" in ngrx/store
 
@@ -112,7 +113,7 @@ export function reducer(state: any, action: any) {
 
 Reducers are meant to be pure functions. In previous versions of blog posts and other sources, reducer functions were demonstrated as anonymous function assignments to variables, sometimes using function arrows as well:
 
-```typescript
+````typescript
 
 
 As a rule of thumb for AOT in general (and not just for ngrx), exported arrow functions cannot be used. The AOT compatible way for defining reducer functions is with an **exported named function** declaration.
@@ -132,7 +133,7 @@ I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxst
   ]
 })
 export class CoreModule {}
-```
+````
 
 Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the "imports" array:
 
@@ -141,13 +142,10 @@ const AppEffectModules = [
   EffectsModule.run(AppEffects[0]),
   EffectsModule.run(AppEffects[1]),
   EffectsModule.run(AppEffects[2]),
-  EffectsModule.run(AppEffects[3])
-];
+  EffectsModule.run(AppEffects[3]),
+]
 @NgModule({
-  imports: [
-    CoreStoreModule,
-    ...AppEffectModules
-  ]
+  imports: [CoreStoreModule, ...AppEffectModules],
 })
 export class CoreModule {}
 ```
@@ -156,28 +154,14 @@ export class CoreModule {}
 
 I has a very positive experience from the migration process of moving to angular-cli. This turned out to be an opportunity to learn new skills:
 
-  1. Rethinking and restructuring the application's directories
-  2. Learning  how to work with angular-cli features
-  3. Learning [several techniques from the community](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories) on migrating to angular-cli
-  4. Using the build in scss compilation
-  5. Diving into [AOT principles](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
+1. Rethinking and restructuring the application's directories
+2. Learning  how to work with angular-cli features
+3. Learning [several techniques from the community](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories) on migrating to angular-cli
+4. Using the build in scss compilation
+5. Diving into [AOT principles](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
 
 As of the time of writing this post, I haven't switched to using angular-cli completely yet. I have some thoughts in mind for finding a simpler way of moving between repositories/tools.
 
 You can [view the history of commits](https://github.com/orizens/echoes-ng2/commits/ng-cli) of the migration process to angular-cli.
 
 If you're looking for **Angular Consulting** / **Front End Consulting**, please consider to approach via the promotion packages below (no strings attached):
-
-<div class="row orizens-consulting-packages">
-  <div class="col-md-4">
-    <a href="https://goo.gl/RJgihR" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-premium-angular-consutling.png" alt="angular consulting development" /></a>
-  </div>
-  
-  <div class="col-md-4">
-    <a href="https://goo.gl/7zg4y9" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-banners-reinvented-code-with-ng-ngrx.png" alt="angular ngrx consulting" /></a>
-  </div>
-  
-  <div class="col-md-4">
-    <a href="https://goo.gl/6iAYIi" target="_blank"><img class="alignnone size-medium consulting-package" src=".../../img/uploads/2017/12/orizens.com-reactive-ngrx.png" alt="reactive programming angular ngrx cosulting packages" /></a>
-  </div>
-</div>

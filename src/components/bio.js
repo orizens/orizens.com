@@ -24,17 +24,19 @@ const Bio = () => {
       site {
         siteMetadata {
           author
+          occupation
           social {
             twitter
             github
             npm
+            linkedin
           }
         }
       }
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author, social, occupation } = data.site.siteMetadata
   return (
     <div
       style={{
@@ -60,16 +62,20 @@ const Bio = () => {
         <Link to="/about">
           <strong>{author}</strong>
         </Link>
-        , Senior Front End Engineer
+        , {occupation}
         {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          follow me on <span className="fa fa-twitter"></span>
+        <a href={`//twitter.com/${social.twitter}`}>
+          follow me on <span className="fa fa-twitter is-size-4"></span>
         </a>
         ,{" "}
-        <a href={`https://github.com/${social.github}`}>
-          <span className="fa fa-github"></span>
+        <a href={`//github.com/${social.github}`}>
+          <span className="fa fa-github is-size-4"></span>
         </a>
-        , <a href={`https://www.npmjs.com/${social.npm}`}>open source</a>,{" "}
+        ,{" "}
+        <a href={`//linkedin.com/in/${social.linkedin}`}>
+          <span className="fa fa-linkedin is-size-4"></span>
+        </a>
+        , <a href={`//www.npmjs.com/~${social.npm}`}>open source</a>,{" "}
         <a href={`//www.apress.com/us/book/9781484226193`}>author</a>
       </p>
     </div>

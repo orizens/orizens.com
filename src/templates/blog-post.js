@@ -16,37 +16,43 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { location, pageContext } = this.props
     const { next, previous } = pageContext
+    const {
+      title,
+      description,
+      date,
+      image,
+      dsq_thread_id,
+      permalink,
+    } = frontmatter
     const disqusConfig = {
-      url: `${frontmatter.permalink}`,
-      identifier: frontmatter.dsq_thread_id,
-      title: frontmatter.title,
+      url: `${permalink}`,
+      identifier: dsq_thread_id,
+      title: title,
     }
     return (
       <Layout location={location} title={siteTitle} footer={<Packages />}>
-        <SEO
-          title={frontmatter.title}
-          description={frontmatter.description || excerpt}
-        />
+        <SEO title={title} description={description || excerpt} />
         <Bio />
         <article className="blog-post">
           <PostPagination previous={previous} next={next} />
           <header class="title">
-            <h1>{frontmatter.title}</h1>
+            <h1>{title}</h1>
             <p
               className="content"
               style={{
                 ...scale(-1 / 5),
-                display: `block`,
                 marginBottom: rhythm(1),
               }}
             >
-              {frontmatter.date}
+              {date}
             </p>
-            <Image
-              className="image"
-              fluid={frontmatter.image.childImageSharp.fluid}
-              style={{ height: "25rem" }}
-            />
+            {image && (
+              <Image
+                className="image"
+                fluid={image.childImageSharp.fluid}
+                style={{ height: "25rem" }}
+              />
+            )}
           </header>
           <section
             className="content is-medium"

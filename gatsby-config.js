@@ -9,6 +9,7 @@ module.exports = {
       twitter: `orizens`,
       github: `orizens`,
       npm: `orizens`,
+      linkedin: `orenfarhi`,
     },
     publications: {
       angular: `//www.apress.com/us/book/9781484226193`,
@@ -71,7 +72,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        //trackingId: `UA-1207545-1`,
       },
     },
     `gatsby-plugin-feed`,
