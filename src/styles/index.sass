@@ -1,0 +1,35 @@
+@import "./custom-varilables.sass"
+@import "~bulma/bulma.sass"
+@import "./reset.sass"
+@import "~prismjs-material-theme/sass/oceanic"
+
+.space-vertical
+  margin: $size-3 0
+.space-sides-1
+  margin: 0 .5rem
+.space-top-3
+  margin-top: $size-1
+.space-top-2
+  margin-top: 6rem
+.space-bottom-3
+  margin-bottom: $size-7
+.is-rounded-1
+  border-radius: $size-7
+
+// responsive navbar
++mobile.navbar-menu.is-active
+  position: absolute
+  width: 100%
+  top: 4rem
+
+p
+  margin: $size-5
+
+.blog-post
+  h2
+    font-size: $size-4
+  .gatsby-resp-image-wrapper
+    margin: $size-6
+
+  .content .gatsby-highlight
+    font-size: $size-6
