@@ -77,6 +77,8 @@ export default function ContactPage({ data, location }) {
                 <input
                   className="input is-success"
                   type="text"
+                  name="name"
+                  id="name"
                   placeholder="Your Name"
                 />
                 <span className="icon is-small is-right">
@@ -91,7 +93,10 @@ export default function ContactPage({ data, location }) {
                 <input
                   className="input is-success"
                   type="email"
+                  name="email"
+                  id="email"
                   placeholder="Email To Reach You"
+                  required
                 />
                 <span className="icon is-small is-left">
                   <i className="fa fa-envelope"></i>
@@ -107,8 +112,11 @@ export default function ContactPage({ data, location }) {
               <label className="label">Message</label>
               <div className="control has-icons-right">
                 <textarea
+                  name="message"
+                  id="message"
                   className="textarea is-success"
                   placeholder="Textarea"
+                  required
                 ></textarea>
                 <span className="icon is-small is-right">
                   <i className="fa fa-exclamation-circle"></i>
