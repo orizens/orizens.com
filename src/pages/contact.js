@@ -65,11 +65,12 @@ export default function ContactPage({ data, location }) {
           )}
           <form
             name="newcontact"
-            method="POST"
+            method="post"
             action={`/contact?${SUBMIT_PARAM}`}
-            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
             data-netlify="true"
           >
+            <input type="hidden" name="bot-field" />
             <div className="field">
               <label className="label">Name</label>
               <div className="control has-icons-right">
