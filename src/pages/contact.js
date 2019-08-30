@@ -64,6 +64,7 @@ export default function ContactPage({ data, location }) {
             </h2>
           )}
           <form
+            name="newcontact"
             method="POST"
             action={`/contact?${SUBMIT_PARAM}`}
             netlify-honeypot="bot-field"
