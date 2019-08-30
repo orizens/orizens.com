@@ -64,11 +64,12 @@ export default function ContactPage({ data, location }) {
             </h2>
           )}
           <form
-            name="newcontact"
-            method="post"
+            name="Contact Form"
+            method="POST"
             action={`/contact?${SUBMIT_PARAM}`}
             data-netlify="true"
           >
+            <input type="hidden" name="form-name" value="Contact Form" />
             <div className="field">
               <label className="label">Name</label>
               <div className="control has-icons-right">
