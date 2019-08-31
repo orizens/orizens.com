@@ -16,6 +16,7 @@ export default function Layout(props) {
             twitter
             github
             npm
+linkedin
           }
         }
       }
