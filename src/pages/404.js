@@ -16,8 +16,7 @@ class NotFoundPage extends React.Component {
         <h1>The Page Not Found</h1>
         {suggestedRoute && (
           <p>
-            The link to that page might have changed to{" "}
-            <Link to={suggestedRoute}>This Link</Link>
+            <Link to={suggestedRoute}>Try This Link</Link>
           </p>
         )}
       </Layout>

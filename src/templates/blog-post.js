@@ -26,7 +26,7 @@ class BlogPostTemplate extends React.Component {
     } = frontmatter
     const disqusConfig = {
       url: `${permalink}`,
-      identifier: dsq_thread_id,
+      identifier: dsq_thread_id || permalink,
       title: title,
     }
     return (

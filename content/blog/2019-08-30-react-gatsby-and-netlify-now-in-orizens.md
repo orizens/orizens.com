@@ -7,7 +7,7 @@ templateKey: blog-post
 layout: post
 permalink: /topics/react-gatsby-and-netlify-now-in-orizens/
 dsq_thread_id:
-  - ""
+  - "20190830"
 image: ../img/uploads/netlify-deployed.png
 categories:
   - React
