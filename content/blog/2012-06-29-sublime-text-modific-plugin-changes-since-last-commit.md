@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=436
-permalink: /topics/sublime-text-modific-plugin-changes-since-last-commit/
+permalink: /blog/sublime-text-modific-plugin-changes-since-last-commit/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:
@@ -22,7 +22,7 @@ tags:
   - javascript
   - tools
 ---
-<a title="My Favorite Text Editor for Web Development" href="http://www.sublimetext.com/" target="_blank">Sublime Text</a> is my <a title="Javascript IDE’s? yes!" href="http://orizens.com/wp/topics/javascript-ides-yes/" target="_blank">favorite text editor for any web development - javascript, css & html</a>. It's fast, has a very minimalist and slick user interface and amazingly and easily can be customized with plugins.
+<a title="My Favorite Text Editor for Web Development" href="http://www.sublimetext.com/" target="_blank">Sublime Text</a> is my <a title="Javascript IDE’s? yes!" href="http://orizens.com/wp/blog/javascript-ides-yes/" target="_blank">favorite text editor for any web development - javascript, css & html</a>. It's fast, has a very minimalist and slick user interface and amazingly and easily can be customized with plugins.
   
 One of the features that I like most in an editor is the ability to see visually code that has been changed since the last commit. Some editors has that feature built in if the VCS allows such a feature (github, mercurial, subversion etc).
   

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=298
-permalink: /topics/javascript-arrays-passing-by-reference-or-by-value/
+permalink: /blog/javascript-arrays-passing-by-reference-or-by-value/
 dsq_thread_id:
   - "751019241"
 categories:

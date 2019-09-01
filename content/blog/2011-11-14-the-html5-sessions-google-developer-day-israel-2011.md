@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=378
-permalink: /topics/the-html5-sessions-google-developer-day-israel-2011/
+permalink: /blog/the-html5-sessions-google-developer-day-israel-2011/
 dsq_thread_id:
   - "763707640"
 categories:

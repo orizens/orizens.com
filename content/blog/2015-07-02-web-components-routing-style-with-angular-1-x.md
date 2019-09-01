@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=792
-permalink: /topics/web-components-routing-style-with-angular-1-x/
+permalink: /blog/web-components-routing-style-with-angular-1-x/
 dsq_thread_id:
   - "3897572600"
 image: ../img/uploads/2015/07/web-components-routing.jpg

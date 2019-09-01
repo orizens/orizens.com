@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=775
-permalink: /topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/
+permalink: /blog/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/
 dsq_thread_id:
   - "3820798109"
 image: ../img/uploads/2015/06/testing.jpg
@@ -81,7 +81,7 @@ Then, I heard about [karma](http://karma-runner.github.io). karma automate few s
   6. easily config all of the above in one karma.conf.js file.
   7. running these in terminal
 
-When I started converting my [open source project](http://github.com/orizens/echoes), [Echoes Player](http://echotu.be), to angular.js, I also integrated a cloud [CI service - Travis](http://travis-ci.org/orizens/echoes) (on which i [mentioned before](http://orizens.com/wp/topics/first-steps-in-setting-up-travis-ci-to-your-javascript-project/)) - for running tests after each commit.
+When I started converting my [open source project](http://github.com/orizens/echoes), [Echoes Player](http://echotu.be), to angular.js, I also integrated a cloud [CI service - Travis](http://travis-ci.org/orizens/echoes) (on which i [mentioned before](http://orizens.com/wp/blog/first-steps-in-setting-up-travis-ci-to-your-javascript-project/)) - for running tests after each commit.
 
 #### Karma Plugins
 

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=956
-permalink: /topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/
+permalink: /blog/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/
 dsq_thread_id:
   - "4621939384"
 image: ../img/uploads/2016/02/ngrxpart2.jpg
@@ -21,7 +21,7 @@ tags:
   - ngrx
   - typescript
 ---
-In my <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article about adding redux with ngrx/store to angular2</a>, I showed a nice example of integrating this awesome state management library to my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a> <a href="http://echotu.be" target="_blank">Echoes Player</a>. Since then, I really wanted to integrate youtube player into <a href="http://github.com/orizens/echoes-ng2" target="_blank">this angular2 version</a>. In this post, I'm sharing my insights on achieving using ngrx/store, working with more than one reducer in angular2 and testing reducers as well.<!--more-->
+In my <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article about adding redux with ngrx/store to angular2</a>, I showed a nice example of integrating this awesome state management library to my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a> <a href="http://echotu.be" target="_blank">Echoes Player</a>. Since then, I really wanted to integrate youtube player into <a href="http://github.com/orizens/echoes-ng2" target="_blank">this angular2 version</a>. In this post, I'm sharing my insights on achieving using ngrx/store, working with more than one reducer in angular2 and testing reducers as well.<!--more-->
 
 ## Creating a Youtube Player Reducer
 
@@ -50,7 +50,7 @@ let initialPlayerState = {
 }
 ```
 
-Similar to the previously "**videos**" reducer (from my <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">last article about ngrx/store</a>), I defined a reducer for the player. It is a pure function that expects to get a state object and an **Action** object. The action object will always include an "**action.type**" of this action. It can also include an "action.payload" if the action suppose to pass data.
+Similar to the previously "**videos**" reducer (from my <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">last article about ngrx/store</a>), I defined a reducer for the player. It is a pure function that expects to get a state object and an **Action** object. The action object will always include an "**action.type**" of this action. It can also include an "action.payload" if the action suppose to pass data.
 
 For better readability and perhaps easier maintenance, I like to keep the creation of a new state in small functions, which I can test as well. Those are the "**playVideo**" and "**toggleVisibility**" functions. Remember - a reducer should return a new state and shouldn't mutate the old state object.
 

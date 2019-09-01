@@ -1,0 +1,23 @@
+.transition-floating
+  position: relative
+  animation-name: floating
+  animation-duration: 2s
+  animation-iteration-count: infinite
+  transition-timing-function: ease-in
+
+@keyframes floating
+  0%   
+    left: 0px
+    top: 10px
+    
+  50%  
+    left: 0px
+    top: 0px
+  
+  100% 
+    left: 0px
+    top: 10px
+    
++mobile
+  .not-found-page
+    flex-direction: column

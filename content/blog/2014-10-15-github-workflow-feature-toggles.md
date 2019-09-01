@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=727
-permalink: /topics/github-workflow-feature-toggles/
+permalink: /blog/github-workflow-feature-toggles/
 dsq_thread_id:
   - "3118310471"
 image: ../img/uploads/2014/10/git-workflow-edit-e1421241770538.jpg

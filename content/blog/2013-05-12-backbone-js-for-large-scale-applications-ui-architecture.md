@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=566
-permalink: /topics/backbone-js-for-large-scale-applications-ui-architecture/
+permalink: /blog/backbone-js-for-large-scale-applications-ui-architecture/
 dsq_thread_id:
   - "1282546357"
 image: ../img/uploads/2013/05/echotube1.jpg
@@ -166,7 +166,7 @@ From this point, it was quite obvious to take the "divide & conquer" approach fo
 
 With the concept of having a clear separation of Echoes Model & View, I continued the "C" of MVC - the controller.
   
-In one of my other posts, I explained <a href="http://orizens.com/wp/topics/backbone-router-the-important-role-of-a-controller/" title="Backbone Router – The important role of a Controller" target="_blank">the importance of a backbone router to function as an application controller</a> - and in Echoes case - a controller to Echoes api.
+In one of my other posts, I explained <a href="http://orizens.com/wp/blog/backbone-router-the-important-role-of-a-controller/" title="Backbone Router – The important role of a Controller" target="_blank">the importance of a backbone router to function as an application controller</a> - and in Echoes case - a controller to Echoes api.
   
 Soon, it appeared to me, in a minimalistic kind of a way, that it only makes sense to pass Echoes Model as a reference.
 

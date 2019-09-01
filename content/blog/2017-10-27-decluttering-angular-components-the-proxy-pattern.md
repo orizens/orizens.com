@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1276
-permalink: /topics/decluttering-angular-components-the-proxy-pattern/
+permalink: /blog/decluttering-angular-components-the-proxy-pattern/
 dsq_thread_id:
   - "6245641675"
 image: ../img/uploads/2017/10/IMG_20170813_124752-01.jpeg

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1352
-permalink: /topics/ngrx-scrolling-ino-dom-element-and-components-communication/
+permalink: /blog/ngrx-scrolling-ino-dom-element-and-components-communication/
 dsq_thread_id:
   - "6826788041"
 image: ../img/uploads/2018/07/scroll-post.jpg
@@ -234,7 +234,7 @@ The "**now playing**" feature is a nice component featuring few key concepts tha
 3. **communicating** between **components** - using a wrapper component (now playlist)
 4. leveraging **@ViewChild** to be able to **interact** with a component's public interface, eventually interacting with **DOM** only api's
 
-Those concepts can be further enhanced and achieved differently using other strategies. I always look for doing [things simpler](http://orizens.com/wp/topics/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/) or rather different, as long as it feels intuitive, fits the [code architecture](http://orizens.com/wp/topics/decluttering-angular-components-the-proxy-pattern/) used for the app and follow best practices for creating robust code.
+Those concepts can be further enhanced and achieved differently using other strategies. I always look for doing [things simpler](http://orizens.com/wp/blog/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/) or rather different, as long as it feels intuitive, fits the [code architecture](http://orizens.com/wp/blog/decluttering-angular-components-the-proxy-pattern/) used for the app and follow best practices for creating robust code.
 
 Echoes Player is an open source project and [entire code is available](http://github.com/orizens/echoes-player) (feel free to fork, open pull requests and suggest features) as well using the actual app at <http://echoesplayer.com>.
 

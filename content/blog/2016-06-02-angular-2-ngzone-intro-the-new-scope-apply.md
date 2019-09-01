@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=986
-permalink: /topics/angular-2-ngzone-intro-the-new-scope-apply/
+permalink: /blog/angular-2-ngzone-intro-the-new-scope-apply/
 dsq_thread_id:
   - "4877134084"
 image: ../img/uploads/2016/06/ngzone.jpg
@@ -21,7 +21,7 @@ tags:
   - es6
   - ngrx
 ---
-Adding youtube player and google sign-in features to the echoes player version that I started developed with Angular (+2) was almost a no brainer. Since I took few [steps ahead in preparing](http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/) the [AngularJS version code to Angular (+2)](http://orizens.com/wp/topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/), all left to do is copy and paste. However, issues started to rise once I started to check its functionality. Then I discovered NgZone.<!--more-->
+Adding youtube player and google sign-in features to the echoes player version that I started developed with Angular (+2) was almost a no brainer. Since I took few [steps ahead in preparing](http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/) the [AngularJS version code to Angular (+2)](http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/), all left to do is copy and paste. However, issues started to rise once I started to check its functionality. Then I discovered NgZone.<!--more-->
 
 ## Limitations Outside Angular (+2) World
 

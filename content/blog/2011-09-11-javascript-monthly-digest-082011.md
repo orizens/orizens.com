@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=365
-permalink: /topics/javascript-monthly-digest-082011/
+permalink: /blog/javascript-monthly-digest-082011/
 dsq_thread_id:
   - "753113364"
 categories:

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=373
-permalink: /topics/javascript-ides-yes/
+permalink: /blog/javascript-ides-yes/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:

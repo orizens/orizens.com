@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1246
-permalink: /topics/reusing-ngrxeffects-in-angular-communicating-between-reducers/
+permalink: /blog/reusing-ngrxeffects-in-angular-communicating-between-reducers/
 post_grid_post_settings:
   - 'a:10:{s:9:"post_skin";s:4:"flat";s:19:"custom_thumb_source";s:93:"./img/plugins/post-grid/assets/frontend/css/images/placeholder.png";s:17:"font_awesome_icon";s:0:"";s:23:"font_awesome_icon_color";s:7:"#737272";s:22:"font_awesome_icon_size";s:4:"50px";s:17:"custom_youtube_id";s:0:"";s:15:"custom_vimeo_id";s:0:"";s:21:"custom_dailymotion_id";s:0:"";s:14:"custom_mp3_url";s:0:"";s:20:"custom_soundcloud_id";s:0:"";}'
 dsq_thread_id:
@@ -22,7 +22,7 @@ tags:
   - ngrx
 ---
 
-After upgrading my <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a>, "<a href="http://echoesplayer.com" target="_blank" rel="noopener noreferrer">Echoes Player</a>", to work with the latest stable angular-cli 1.0 version (<a href="http://orizens.com/wp/topics/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/" target="_blank" rel="noopener noreferrer">wrote an article about it</a>), I set down to refactor the application's code. I always like to look at implementations few times and experiment with several approaches. This time, I wanted to take advantage of <a href="https://github.com/ngrx/effects" target="_blank" rel="noopener noreferrer">ngrx/effects</a> observables and understand how those can be reused. In this post I'm sharing my take on reusing ngrx/effects in order to communicate between two different reducers.<!--more-->
+After upgrading my <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a>, "<a href="http://echoesplayer.com" target="_blank" rel="noopener noreferrer">Echoes Player</a>", to work with the latest stable angular-cli 1.0 version (<a href="http://orizens.com/wp/blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/" target="_blank" rel="noopener noreferrer">wrote an article about it</a>), I set down to refactor the application's code. I always like to look at implementations few times and experiment with several approaches. This time, I wanted to take advantage of <a href="https://github.com/ngrx/effects" target="_blank" rel="noopener noreferrer">ngrx/effects</a> observables and understand how those can be reused. In this post I'm sharing my take on reusing ngrx/effects in order to communicate between two different reducers.<!--more-->
 
 ## Preface
 

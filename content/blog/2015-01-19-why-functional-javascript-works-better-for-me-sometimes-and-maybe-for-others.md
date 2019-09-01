@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=742
-permalink: /topics/why-functional-javascript-works-better-for-me-sometimes-and-maybe-for-others/
+permalink: /blog/why-functional-javascript-works-better-for-me-sometimes-and-maybe-for-others/
 dsq_thread_id:
   - "3435382802"
 image: ../img/uploads/2015/01/functional.jpg

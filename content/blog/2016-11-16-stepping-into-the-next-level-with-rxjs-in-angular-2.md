@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1094
-permalink: /topics/stepping-into-the-next-level-with-rxjs-in-angular-2/
+permalink: /blog/stepping-into-the-next-level-with-rxjs-in-angular-2/
 dsq_thread_id:
   - "5308292343"
 post_grid_post_settings:
@@ -26,7 +26,7 @@ tags:
 
 Since I started developing the new version of Echoes with Angular (+2), I was vey interested in taking advantage of rxjs. To be more specific, I was interested to see how it can be used to reduce complexity and lead to a better, maintainable code. In this article i'm sharing a code refactor walk through, where I used RxJs operators to achieve better maintainable code with Angular (+2).<!--more-->
 
-I experimented a lot with [ngrx/store](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) and [ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) - these concepts led me to think differently about state management in front end development - where to [store data](http://orizens.com/wp/topics/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/), [how to change](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/) it  and where to write [complex logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) that might affect the state.
+I experimented a lot with [ngrx/store](http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/) and [ngrx/effects](http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) - these concepts led me to think differently about state management in front end development - where to [store data](http://orizens.com/wp/blog/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/), [how to change](http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/) it  and where to write [complex logics](http://orizens.com/wp/blog/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) that might affect the state.
 
 From time to time, I looked into the source code of store and effects. These concepts are implemented with RxJS. To have a better understanding of what goes under the hood, I had to dive more into RxJs. That's right - "dive more" - in a sense that I was already using RxJs with Angular HttpClient module and I even created some nifty Observables.
 
@@ -85,7 +85,7 @@ Next, if the user was already authorized, I had to stop there and save the "**au
 
 If the user is not authorized, it's time to invoke the "**authorize**" function, which invokes the google sign in and authorize process. In this code snapshot, it returned a promise through google's "**gapi.auth2**" object.
 
-Now, there's another "nested" function handler in response to the promise. This code now register a listener to the auth instance (which was commented above). Eventually, if the user is signed-in, the "**handleSuccessLogin**" is invoked inside an NgZone context (I wrote [here about why using ngzone](http://orizens.com/wp/topics/angular-2-ngzone-intro-the-new-scope-apply/)) to get back into angular's context and apply change detection.
+Now, there's another "nested" function handler in response to the promise. This code now register a listener to the auth instance (which was commented above). Eventually, if the user is signed-in, the "**handleSuccessLogin**" is invoked inside an NgZone context (I wrote [here about why using ngzone](http://orizens.com/wp/blog/angular-2-ngzone-intro-the-new-scope-apply/)) to get back into angular's context and apply change detection.
 
 ## chapter 2 - analyzing problems in the code
 

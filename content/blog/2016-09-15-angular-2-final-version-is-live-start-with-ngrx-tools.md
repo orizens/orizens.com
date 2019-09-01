@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1058
-permalink: /topics/angular-2-final-version-is-live-start-with-ngrx-tools/
+permalink: /blog/angular-2-final-version-is-live-start-with-ngrx-tools/
 dsq_thread_id:
   - "5146396350"
 image: ../img/uploads/2016/09/ng2final.jpg
@@ -36,23 +36,23 @@ Be sure to checkout my open source live project, <a href="http://orizens.github.
 
 ## Prepare Angular 1 Code To Angular (+2)
 
-  * <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">5 Steps To Prepare Your Angular 1 Code To Angular (+2)</a>
-  * <a href="http://orizens.com/wp/topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 More Steps To Prepare Your Angular 1 Code To Angular (+2)</a>
+  * <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">5 Steps To Prepare Your Angular 1 Code To Angular (+2)</a>
+  * <a href="http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 More Steps To Prepare Your Angular 1 Code To Angular (+2)</a>
 
 ## Convert Angular 1 Code To Angular (+2)
 
-  * <a href="http://orizens.com/wp/topics/migrating-a-component-to-angular-2-from-angular-1-x-es2015/" target="_blank">Migrating A Component To Angular (+2): From Angular 1.x & Es2015</a>
-  * <a href="http://orizens.com/wp/topics/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/" target="_blank">From Angular 1.x ng-repeat to Angular (+2) NgFor with Component</a>
-  * <a href="http://orizens.com/wp/topics/angular-2-attribute-directive-creating-an-infinite-scroll-directive/" target="_blank">Angular (+2): Attribute @Directive() & Creating An Infinite Scroll Directive</a>
+  * <a href="http://orizens.com/wp/blog/migrating-a-component-to-angular-2-from-angular-1-x-es2015/" target="_blank">Migrating A Component To Angular (+2): From Angular 1.x & Es2015</a>
+  * <a href="http://orizens.com/wp/blog/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/" target="_blank">From Angular 1.x ng-repeat to Angular (+2) NgFor with Component</a>
+  * <a href="http://orizens.com/wp/blog/angular-2-attribute-directive-creating-an-infinite-scroll-directive/" target="_blank">Angular (+2): Attribute @Directive() & Creating An Infinite Scroll Directive</a>
 
 ## Adding Ngrx (Redux) To Angular (+2)
 
-  * <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">Adding Redux with NgRx/Store to Angular (+2) – Part 1</a>
-  * <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">Adding Redux with NgRx/store to Angular2 – Part 2 (Testing Reducers)</a>
-  * <a href="http://orizens.com/wp/topics/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/" target="_blank">Angular (+2) & NgRx/store: The NgModel In Between Use Case (from Angular 1)</a>
-  * <a href="http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/" target="_blank">Angular (+2), Ngrx/Store & Ngrx/Effects – Intro To Functional Approach For A Chain Of Actions</a>
+  * <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">Adding Redux with NgRx/Store to Angular (+2) – Part 1</a>
+  * <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">Adding Redux with NgRx/store to Angular2 – Part 2 (Testing Reducers)</a>
+  * <a href="http://orizens.com/wp/blog/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/" target="_blank">Angular (+2) & NgRx/store: The NgModel In Between Use Case (from Angular 1)</a>
+  * <a href="http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/" target="_blank">Angular (+2), Ngrx/Store & Ngrx/Effects – Intro To Functional Approach For A Chain Of Actions</a>
 
 ## Common Practices
 
-  * <a href="http://orizens.com/wp/topics/angular-2-communication-between-components-components-design/" target="_blank">Angular (+2) – Communication Between Components & Components Design</a>
-  * <a href="http://orizens.com/wp/topics/angular-2-ngzone-intro-the-new-scope-apply/" target="_blank">Angular (+2) NgZone Intro – The new “scope.apply”</a>
+  * <a href="http://orizens.com/wp/blog/angular-2-communication-between-components-components-design/" target="_blank">Angular (+2) – Communication Between Components & Components Design</a>
+  * <a href="http://orizens.com/wp/blog/angular-2-ngzone-intro-the-new-scope-apply/" target="_blank">Angular (+2) NgZone Intro – The new “scope.apply”</a>

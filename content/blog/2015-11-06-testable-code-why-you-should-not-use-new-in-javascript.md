@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=822
-permalink: /topics/testable-code-why-you-should-not-use-new-in-javascript/
+permalink: /blog/testable-code-why-you-should-not-use-new-in-javascript/
 dsq_thread_id:
   - "4295255301"
 image: ../img/uploads/2015/11/injection.jpg

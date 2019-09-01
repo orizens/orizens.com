@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=456
-permalink: /topics/backbone-view-patterns-the-relationship-with-model/
+permalink: /blog/backbone-view-patterns-the-relationship-with-model/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:
@@ -77,7 +77,7 @@ var ExpensesView = Backbone.View.extend({
 
 ## Model to Template
 
-One of the simplest uses of models and views is populating a view's template with the model's data. The ["render"](http://orizens.com/wp/topics/backbone-view-patterns-the-render-method/ "Backbone.View Patterns – the “render” method") method compiles both template and model's json data:
+One of the simplest uses of models and views is populating a view's template with the model's data. The ["render"](http://orizens.com/wp/blog/backbone-view-patterns-the-render-method/ "Backbone.View Patterns – the “render” method") method compiles both template and model's json data:
 
 ```typescript
 var SomeView = Backbone.View.extend({

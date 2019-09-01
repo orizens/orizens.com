@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=800
-permalink: /topics/write-angular-2-components-in-angular-1/
+permalink: /blog/write-angular-2-components-in-angular-1/
 dsq_thread_id:
   - "3920946442"
 image: ../img/uploads/2015/07/fffff-e1436517082946.jpg
@@ -29,7 +29,7 @@ Angular (+2) is a new take to the web components approach. It introduced a quite
 
 <a href="http://github.com/orizens/echoes" target="_blank">Echoes</a> is an open source project that i've recently converted to AngularJS. Essentialy, It is a media player aims to delier a <a href="http://echotu.be" target="_blank">great user experience in listening and watching videos from youtube</a>. It also serves as a code playground for experimenting with various solutions.
 
-Echoes is composed of several modules. I like the modular approach, which is described nicely with the concpet of web components. I <a href="http://orizens.com/wp/topics/web-components-routing-style-with-angular-1-x/" target="_blank">wrote before</a> about how I see and integrate this approach in some of the modules in Echoes.
+Echoes is composed of several modules. I like the modular approach, which is described nicely with the concpet of web components. I <a href="http://orizens.com/wp/blog/web-components-routing-style-with-angular-1-x/" target="_blank">wrote before</a> about how I see and integrate this approach in some of the modules in Echoes.
 
 ### The Youtube Videos Module (Web Component)
 

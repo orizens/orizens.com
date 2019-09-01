@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=475
-permalink: /topics/requirejs-optimizing-and-building-one-file/
+permalink: /blog/requirejs-optimizing-and-building-one-file/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:
@@ -112,7 +112,7 @@ Additional help configuration can be found on the <a href="http://requirejs.org/
 
 ## Bonus: Automating Build Process with SublimeText
 
-Since i'm working with <a href="http://orizens.com/wp/topics/javascript-ides-yes/" title="Javascript IDE’s? yes!" target="_blank">SublimeText</a> for code editing, I would like to have the option to build my project from. Fortunately, it's easy to accomplish.
+Since i'm working with <a href="http://orizens.com/wp/blog/javascript-ides-yes/" title="Javascript IDE’s? yes!" target="_blank">SublimeText</a> for code editing, I would like to have the option to build my project from. Fortunately, it's easy to accomplish.
 
   1. From sublime's menu, go to -> **Tools -> Build System -> New Build System &#8230;**. 
   2. Paste this code to the new created file:</p> ```typescript

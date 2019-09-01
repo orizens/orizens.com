@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=520
-permalink: /topics/backbone-safe-local-storage-plugin-for-backbone-js/
+permalink: /blog/backbone-safe-local-storage-plugin-for-backbone-js/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:

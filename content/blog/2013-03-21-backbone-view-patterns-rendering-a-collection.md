@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=557
-permalink: /topics/backbone-view-patterns-rendering-a-collection/
+permalink: /blog/backbone-view-patterns-rendering-a-collection/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:
@@ -66,7 +66,7 @@ When rendering a backbone collection, we need to keep track of a few pitfalls an
 
 There's a need for a container view to hold all views of the collection.
   
-This can be a Backbone.View object that will get the collection as a reference and will render <a href="http://orizens.com/wp/topics/backbone-view-patterns-how-why-to-use-subviews/" title="Backbone.View Patterns – How & Why Use Subviews" target="_blank">subviews</a> into it.
+This can be a Backbone.View object that will get the collection as a reference and will render <a href="http://orizens.com/wp/blog/backbone-view-patterns-how-why-to-use-subviews/" title="Backbone.View Patterns – How & Why Use Subviews" target="_blank">subviews</a> into it.
   
 The "options.target" (line 3) allows us to specify a certain "target" element to append the views to.
 

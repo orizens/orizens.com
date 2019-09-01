@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=939
-permalink: /topics/angular-2-attribute-directive-creating-an-infinite-scroll-directive/
+permalink: /blog/angular-2-attribute-directive-creating-an-infinite-scroll-directive/
 dsq_thread_id:
   - "4553592304"
 image: ../img/uploads/2016/02/scroll.jpg
@@ -20,7 +20,7 @@ tags:
   - es2015
   - typescript
 ---
-In the recent article, I used the <a href="http://orizens.com/wp/topics/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/" target="_blank">new "<strong>ng-repeat</strong>" in Angular (+2), "<strong>NgFor</strong>"</a>, and created component that consumes other custom component. In this article, I continue to show further development for <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a> with Angular (+2), this time - making it more dynamic by adding infinite scroll directive as what is known in angular2 as an attribute directive.<!--more-->
+In the recent article, I used the <a href="http://orizens.com/wp/blog/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/" target="_blank">new "<strong>ng-repeat</strong>" in Angular (+2), "<strong>NgFor</strong>"</a>, and created component that consumes other custom component. In this article, I continue to show further development for <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a> with Angular (+2), this time - making it more dynamic by adding infinite scroll directive as what is known in angular2 as an attribute directive.<!--more-->
 
 ## Angular 1.x Infinite Scroll
 

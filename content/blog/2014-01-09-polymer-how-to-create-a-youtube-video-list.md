@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=653
-permalink: /topics/polymer-how-to-create-a-youtube-video-list/
+permalink: /blog/polymer-how-to-create-a-youtube-video-list/
 dsq_thread_id:
   - "2103038921"
 image: ../img/uploads/2014/01/polymer.jpg

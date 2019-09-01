@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=963
-permalink: /topics/angular-2-communication-between-components-components-design/
+permalink: /blog/angular-2-communication-between-components-components-design/
 dsq_thread_id:
   - '4639629364'
 image: ../img/uploads/2016/03/commucompo.jpg
@@ -26,7 +26,7 @@ tags:
   - typescript
 ---
 
-In the last article, I added the ability to <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">play a media in Echoes Player</a>. I introduced a new reducer which holds the state of the player. In this post I want to share my views regarding communication between different components - and how using the "**ngrx/store**" as a state management promotes reuse of logics, less code to write and more separation in designing components.<!--more-->
+In the last article, I added the ability to <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">play a media in Echoes Player</a>. I introduced a new reducer which holds the state of the player. In this post I want to share my views regarding communication between different components - and how using the "**ngrx/store**" as a state management promotes reuse of logics, less code to write and more separation in designing components.<!--more-->
 
 ## Components Design Decisions
 
@@ -38,7 +38,7 @@ The orange area in the below screenshot is the now-playlist feature:
 
 <img class="alignnone size-large wp-image-965" src=".../../img/uploads/2016/03/Screen-Shot-2016-03-06-at-5.59.50-PM-1024x640.png" alt="Screen Shot 2016-03-06 at 5.59.50 PM" width="697" height="436" srcset=".../../img/uploads/2016/03/Screen-Shot-2016-03-06-at-5.59.50-PM-1024x640.png 1024w, .../../img/uploads/2016/03/Screen-Shot-2016-03-06-at-5.59.50-PM-300x188.png 300w, .../../img/uploads/2016/03/Screen-Shot-2016-03-06-at-5.59.50-PM-768x480.png 768w" sizes="(max-width: 697px) 100vw, 697px" />
 
-Since I have taken <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">few steps to migrate</a> Echoes Player version that I wrote with AngularJS to Angular (+2), the components design was pretty solid for the this version with Angular (+2). Also, the code migration for these components was quite solid.
+Since I have taken <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">few steps to migrate</a> Echoes Player version that I wrote with AngularJS to Angular (+2), the components design was pretty solid for the this version with Angular (+2). Also, the code migration for these components was quite solid.
 
 I divided this area into 2 components:
 
@@ -53,7 +53,7 @@ Separating this area into 2 components, keeps the separation of concerns, makes 
 
 ### Creating A The Reducer For Now Playlist State
 
-Since i'm using <a href="https://github.com/ngrx/store" target="_blank">ngrx/store</a> as a state management (I recommend to read on integrating ngrx/store with Angular (+2) - <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">part1</a>, <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">part2</a>), I started by defining the state structure that the now-playlist (including its filter). The "**initial state**" is the actual structure of the now playlist.
+Since i'm using <a href="https://github.com/ngrx/store" target="_blank">ngrx/store</a> as a state management (I recommend to read on integrating ngrx/store with Angular (+2) - <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">part1</a>, <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">part2</a>), I started by defining the state structure that the now-playlist (including its filter). The "**initial state**" is the actual structure of the now playlist.
 
 I defined the relevant actions that can change this state. Each action returns a new state object by creating a new empty state and merging it with the current state while eventually, appending the new and relevant properties changes of this state. This pattern follows <a href="http://redux.js.org/docs/basics/Reducers.html" target="_blank">Redux's concepts</a> which I recommend to read and get familiar with.
 
@@ -230,7 +230,7 @@ export class NowPlaylistFilter {
 
 In contrary to using this component's template with "**ng-show**" with AngularJS, I chose to use "**\*ngIf**" in order to toggle the icons on the search field. I like the new syntax - during development it really pops out to the eye and is easy to locate.
 
-As I've written before on <a href="http://orizens.com/wp/topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps for preparing AngularJS code to angular2</a>, migrating the search input from "**ng-model**" and "**ng-change**" in angular1 to "**[ngModel]**" and "**input()**" in angular2 was pretty straight forward. The new addition in this code is how the "**input()**" event passes the value to the handler on the component.
+As I've written before on <a href="http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps for preparing AngularJS code to angular2</a>, migrating the search input from "**ng-model**" and "**ng-change**" in angular1 to "**[ngModel]**" and "**input()**" in angular2 was pretty straight forward. The new addition in this code is how the "**input()**" event passes the value to the handler on the component.
 
 I defined a local variable using the "**#**" syntax - this creates a local template reference to the input dom element - so that it can be used anywhere else in this template. So, I can just reference its value with "**searchFilter.value**". This allows me to define the function handler on the component without referencing any specific DOM api (platform) - thus - having a simpler function handler - it gets a primitive value and operates on it.
 

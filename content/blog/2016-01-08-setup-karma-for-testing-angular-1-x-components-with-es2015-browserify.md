@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=908
-permalink: /topics/setup-karma-for-testing-angular-1-x-components-with-es2015-browserify/
+permalink: /blog/setup-karma-for-testing-angular-1-x-components-with-es2015-browserify/
 dsq_thread_id:
   - "4472785736"
 image: ../img/uploads/2016/01/browse.jpg
@@ -26,11 +26,11 @@ tags:
   - learning
   - tests
 ---
-<a href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">Converting AngularJS.x code to use ES2015</a> is one thing. It's an iterative process that should be taken with great care. However, aside from converting the code, you should also convert the tests to the setup environment. In this article I share the setup I use for running Echoes Player tests with karma & browserify.<!--more-->
+<a href="http://orizens.com/wp/blog/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">Converting AngularJS.x code to use ES2015</a> is one thing. It's an iterative process that should be taken with great care. However, aside from converting the code, you should also convert the tests to the setup environment. In this article I share the setup I use for running Echoes Player tests with karma & browserify.<!--more-->
 
 ## Tests Setup
 
-To simply put - <a href="http://orizens.com/wp/topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">I believe in writing tests for code</a>. It promotes robustness of the code that you write, healthy mentality as a developer and assurance that your code does what it's supposed to do, covering edge cases as well.
+To simply put - <a href="http://orizens.com/wp/blog/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">I believe in writing tests for code</a>. It promotes robustness of the code that you write, healthy mentality as a developer and assurance that your code does what it's supposed to do, covering edge cases as well.
 
 For my <a href="https://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>, I use a testing environment setup that includes:
 
@@ -42,7 +42,7 @@ For my <a href="https://github.com/orizens/echoes" target="_blank">open source p
 
 ## Angular 1.x with ES2015 & Browserify
 
-In a previous article, I <a href="http://orizens.com/wp/topics/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">wrote about writing AngularJS.x with ES2015</a> and <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">preparing AngularJS.x code to Angular (+2)</a>. Yet, browsers don't know to parse some ES2015 features - for that - the code needs to be parsed and compiled to ES5.
+In a previous article, I <a href="http://orizens.com/wp/blog/from-angular-es5-directive-to-angular-es2015-component/" target="_blank">wrote about writing AngularJS.x with ES2015</a> and <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">preparing AngularJS.x code to Angular (+2)</a>. Yet, browsers don't know to parse some ES2015 features - for that - the code needs to be parsed and compiled to ES5.
 
 For <a href="http://echotu.be" target="_blank">Echoes Player</a>, I'm currently using <a href="http://browserify.org/" target="_blank">browserify</a> to achieve the above (webpack is an alternative and out of the scope of this article). I'm using a modified gulp task that I've found in various projects:
 

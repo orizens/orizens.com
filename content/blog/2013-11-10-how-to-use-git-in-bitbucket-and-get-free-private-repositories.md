@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=631
-permalink: /topics/how-to-use-git-in-bitbucket-and-get-free-private-repositories/
+permalink: /blog/how-to-use-git-in-bitbucket-and-get-free-private-repositories/
 dsq_thread_id:
   - "1953172481"
 image: ../img/uploads/2013/11/camera_Sophia_Metal_Hassel.jpg

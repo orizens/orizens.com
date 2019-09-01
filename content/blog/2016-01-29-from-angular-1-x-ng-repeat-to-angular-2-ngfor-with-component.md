@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=930
-permalink: /topics/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/
+permalink: /blog/from-angular-1-x-ng-repeat-to-angular-2-ngfor-with-component/
 dsq_thread_id:
   - "4533393955"
 image: ../img/uploads/2016/01/ng2for.jpg
@@ -25,7 +25,7 @@ tags:
   - learning
   - typescript
 ---
-In the recent article, I wrote about the <a href="http://orizens.com/wp/topics/migrating-a-component-to-angular-2-from-angular-1-x-es2015/" target="_blank">migration process of a component that is based on AngularJS.x and ES2015</a>. Since then, I continued migrating <a href="http://echotu.be" target="_blank">Echoes Player</a> to Angular (+2). In this post i'm sharing the migration process of the youtube-list component - which uses the youtube-media component, as well as implementing a smart component with Angular (+2).<!--more-->
+In the recent article, I wrote about the <a href="http://orizens.com/wp/blog/migrating-a-component-to-angular-2-from-angular-1-x-es2015/" target="_blank">migration process of a component that is based on AngularJS.x and ES2015</a>. Since then, I continued migrating <a href="http://echotu.be" target="_blank">Echoes Player</a> to Angular (+2). In this post i'm sharing the migration process of the youtube-list component - which uses the youtube-media component, as well as implementing a smart component with Angular (+2).<!--more-->
 
 ## The Youtube-List Component
 

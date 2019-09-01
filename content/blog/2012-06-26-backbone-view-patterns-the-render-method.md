@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=429
-permalink: /topics/backbone-view-patterns-the-render-method/
+permalink: /blog/backbone-view-patterns-the-render-method/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:

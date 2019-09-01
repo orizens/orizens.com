@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=326
-permalink: /topics/10-good-reasons-for-using-jquery-as-your-javascript-framework/
+permalink: /blog/10-good-reasons-for-using-jquery-as-your-javascript-framework/
 dsq_thread_id:
   - "757204000"
 categories:

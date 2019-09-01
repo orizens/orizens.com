@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1067
-permalink: /topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/
+permalink: /blog/angular-2-from-services-to-reactive-effects-with-ngrxeffects/
 dsq_thread_id:
   - "5175425324"
 image: ../img/uploads/2016/09/ngrxeffect2.jpg
@@ -20,7 +20,7 @@ tags:
   - ngrx
   - ngrx/effects
 ---
-In a former article, I wrote <a href="http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/" target="_blank">an introduction for integrating ngrx/effects with Angular (+2)</a> - a functional approach for reacting to a chain of events. Since then, based on this approach, I defined more side effects for several actions in my open source project, <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. It has really proven itself to be worthwhile in terms of logics architecture and code organization. In this post, I share more insights on working with <a href="https://github.com/ngrx/effects/tree/v2" target="_blank">ngrx/effects version 2</a> (currently in beta) and how show a real app use case where I applied it.<!--more-->
+In a former article, I wrote <a href="http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/" target="_blank">an introduction for integrating ngrx/effects with Angular (+2)</a> - a functional approach for reacting to a chain of events. Since then, based on this approach, I defined more side effects for several actions in my open source project, <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. It has really proven itself to be worthwhile in terms of logics architecture and code organization. In this post, I share more insights on working with <a href="https://github.com/ngrx/effects/tree/v2" target="_blank">ngrx/effects version 2</a> (currently in beta) and how show a real app use case where I applied it.<!--more-->
 
 ## The User Profile Component
 
@@ -156,7 +156,7 @@ I won't go in detail of the code that runs in the "then" block, since, currently
 
 The **signIn** function is an **important** take out of the user profile service. It eliminated the code in the user profile service which attached a click handler for signing in the user (a copy paste from google's guide).  Once the signIn process has successfully been completed, the app needs to save the access token.
 
-I use **ngrx/store** in order to dispatch an action for saving the token. Notice that I use NgZone to wrap the "**handleSuccessLogin**" function handler since the google authorization signIn api is external to angular (I wrote about <a href="http://orizens.com/wp/topics/angular-2-ngzone-intro-the-new-scope-apply/" target="_blank">using NgZone for 3rd party external api</a> before):
+I use **ngrx/store** in order to dispatch an action for saving the token. Notice that I use NgZone to wrap the "**handleSuccessLogin**" function handler since the google authorization signIn api is external to angular (I wrote about <a href="http://orizens.com/wp/blog/angular-2-ngzone-intro-the-new-scope-apply/" target="_blank">using NgZone for 3rd party external api</a> before):
 
 ```typescript
 export class Authorization {

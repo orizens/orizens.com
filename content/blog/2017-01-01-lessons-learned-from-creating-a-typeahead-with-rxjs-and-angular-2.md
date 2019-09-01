@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1151
-permalink: /topics/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/
+permalink: /blog/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/
 post_grid_post_settings:
   - 'a:10:{s:9:"post_skin";s:4:"flat";s:19:"custom_thumb_source";s:93:"./img/plugins/post-grid/assets/frontend/css/images/placeholder.png";s:17:"font_awesome_icon";s:0:"";s:23:"font_awesome_icon_color";s:7:"#737272";s:22:"font_awesome_icon_size";s:4:"50px";s:17:"custom_youtube_id";s:0:"";s:15:"custom_vimeo_id";s:0:"";s:21:"custom_dailymotion_id";s:0:"";s:14:"custom_mp3_url";s:0:"";s:20:"custom_soundcloud_id";s:0:"";}'
 dsq_thread_id:
@@ -37,7 +37,7 @@ I had a clear vision of how the typeahead feature should work:
 6. it should cancel suggestions when "Escape" key is pressed
 7. it should cancel suggestions when clicking outside the suggestions container
 
-I wrote on my experience with [RxJs and Angular (+2)](http://orizens.com/wp/topics/stepping-into-the-next-level-with-rxjs-in-angular-2/) before, and this article takes this approach further.
+I wrote on my experience with [RxJs and Angular (+2)](http://orizens.com/wp/blog/stepping-into-the-next-level-with-rxjs-in-angular-2/) before, and this article takes this approach further.
 
 ## Typeahead - Implementation
 

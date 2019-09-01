@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=699
-permalink: /topics/how-to-keep-up-with-the-javascript-landscape-trends/
+permalink: /blog/how-to-keep-up-with-the-javascript-landscape-trends/
 dsq_thread_id:
   - "2879389486"
 post_grid_post_settings:

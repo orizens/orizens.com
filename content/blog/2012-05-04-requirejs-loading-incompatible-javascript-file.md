@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=411
-permalink: /topics/requirejs-loading-incompatible-javascript-file/
+permalink: /blog/requirejs-loading-incompatible-javascript-file/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=946
-permalink: /topics/adding-redux-with-ngrxstore-to-angular-2-part-1/
+permalink: /blog/adding-redux-with-ngrxstore-to-angular-2-part-1/
 dsq_thread_id:
   - "4573231539"
 image: ../img/uploads/2016/02/reducer.jpg

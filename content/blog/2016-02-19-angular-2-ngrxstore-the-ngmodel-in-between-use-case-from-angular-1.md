@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=951
-permalink: /topics/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/
+permalink: /blog/angular-2-ngrxstore-the-ngmodel-in-between-use-case-from-angular-1/
 dsq_thread_id:
   - "4593261293"
 image: ../img/uploads/2016/02/ngmodel.jpg
@@ -21,7 +21,7 @@ tags:
   - ngrx
   - typescript
 ---
-In the <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article</a>, I integrated ngrx/store as a redux implementation to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. Until this article, the search was static with one hard coded search query. In this article, I'm sharing my insights on migrating more features from AngularJS and implementing ng-model with ngrx.<!--more-->
+In the <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article</a>, I integrated ngrx/store as a redux implementation to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. Until this article, the search was static with one hard coded search query. In this article, I'm sharing my insights on migrating more features from AngularJS and implementing ng-model with ngrx.<!--more-->
 
 ## From Angular 1 To Angular (+2): NgModel Template Syntax
 
@@ -45,7 +45,7 @@ In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="ht
 
 * I removed some attributes and html code to make this code simpler for this post.
 
-The migration of the html code above is quite simple (I mentioned it in <a href="http://orizens.com/wp/topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps to prepare your AngularJS to Angular (+2)</a>) in Angular (+2):
+The migration of the html code above is quite simple (I mentioned it in <a href="http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps to prepare your AngularJS to Angular (+2)</a>) in Angular (+2):
 
   1. **ng-model** is converted to **([ngModel])**
   2. **ng-change** is converted to **(input)**

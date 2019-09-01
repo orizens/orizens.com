@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=904
-permalink: /topics/from-angular-es5-directive-to-angular-es2015-component/
+permalink: /blog/from-angular-es5-directive-to-angular-es2015-component/
 dsq_thread_id:
   - "4452173992"
 image: ../img/uploads/2016/01/now-playlist.jpg
@@ -27,9 +27,9 @@ Recently, I started refactoring <a href="http://echotu.be" target="_blank">Echoe
 
 ## Why Using ES2015 With Angular 1
 
-I think that one of the most important reasons to <a href="http://orizens.com/wp/topics/angular-2-to-typescript-or-to-es5/" target="_blank">start using ES2015</a> with AngularJS is in preparing current AngularJS code to migration, when the time comes, to Angular (+2) code.
+I think that one of the most important reasons to <a href="http://orizens.com/wp/blog/angular-2-to-typescript-or-to-es5/" target="_blank">start using ES2015</a> with AngularJS is in preparing current AngularJS code to migration, when the time comes, to Angular (+2) code.
 
-I've written before about <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">5 steps to prepare your AngularJS code to Angular (+2)</a>, and <a href="http://orizens.com/wp/topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps</a> to follow as well.
+I've written before about <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">5 steps to prepare your AngularJS code to Angular (+2)</a>, and <a href="http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps</a> to follow as well.
 
 ES2015 is the new and current standard for writing javascript. It has taken a very long time to close the spec, however, now that the spec is closed, more and more libraries, frameworks, blog posts and tutorials are using it.
 

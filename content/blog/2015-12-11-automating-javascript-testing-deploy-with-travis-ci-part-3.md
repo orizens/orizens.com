@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=865
-permalink: /topics/automating-javascript-testing-deploy-with-travis-ci-part-3/
+permalink: /blog/automating-javascript-testing-deploy-with-travis-ci-part-3/
 dsq_thread_id:
   - "4395222818"
 image: ../img/uploads/2015/12/travisdeploy.jpg
@@ -26,7 +26,7 @@ tags:
   - javascript
   - travis
 ---
-Not long ago, I wrote about <a href="http://orizens.com/wp/topics/first-steps-in-setting-up-travis-ci-to-your-javascript-project/" target="_blank">my experience</a> and <a href="http://orizens.com/wp/topics/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">setup of Travis CI</a> for running javascript testing (on an angular based web application) on my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>. On last week, I completed my setup with an auto deployment - in which I share the solution that worked for me.<!--more-->
+Not long ago, I wrote about <a href="http://orizens.com/wp/blog/first-steps-in-setting-up-travis-ci-to-your-javascript-project/" target="_blank">my experience</a> and <a href="http://orizens.com/wp/blog/my-setup-for-testing-js-with-jasmine-karma-phantomjs-angularjs/" target="_blank">setup of Travis CI</a> for running javascript testing (on an angular based web application) on my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>. On last week, I completed my setup with an auto deployment - in which I share the solution that worked for me.<!--more-->
 
 ## Initial Setup
 

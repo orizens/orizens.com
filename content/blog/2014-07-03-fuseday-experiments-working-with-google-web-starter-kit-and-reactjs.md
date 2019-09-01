@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=693
-permalink: /topics/fuseday-experiments-working-with-google-web-starter-kit-and-reactjs/
+permalink: /blog/fuseday-experiments-working-with-google-web-starter-kit-and-reactjs/
 dsq_thread_id:
   - "2814089399"
 image: ../img/uploads/2014/07/IMG_20140702_125555.jpg

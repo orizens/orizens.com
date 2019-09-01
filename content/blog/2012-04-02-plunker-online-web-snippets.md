@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=400
-permalink: /topics/plunker-online-web-snippets/
+permalink: /blog/plunker-online-web-snippets/
 dsq_thread_id:
   - "751433237"
 categories:

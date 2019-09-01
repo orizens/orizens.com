@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=976
-permalink: /topics/environment-configuration-with-angular-js-es2015-es6-browserify/
+permalink: /blog/environment-configuration-with-angular-js-es2015-es6-browserify/
 dsq_thread_id:
   - "4691977801"
 image: ../img/uploads/2016/03/config.jpg

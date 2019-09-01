@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=603
-permalink: /topics/integrating-backbone-view-backbone-model-jquery-plugin/
+permalink: /blog/integrating-backbone-view-backbone-model-jquery-plugin/
 dsq_thread_id:
   - "1525466120"
 image: ../img/uploads/2013/07/IMG_20130724_093318_Hagrid_Focal_Dirt.jpg
@@ -60,7 +60,7 @@ require.config({
 });
 ```
 
-In the Echoes <a title="Backbone.js for large scale applications – UI Architecture" href="http://orizens.com/wp/topics/backbone-js-for-large-scale-applications-ui-architecture/" target="_blank">architecture</a> concept, the main.js is the starting point of the application, and it is asking to load "bootstrap" javascript file (aside to other plugins) which requires jquery-ui - so that is how jquery-ui is ready to be used right in the beginning of initialising the whole app:
+In the Echoes <a title="Backbone.js for large scale applications – UI Architecture" href="http://orizens.com/wp/blog/backbone-js-for-large-scale-applications-ui-architecture/" target="_blank">architecture</a> concept, the main.js is the starting point of the application, and it is asking to load "bootstrap" javascript file (aside to other plugins) which requires jquery-ui - so that is how jquery-ui is ready to be used right in the beginning of initialising the whole app:
 
 ```typescript
 require([

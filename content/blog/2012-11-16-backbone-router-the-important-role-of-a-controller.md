@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=534
-permalink: /topics/backbone-router-the-important-role-of-a-controller/
+permalink: /blog/backbone-router-the-important-role-of-a-controller/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:

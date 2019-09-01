@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=711
-permalink: /topics/a-journey-from-require-js-to-browserify/
+permalink: /blog/a-journey-from-require-js-to-browserify/
 dsq_thread_id:
   - "3035967021"
 image: ../img/uploads/2014/09/sof.jpg
@@ -36,9 +36,9 @@ A couple of years ago I started developing [Echoes Player](http://echotu.be) wit
 
 ## Preface
 
-Back then, I saw [require.js as a solution for dependency management with javascript](http://orizens.com/wp/topics/backbone-js-for-large-scale-applications-ui-architecture/ "Backbone.js for large scale applications – UI Architecture"). Later on, while not using the lazy loading ability, I took the chance of creating a [build file for whole project - concatenating all the js files to one uglified & optimized file](http://orizens.com/wp/topics/requirejs-optimizing-and-building-one-file/ "RequireJS – Optimizing and Building One File"). In the land of Backbone.js development and code organization, require.js gave the ability to implement the separation of concerns, and promoting good code practicing by creating separated files, load them to a module (let it be lazy or not) and have a sane maintenance of code.
+Back then, I saw [require.js as a solution for dependency management with javascript](http://orizens.com/wp/blog/backbone-js-for-large-scale-applications-ui-architecture/ "Backbone.js for large scale applications – UI Architecture"). Later on, while not using the lazy loading ability, I took the chance of creating a [build file for whole project - concatenating all the js files to one uglified & optimized file](http://orizens.com/wp/blog/requirejs-optimizing-and-building-one-file/ "RequireJS – Optimizing and Building One File"). In the land of Backbone.js development and code organization, require.js gave the ability to implement the separation of concerns, and promoting good code practicing by creating separated files, load them to a module (let it be lazy or not) and have a sane maintenance of code.
 
-Require.js has support both for the AMD & CommonJS specs for module definition as well as for [loading incompatible files with these specs](http://orizens.com/wp/topics/requirejs-loading-incompatible-javascript-file/ "AMD/RequireJS – Loading Incompatible JavaScript Files").
+Require.js has support both for the AMD & CommonJS specs for module definition as well as for [loading incompatible files with these specs](http://orizens.com/wp/blog/requirejs-loading-incompatible-javascript-file/ "AMD/RequireJS – Loading Incompatible JavaScript Files").
 
 AMD syntax uses a function which wraps the module definition with whatever you choose to load. It uses a return value as the exported features  of this module.
 
@@ -153,7 +153,7 @@ define([
 
 Looking up where this module came from in a big list was tedious and hard.
 
-The [build process, r.js](http://orizens.com/wp/topics/requirejs-optimizing-and-building-one-file/ "RequireJS – Optimizing and Building One File"), was and is still great for the purpose of Echoes Player project. I created aliases, css optimization, dependencies, special build options and optimization. You can checkout the configuration I used recently in all of the builds.
+The [build process, r.js](http://orizens.com/wp/blog/requirejs-optimizing-and-building-one-file/ "RequireJS – Optimizing and Building One File"), was and is still great for the purpose of Echoes Player project. I created aliases, css optimization, dependencies, special build options and optimization. You can checkout the configuration I used recently in all of the builds.
 
 I didn't use all the options. One feature I wasn't able to use was the sourcemaps option and using uglify 2 for minifying.
 

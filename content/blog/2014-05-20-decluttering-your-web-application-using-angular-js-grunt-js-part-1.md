@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=683
-permalink: /topics/decluttering-your-web-application-using-angular-js-grunt-js-part-1/
+permalink: /blog/decluttering-your-web-application-using-angular-js-grunt-js-part-1/
 dsq_thread_id:
   - "2700450190"
 image: ../img/uploads/2014/05/IMG_20140520_225515.jpg
@@ -59,7 +59,7 @@ The main modules of the application environment are placed each in its own sandb
   
 "src" holds the source code for the client. All 3rd party libraries and app code goes in here.
   
-"grunt" holds organized separated configuration for each grunt module as I wrote in <a href="http://orizens.com/wp/topics/decluttering-your-gruntfile-js/" title="Decluttering your Gruntfile.js (organizing grunt)" target="_blank">declutter Gruntfile.js using grunt.js</a>.
+"grunt" holds organized separated configuration for each grunt module as I wrote in <a href="http://orizens.com/wp/blog/decluttering-your-gruntfile-js/" title="Decluttering your Gruntfile.js (organizing grunt)" target="_blank">declutter Gruntfile.js using grunt.js</a>.
   
 "test" holds everything related to test the "src" code (usually the javascript logics).
 

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=490
-permalink: /topics/backbone-view-patterns-how-why-to-use-subviews/
+permalink: /blog/backbone-view-patterns-how-why-to-use-subviews/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:
@@ -29,7 +29,7 @@ Often, I tend to keep my views as small as possible. Sometimes it is hard to det
 
 ## How to Identify the need for a sub view
 
-In a <a title="Backbone.View Patterns – The Relationship with “Model”" href="http://orizens.com/wp/topics/backbone-view-patterns-the-relationship-with-model/" target="_blank">recent post</a>, I explained the relationship between Backbone's Model and View.   
+In a <a title="Backbone.View Patterns – The Relationship with “Model”" href="http://orizens.com/wp/blog/backbone-view-patterns-the-relationship-with-model/" target="_blank">recent post</a>, I explained the relationship between Backbone's Model and View.   
 When a model has an array of similar items, where each has some sort of interaction - it is a good practice to render each item as a sub - view. Using a separate view for each item gives the option to control the behavior attached to each - usually, on click I am able to get a reference to the correct model of that specific item rather than trying to get the id of the source element and start querying to DOM.   
 In example, take this blog post's commenting list. If I were to define it using backbone, the Model would be:
 

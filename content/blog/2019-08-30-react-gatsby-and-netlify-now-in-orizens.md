@@ -5,7 +5,7 @@ date: 2019-08-30T04:09:35+00:00
 author: Oren Farhi
 templateKey: blog-post
 layout: post
-permalink: /topics/react-gatsby-and-netlify-now-in-orizens/
+permalink: /blog/react-gatsby-and-netlify-now-in-orizens/
 dsq_thread_id:
   - "20190830"
 image: ../img/uploads/netlify-deployed.png

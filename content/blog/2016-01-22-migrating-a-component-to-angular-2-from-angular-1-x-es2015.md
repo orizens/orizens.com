@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=920
-permalink: /topics/migrating-a-component-to-angular-2-from-angular-1-x-es2015/
+permalink: /blog/migrating-a-component-to-angular-2-from-angular-1-x-es2015/
 dsq_thread_id:
   - "4513538123"
 image: ../img/uploads/2016/01/ng1ng2migrate.jpg
@@ -37,7 +37,7 @@ In order to start Echoes Player development with Angular (+2), I cloned AngularC
 
 In <a href="https://github.com/orizens/echoes/issues/84" target="_blank">Echoes Player angular1 ES2015</a> version, i'm using a slightly different directory structure (which I wrote about and present in the <a href="https://github.com/orizens/angular-es2015-styleguide" target="_blank">angualr1 ES2015 style guide</a>).
 
-In order to align with the first version of Echoes and ease <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">the migration process</a>, I added a new "core" directory, where I differentiate between core components and core services that the application will consume.
+In order to align with the first version of Echoes and ease <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">the migration process</a>, I added a new "core" directory, where I differentiate between core components and core services that the application will consume.
 
 I also added a less loader to webpack-config in order to support loading less files. However, currently, the app loads the production style.css file of Echoes.
 

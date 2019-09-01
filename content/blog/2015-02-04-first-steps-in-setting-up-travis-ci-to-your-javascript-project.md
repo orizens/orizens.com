@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=750
-permalink: /topics/first-steps-in-setting-up-travis-ci-to-your-javascript-project/
+permalink: /blog/first-steps-in-setting-up-travis-ci-to-your-javascript-project/
 dsq_thread_id:
   - "3484339018"
 image: ../img/uploads/2015/02/travis-e1423042196923.jpg
@@ -28,13 +28,13 @@ tags:
   - open source
   - travis
 ---
-I've been developing my projects with <a title="Decluttering your Gruntfile.js (organizing grunt)" href="http://orizens.com/wp/topics/decluttering-your-gruntfile-js/" target="_blank">build processes</a> for quite some time now. At some point I added unit tests and end to end to my javascript project. In this post i'd like to share some simple steps I did in order to add Continuous Integration to my <a title="Echoes Player" href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>, using <a title="Travis CI in the cloud" href="http://travis-ci.org" target="_blank">Travis</a>.<!--more-->
+I've been developing my projects with <a title="Decluttering your Gruntfile.js (organizing grunt)" href="http://orizens.com/wp/blog/decluttering-your-gruntfile-js/" target="_blank">build processes</a> for quite some time now. At some point I added unit tests and end to end to my javascript project. In this post i'd like to share some simple steps I did in order to add Continuous Integration to my <a title="Echoes Player" href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>, using <a title="Travis CI in the cloud" href="http://travis-ci.org" target="_blank">Travis</a>.<!--more-->
 
 From the docs of Travis: "Travis CI is a hosted continuous integration service. It is integrated with GitHub and offers first class support" - For many programming languages.
 
 With Travis, you actually get a machine on the cloud (Ubuntu) that you can use it to run tests for your Github projects on each push as well as pull request.
 
-I recently added unit tests to the new version of Echoes, and I was missing that Travis link in my <a title="Github Workflow & “Feature Toggles”" href="http://orizens.com/wp/topics/github-workflow-feature-toggles/" target="_blank">development workflow</a>. There are many good reasons to use CI, amongst - getting a free cloud virtual machine for running tests and deploying. For a long time i wanted to integrate Travis to my open source projects - and in this post i describe how i started with one of my <a href="https://github.com/orizens" target="_blank">open source projects</a> - Echoes Player..
+I recently added unit tests to the new version of Echoes, and I was missing that Travis link in my <a title="Github Workflow & “Feature Toggles”" href="http://orizens.com/wp/blog/github-workflow-feature-toggles/" target="_blank">development workflow</a>. There are many good reasons to use CI, amongst - getting a free cloud virtual machine for running tests and deploying. For a long time i wanted to integrate Travis to my open source projects - and in this post i describe how i started with one of my <a href="https://github.com/orizens" target="_blank">open source projects</a> - Echoes Player..
 
 <img class="alignleft  wp-image-751" src=".../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-10.04.29-AM-1024x332.png" alt="Screen Shot 2015-02-04 at 10.04.29 AM" width="737" height="239" srcset=".../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-10.04.29-AM-1024x332.png 1024w, .../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-10.04.29-AM-300x97.png 300w, .../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-10.04.29-AM-700x227.png 700w" sizes="(max-width: 737px) 100vw, 737px" />
 

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1101
-permalink: /topics/simple-action-creators-for-ngrxstore-in-angular-2/
+permalink: /blog/simple-action-creators-for-ngrxstore-in-angular-2/
 dsq_thread_id:
   - "5331052675"
 post_grid_post_settings:
@@ -21,13 +21,13 @@ tags:
   - ngrx
   - typescript
 ---
-In the development of [Echoes Player](http://orizens.github.io/echoes-ng2) ([ng2 version](http://github.com/orizens/echoes-ng2)),  I'm using [ngrx/store](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) for state management and [ngrx/effects for logics](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) with [side effects](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/). I'm always looking for better and simpler ways to write code - just experimenting with how code can be written differently. In this post I like to share a nice way for defining action creator functions which support typed arguments.
+In the development of [Echoes Player](http://orizens.github.io/echoes-ng2) ([ng2 version](http://github.com/orizens/echoes-ng2)),  I'm using [ngrx/store](http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) for state management and [ngrx/effects for logics](http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) with [side effects](http://orizens.com/wp/blog/angular-2-from-services-to-reactive-effects-with-ngrxeffects/). I'm always looking for better and simpler ways to write code - just experimenting with how code can be written differently. In this post I like to share a nice way for defining action creator functions which support typed arguments.
 
 ## Before: Creating Action Creators
 
 [**UPDATE 26/12/2016**]: you can now use ActionCreatorFactory via npm at <https://github.com/orizens/ngrx-action-creator-factory>
 
-Up until now, I was using a [simple and repetitive format](http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/) for defining action creators. This is the "YoutubeVideosActions" which includes the available actions for managing the state of the videos store in Echoes Player.
+Up until now, I was using a [simple and repetitive format](http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/) for defining action creators. This is the "YoutubeVideosActions" which includes the available actions for managing the state of the videos store in Echoes Player.
 
 Action creators encapsulates the creation of an "**Action**" object - it makes it safer and easier to create actions by calling the function "**addVideos(newVideos)**", which takes a videos array as the payload of this action. Another action creator is the "**removeVideo()**" function, which in this case, takes no argument and just delivers an Action object with a "**type**" property only.
 

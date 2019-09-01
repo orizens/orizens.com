@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=912
-permalink: /topics/testing-angular-1-x-es2015-component-with-jasmine/
+permalink: /blog/testing-angular-1-x-es2015-component-with-jasmine/
 dsq_thread_id:
   - "4493235687"
 image: ../img/uploads/2016/01/jstesting.jpg
@@ -22,7 +22,7 @@ tags:
   - es2015
   - tests
 ---
-In the previous article, I wrote about how to <a href="http://orizens.com/wp/topics/setup-karma-for-testing-angular-1-x-components-with-es2015-browserify/" target="_blank">setup karma for testing AngularJS.x written with ES2015</a>. Since then, I stumbled upon few issues while trying to test an AngularJS.x component written in ES2015 according to the <a href="http://github.com/orizens/angular-es2015-styleguide" target="_blank">angular ES2015 style guide</a>. In this post, I'm sharing how to test AngularJS.x component written in ES2015.<!--more-->
+In the previous article, I wrote about how to <a href="http://orizens.com/wp/blog/setup-karma-for-testing-angular-1-x-components-with-es2015-browserify/" target="_blank">setup karma for testing AngularJS.x written with ES2015</a>. Since then, I stumbled upon few issues while trying to test an AngularJS.x component written in ES2015 according to the <a href="http://github.com/orizens/angular-es2015-styleguide" target="_blank">angular ES2015 style guide</a>. In this post, I'm sharing how to test AngularJS.x component written in ES2015.<!--more-->
 
 ## Karma Setup For Testing Angular 1.x ES2015
 
@@ -54,7 +54,7 @@ Since I'm using several transforms, in particularly - the "stringify" transform 
 
 ## Writing Tests For Angular 1.x Controller written in ES2015
 
-As mentioned above, the component i'm testing is written in <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">ES2015 as part of a preparation to Angular (+2)</a>. We're going to explore a test case for the YoutubeVideos Component of the <a href="http://echotu.be" target="_blank">Echoes Player</a> <a href="http://github.com/orizens/echoes" target="_blank">Open Source App</a> that I developed, recently converting the code to use ES2015. The controller is defined as part of the component's properties:
+As mentioned above, the component i'm testing is written in <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">ES2015 as part of a preparation to Angular (+2)</a>. We're going to explore a test case for the YoutubeVideos Component of the <a href="http://echotu.be" target="_blank">Echoes Player</a> <a href="http://github.com/orizens/echoes" target="_blank">Open Source App</a> that I developed, recently converting the code to use ES2015. The controller is defined as part of the component's properties:
 
 ```typescript
 import template from './youtube-videos.tpl.html';

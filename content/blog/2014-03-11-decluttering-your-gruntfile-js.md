@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=663
-permalink: /topics/decluttering-your-gruntfile-js/
+permalink: /blog/decluttering-your-gruntfile-js/
 dsq_thread_id:
   - "2407663393"
 image: ../img/uploads/2014/03/IMG_20140311_153002.jpg

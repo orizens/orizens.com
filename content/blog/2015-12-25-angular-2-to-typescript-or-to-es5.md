@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=883
-permalink: /topics/angular-2-to-typescript-or-to-es5/
+permalink: /blog/angular-2-to-typescript-or-to-es5/
 dsq_thread_id:
   - "4432846493"
 post_grid_post_settings:
@@ -28,7 +28,7 @@ tags:
 </p>
 
 <p class="graf--p">
-  Aside from <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank" rel="noopener">migrating AngularJS.x code</a> <a href="http://orizens.com/wp/topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank" rel="noopener">to Angular (+2)</a> using few steps, i’ve been playing around with <a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank" rel="noopener">Angular (+2)</a> (alpha and beta releases) lately. At first, it seemed strange and totally different from version 1.x. <a href="http://angularjs.org" target="_blank" rel="noopener">Version 1.x of angular</a> is written in ES5, plain javascript, while version 2 is a new take with <a href="http://www.typescriptlang.org/" target="_blank" rel="noopener">Typescript</a> & ES 2015. In this post, i’de like to reflect my experience of writing with Angular (+2) with all of the language flavours — let it be ES5, ES2015 and Typescript.<!--more-->
+  Aside from <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank" rel="noopener">migrating AngularJS.x code</a> <a href="http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank" rel="noopener">to Angular (+2)</a> using few steps, i’ve been playing around with <a href="https://angular.io/docs/ts/latest/quickstart.html" target="_blank" rel="noopener">Angular (+2)</a> (alpha and beta releases) lately. At first, it seemed strange and totally different from version 1.x. <a href="http://angularjs.org" target="_blank" rel="noopener">Version 1.x of angular</a> is written in ES5, plain javascript, while version 2 is a new take with <a href="http://www.typescriptlang.org/" target="_blank" rel="noopener">Typescript</a> & ES 2015. In this post, i’de like to reflect my experience of writing with Angular (+2) with all of the language flavours — let it be ES5, ES2015 and Typescript.<!--more-->
 </p>
 
 <p class="graf--p">

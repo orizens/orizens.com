@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=877
-permalink: /topics/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/
+permalink: /blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/
 dsq_thread_id:
   - "4414283008"
 image: ../img/uploads/2015/12/ng2.jpg
@@ -23,7 +23,7 @@ tags:
   - es2015
   - javascript
 ---
-<a href="http://angularjs.blogspot.co.il/2015/12/angular-2-beta.html" target="_blank">Angular (+2) Beta</a> has been released just a few days ago. The most significant announcement with this beta is that the angular team are confident in using Angular (+2) for large scale applications. Following <a href="http://orizens.com/wp/topics/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">my recent post of 5 steps to prepare your AngularJS code to Angular (+2)</a>, I gathered few more steps that you can take to ease migration in the future, or rather apply it now to new code.<!--more-->
+<a href="http://angularjs.blogspot.co.il/2015/12/angular-2-beta.html" target="_blank">Angular (+2) Beta</a> has been released just a few days ago. The most significant announcement with this beta is that the angular team are confident in using Angular (+2) for large scale applications. Following <a href="http://orizens.com/wp/blog/5-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">my recent post of 5 steps to prepare your AngularJS code to Angular (+2)</a>, I gathered few more steps that you can take to ease migration in the future, or rather apply it now to new code.<!--more-->
 
 ## Why Should I Consider Angular (+2)
 

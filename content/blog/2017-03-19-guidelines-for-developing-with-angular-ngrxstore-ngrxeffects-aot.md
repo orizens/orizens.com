@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1229
-permalink: /topics/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/
+permalink: /blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/
 post_grid_post_settings:
   - 'a:10:{s:9:"post_skin";s:4:"flat";s:19:"custom_thumb_source";s:93:"./img/plugins/post-grid/assets/frontend/css/images/placeholder.png";s:17:"font_awesome_icon";s:0:"";s:23:"font_awesome_icon_color";s:7:"#737272";s:22:"font_awesome_icon_size";s:4:"50px";s:17:"custom_youtube_id";s:0:"";s:15:"custom_vimeo_id";s:0:"";s:21:"custom_dailymotion_id";s:0:"";s:14:"custom_mp3_url";s:0:"";s:20:"custom_soundcloud_id";s:0:"";}'
 dsq_thread_id:
@@ -123,7 +123,7 @@ As a rule of thumb for AOT in general (and not just for ngrx), exported arrow fu
 
 ### Guideline #3: AOT compatible ngrx/effects
 
-I wrote about [using ngrx/effects](http://orizens.com/wp/topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/topics/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using "**EffectsModule.run()**" which creates a provider for each effect . Since in "Echoes Player" there are few effects classes, I chose to use a dynamic creation using a simple functional "map":
+I wrote about [using ngrx/effects](http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/) as a [layer for async logics](http://orizens.com/wp/blog/angular-2-from-services-to-reactive-effects-with-ngrxeffects/) and more complex logic. Adding an Effect class to Angular is run separately for each effect using "**EffectsModule.run()**" which creates a provider for each effect . Since in "Echoes Player" there are few effects classes, I chose to use a dynamic creation using a simple functional "map":
 
 ```typescript
 @NgModule({

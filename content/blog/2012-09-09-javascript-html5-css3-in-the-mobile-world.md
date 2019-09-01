@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=486
-permalink: /topics/javascript-html5-css3-in-the-mobile-world/
+permalink: /blog/javascript-html5-css3-in-the-mobile-world/
 shareaholic_disable_share_buttons:
   - "0"
 shareaholic_disable_open_graph_tags:

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=817
-permalink: /topics/start-writing-es-2015-in-gulp-js-with-babel/
+permalink: /blog/start-writing-es-2015-in-gulp-js-with-babel/
 dsq_thread_id:
   - "4266637171"
 image: ../img/uploads/2015/10/import-gulp.jpg

@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=351
-permalink: /topics/oop-javascript-jquery-binding-events-and-keep-the-contex/
+permalink: /blog/oop-javascript-jquery-binding-events-and-keep-the-contex/
 dsq_thread_id:
   - "754314708"
 categories:

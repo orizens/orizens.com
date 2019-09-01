@@ -6,7 +6,7 @@ author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1018
-permalink: /topics/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/
+permalink: /blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/
 dsq_thread_id:
   - "5012135070"
 post_grid_post_settings:
@@ -25,7 +25,7 @@ tags:
   - javascript
   - ngrx
 ---
-The Ngrx projects adds functional approach to various interesting architectural implementations. I wrote about my experience with <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">storing data using ngrx/store</a> and <a href="http://orizens.com/wp/topics/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">testing this approach in Angular (+2)</a> based app. Since then, I've had the chance of exploring this land of ngrx further more. I've found [ngrx/effects](https://github.com/ngrx/effects) to be an elegant and quite functional solution for expressing a series of actions which depend on each other. In this post, I explain a use case for using ngrx/effects in my <a href="http://github.com/orizens/echoes" target="_blank">open source app</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>,  and show the benefits that I found, after using it.
+The Ngrx projects adds functional approach to various interesting architectural implementations. I wrote about my experience with <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">storing data using ngrx/store</a> and <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular2-part-2-testing-reducers/" target="_blank">testing this approach in Angular (+2)</a> based app. Since then, I've had the chance of exploring this land of ngrx further more. I've found [ngrx/effects](https://github.com/ngrx/effects) to be an elegant and quite functional solution for expressing a series of actions which depend on each other. In this post, I explain a use case for using ngrx/effects in my <a href="http://github.com/orizens/echoes" target="_blank">open source app</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>,  and show the benefits that I found, after using it.
 
 <!--more-->
 

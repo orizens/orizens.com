@@ -4,7 +4,6 @@ module.exports = {
     author: `Oren Farhi`,
     occupation: `Senior Front End Engineer & Javascript Consultant`,
     description: `Front End, Angular, Javascript, React and much more`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
       twitter: `orizens`,
       github: `orizens`,
