@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import navItems from "./navbar-items"
+import Theme from "./theme"
 
 export default function Navbar({ path }) {
   const data = useStaticQuery(graphql`
@@ -58,6 +59,9 @@ export default function Navbar({ path }) {
             </Link>
           ))}
         </div>
+      </div>
+      <div className="navbar-item is-flex is-aligned">
+        <Theme />
       </div>
       <button
         style={{ marginTop: "4px" }}

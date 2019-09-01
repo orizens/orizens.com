@@ -10,6 +10,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
+import Socials from "./socials"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -25,18 +26,12 @@ const Bio = () => {
         siteMetadata {
           author
           occupation
-          social {
-            twitter
-            github
-            npm
-            linkedin
-          }
         }
       }
     }
   `)
 
-  const { author, social, occupation } = data.site.siteMetadata
+  const { author, occupation } = data.site.siteMetadata
   return (
     <div
       style={{
@@ -62,21 +57,7 @@ const Bio = () => {
         <Link to="/about">
           <strong>{author}</strong>
         </Link>
-        , {occupation}
-        {` `}
-        <a href={`//twitter.com/${social.twitter}`}>
-          follow me on <span className="fa fa-twitter is-size-4"></span>
-        </a>
-        ,{" "}
-        <a href={`//github.com/${social.github}`}>
-          <span className="fa fa-github is-size-4"></span>
-        </a>
-        ,{" "}
-        <a href={`//linkedin.com/in/${social.linkedin}`}>
-          <span className="fa fa-linkedin is-size-4"></span>
-        </a>
-        , <a href={`//www.npmjs.com/~${social.npm}`}>open source</a>,{" "}
-        <a href={`//www.apress.com/us/book/9781484226193`}>author</a>
+        , {occupation}, follow me on <Socials size="4" />
       </p>
     </div>
   )

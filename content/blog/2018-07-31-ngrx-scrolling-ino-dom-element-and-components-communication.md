@@ -111,12 +111,8 @@ The "**scrollToActiveTrack**()" method is responsible for scrolling the containe
           [@flyOut]
         >
           <now-playlist-track
-            [
-            video
-            ]="video"
-            [
-            index
-            ]="index"
+            [video]="video"
+            [index]="index"
             (remove)="removeVideo($event)"
             (select)="selectVideo(video)"
             (selectTrack)="selectTrackInVideo($event)"

@@ -27,7 +27,7 @@ A year ago, I rememebr reading how static websites have become popular, and how 
 
 I first read about Hugo and Wordpress - but after reading an intro article - i decided to drop the idea. After a while, I read about creating static websites with our favorite front end frameworks - Angular & React.
 
-Gatsby caught my attention as the "goto" solution - as I was reading articles taht combined netlify as both a deployment solution and a free SSL certificate for custom domains - since then, I added an item to my todo list - "migrating from wordpress to gatsby".
+Gatsby caught my attention as the "goto" solution - as I was reading articles that combined netlify as both a deployment solution and a free SSL certificate for custom domains - since then, I added an item to my todo list - "migrating from wordpress to gatsby".
 
 My hosting cycle is renewing each year in November - so, although it's about two months away from now, and since I made my boy a promise to release this new website on his 10th birhtday, I commited to the plan, and released Orizens.com **Version Guy10** (named after my son, Guy). Guy - this is for you - 🥳🎉 Happy Birthday 😊⚽!
 
