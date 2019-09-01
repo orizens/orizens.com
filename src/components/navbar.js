@@ -34,18 +34,15 @@ export default function Navbar({ path }) {
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="navbar-brand" style={{ flex: 1 }}>
-        <a className="is-flex" href="/" style={{ alignItems: "center" }}>
+      <div className="navbar-brand flex-1">
+        <a className="is-flex is-aligned" href="/">
           <Image fixed={data.logo.childImageSharp.fixed} />
           <span className="is-size-3 has-text-white">rizens</span>
         </a>
       </div>
 
-      <div
-        id="navbarBasic"
-        className={`navbar-menu ${navbarOpened ? "is-active" : ""}`}
-      >
-        <div className="navbar-start">
+      <div className={`navbar-menu flex-2 ${navbarOpened ? "is-active" : ""}`}>
+        <div className="navbar-start flex-1 is-justify-center">
           {navItems.map(item => (
             <Link
               key={`navbar-${item.link}`}
@@ -60,7 +57,7 @@ export default function Navbar({ path }) {
           ))}
         </div>
       </div>
-      <div className="navbar-item is-flex is-aligned">
+      <div className="navbar-item is-paddingless is-flex is-aligned is-justify-end flex-1">
         <Theme />
       </div>
       <button
@@ -68,7 +65,6 @@ export default function Navbar({ path }) {
         className="navbar-burger burger has-text-white-bis"
         aria-label="menu"
         aria-expanded="false"
-        data-target="navbarBasic"
         onClick={() => toggleNavbar()}
       >
         <span aria-hidden="true"></span>
