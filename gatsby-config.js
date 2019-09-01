@@ -78,11 +78,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Orizens Home`,
+        name: `Orizens Website`,
         short_name: `OrizenS`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#23d160`,
         display: `minimal-ui`,
         icon: `content/assets/profile-picture.jpg`,
       },
