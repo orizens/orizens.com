@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { Disqus } from "gatsby-plugin-disqus"
 import Packages from "../components/packages"
+import { Logger } from "../components/logger"
 import { PostPagination } from "../components/post-pagination"
 
 class BlogPostTemplate extends React.Component {
@@ -38,6 +39,7 @@ class BlogPostTemplate extends React.Component {
       <Layout location={location} title={siteTitle} footer={<Packages />}>
         <SEO title={title} description={description || excerpt} />
         <Bio />
+        <Logger content={pageContext} />
         <article className="blog-post">
           <PostPagination previous={previous} next={next} />
           <header class="title">

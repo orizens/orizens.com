@@ -49,9 +49,15 @@ export default function NotFoundPage({ location, location: { pathname } }) {
       </article>
       {hasSuggestedRoute && (
         <p className="section">
-          You probablt tried to read about: {sanitizePath(suggestedRoute)}
+          You probably tried to read about: {sanitizePath(suggestedRoute)}
         </p>
       )}
+      <h2>Useful Links</h2>
+      <ul>
+        <li>
+          <Link to="/blog/angular-article-series">Angular Article Series</Link>
+        </li>
+      </ul>
     </Layout>
   )
 }
