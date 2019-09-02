@@ -20,7 +20,7 @@ export default function NotFoundPage({ location, location: { pathname } }) {
       }
       logo: file(absolutePath: { regex: "/enso-white.png/" }) {
         childImageSharp {
-          fixed(width: 300, height: 300) {
+          fixed(width: 138, height: 138) {
             ...GatsbyImageSharpFixed
           }
         }

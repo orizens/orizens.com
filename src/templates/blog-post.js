@@ -6,14 +6,14 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
-import { Disqus } from "gatsby-plugin-disqus"
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import Packages from "../components/packages"
 import { PostPagination } from "../components/post-pagination"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const { frontmatter, html, excerpt } = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
+    const { title: siteTitle, disqus } = this.props.data.site.siteMetadata
     const { location, pageContext } = this.props
     const { next, previous } = pageContext
     const {
@@ -25,8 +25,8 @@ class BlogPostTemplate extends React.Component {
       permalink,
     } = frontmatter
     const disqusConfig = {
-      url: `${permalink}`,
-      identifier: dsq_thread_id || permalink,
+      url: permalink,
+      identifier: dsq_thread_id,
       title: title,
     }
     return (
@@ -68,8 +68,9 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
 
+        <Disqus shortname={disqus} config={disqusConfig} />
+        <CommentCount shortname={disqus} config={disqusConfig} />
         <PostPagination previous={previous} next={next} />
-        <Disqus config={disqusConfig} />
       </Layout>
     )
   }
@@ -83,6 +84,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        disqus
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
