@@ -113,13 +113,7 @@ export function reducer(state: any, action: any) {
 
 Reducers are meant to be pure functions. In previous versions of blog posts and other sources, reducer functions were demonstrated as anonymous function assignments to variables, sometimes using function arrows as well:
 
-````typescript
-
-
 As a rule of thumb for AOT in general (and not just for ngrx), exported arrow functions cannot be used. The AOT compatible way for defining reducer functions is with an **exported named function** declaration.
-
-```typescript
-
 
 ### Guideline #3: AOT compatible ngrx/effects
 
@@ -127,13 +121,10 @@ I wrote about [using ngrx/effects](http://orizens.com/wp/blog/angular-2-ngrxstor
 
 ```typescript
 @NgModule({
-  imports: [
-    CoreStoreModule,
-    effects.map(effect => EffectsModule.run(effect))
-  ]
+  imports: [CoreStoreModule, effects.map(effect => EffectsModule.run(effect))],
 })
 export class CoreModule {}
-````
+```
 
 Since both arrow functions and dynamic creation within a decorator are not compatible with AOT, I found (with the help of the community in the github repo of effects) that currently the solution is to run each effect separately while creating an array of effect providers, then, spread this array to the "imports" array:
 
