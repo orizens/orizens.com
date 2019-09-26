@@ -6,4 +6,4 @@
   YARN_FLAGS = "--no-ignore-optional"
 [[redirects]]
   from="/cv"
-  to="http://orizens.github.io/cv/"
+  to="https://orizens.github.io/cv/"
