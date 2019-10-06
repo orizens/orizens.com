@@ -69,7 +69,7 @@ class AboutPage extends React.Component {
               how to approach code in their projects and keep it maintainable.
             </p>
             <p>
-              Together with a dedicated &amp; proffesional team, we provide
+              Together with a dedicated &amp; professional team, we provide
               project bootstrapping and development remotely – while afterwards,
               we integrate it on site and guide the team on it.
             </p>
