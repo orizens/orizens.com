@@ -1,6 +1,6 @@
 ---
 id: 963
-title: 'Angular (2+) - Communication Between Components & Components Design'
+title: "Angular (2+) - Communication Between Components & Components Design"
 date: 2016-03-06T18:58:56+00:00
 author: Oren Farhi
 templateKey: blog-post
@@ -8,7 +8,7 @@ layout: post
 guid: http://orizens.com/wp/?p=963
 permalink: /blog/angular-2-communication-between-components-components-design/
 dsq_thread_id:
-  - '4639629364'
+  - "4639629364"
 image: ../img/uploads/2016/03/commucompo.jpg
 categories:
   - Angular
@@ -20,7 +20,7 @@ categories:
   - testing
   - typescript
 tags:
-  - angualr2
+  - angular2
   - architecture
   - ngrx
   - typescript
@@ -58,47 +58,56 @@ Since i'm using <a href="https://github.com/ngrx/store" target="_blank">ngrx/sto
 I defined the relevant actions that can change this state. Each action returns a new state object by creating a new empty state and merging it with the current state while eventually, appending the new and relevant properties changes of this state. This pattern follows <a href="http://redux.js.org/docs/basics/Reducers.html" target="_blank">Redux's concepts</a> which I recommend to read and get familiar with.
 
 ```typescript
-import { ActionReducer, Action } from '@ngrx/store';
-import { NowPlaylistActions } from './now-playlist.actions';
+import { ActionReducer, Action } from "@ngrx/store"
+import { NowPlaylistActions } from "./now-playlist.actions"
 
-export * from './now-playlist.actions';
+export * from "./now-playlist.actions"
 
 export interface YoutubeMediaPlaylist {
-    videos: GoogleApiYouTubeSearchResource[],
-    index: number,
-    filter: string
+  videos: GoogleApiYouTubeSearchResource[]
+  index: number
+  filter: string
 }
 let initialState: YoutubeMediaPlaylist = {
-    videos: [],
-    index: 0,
-    filter: ''
+  videos: [],
+  index: 0,
+  filter: "",
 }
-export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
-    let matchMedia = (media) => media.id.videoId === action.payload.id.videoId;
-    let isDifferent = (media) => media.id.videoId !== action.payload.id.videoId;
+export const nowPlaylist: Reducer<any> = (
+  state: YoutubeMediaPlaylist = initialState,
+  action: Action
+) => {
+  let matchMedia = media => media.id.videoId === action.payload.id.videoId
+  let isDifferent = media => media.id.videoId !== action.payload.id.videoId
 
-    switch (action.type) {
-        case NowPlaylistActions.SELECT:
-            return Object.assign({}, state, { index: state.videos.findIndex(matchMedia) });
+  switch (action.type) {
+    case NowPlaylistActions.SELECT:
+      return Object.assign({}, state, {
+        index: state.videos.findIndex(matchMedia),
+      })
 
-        case NowPlaylistActions.QUEUE:
-            return Object.assign({}, state, { videos: [ ...state.videos, action.payload ]});
+    case NowPlaylistActions.QUEUE:
+      return Object.assign({}, state, {
+        videos: [...state.videos, action.payload],
+      })
 
-        case NowPlaylistActions.REMOVE:
-            return Object.assign({}, state, { videos: state.videos.filter(isDifferent) });
+    case NowPlaylistActions.REMOVE:
+      return Object.assign({}, state, {
+        videos: state.videos.filter(isDifferent),
+      })
 
-        case NowPlaylistActions.UPDATE_INDEX:
-            return Object.assign({}, state, { index: action.payload });
+    case NowPlaylistActions.UPDATE_INDEX:
+      return Object.assign({}, state, { index: action.payload })
 
-        case NowPlaylistActions.FILTER_CHANGE:
-            return Object.assign({}, state, { filter: action.payload });
+    case NowPlaylistActions.FILTER_CHANGE:
+      return Object.assign({}, state, { filter: action.payload })
 
-        case NowPlaylistActions.REMOVE_ALL:
-            return Object.assign({}, state, { videos: [], filter: '', index: 0 });
+    case NowPlaylistActions.REMOVE_ALL:
+      return Object.assign({}, state, { videos: [], filter: "", index: 0 })
 
-        default:
-            return state;
-    }
+    default:
+      return state
+  }
 }
 ```
 
@@ -176,10 +185,10 @@ To create the whole now playlist feature, the components are constructed in this
 
 ```typescript
 <div class="sidebar-pane">
-	<now-playlist-filter 
+	<now-playlist-filter
            [ playlist ]="nowPlaylist"
 	></now-playlist-filter>
-	<now-playlist 
+	<now-playlist
                 [ playlist ]="nowPlaylist"
 		(select)="selectVideo($event)"
 		(sort)="sortVideo($event)"

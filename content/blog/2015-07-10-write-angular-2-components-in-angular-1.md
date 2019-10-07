@@ -2,7 +2,7 @@
 id: 800
 title: Write Angular 2 Components In Angular 1
 date: 2015-07-10T08:33:53+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=800
@@ -21,6 +21,7 @@ tags:
   - browserify
   - javascript
 ---
+
 Angular (+2) is a new take to the web components approach. It introduced a quite different syntax with the addition of typescript, annotations and more. Eventually, it has to be compiled to javascript, so the non-javascript syntax is transformed into plain ES5 code. After reading a post about better ES5 code for Angular (+2), the idea of experimenting with this syntax in AngularJS can be beneficial for future migration, for learning the new syntax, and perhaps, minimizing the code written with AngularJS.
 
 <!--more-->
@@ -39,15 +40,13 @@ The first impression in Echoes is the youtube videos results **grid (the area of
 
 youtube-videos is an anuglar module. It consumes 2 core services:
 
-  1. **echoes-services** - which includes access to various youtube api, various core resources.
-  2. **youtube-player** - a module which displays the youtube player and exposes a service to interact with.
+1. **echoes-services** - which includes access to various youtube api, various core resources.
+2. **youtube-player** - a module which displays the youtube player and exposes a service to interact with.
 
 As I wrote before, in order to use this module, I exposed it a directive, and can simply use it like so:
 
 ```typescript
 <youtube-videos></youtube-videos>
-
-
 ```
 
 ### Angular 1 Directive Definition
@@ -55,29 +54,27 @@ As I wrote before, in order to use this module, I exposed it a directive, and c
 In order to user youtube-videos module as a direcive, I defined it as a quite simple directive with this code:
 
 ```typescript
-(function() {
-    'use strict';
+;(function() {
+  "use strict"
 
-    angular
-        .module('youtube.videos')
-	    .directive('youtubeVideos', youtubeVideos);
+  angular.module("youtube.videos").directive("youtubeVideos", youtubeVideos)
 
-        /* @ngInject */
-        function youtubeVideos () {
-            // Usage:
-            //	<youtube-videos></youtube-videos>
-            // Creates:
-            //
-            var directive = {
-            	templateUrl: 'app/youtube-videos/youtube.videos.tpl.html',
-                controller: 'YoutubeVideosCtrl',
-                controllerAs: 'vm',
-                restrict: 'E',
-                replace: true
-            };
-            return directive;
-        }
-})();
+  /* @ngInject */
+  function youtubeVideos() {
+    // Usage:
+    //	<youtube-videos></youtube-videos>
+    // Creates:
+    //
+    var directive = {
+      templateUrl: "app/youtube-videos/youtube.videos.tpl.html",
+      controller: "YoutubeVideosCtrl",
+      controllerAs: "vm",
+      restrict: "E",
+      replace: true,
+    }
+    return directive
+  }
+})()
 ```
 
 Although, the code is quite minimal, during time, I thought that it can be defined better - better to readiblility and for writing less code.
@@ -92,19 +89,16 @@ First, I read through to understand how I can transform the defintion of the dir
 
 ```typescript
 angular
-    .Component({
-        selector: 'youtube-videos',
-        appInjector: [
-            'echoes.services',
-            'youtube.player'
-        ]
-    })
-    .View({
-        templateUrl: 'app/youtube-videos/youtube.videos.tpl.html'
-    })
-    .Class({
-        constructor: 'YoutubeVideosCtrl'
-    })
+  .Component({
+    selector: "youtube-videos",
+    appInjector: ["echoes.services", "youtube.player"],
+  })
+  .View({
+    templateUrl: "app/youtube-videos/youtube.videos.tpl.html",
+  })
+  .Class({
+    constructor: "YoutubeVideosCtrl",
+  })
 ```
 
 The code above works seemlessy the same of the AngularJS directive code, that with a little shim that I wrote which should be loaded right after angular.
@@ -116,7 +110,7 @@ The code above works seemlessy the same of the AngularJS directive code, that wi
 
 [angular2to1](https://github.com/orizens/angular2to1) is published as an npm module. to install it, simply use npm:
 
-```typescript
+````typescript
 
 
 ### angular2to1 Assumptions
@@ -138,24 +132,24 @@ Also important to note that the **angular.Component** defintion returns an objec
 ```typescript
 var myAppComponent = angular.Component({
 	selector: 'my-app'
-	appInjector: [ 
+	appInjector: [
 		'core.services'
 	]
 });
 
 console.log(myAppComponent._directive); // access to the _directive object definition to add or change AngularJS directive properties
 
-```
+````
 
 This allows you to still be able to still define AngularJS directive properties (such as "replace: true" for templates and the directive element).
 
 ### Pros
 
-Though the angualr2to1 shim is far from complete and is lack with many other features of Angular (+2), there are few pros for using it:
+Though the angular2to1 shim is far from complete and is lack with many other features of Angular (+2), there are few pros for using it:
 
-  1. I can experiment with Angular (+2) ES5 syntax right now with AngularJS
-  2. I can learn Angular (+2) concepts while working with AngularJS
-  3. When migration time to Angular (+2) comes, it might ease the process - in which I'd like to explain in depth below.
+1. I can experiment with Angular (+2) ES5 syntax right now with AngularJS
+2. I can learn Angular (+2) concepts while working with AngularJS
+3. When migration time to Angular (+2) comes, it might ease the process - in which I'd like to explain in depth below.
 
 ### Easing the Migration Process to Angular (+2)
 
