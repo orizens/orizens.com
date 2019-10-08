@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
+import { Link } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -29,6 +30,7 @@ class BlogPostTemplate extends React.Component {
       dsq_thread_id,
       id,
       permalink,
+      tags,
     } = frontmatter
     const disqusConfig = {
       url: `${siteUrl}${permalink}`,
@@ -53,6 +55,14 @@ class BlogPostTemplate extends React.Component {
             >
               {date}
             </p>
+            <div className="tags">
+              {tags &&
+                tags.map(tag => (
+                  <Link to={`/tags/${tag}`} key={tag} className="tag">
+                    {tag}
+                  </Link>
+                ))}
+            </div>
             {image && (
               <Image
                 className="image"

@@ -4,7 +4,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Logger } from "../components/logger"
-import { Pagination } from "../components/pagination"
+// import { Pagination } from "../components/pagination"
 import { PostExcerpt } from "../components/post-excerpt"
 
 // Components
@@ -20,6 +20,7 @@ const Tags = ({ pageContext, data, location }) => {
       <SEO title="All posts" />
       <Bio />
       <Logger content={edges} />
+      <Logger content={totalCount} />
       {/* <Pagination
         {...pageContext}
         header={`Blog Page ${index} of ${pageCount}`}
@@ -79,6 +80,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             permalink
+            tags
             image {
               childImageSharp {
                 fluid {

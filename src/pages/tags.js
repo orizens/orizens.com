@@ -1,10 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 // Components
-import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
+import Bio from "../components/bio"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { Logger } from "../components/logger"
 
 const TagsPage = ({
+  location,
   data: {
     allMarkdownRemark: { group },
     site: {
@@ -12,21 +16,26 @@ const TagsPage = ({
     },
   },
 }) => (
-  <div>
-    <Helmet title={title} />
-    <div>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${tag.fieldValue.toLowerCase()}/`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+  <Layout location={location} title="All Orizens Article Tags">
+    <SEO title="All posts" />
+    <Bio />
+    <Logger content={group} />
+    <section>
+      {group.map(tag => (
+        <Link
+          to={`/tags/${tag.fieldValue.toLowerCase()}/`}
+          key={tag.fieldValue}
+        >
+          <span
+            className="tag is-success is-size-6"
+            style={{ marginRight: ".5rem", marginTop: ".5rem" }}
+          >
+            {tag.fieldValue} ({tag.totalCount})
+          </span>
+        </Link>
+      ))}
+    </section>
+  </Layout>
 )
 TagsPage.propTypes = {
   data: PropTypes.shape({

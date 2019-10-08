@@ -1,8 +1,8 @@
 ---
 id: 693
-title: 'Fuseday Experiments - working with Google Web Starter Kit & React.js'
+title: "Fuseday Experiments - working with Google Web Starter Kit & React.js"
 date: 2014-07-03T07:42:28+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=693
@@ -21,8 +21,9 @@ tags:
   - gulpjs
   - web framework
 ---
+
 At <a href="http://tikalk.com" target="_blank">Tikal</a>, we are conducting 2 times a year something called "Fuseday" - a day where we choose some technologies to experiment with while building a small application. In this post, i'de like to share my group's focus on Google's Web Starter Kit - it's pros and cons.
-  
+
 <!--more-->
 
 ## The Application
@@ -37,23 +38,23 @@ My team managed to fulfill some of the requirements during this day.
 
 On the client side, we chose to experiment with new or trending libraries/frameworks. We chose the following:
 
-  1. React.js - as a growing trend for performance in rendering web pages in the client - we feel that we had to test the workflow with React.js.
-  2. Gulp.js - Gulp is trending to replace grunt.js as a node.js based task runner / automation tool.
-  3. d3 - mvd3 - we feel that d3 is high in trends - so in order to take the high level of d3, we chose mvd3 as a subset of d3 in order to create pie and line charts.
-  4. Google Web Starter Kit - with v2 released just 6 days ago, while in beta, we decided it can be quite refreshing to step out of the bootstrap world and experiment with a new set of css front end framework.
+1. React.js - as a growing trend for performance in rendering web pages in the client - we feel that we had to test the workflow with React.js.
+2. Gulp.js - Gulp is trending to replace gruntjs as a node.js based task runner / automation tool.
+3. d3 - mvd3 - we feel that d3 is high in trends - so in order to take the high level of d3, we chose mvd3 as a subset of d3 in order to create pie and line charts.
+4. Google Web Starter Kit - with v2 released just 6 days ago, while in beta, we decided it can be quite refreshing to step out of the bootstrap world and experiment with a new set of css front end framework.
 
 ## Google Web Starter Kit
 
 After briefly reading the introduction page, I downloaded the zip file - which contained the following:
 
-  1. 2 html templates for starting a project
-  2. A ready to use gulpfile with configuration for running builds, server task and more
-  3. a style guide directory - which includes a demonstration of the various ui elements included in this kit
-  4. sass source files - for tweaking the settings of the ui elements in order to create a different "skin"
+1. 2 html templates for starting a project
+2. A ready to use gulpfile with configuration for running builds, server task and more
+3. a style guide directory - which includes a demonstration of the various ui elements included in this kit
+4. sass source files - for tweaking the settings of the ui elements in order to create a different "skin"
 
 as a foot note - after reading carefully the documentation of this kit, I discovered that you can clone the repo of this kit and follow a more organized procedure in order to get started.
 
-### 
+###
 
 ### Style Guide
 
@@ -61,26 +62,26 @@ This directory includes an index.html file which outlines the various features t
 
 There are many examples of what can be used form this kit:
 
-  * Typography
-  * Buttons
-  * Lists
-  * Links
-  * Icons
-  * Breadcrumbs
-  * Table
-  * Grid
-  * Colors
-  * Highlights
-  * Editorial header
-  * Article section
-  * Guides section
-  * Page header
-  * Quote
-  * Featured icons
-  * Featured spotlight
-  * Featured list
-  * Featured block
-  * Article navigation
+- Typography
+- Buttons
+- Lists
+- Links
+- Icons
+- Breadcrumbs
+- Table
+- Grid
+- Colors
+- Highlights
+- Editorial header
+- Article section
+- Guides section
+- Page header
+- Quote
+- Featured icons
+- Featured spotlight
+- Featured list
+- Featured block
+- Article navigation
 
 The css classes definitions follows the nice BEM concept - while keeping the semantics of the classes easy to follow and grasp (in this short day). Overall, Google's Kit is minimal, both in style and in features - however, I can see how it can be nicely integrated with web components to create more UI element and complete reusable modules. It's built in media queries for various devices view ports and it's built in navigation and sidebar menu are awesome.
 

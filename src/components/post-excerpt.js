@@ -46,9 +46,9 @@ export const PostExcerpt = ({
         <div className="tags">
           {tags &&
             tags.map(tag => (
-              <span key={tag} className="tag">
+              <Link to={`/tags/${tag}`} key={tag} className="tag">
                 {tag}
-              </span>
+              </Link>
             ))}
         </div>
       </section>

@@ -7,6 +7,10 @@ export default [
     label: "About",
     link: "/about",
   },
+  {
+    label: "Tags",
+    link: "/tags",
+  },
   // {
   //   label: "Services",
   //   link: "/services",
