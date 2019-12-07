@@ -10,6 +10,7 @@ export default function Socials({ size = 2 }) {
             twitter
             github
             npm
+            linkedin
           }
         }
       }

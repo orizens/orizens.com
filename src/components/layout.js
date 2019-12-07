@@ -26,7 +26,10 @@ export default function Layout(props) {
       </main>
       {footer && footer}
       <footer className="footer has-text-centered is-flex is-aligned">
-        © {new Date().getFullYear()}, Built with
+        <span style={{ marginRight: ".5rem" }}>
+          {" "}
+          © {new Date().getFullYear()}, Built with{" "}
+        </span>
         <a
           href="https://www.gatsbyjs.org"
           target="_blank"
@@ -34,8 +37,7 @@ export default function Layout(props) {
         >
           Gatsby
         </a>
-        ,
-        <Socials />
+        , follow me at: <Socials />
       </footer>
     </div>
   )

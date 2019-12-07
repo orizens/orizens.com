@@ -8,6 +8,7 @@ import { rhythm } from "../utils/typography"
 import { Link } from "gatsby"
 import { Skills } from "../components/skills"
 import Packages from "../components/packages"
+import Socials from "../components/socials"
 
 // import { rhythm } from "../utils/typography"
 
@@ -54,6 +55,9 @@ class AboutPage extends React.Component {
             <h1 className="title is-1">{author}</h1>
             <h2 className="subtitle is-2">{occupation}</h2>
           </header>
+          <section className="has-text-centered">
+            <Socials size="1" />
+          </section>
           <section className="is-size-4">
             <p>
               Hi - I'm {author}. I'm a software engineer, focusing on front end
@@ -87,6 +91,36 @@ class AboutPage extends React.Component {
                 </li>
               </ul>
             </div>
+            <h2 className="title">Achievements I'm Proud Of</h2>
+            <p>I'm proficient with React, Angular and Javascript in general.</p>
+            <p>
+              My open source Angular App -{" "}
+              <a
+                href="//echoesplayer.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Echoes Player
+              </a>
+            </p>
+            <p>
+              My most popular npm module -<br />
+              <a
+                href="//www.npmjs.com/package/ngx-infinite-scroll"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ngx-infinite-scroll -{" "}
+              </a>
+              <img
+                src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
+                alt="total npm downloads until today"
+              />
+              <img
+                src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
+                alt="npm downloads a month"
+              />
+            </p>
             <p>
               I’m the author of{" "}
               <Link to="http://www.apress.com/us/book/9781484226193">

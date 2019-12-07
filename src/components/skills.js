@@ -5,10 +5,10 @@ const skills = [
     icon: "keyboard-o",
     label: "Our Tech Stack",
     content: [
+      { link: "//facebook.github.io/react/", label: "React (Typescript)" },
+      { link: "//github.com/reactjs/redux", label: "Redux" },
       { link: "//angular.io", label: "Angular (Typescript)" },
       { link: "//github.com/ngrx", label: "NgRx" },
-      { link: "//facebook.github.io/react/", label: "React" },
-      { link: "//github.com/reactjs/redux", label: "Redux" },
       { link: "//sass-lang.com/", label: "Sass" },
     ],
   },
