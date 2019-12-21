@@ -91,7 +91,9 @@ class AboutPage extends React.Component {
                 </li>
               </ul>
             </div>
-            <h2 className="title">Achievements I'm Proud Of</h2>
+            <h2 className="title" id="achievements">
+              Achievements I'm Proud Of
+            </h2>
             <p>I'm proficient with React, Angular and Javascript in general.</p>
             <p>
               My open source Angular App -{" "}

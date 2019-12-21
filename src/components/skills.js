@@ -39,7 +39,7 @@ const skills = [
 ]
 export const Skills = () => {
   return (
-    <article className="columns content">
+    <article className="columns content" id="skills">
       {skills.map(({ icon, label, content }) => (
         <section className="column" key={`skill-${icon}`}>
           <h2>
