@@ -7,9 +7,13 @@ const THEME_KEY = "orizens-theme"
 export default function Theme() {
   const [storageValue, setStorageValue] = useLocalStorage(THEME_KEY, "")
 
-  const toggleTheme = useCallback(() => {
-    setStorageValue(!storageValue ? DARK_CLASSNAME : "")
-  }, [storageValue])
+  const toggleTheme = useCallback(
+    ({ currentTarget }) => {
+      setStorageValue(!storageValue ? DARK_CLASSNAME : "")
+      currentTarget.blur()
+    },
+    [storageValue]
+  )
 
   useEffect(() => {
     const body = document.querySelector("body")
