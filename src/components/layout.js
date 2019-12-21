@@ -15,10 +15,8 @@ export default function Layout(props) {
         <Navbar path={location.pathname} />
       </header>
       <main
-        className="section space-top-2"
+        className="section pt-5 m-auto"
         style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
           maxWidth: rhythm(30),
         }}
       >
@@ -26,10 +24,7 @@ export default function Layout(props) {
       </main>
       {footer && footer}
       <footer className="footer has-text-centered is-flex is-aligned">
-        <span style={{ marginRight: ".5rem" }}>
-          {" "}
-          © {new Date().getFullYear()}, Built with{" "}
-        </span>
+        <span className="mr-1"> © {new Date().getFullYear()}, Built with </span>
         <a
           href="https://www.gatsbyjs.org"
           target="_blank"
