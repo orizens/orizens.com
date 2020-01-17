@@ -39,7 +39,7 @@ class BlogPostTemplate extends React.Component {
     }
     return (
       <Layout location={location} title={siteTitle} footer={<Packages />}>
-        <SEO title={title} description={description || excerpt} />
+        <SEO title={title} description={description || excerpt} image={image} />
         <Bio />
         <Logger content={pageContext} />
         <article className="blog-post">
