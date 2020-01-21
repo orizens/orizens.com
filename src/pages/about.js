@@ -89,6 +89,7 @@ class AboutPage extends React.Component {
                   keeping code and app structure organized to let other
                   developers easily understand and further extend it.
                 </li>
+                <li>Automating development with CI/CD (travis/circle ci)</li>
               </ul>
             </div>
             <h2 className="title" id="achievements">
