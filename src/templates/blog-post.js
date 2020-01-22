@@ -72,7 +72,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </header>
           <section
-            className="content is-medium"
+            className="content is-medium is-rounded-1"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <hr

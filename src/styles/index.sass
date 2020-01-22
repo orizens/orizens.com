@@ -5,6 +5,15 @@
 @import './dark-mode'
 @import './404'
 
+body
+  background-image: url(../../content/assets/wood.png)
+  background-blend-mode: screen
+  background-color: #e6e6e6
+
+.content.is-medium
+  background: rgba(251, 251, 251, 0.75)
+  padding: 3rem
+
 .space-vertical
   margin: $size-3 0
 .space-sides-1
@@ -46,6 +55,8 @@
     box-shadow: $navbar-shadow
     .navbar-item
       color: $grey-darker
+  .content.is-medium
+    padding: 0
 .blog-post
   h2
     font-size: $size-4
@@ -76,3 +87,7 @@
 
 a
   transition: all .3s ease-out
+
+.tag:not(body)
+  background-color: $grey-light
+  color: $black
