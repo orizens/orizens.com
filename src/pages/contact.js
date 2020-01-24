@@ -52,7 +52,9 @@ export default function ContactPage({ data, location }) {
         <header className="has-text-centered space-vertical">
           <h1 className="title is-1">Contact Me</h1>
           <h2 className="subtitle is-2">
-            Consulting &amp; Development (Angular, React)
+            Consulting &amp; Development
+            <br />
+            (Javascript, Angular, React)
           </h2>
           <p>Remote development &amp; in house contractors for development</p>
         </header>

@@ -44,7 +44,7 @@ class BlogPostTemplate extends React.Component {
         <Logger content={pageContext} />
         <article className="blog-post">
           <PostPagination previous={previous} next={next} />
-          <header class="title">
+          <header className="title">
             <h1>{title}</h1>
             <p
               className="content"

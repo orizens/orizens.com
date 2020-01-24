@@ -26,7 +26,7 @@ export default function Theme() {
       className={`button is-warning ${storageValue ? "" : "is-outlined"}`}
       onClick={toggleTheme}
     >
-      <span class="icon is-small">
+      <span className="icon is-small">
         <i className="fa fa-adjust"></i>
       </span>
     </button>

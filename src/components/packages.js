@@ -6,38 +6,38 @@ const packages = [
   {
     className: "package1",
     url: "https://goo.gl/RJgihR",
-    image: "premium",
+    image: "javascript",
   },
   {
     className: "package2",
     url: "https://goo.gl/7zg4y9",
-    image: "reactive",
+    image: "react",
   },
   {
     className: "package3",
     url: "https://goo.gl/6iAYIi",
-    image: "reinvented",
+    image: "angular",
   },
 ]
 
 const Packages = () => {
   const data = useStaticQuery(graphql`
     query PackagesQuery {
-      premium: file(absolutePath: { regex: "/package-premium.*.png/" }) {
+      javascript: file(absolutePath: { regex: "/package-js.*.png/" }) {
         childImageSharp {
           fixed(width: 370, height: 180) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-      reactive: file(absolutePath: { regex: "/package-reactive.*.png/" }) {
+      react: file(absolutePath: { regex: "/package-react.*.png/" }) {
         childImageSharp {
           fixed(width: 370, height: 180) {
             ...GatsbyImageSharpFixed
           }
         }
       }
-      reinvented: file(absolutePath: { regex: "/package-reinvented.*.png/" }) {
+      angular: file(absolutePath: { regex: "/package-angular.*.png/" }) {
         childImageSharp {
           fixed(width: 370, height: 180) {
             ...GatsbyImageSharpFixed
@@ -49,14 +49,23 @@ const Packages = () => {
   return (
     <article className="section" id="consulting">
       <h2 className="title is-3 has-text-centered">My Consulting Packages</h2>
-      <h3 className="subtitle has-text-centered">
-        I offer code reviews (Angular, NgRx, React, Javascript), workshops,
-        Consulting and Development. Feel free to reach out thru the below forms.
+      <h3
+        className="subtitle has-text-centered"
+        style={{ width: "50%", margin: "0 auto" }}
+      >
+        My consulting offerings include: Front End Development, Code reviews
+        (Angular, NgRx, React, Redux, Javascript), workshops, Consulting and
+        Development. Feel free to reach out thru the below forms or through the
+        <a href="/contact"> contact</a> page.
       </h3>
       <section className="columns space-vertical">
         {packages.map(({ className, url, image }) => (
           <section key={url} className="column">
-            <a href={url} className={`package ${className}`}>
+            <a
+              href={url}
+              className={`package ${className}`}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               <Image fixed={data[image].childImageSharp.fixed} alt={image} />
             </a>
           </section>
