@@ -6,8 +6,6 @@
 @import './404'
 
 body
-  background-image: url(../../content/assets/wood.png)
-  background-blend-mode: screen
   background-color: #e6e6e6
 
 .content.is-medium
@@ -91,3 +89,8 @@ a
 .tag:not(body)
   background-color: $grey-light
   color: $black
+
+@supports (background-blend-mode: multiply)
+  body
+    background-image: url(../../content/assets/wood.png)
+    background-blend-mode: screen

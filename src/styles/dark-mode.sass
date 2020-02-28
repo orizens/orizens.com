@@ -3,7 +3,6 @@
 .dark-mode
   color: $white-bis
   background-color: $black-ter
-  background-blend-mode: multiply
 
   .content.is-medium
     padding: 3rem
@@ -27,7 +26,13 @@
     color: $white
   strong
     color: $green
+
+@supports (background-blend-mode: multiply)
+  .dark-mode
+    background-blend-mode: multiply
+
 +mobile
   .dark-mode
     .content.is-medium
       padding: 0
+
