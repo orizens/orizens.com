@@ -107,7 +107,16 @@ class AboutPage extends React.Component {
               </a>
             </p>
             <p>
-              My most popular npm module -<br />
+              My most popular npm module (Used By{" "}
+              <a href="//google.com" target="_blank" rel="noopener noreferrer">
+                Google
+              </a>
+              ,{" "}
+              <a href="//amazon.com" target="_blank" rel="noopener noreferrer">
+                Amazon
+              </a>
+              , <a href="//disney.com">Disney</a> and more)-
+              <br />
               <a
                 href="//www.npmjs.com/package/ngx-infinite-scroll"
                 target="_blank"
