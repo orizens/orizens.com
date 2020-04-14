@@ -36,7 +36,7 @@ const TagsPage = ({
     <SEO title="All posts" />
     <Bio />
     <Logger content={group} />
-    <section>
+    <section className="content is-medium is-rounded-1">
       {group.map(({ fieldValue, totalCount }) => (
         <Link to={`/tags/${fieldValue.toLowerCase()}/`} key={fieldValue}>
           <span
