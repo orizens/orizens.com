@@ -3,7 +3,7 @@ import React from "react"
 const skills = [
   {
     icon: "laptop-code",
-    label: "Mt Tech Stack",
+    label: "My Tech Stack",
     content: [
       { link: "//facebook.github.io/react/", label: "React (Typescript)" },
       { link: "//github.com/reactjs/redux", label: "Redux" },
