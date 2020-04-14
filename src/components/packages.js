@@ -47,9 +47,9 @@ const Packages = () => {
     }
   `)
   return (
-    <article className="section pb-4" id="consulting">
+    <article className="content is-medium section pb-4" id="consulting">
       <h2 className="title is-3 has-text-centered">My Consulting Packages</h2>
-      <h3
+      <p
         className="subtitle has-text-centered"
         style={{ width: "50%", margin: "0 auto" }}
       >
@@ -57,7 +57,7 @@ const Packages = () => {
         (Angular, NgRx, React, Redux, Javascript), workshops, Consulting and
         Development. Feel free to reach out thru the below forms or through the
         <a href="/contact"> contact</a> page.
-      </h3>
+      </p>
       <section className="columns space-vertical">
         {packages.map(({ className, url, image }) => (
           <section key={url} className="column">
