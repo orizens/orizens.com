@@ -13,7 +13,7 @@ export const PostPagination = ({ previous, next }) => (
         rel="next"
         className="pagination-previous button is-success is-outlined"
       >
-        <span className="fa fa-angle-left"></span> Next
+        <span className="las la-angle-left"></span> Next
       </Link>
     )}
     {previous && (
@@ -22,7 +22,7 @@ export const PostPagination = ({ previous, next }) => (
         rel="prev"
         className="pagination-next button is-success is-outlined"
       >
-        Previous <span className="fa fa-angle-right"></span>
+        Previous <span className="las la-angle-right"></span>
       </Link>
     )}
   </nav>

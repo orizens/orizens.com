@@ -2,7 +2,7 @@
 id: 904
 title: From Angular ES5 Directive To Angular ES2015 Component (ES6)
 date: 2016-01-01T15:22:08+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=904
@@ -23,6 +23,7 @@ tags:
   - es2015
   - javascript
 ---
+
 Recently, I started refactoring <a href="http://echotu.be" target="_blank">Echoes Player</a>, my <a href="http://github.com/orizens/echoes" target="_blank">open source project</a>, from angular ES5 to AngularJS with ES2015 (former ES6). I'm following several concepts and i'de like to share the process of converting an AngularJS directive  written with es5 to an AngularJS component using ES2015.<!--more-->
 
 ## Why Using ES2015 With Angular 1
@@ -53,9 +54,9 @@ taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90
 
 ```typescript
 <ul id="user-playlists" class="nav nav-list xux-maker xnicer-ux user-playlists"
-	ng-class="{ 
+	ng-class="{
 		'transition-in': vm.playlists.length,
-		'slide-down': vm.showPlaylistSaver 
+		'slide-down': vm.showPlaylistSaver
 	}"
 	sv-root sv-part="vm.playlists"
 	sv-on-sort="vm.updateIndex($item, $indexTo)"
@@ -71,7 +72,7 @@ taken from the <a href="https://github.com/orizens/echoes/blob/560ee66b6b2b27d90
 			<span class="video-title">{{:: video.snippet.title }}</span>
 			<span class="badge badge-info">{{:: video.time }}</span>
 			<span class="label label-danger ux-maker" title="Remove From Playlist"
-				ng-click="vm.remove($event, video, $index)"><i class="fa fa-remove"></i></span>
+				ng-click="vm.remove($event, video, $index)"><i class="las la-remove"></i></span>
 		</a>
 	</li>
 </ul>
@@ -84,58 +85,56 @@ Aside from using angular's built-in directives, this tracks in this playlist are
 The controller for this template is defined above the "ul" element. This is the "**UserPlaylistsCtrl**" that can be found in the <a href="https://github.com/orizens/echoes/blob/d08fd328914fdf3b40b04aed756481a090319c74/src/app/user-playlists/user-playlists.ctrl.js#L9" target="_blank">user-playlists.ctrl.js</a>:
 
 ```typescript
-(function() {
-    'use strict';
+;(function() {
+  "use strict"
 
-    angular
-        .module('echoes')
-        .controller('UserPlaylistsCtrl', UserPlaylistsCtrl);
+  angular.module("echoes").controller("UserPlaylistsCtrl", UserPlaylistsCtrl)
 
-    /* @ngInject */
-    function UserPlaylistsCtrl($http, YoutubePlayerSettings, UserPlaylists) {
-        var vm = this;
-        vm.title = 'UserPlaylistsCtrl';
-        // used by "Now Playlist"
-        vm.playlists = YoutubePlayerSettings.nowPlaylist;
-        vm.playVideo = playVideo;
-        vm.nowPlaying = YoutubePlayerSettings.nowPlaying;
-        // used by "Now Playlist"
-        vm.playlistSearch = '';
-        // used by "Now Playlist"
-        vm.remove = remove;
-        vm.clearPlaylist = YoutubePlayerSettings.clear;
-        vm.togglePlaylistSaver = togglePlaylistSaver;
-        vm.showPlaylistSaver = false;
-        vm.onPlaylistSave = onPlaylistSave;
-        // used by "Now Playlist"
-        vm.updateIndex = updateIndex;
+  /* @ngInject */
+  function UserPlaylistsCtrl($http, YoutubePlayerSettings, UserPlaylists) {
+    var vm = this
+    vm.title = "UserPlaylistsCtrl"
+    // used by "Now Playlist"
+    vm.playlists = YoutubePlayerSettings.nowPlaylist
+    vm.playVideo = playVideo
+    vm.nowPlaying = YoutubePlayerSettings.nowPlaying
+    // used by "Now Playlist"
+    vm.playlistSearch = ""
+    // used by "Now Playlist"
+    vm.remove = remove
+    vm.clearPlaylist = YoutubePlayerSettings.clear
+    vm.togglePlaylistSaver = togglePlaylistSaver
+    vm.showPlaylistSaver = false
+    vm.onPlaylistSave = onPlaylistSave
+    // used by "Now Playlist"
+    vm.updateIndex = updateIndex
 
-        function playVideo (video, index) {
-            vm.nowPlaying.index = index;
-            YoutubePlayerSettings.playVideoId(video);
-        }
-
-        function remove ($event, video, index) {
-            $event.stopPropagation();
-            YoutubePlayerSettings.remove(video, index);
-        }
-
-        function togglePlaylistSaver () {
-            vm.showPlaylistSaver = !vm.showPlaylistSaver;
-        }
-
-        function onPlaylistSave () {
-            togglePlaylistSaver();
-            UserPlaylists.list();
-        }
-
-        function updateIndex ($item, $indexTo) {
-            if ($item.id === vm.nowPlaying.media.id) {
-                vm.nowPlaying.index = $indexTo;
-            }
-        }
+    function playVideo(video, index) {
+      vm.nowPlaying.index = index
+      YoutubePlayerSettings.playVideoId(video)
     }
-})();
+
+    function remove($event, video, index) {
+      $event.stopPropagation()
+      YoutubePlayerSettings.remove(video, index)
+    }
+
+    function togglePlaylistSaver() {
+      vm.showPlaylistSaver = !vm.showPlaylistSaver
+    }
+
+    function onPlaylistSave() {
+      togglePlaylistSaver()
+      UserPlaylists.list()
+    }
+
+    function updateIndex($item, $indexTo) {
+      if ($item.id === vm.nowPlaying.media.id) {
+        vm.nowPlaying.index = $indexTo
+      }
+    }
+  }
+})()
 ```
 
 This controller serves other purposes beside the now playlist feature. The relevant properties and functions that the now playlist uses, are marked with a comment above it.
@@ -149,11 +148,12 @@ The inspiration for refactoring the code comes from <a href="https://github.com/
 First, I wanted to redefine the html template to be used as a **web-component** (or rather an html tag). After much thought, I came up with this component:
 
 ```typescript
-<now-playlist videos="nowPlaying.playlist" 
-	filter="nowPlaying.playlistSearch"
-	on-select="nowPlaying.playVideo(video)" 
-	on-remove="nowPlaying.removeVideo($event, video, $index)"
-	on-sort="nowPlaying.updateIndex($item, $indexTo)"
+<now-playlist
+  videos="nowPlaying.playlist"
+  filter="nowPlaying.playlistSearch"
+  on-select="nowPlaying.playVideo(video)"
+  on-remove="nowPlaying.removeVideo($event, video, $index)"
+  on-sort="nowPlaying.updateIndex($item, $indexTo)"
 ></now-playlist>
 ```
 
@@ -169,18 +169,18 @@ Finally, I came up with these files:
 
 ```typescript
 index.js
-now-playlist.component.js
-now-playlist.ctrl.js
-now-playlist.less
-now-playlist.tpl.html
+now - playlist.component.js
+now - playlist.ctrl.js
+now - playlist.less
+now - playlist.tpl.html
 ```
 
 I'm using the "**index.js**" notation, similar to node.js require syntax, so I can simply import the now-playlist component as such:
 
 ```typescript
-import NowPlaylist from './now-playlist';
-// instead of 
-import NowPlaylist from './now-playlist/index.js';
+import NowPlaylist from "./now-playlist"
+// instead of
+import NowPlaylist from "./now-playlist/index.js"
 ```
 
 #### index.js - Module & Directive Defintion
@@ -188,15 +188,13 @@ import NowPlaylist from './now-playlist/index.js';
 This file defines the angular module and its accompanied services and directives. This is also the place for importing any dependant modules - like the angular-sortable-view module. Finally, It exports the now-playlist module, so it can be consumed by other modules.
 
 ```typescript
-import angular from 'angular';
-import AngularSortableView from 'angular-sortable-view/src/angular-sortable-view.js';
-import nowPlaylist from './now-playlist.component.js';
+import angular from "angular"
+import AngularSortableView from "angular-sortable-view/src/angular-sortable-view.js"
+import nowPlaylist from "./now-playlist.component.js"
 
-export default angular.module('now-playlist', [
-	    'angular-sortable-view'
-    ])
-    .directive('nowPlaylist', nowPlaylist)
-;
+export default angular
+  .module("now-playlist", ["angular-sortable-view"])
+  .directive("nowPlaylist", nowPlaylist)
 ```
 
 #### now-playlist.component.js - The Directive Definition
@@ -205,40 +203,40 @@ This file includes the directive/component definition for this module. Currently
 
 This file imports the controller and template of this directive from an external file. I defined this directive with all of the properties that will be included within the "component" syntax -
 
-  * bindToController: true - binds external attributes to "this" context in the controller
-  * restrict: &#8216;E' - since it's a "component" - it's an element tag
-  * replace: true - since there is no support for real web components yet
-  * controllerAs: &#8216;nowPlaylist' - this follows Angular (+2) convention as well - exposing this as the camel-case version of this element tag.
+- bindToController: true - binds external attributes to "this" context in the controller
+- restrict: &#8216;E' - since it's a "component" - it's an element tag
+- replace: true - since there is no support for real web components yet
+- controllerAs: &#8216;nowPlaylist' - this follows Angular (+2) convention as well - exposing this as the camel-case version of this element tag.
 
 There will be less code in this file once the new "component" function is available. Also, it will need to export an object (json) rather than a function.
 
 ```typescript
-import NowPlaylistCtrl from './now-playlist.ctrl.js';
-import template from './now-playlist.tpl.html';
+import NowPlaylistCtrl from "./now-playlist.ctrl.js"
+import template from "./now-playlist.tpl.html"
 
 /* @ngInject */
 export default function nowPlaylist() {
-    // Usage:
-    //  <now-playlist></now-playlist>
-    // Creates:
-    //
-    var directive = {
-        template,
-        controller: NowPlaylistCtrl,
-        controllerAs: 'nowPlaylist',
-        scope: {
-            videos: '=',
-            filter: '=',
-            nowPlaying: '=',
-            onSelect: '&',
-            onRemove: '&',
-            onSort: '&'
-        },
-        bindToController: true,
-        replace: true,
-        restrict: 'E'
-    };
-    return directive;
+  // Usage:
+  //  <now-playlist></now-playlist>
+  // Creates:
+  //
+  var directive = {
+    template,
+    controller: NowPlaylistCtrl,
+    controllerAs: "nowPlaylist",
+    scope: {
+      videos: "=",
+      filter: "=",
+      nowPlaying: "=",
+      onSelect: "&",
+      onRemove: "&",
+      onSort: "&",
+    },
+    bindToController: true,
+    replace: true,
+    restrict: "E",
+  }
+  return directive
 }
 ```
 
@@ -249,23 +247,23 @@ This file includes the logics and view model for this component's view. I used E
 ```typescript
 /* @ngInject */
 export default class NowPlaylistCtrl {
-    /* @ngInject */
-    constructor () {
-        // injected with this.videos, this.onRemove, this.onSelect, this.filter, this.nowPlaying
-        this.showPlaylistSaver = false;
-    }
+  /* @ngInject */
+  constructor() {
+    // injected with this.videos, this.onRemove, this.onSelect, this.filter, this.nowPlaying
+    this.showPlaylistSaver = false
+  }
 
-    removeVideo($event, video, $index) {
-        this.onRemove && this.onRemove({ $event, video, $index });
-    }
+  removeVideo($event, video, $index) {
+    this.onRemove && this.onRemove({ $event, video, $index })
+  }
 
-    selectVideo (video, $index) {
-        this.onSelect && this.onSelect({ video, $index });
-    }
+  selectVideo(video, $index) {
+    this.onSelect && this.onSelect({ video, $index })
+  }
 
-    sortVideo($item, $indexTo) {
-        this.onSort && this.onSort({ $item, $indexTo });
-    }
+  sortVideo($item, $indexTo) {
+    this.onSort && this.onSort({ $item, $indexTo })
+  }
 }
 ```
 
@@ -273,17 +271,17 @@ export default class NowPlaylistCtrl {
 
 This file contains the html template that was in the index.html. Few things have changed:
 
-  * The code now references to the &#8216;controllerAs' alias "nowPlaylist"
-  * The "ul" is wrapped with a "section" element
-  * The "css" classes now reflects the correct meaning - "now-playlist", "now-playlist-track"
+- The code now references to the &#8216;controllerAs' alias "nowPlaylist"
+- The "ul" is wrapped with a "section" element
+- The "css" classes now reflects the correct meaning - "now-playlist", "now-playlist-track"
 
 ```typescript
-<section class="now-playlist" ng-class="{ 
+<section class="now-playlist" ng-class="{
 			'transition-in': nowPlaylist.videos.length,
-			'slide-down': nowPlaylist.showPlaylistSaver 
+			'slide-down': nowPlaylist.showPlaylistSaver
 		}">
 	<ul class="nav nav-list xux-maker xnicer-ux"
-		
+
 		sv-root sv-part="nowPlaylist.videos"
 		sv-on-sort="nowPlaylist.sortVideo($item, $indexTo)"
 		>
@@ -298,7 +296,7 @@ This file contains the html template that was in the index.html. Few things have
 				<span class="video-title">{{:: video.snippet.title }}</span>
 				<span class="badge badge-info">{{:: video.time }}</span>
 				<span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-					ng-click="nowPlaylist.removeVideo($event, video, $index)"><i class="fa fa-remove"></i></span>
+					ng-click="nowPlaylist.removeVideo($event, video, $index)"><i class="las la-remove"></i></span>
 			</a>
 		</li>
 	</ul>
@@ -311,31 +309,37 @@ Eventually, I also moved the relevant css/less rules to the "now-playlist.less" 
 
 Finally, the area that contains the now-playlist and 2 other components, has been also refactored in the same way-
 
-  * a small toolbar for filtering the playlist, clearing the tracks and save the playlist
-  * a form component for typing a name to save the playlist to the current signed-in youtube's user
+- a small toolbar for filtering the playlist, clearing the tracks and save the playlist
+- a form component for typing a name to save the playlist to the current signed-in youtube's user
 
 This is the smart component "**now-playing**" html template code (I still have work to do - this ng-if expression should be changed):
 
 ```typescript
 <div class="sidebar-pane">
-	<now-playlist-filter
-		playlist="nowPlaying.playlist"
-		on-save="nowPlaying.togglePlaylistSaver(show)"
-		on-clear="nowPlaying.clearPlaylist()"
-		on-change="nowPlaying.onFilterChange(filter)"
-	></now-playlist-filter>
-	<section class="playlist-saver-container clearfix" ng-if="nowPlaying.showPlaylistSaver && nowPlaying.playlist.length > 0">
-		<playlist-saver class="col-md-12" tracks="nowPlaying.playlist"
-			on-cancel="nowPlaying.togglePlaylistSaver()"
-			on-save="nowPlaying.onPlaylistSave()"
-			></playlist-saver>
-	</section>
-	<now-playlist videos="nowPlaying.playlist" 
-		filter="nowPlaying.playlistSearch"
-		on-select="nowPlaying.playVideo(video)" 
-		on-remove="nowPlaying.removeVideo($event, video, $index)"
-		on-sort="nowPlaying.updateIndex($item, $indexTo)"
-	></now-playlist>
+  <now-playlist-filter
+    playlist="nowPlaying.playlist"
+    on-save="nowPlaying.togglePlaylistSaver(show)"
+    on-clear="nowPlaying.clearPlaylist()"
+    on-change="nowPlaying.onFilterChange(filter)"
+  ></now-playlist-filter>
+  <section
+    class="playlist-saver-container clearfix"
+    ng-if="nowPlaying.showPlaylistSaver && nowPlaying.playlist.length > 0"
+  >
+    <playlist-saver
+      class="col-md-12"
+      tracks="nowPlaying.playlist"
+      on-cancel="nowPlaying.togglePlaylistSaver()"
+      on-save="nowPlaying.onPlaylistSave()"
+    ></playlist-saver>
+  </section>
+  <now-playlist
+    videos="nowPlaying.playlist"
+    filter="nowPlaying.playlistSearch"
+    on-select="nowPlaying.playVideo(video)"
+    on-remove="nowPlaying.removeVideo($event, video, $index)"
+    on-sort="nowPlaying.updateIndex($item, $indexTo)"
+  ></now-playlist>
 </div>
 ```
 

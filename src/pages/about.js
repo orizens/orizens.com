@@ -58,8 +58,8 @@ class AboutPage extends React.Component {
           <section className="has-text-centered">
             <Socials size="1" />
           </section>
-          <section className="is-size-4">
-            <p>
+          <section className="content is-size-4 is-medium is-rounded-1 mt-3 m-auto">
+            <p className="m-auto">
               Hi - I'm {author}. I'm a software engineer, focusing on front end
               &amp; software architecture. <br />I graduated with a{" "}
               <strong>BA in Computer Science &amp; Business Management</strong>{" "}
@@ -67,82 +67,126 @@ class AboutPage extends React.Component {
               <br />I earned Software Engineering &amp; Development by
               experimenting, experience, open source and reading a lot.
             </p>
-            <p>
+            <p className="m-auto">
               I believe in producing easy maintainable code for applications.
               Today, I lead Orizens in consulting to companies and startups on
               how to approach code in their projects and keep it maintainable.
             </p>
-            <p>
-              Together with a dedicated &amp; professional team, we provide
+            <p className="m-auto">
+              Together with a dedicated &amp; professional team, I provide
               project bootstrapping and development remotely – while afterwards,
               we integrate it on site and guide the team on it.
             </p>
-            <p>
-              When consulting and developing, we follow 4 simple principles:
+            <p className="m-auto">
+              When consulting and developing, I follow 4 simple principles:
             </p>
             <div className="content">
-              <ul>
-                <li>seeing the code as a reactive system</li>
-                <li>implementing best practices of software architecture</li>
-                <li>creating modular &amp; testable code</li>
-                <li>
-                  keeping code and app structure organized to let other
-                  developers easily understand and further extend it.
-                </li>
-                <li>Automating development with CI/CD (travis/circle ci)</li>
+              <ul className="list-unstyled">
+                {[
+                  "seeing the code as a reactive system",
+                  "implementing best practices of software architecture",
+                  "creating modular & testable code",
+                  "keeping code and app structure organized to let other developers easily understand and further extend it.",
+                  "Automating development with CI/CD (travis/circle ci)",
+                ].map(text => (
+                  <li key={text}>
+                    <i className="las la-chevron-circle-right mr-1" /> {text}
+                  </li>
+                ))}
               </ul>
             </div>
+          </section>
+
+          <section className="content is-medium is-rounded-1">
             <h2 className="title" id="achievements">
-              Achievements I'm Proud Of
+              <i className="las la-certificate mr-1" /> Achievements I'm Proud
+              Of
             </h2>
-            <p>I'm proficient with React, Angular and Javascript in general.</p>
-            <p>
-              My open source Angular App -{" "}
-              <a
-                href="//echoesplayer.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Echoes Player
-              </a>
+            <p className="m-auto">
+              I'm proficient with React, Angular and Javascript in Front End
+              Development.
             </p>
-            <p>
-              My most popular npm module (Used By{" "}
-              <a href="//google.com" target="_blank" rel="noopener noreferrer">
-                Google
-              </a>
-              ,{" "}
-              <a href="//amazon.com" target="_blank" rel="noopener noreferrer">
-                Amazon
-              </a>
-              , <a href="//disney.com">Disney</a> and more)-
-              <br />
-              <a
-                href="//www.npmjs.com/package/ngx-infinite-scroll"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ngx-infinite-scroll -{" "}
-              </a>
-              <img
-                src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
-                alt="total npm downloads until today"
-              />
-              <img
-                src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
-                alt="npm downloads a month"
-              />
-            </p>
-            <p>
-              I’m the author of{" "}
+            <ul className="list-unstyled">
+              <li>
+                <i className="las la-chevron-circle-right mr-1" /> Practice
+                Reading With Real-Time Feedback App (React, Redux, Firebase)
+                <a
+                  href="//readm.netlify.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-1"
+                >
+                  ReadM
+                </a>
+              </li>
+              <li>
+                <i className="las la-chevron-circle-right mr-1" /> My open
+                source Angular App
+                <a
+                  href="//echoesplayer.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-1"
+                >
+                  Echoes Player
+                </a>
+              </li>
+              <li>
+                <i className="las la-chevron-circle-right mr-1" /> My most
+                popular npm module (Used By{" "}
+                <a
+                  href="//google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google
+                </a>
+                ,{" "}
+                <a
+                  href="//amazon.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Amazon
+                </a>
+                , <a href="//disney.com">Disney</a> and others)
+                <br />
+                <a
+                  href="//www.npmjs.com/package/ngx-infinite-scroll"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-1 mr-1"
+                >
+                  ngx-infinite-scroll
+                </a>
+                <img
+                  src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
+                  alt="total npm downloads until today"
+                />
+                <img
+                  src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
+                  alt="npm downloads a month"
+                />
+              </li>
+            </ul>
+          </section>
+
+          <section className="has-text-centered space-vertical columns content is-medium is-rounded-1">
+            <h2 className="column is-size-3 lh-4">
+              <i className="las la-book-reader mr-1" /> I’m the author of{" "}
               <Link to="http://www.apress.com/us/book/9781484226193">
                 "Reactive Programming with Angular and NgRx"
               </Link>
-            </p>
-          </section>
-
-          <section className="has-text-centered space-vertical">
-            <a href={angular} target="_blank" rel="noopener noreferrer">
+              <aside className="is-size-6">
+                (first book on Angular &amp; NgRx)
+              </aside>
+            </h2>
+            <a
+              href={angular}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="column"
+            >
               <Image fixed={book.childImageSharp.fixed} alt={author} />
             </a>
           </section>

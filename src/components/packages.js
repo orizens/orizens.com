@@ -47,7 +47,7 @@ const Packages = () => {
     }
   `)
   return (
-    <article className="section" id="consulting">
+    <article className="section pb-4" id="consulting">
       <h2 className="title is-3 has-text-centered">My Consulting Packages</h2>
       <h3
         className="subtitle has-text-centered"

@@ -25,16 +25,17 @@ export default function Socials({ size = 2 }) {
         { icon: "github", href: `//github.com/${social.github}` },
         { icon: "linkedin", href: `//linkedin.com/in/${social.linkedin}` },
         {
-          icon: "code-fork",
+          icon: "npm",
           href: `//www.npmjs.com/~${social.npm}`,
           tooltip: "npm pacakges",
         },
         {
           icon: "book",
+          iconType: "las",
           href: `//www.apress.com/us/book/9781484226193`,
           tooltip: "My Angular & NgRx Reactive Programming Book",
         },
-      ].map(({ icon, href, text, tooltip }) => (
+      ].map(({ icon, href, text, tooltip, iconType }) => (
         <a
           key={`footer-link-${href}`}
           href={href}
@@ -43,7 +44,11 @@ export default function Socials({ size = 2 }) {
           rel="noopener noreferrer"
           title={tooltip || icon}
         >
-          {icon && <span className={`fa fa-${icon} is-size-${size}`}></span>}
+          {icon && (
+            <span
+              className={`${iconType || "lab"} la-${icon} is-size-${size}`}
+            ></span>
+          )}
           {text && text}
         </a>
       ))}

@@ -27,7 +27,7 @@ export default function Theme() {
       onClick={toggleTheme}
     >
       <span className="icon is-small">
-        <i className="fa fa-adjust"></i>
+        <i className="las la-adjust"></i>
       </span>
     </button>
   )

@@ -1,8 +1,8 @@
 ---
 id: 951
-title: 'Angular (2+) & NgRx/store: The NgModel In Between Use Case (from Angular 1)'
+title: "Angular (2+) & NgRx/store: The NgModel In Between Use Case (from Angular 1)"
 date: 2016-02-19T13:51:39+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=951
@@ -21,6 +21,7 @@ tags:
   - ngrx
   - typescript
 ---
+
 In the <a href="http://orizens.com/wp/blog/adding-redux-with-ngrxstore-to-angular-2-part-1/" target="_blank">recent article</a>, I integrated ngrx/store as a redux implementation to <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. Until this article, the search was static with one hard coded search query. In this article, I'm sharing my insights on migrating more features from AngularJS and implementing ng-model with ngrx.<!--more-->
 
 ## From Angular 1 To Angular (+2): NgModel Template Syntax
@@ -35,7 +36,7 @@ In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="ht
 				ng-model="vm.params.q"
 				ng-change="vm.resetPageToken()">
 			<button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
-				<i class="fa fa-search"></i>
+				<i class="las la-search"></i>
 			</button>
 		</div>
 	</form>
@@ -43,13 +44,13 @@ In <a href="http://echotu.be" target="_blank">Echoes Player</a> with <a href="ht
 </div>
 ```
 
-* I removed some attributes and html code to make this code simpler for this post.
+- I removed some attributes and html code to make this code simpler for this post.
 
 The migration of the html code above is quite simple (I mentioned it in <a href="http://orizens.com/wp/blog/3-more-steps-to-prepare-your-angular-1-code-to-angular-2/" target="_blank">3 more steps to prepare your AngularJS to Angular (+2)</a>) in Angular (+2):
 
-  1. **ng-model** is converted to **([ngModel])**
-  2. **ng-change** is converted to **(input)**
-  3. instead of using **ng-submit**, I used a simple **(click)** event on the search button
+1. **ng-model** is converted to **([ngModel])**
+2. **ng-change** is converted to **(input)**
+3. instead of using **ng-submit**, I used a simple **(click)** event on the search button
 
 Notice the **ngModel** is both bind with a value (using the binding [] brackets) and both syncs back to its variable (as an event with () ) - This the 2-way binding we've been used to from AngularJS. This template goes inside the youtube-videos template. Here is the full template:
 
@@ -65,7 +66,7 @@ Notice the **ngModel** is both bind with a value (using the binding [] brackets
 					>
 				<button class="btn btn-transparent btn-submit" type="submit" title="search with echoes"
 					(click)="search()">
-					<i class="fa fa-search"></i>
+					<i class="las la-search"></i>
 				</button>
 			</div>
 		</form>
@@ -77,46 +78,51 @@ Notice the **ngModel** is both bind with a value (using the binding [] brackets
 
 To support the new search feature, the component's class needs to be updated with:
 
-  1. "**searchQuery**" property which will hold the search string value
-  2. Updating the search function with the new "**searchQuery**"
-  3. "**resetPageToken**" function which will reset the pageToken property when the search query  changes
+1. "**searchQuery**" property which will hold the search string value
+2. Updating the search function with the new "**searchQuery**"
+3. "**resetPageToken**" function which will reset the pageToken property when the search query  changes
 
 ```typescript
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { NgModel } from '@angular/common'
-import { Store} from '@ngrx/store';
-import { YoutubeSearch } from '../core/services/youtube.search';
-import { YoutubeList } from '../core/components/youtube-list/youtube-list';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from "@angular/core"
+import { NgModel } from "@angular/common"
+import { Store } from "@ngrx/store"
+import { YoutubeSearch } from "../core/services/youtube.search"
+import { YoutubeList } from "../core/components/youtube-list/youtube-list"
 
 @Component({
-	selector: 'youtube-videos.youtube-videos',
-	template: require('./youtube-videos.html'),
-	directives: [YoutubeList, NgModel],
-	changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "youtube-videos.youtube-videos",
+  template: require("./youtube-videos.html"),
+  directives: [YoutubeList, NgModel],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class YoutubeVideos {
-	videos: any;
-	searchQuery: string = 'tremonti';
+  videos: any
+  searchQuery: string = "tremonti"
 
-	constructor(private youtubeSearch: YoutubeSearch, public store: Store<any>) {
-		this.videos = this.store.select('videos');
-		this.search();
-	}
+  constructor(private youtubeSearch: YoutubeSearch, public store: Store<any>) {
+    this.videos = this.store.select("videos")
+    this.search()
+  }
 
-	ngOnInit(){
-	}
+  ngOnInit() {}
 
-	search () {
-		this.youtubeSearch.search(this.searchQuery, false);
-	}
+  search() {
+    this.youtubeSearch.search(this.searchQuery, false)
+  }
 
-	playSelectedVideo(media) {
-		console.log('playing', media);
-	}
+  playSelectedVideo(media) {
+    console.log("playing", media)
+  }
 
-	resetPageToken() {
-		this.youtubeSearch.resetPageToken();
-	}
+  resetPageToken() {
+    this.youtubeSearch.resetPageToken()
+  }
 }
 ```
 

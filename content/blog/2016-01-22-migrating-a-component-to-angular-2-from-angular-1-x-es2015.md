@@ -216,14 +216,14 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 			<div class="indicators clearfix">
 				
 				<span class="pull-left item-is-playing playing-{{:: $ctrl.isPlaying }}">
-					<i class="fa fa-play"></i>Now Playing
+					<i class="las la-play"></i>Now Playing
 				</span>
 				
 			</div>
 			
 			<section class="dropdown share">	
 				<a class="dropdown-toggle" data-toggle="dropdown" href="">
-					<span class="fa fa-share-alt"></span>
+					<span class="las la-share-alt"></span>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-fade">
 					<li>
@@ -232,7 +232,7 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 							socialshare-provider="google+"
 							socialshare-hashtags="echotube, youtube video, nowlistening"
 							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}">
-							<span class="fa fa-google-plus-square"></span> Google+
+							<span class="las la-google-plus-square"></span> Google+
 						</a>
 					</li>
 					<li>
@@ -240,7 +240,7 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 							socialshare
 							socialshare-provider="twitter"
 							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}">
-							<span class="fa fa-twitter-square"></span> Twitter
+							<span class="las la-twitter-square"></span> Twitter
 						</a>
 					</li>
 					<li>
@@ -248,7 +248,7 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 							socialshare
 							socialshare-provider="facebook"
 							socialshare-url="http://echotu.be/#/video/{{:: $ctrl.video.id }}">
-							<span class="fa fa-facebook-square"></span> Facebook
+							<span class="las la-facebook-square"></span> Facebook
 						</a>
 					</li>
 				</ul>
@@ -263,7 +263,7 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 				</div>
 				
 				<button class="btn btn-default btn-lg ux-maker play-media">
-					<i class="fa fa-play"></i>
+					<i class="las la-play"></i>
 				</button>
 			</div>
 
@@ -279,28 +279,28 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 				<section class="media-actions clearfix">
 					<button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
 						ng-click="$ctrl.queueVideo($ctrl.video)">
-						<i class="fa fa-share"></i> Queue
+						<i class="las la-share"></i> Queue
 					</button>
 					<button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
 						ng-click="$ctrl.add($ctrl.video)">
-						<i class="fa fa-plus"></i> Add
+						<i class="las la-plus"></i> Add
 					</button>
 				</section>
 
 				<span
 					ng-click="$ctrl.toggle($ctrl.showDesc)"
 					class="btn btn-default btn-xs media-desc " title="more info about this video">
-					<i class="fa fa-info-circle"></i>
+					<i class="las la-info-circle"></i>
 				</span>
 
-				<span class="item-action"><i class="fa fa-clock-o"></i>{{:: $ctrl.video.time}}</span>
+				<span class="item-action"><i class="las la-clock-o"></i>{{:: $ctrl.video.time}}</span>
 
 				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
-					<i class="fa fa-thumbs-up"></i> {{:: $ctrl.video.statistics.likeCount | number}}
+					<i class="las la-thumbs-up"></i> {{:: $ctrl.video.statistics.likeCount | number}}
 				</span>
 
 				<span class="item-views item-action" rel="tooltip" title="Number of Views">
-					<i class="fa fa-eye"></i> {{:: $ctrl.video.statistics.viewCount | number}}
+					<i class="las la-eye"></i> {{:: $ctrl.video.statistics.viewCount | number}}
 				</span>
 
 			</section>
@@ -315,7 +315,7 @@ ng-class="{ 'show-description': $ctrl.showDesc}">
 			<span
 				ng-click="$ctrl.toggle($ctrl.showDesc)"
 				class="btn btn-default btn-xs media-desc " title="flip back...">
-					<i class="fa fa-times-circle"></i>
+					<i class="las la-times-circle"></i>
 				</span>
 		</section>
 
@@ -337,7 +337,7 @@ This is the template for echoes2:
 			<div class="indicators clearfix">
 
 				<span class="pull-left item-is-playing">
-					<i class="fa fa-play"></i>Now Playing
+					<i class="las la-play"></i>Now Playing
 				</span>
 
 			</div>
@@ -351,7 +351,7 @@ This is the template for echoes2:
 				</div>
 
 				<button class="btn btn-default btn-lg ux-maker play-media">
-					<i class="fa fa-play"></i>
+					<i class="las la-play"></i>
 				</button>
 			</div>
 
@@ -367,28 +367,28 @@ This is the template for echoes2:
 				<section class="media-actions clearfix">
 					<button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
 						(click)="queueVideo(media)">
-						<i class="fa fa-share"></i> Queue
+						<i class="las la-share"></i> Queue
 					</button>
 					<button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
 						(click)="addVideo(media)">
-						<i class="fa fa-plus"></i> Add
+						<i class="las la-plus"></i> Add
 					</button>
 				</section>
 
 				<span
 					(click)="toggle(showDesc)"
 					class="btn btn-default btn-xs media-desc " title="more info about this video">
-					<i class="fa fa-info-circle"></i>
+					<i class="las la-info-circle"></i>
 				</span>
 
-				<span class="item-action"><i class="fa fa-clock-o"></i>{{ media.time}}</span>
+				<span class="item-action"><i class="las la-clock-o"></i>{{ media.time}}</span>
 
 				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
-					<i class="fa fa-thumbs-up"></i> {{ media.statistics.likeCount | number:'2.0'}}
+					<i class="las la-thumbs-up"></i> {{ media.statistics.likeCount | number:'2.0'}}
 				</span>
 
 				<span class="item-views item-action" rel="tooltip" title="Number of Views">
-					<i class="fa fa-eye"></i> {{ media.statistics.viewCount | number:'2.0'}}
+					<i class="las la-eye"></i> {{ media.statistics.viewCount | number:'2.0'}}
 				</span>
 
 			</section>
@@ -403,7 +403,7 @@ This is the template for echoes2:
 			<span
 				(click)="toggle(showDesc)"
 				class="btn btn-default btn-xs media-desc " title="flip back...">
-					<i class="fa fa-times-circle"></i>
+					<i class="las la-times-circle"></i>
 				</span>
 		</section>
 

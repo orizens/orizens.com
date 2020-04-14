@@ -251,11 +251,11 @@ This is the template (I removed a button which is related to saving this playlis
 	<button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
 		[disabled]="playlist?.videos?.length === 0"
 		(click)="clearPlaylist()">
-		<span class="fa fa-trash-o"></span>
+		<span class="las la-trash-o"></span>
 	</button>
 	<div class="playlist-filter pull-right">
-		<i class="fa fa-search" *ngIf="isFilterEmpty()"></i>
-		<i class="fa fa-remove text-danger" *ngIf="!isFilterEmpty()" (click)="resetSearchFilter()"></i>
+		<i class="las la-search" *ngIf="isFilterEmpty()"></i>
+		<i class="las la-remove text-danger" *ngIf="!isFilterEmpty()" (click)="resetSearchFilter()"></i>
 		<input type="search"
 			[value]="playlist?.filter"
 			#searchFilter
@@ -306,7 +306,7 @@ Here's the full template for this component:
 				<span class="video-title">{{ video.snippet.title }}</span>
 				<span class="badge badge-info">{{ video.time }}</span>
 				<span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-					(click)="removeVideo(video)"><i class="fa fa-remove"></i></span>
+					(click)="removeVideo(video)"><i class="las la-remove"></i></span>
 			</a>
 		</li>
 	</ul>

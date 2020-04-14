@@ -18,14 +18,14 @@ export const Pagination = ({ index, first, pageCount, header }) => {
           nextIndex === 0 ? "is-invisible" : ""
         }`}
       >
-        <span className="fa fa-angle-left"></span> Next
+        <span className="las la-angle-left"></span> Next
       </Link>
       {hasNextPage && (
         <Link
           to={`/${previousIndex}`}
           className="pagination-next button is-success is-outlined"
         >
-          Previous <span className="fa fa-angle-right"></span>
+          Previous <span className="las la-angle-right"></span>
         </Link>
       )}
       {header && (

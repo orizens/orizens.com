@@ -24,8 +24,20 @@ body
   margin-bottom: $size-7
 .mr-1
   margin-right: .5rem
+.ml-1
+  margin-left: .5rem
+.mt-3
+  margin-left: 2rem
+.nml-2
+  margin-left: -2rem
+.pl-2
+  padding-left: 2rem
 .pt-5
   padding-top: 7rem
+.pb-4
+  padding-top: 3rem
+.lh-4
+  line-height: 3rem !important
 .m-auto
   margin-left: auto
   margin-right: auto
@@ -89,6 +101,15 @@ a
 .tag:not(body)
   background-color: $grey-light
   color: $black
+
+ul.list-unstyled
+  list-style: none
+  margin-left: 0
+
+  li
+    padding-left: 2rem
+    .las, .lab
+      margin-left: -2rem
 
 @supports (background-blend-mode: multiply)
   body

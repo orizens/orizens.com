@@ -87,7 +87,7 @@ function SEO({ description, lang, meta, title, image = "" }) {
         {
           rel: "stylesheet",
           href:
-            "https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css",
+            "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css",
         },
       ]}
     />

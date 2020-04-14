@@ -83,7 +83,7 @@ I took a slightly different approach with this challenge. I remembered seeing fe
       *ngFor="let result of results; let i = index;"
       [class.active]="markIsActive(i, result)"
       (click)="handleSelectSuggestion(result)">
-      <span><i class="fa fa-search"></i> {{ result }}</span>
+      <span><i class="las la-search"></i> {{ result }}</span>
     </button>
   </section>
   </ng-template>
@@ -263,7 +263,7 @@ Then I added a template inside the button element to allow rendering this templa
       *ngFor="let result of results; let i = index;"
       [class.active]="markIsActive(i, result)"
       (click)="handleSelectSuggestion(result)">
-      <span *ngIf="!typeaheadItemTpl"><i class="fa fa-search"></i> {{ result }}</span>
+      <span *ngIf="!typeaheadItemTpl"><i class="las la-search"></i> {{ result }}</span>
       <ng-template
         [ngTemplateOutlet]="typeaheadItemTpl"
         [ngTemplateOutletContext]="{ $implicit: {result: result, index: i} }"

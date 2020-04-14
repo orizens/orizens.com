@@ -70,6 +70,7 @@ export default function ContactPage({ data, location }) {
             method="POST"
             action={`/contact?${SUBMIT_PARAM}`}
             data-netlify="true"
+            className="content is-medium is-rounded-1"
           >
             <input type="hidden" name="form-name" value="Contact Form" />
             <div className="field">
@@ -83,7 +84,7 @@ export default function ContactPage({ data, location }) {
                   placeholder="Your Name"
                 />
                 <span className="icon is-small is-right">
-                  <i className="fa fa-exclamation-circle"></i>
+                  <i className="las la-exclamation-circle"></i>
                 </span>
               </div>
             </div>
@@ -100,10 +101,10 @@ export default function ContactPage({ data, location }) {
                   required
                 />
                 <span className="icon is-small is-left">
-                  <i className="fa fa-envelope"></i>
+                  <i className="las la-envelope"></i>
                 </span>
                 <span className="icon is-small is-right">
-                  <i className="fa fa-exclamation-circle"></i>
+                  <i className="las la-exclamation-circle"></i>
                 </span>
               </div>
               {/* <p className="help is-danger">This email is invalid</p> */}
@@ -120,7 +121,7 @@ export default function ContactPage({ data, location }) {
                   required
                 ></textarea>
                 <span className="icon is-small is-right">
-                  <i className="fa fa-exclamation-circle"></i>
+                  <i className="las la-exclamation-circle"></i>
                 </span>
               </div>
             </div>
