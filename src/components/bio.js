@@ -39,7 +39,11 @@ const Bio = () => {
         marginBottom: rhythm(1),
       }}
     >
-      <Link to="/about" title="Read More About Me...">
+      <Link
+        to="/about"
+        title="Read More About Me..."
+        className="link-hover-no-line"
+      >
         <Image
           fixed={data.avatar.childImageSharp.fixed}
           alt={author}

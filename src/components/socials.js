@@ -39,7 +39,7 @@ export default function Socials({ size = 2 }) {
         <a
           key={`footer-link-${href}`}
           href={href}
-          className="social-link"
+          className="social-link link-hover-no-line"
           target="_blank"
           rel="noopener noreferrer"
           title={tooltip || icon}

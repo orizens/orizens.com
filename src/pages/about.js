@@ -98,42 +98,60 @@ class AboutPage extends React.Component {
           </section>
 
           <section className="content is-medium is-rounded-1">
-            <h2 className="title" id="achievements">
+            <h2 className="title has-text-centered" id="achievements">
               <i className="las la-certificate mr-1" /> Achievements I'm Proud
               Of
             </h2>
-            <p className="m-auto">
+            <p className="m-auto is-size-4">
               I'm proficient with React, Angular and Javascript in Front End
               Development.
             </p>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled is-size-4">
               <li>
-                <i className="las la-chevron-circle-right mr-1" /> Practice
-                Reading With Real-Time Feedback App (React, Redux, Firebase)
+                <i className="las la-chevron-circle-right mr-1" />
                 <a
                   href="//readm.netlify.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-1"
+                  className="mr-1"
                 >
                   ReadM
                 </a>
+                Practice Reading With Real-Time Feedback App (React, Redux,
+                Firebase)
               </li>
               <li>
-                <i className="las la-chevron-circle-right mr-1" /> My open
-                source Angular App
+                <i className="las la-chevron-circle-right mr-1" />
                 <a
                   href="//echoesplayer.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-1"
+                  className="mr-1"
                 >
                   Echoes Player
                 </a>
+                My open source Angular App
               </li>
               <li>
-                <i className="las la-chevron-circle-right mr-1" /> My most
-                popular npm module (Used By{" "}
+                <i className="las la-chevron-circle-right mr-1" />
+                <a
+                  href="//www.npmjs.com/package/ngx-infinite-scroll"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mr-1"
+                >
+                  ngx-infinite-scroll
+                </a>
+                <img
+                  src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
+                  alt="total npm downloads until today"
+                />
+                <img
+                  src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
+                  alt="npm downloads a month"
+                  className="mr-1"
+                />
+                My most popular npm module (Used By{" "}
                 <a
                   href="//google.com"
                   target="_blank"
@@ -150,23 +168,6 @@ class AboutPage extends React.Component {
                   Amazon
                 </a>
                 , <a href="//disney.com">Disney</a> and others)
-                <br />
-                <a
-                  href="//www.npmjs.com/package/ngx-infinite-scroll"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-1 mr-1"
-                >
-                  ngx-infinite-scroll
-                </a>
-                <img
-                  src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
-                  alt="total npm downloads until today"
-                />
-                <img
-                  src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
-                  alt="npm downloads a month"
-                />
               </li>
             </ul>
           </section>

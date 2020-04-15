@@ -50,7 +50,7 @@ const Packages = () => {
     <article className="content is-medium section pb-4" id="consulting">
       <h2 className="title is-3 has-text-centered">My Consulting Packages</h2>
       <p
-        className="subtitle has-text-centered"
+        className="subtitle has-text-centered is-size-4"
         style={{ width: "50%", margin: "0 auto" }}
       >
         My consulting offerings include: Front End Development, Code reviews

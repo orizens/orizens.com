@@ -26,7 +26,12 @@ class BlogIndex extends React.Component {
           header={`Blog Page ${index} of ${pageCount}`}
         />
         {group.map(({ node: { excerpt, fields, frontmatter } }) => (
-          <PostExcerpt {...fields} {...frontmatter} excerpt={excerpt} />
+          <PostExcerpt
+            {...fields}
+            {...frontmatter}
+            excerpt={excerpt}
+            key={frontmatter.id}
+          />
         ))}
         <Pagination {...pageContext} />
       </Layout>

@@ -38,7 +38,11 @@ const TagsPage = ({
     <Logger content={group} />
     <section className="content is-medium is-rounded-1">
       {group.map(({ fieldValue, totalCount }) => (
-        <Link to={`/tags/${fieldValue.toLowerCase()}/`} key={fieldValue}>
+        <Link
+          to={`/tags/${fieldValue.toLowerCase()}/`}
+          key={fieldValue}
+          className="link-hover-no-line"
+        >
           <span
             className="tag is-success is-size-6"
             style={{
