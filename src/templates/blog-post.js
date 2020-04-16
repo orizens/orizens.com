@@ -51,6 +51,7 @@ class BlogPostTemplate extends React.Component {
               style={{
                 ...scale(-1 / 5),
                 marginBottom: rhythm(1),
+                marginLeft: 0,
               }}
             >
               {date}
@@ -58,7 +59,11 @@ class BlogPostTemplate extends React.Component {
             <div className="tags">
               {tags &&
                 tags.map(tag => (
-                  <Link to={`/tags/${tag}`} key={tag} className="tag">
+                  <Link
+                    to={`/tags/${tag}`}
+                    key={tag}
+                    className="tag button is-success is-outlined"
+                  >
                     {tag}
                   </Link>
                 ))}

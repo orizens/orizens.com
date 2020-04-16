@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect } from "react"
 import { useLocalStorage } from "../hooks/use-localstorage"
 
-const DARK_CLASSNAME = "dark-mode"
+export const DARK_CLASSNAME = "dark-mode"
 const THEME_KEY = "orizens-theme"
 
 export default function Theme() {
-  const [storageValue, setStorageValue] = useLocalStorage(THEME_KEY, "")
+  const [storageValue, setStorageValue] = useLocalStorage(
+    THEME_KEY,
+    DARK_CLASSNAME
+  )
 
   const toggleTheme = useCallback(
     ({ currentTarget }) => {

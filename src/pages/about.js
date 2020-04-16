@@ -107,68 +107,71 @@ class AboutPage extends React.Component {
               Development.
             </p>
             <ul className="list-unstyled is-size-4">
-              <li>
-                <i className="las la-chevron-circle-right mr-1" />
-                <a
-                  href="//readm.netlify.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mr-1"
-                >
-                  ReadM
-                </a>
-                Practice Reading With Real-Time Feedback App (React, Redux,
-                Firebase)
-              </li>
-              <li>
-                <i className="las la-chevron-circle-right mr-1" />
-                <a
-                  href="//echoesplayer.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mr-1"
-                >
-                  Echoes Player
-                </a>
-                My open source Angular App
-              </li>
-              <li>
-                <i className="las la-chevron-circle-right mr-1" />
-                <a
-                  href="//www.npmjs.com/package/ngx-infinite-scroll"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mr-1"
-                >
-                  ngx-infinite-scroll
-                </a>
-                <img
-                  src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
-                  alt="total npm downloads until today"
-                />
-                <img
-                  src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
-                  alt="npm downloads a month"
-                  className="mr-1"
-                />
-                My most popular npm module (Used By{" "}
-                <a
-                  href="//google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Google
-                </a>
-                ,{" "}
-                <a
-                  href="//amazon.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Amazon
-                </a>
-                , <a href="//disney.com">Disney</a> and others)
-              </li>
+              {[
+                {
+                  href: "readm.netlify.app",
+                  linkText: "ReadM",
+                  desc:
+                    "Practice Reading With Real-Time Feedback App (React, Redux, Firebase)",
+                },
+                {
+                  href: "echoesplayer.com",
+                  linkText: "Echoes Player",
+                  desc:
+                    "A YouTube™ Alternative Web App Media Player - Made With Angular, Open Source",
+                },
+                {
+                  href: "www.npmjs.com/package/ngx-infinite-scroll",
+                  linkText: (
+                    <>
+                      ngx-infinite-scroll{" "}
+                      <img
+                        src="//img.shields.io/npm/dt/ngx-infinite-scroll.svg"
+                        alt="total npm downloads until today"
+                      />
+                      <img
+                        src="//img.shields.io/npm/dm/ngx-infinite-scroll.svg"
+                        alt="npm downloads a month"
+                        className="mr-1"
+                      />
+                    </>
+                  ),
+                  desc: (
+                    <>
+                      My most popular npm module (Used By{" "}
+                      <a
+                        href="//google.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Google
+                      </a>
+                      ,{" "}
+                      <a
+                        href="//amazon.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Amazon
+                      </a>
+                      , <a href="//disney.com">Disney</a> and others)
+                    </>
+                  ),
+                },
+              ].map(({ href, linkText, desc }) => (
+                <li>
+                  <i className="las la-chevron-circle-right mr-1" />
+                  <a
+                    href={`//${href}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mr-1"
+                  >
+                    {linkText}
+                  </a>
+                  {desc}
+                </li>
+              ))}
             </ul>
           </section>
 

@@ -1,18 +1,19 @@
 @import "./custom-varilables.sass";
 
 .dark-mode
+  $semi-dark: rgba(10, 10, 10, 0.95);
   color: $white-bis
   background-color: $black-ter
 
   .content.is-medium
     padding: 3rem
-    background-color: rgba(10, 10, 10, 0.95)
+    background-color: $semi-dark
   
   .has-background-white-bis
-    background-color: $black-bis !important
+    background-color: $semi-dark !important
   .tag
-    background-color: $black
-    color: $white-bis
+    background-color: $link
+    color: $black-ter
   .title, .subtitle, strong, .label
     color: $white-bis
   .footer

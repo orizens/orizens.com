@@ -4,6 +4,7 @@ import { rhythm } from "../utils/typography"
 import "../styles/index.sass"
 import Navbar from "./navbar"
 import Socials from "./socials"
+import { DARK_CLASSNAME } from "./theme"
 
 export default function Layout(props) {
   const { location, children, footer } = props

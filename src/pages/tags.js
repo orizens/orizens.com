@@ -44,11 +44,12 @@ const TagsPage = ({
           className="link-hover-no-line"
         >
           <span
-            className="tag is-success is-size-6"
+            className="tag button is-outlined is-success is-size-6"
             style={{
               marginRight: ".5rem",
               marginTop: ".5rem",
               backgroundColor: getColor(fieldValue),
+              color: getColor(fieldValue) ? "black" : null,
             }}
           >
             {fieldValue} ({totalCount})

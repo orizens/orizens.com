@@ -46,7 +46,11 @@ export const PostExcerpt = ({
         <div className="tags">
           {tags &&
             tags.map(tag => (
-              <Link to={`/tags/${tag}`} key={tag} className="tag">
+              <Link
+                to={`/tags/${tag}`}
+                key={tag}
+                className="tag button is-success is-outlined"
+              >
                 {tag}
               </Link>
             ))}
