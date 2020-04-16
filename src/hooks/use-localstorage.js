@@ -5,7 +5,6 @@ export function useLocalStorage(storageKey, initialValue) {
 
   useEffect(() => {
     const storageValue = localStorage.getItem(storageKey)
-    debugger
     if (storageValue || storageValue === "") {
       setStorageValue(storageValue)
     }

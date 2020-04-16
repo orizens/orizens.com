@@ -189,6 +189,7 @@ class AboutPage extends React.Component {
                       <img
                         {...image.childImageSharp.fluid}
                         className="shadow-sm"
+                        alt={linkText}
                       />
                     </Link>
                   )}
