@@ -19,6 +19,7 @@ export default function Theme() {
   )
 
   useEffect(() => {
+    debugger
     const body = document.querySelector("body")
     body.classList.remove(DARK_CLASSNAME)
     storageValue && body.classList.add(storageValue)

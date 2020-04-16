@@ -9,6 +9,7 @@ import { PostExcerpt } from "../components/post-excerpt"
 
 // Components
 import { Link, graphql } from "gatsby"
+import { Icon } from "../components/icon"
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
@@ -25,8 +26,19 @@ const Tags = ({ pageContext, data, location }) => {
         {...pageContext}
         header={`Blog Page ${index} of ${pageCount}`}
       /> */}
+      <h1 className="is-size-2 space-bottom-3 has-text-weight-medium">
+        <Link to="/tags" title="Back To All Tags Page">
+          <Icon name="chevron-circle-left" />
+        </Link>
+        Articles tagged with: <span className="has-text-warning">{tag}</span>
+      </h1>
       {edges.map(({ node: { excerpt, fields, frontmatter } }) => (
-        <PostExcerpt {...fields} {...frontmatter} excerpt={excerpt} />
+        <PostExcerpt
+          {...fields}
+          {...frontmatter}
+          excerpt={excerpt}
+          key={fields.slug}
+        />
       ))}
       {/* <Pagination {...pageContext} /> */}
       <div>

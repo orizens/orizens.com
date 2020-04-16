@@ -9,6 +9,7 @@ import { Link } from "gatsby"
 import { Skills } from "../components/skills"
 import Packages from "../components/packages"
 import Socials from "../components/socials"
+import { Icon } from "../components/icon"
 
 // import { rhythm } from "../utils/typography"
 
@@ -16,6 +17,8 @@ class AboutPage extends React.Component {
   render() {
     const {
       avatar,
+      readm,
+      echoes,
       book,
       site: { siteMetadata },
     } = this.props.data
@@ -111,12 +114,14 @@ class AboutPage extends React.Component {
                 {
                   href: "readm.netlify.app",
                   linkText: "ReadM",
+                  image: readm,
                   desc:
                     "Practice Reading With Real-Time Feedback App (React, Redux, Firebase)",
                 },
                 {
                   href: "echoesplayer.com",
                   linkText: "Echoes Player",
+                  image: echoes,
                   desc:
                     "A YouTube™ Alternative Web App Media Player - Made With Angular, Open Source",
                 },
@@ -158,18 +163,35 @@ class AboutPage extends React.Component {
                     </>
                   ),
                 },
-              ].map(({ href, linkText, desc }) => (
-                <li>
-                  <i className="las la-chevron-circle-right mr-1" />
-                  <a
-                    href={`//${href}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mr-1"
-                  >
-                    {linkText}
-                  </a>
-                  {desc}
+              ].map(({ href, linkText, desc, image }) => (
+                <li key={href} className="columns">
+                  <section className="column">
+                    <Icon name="chevron-circle-right" />
+                    <Link
+                      href={`//${href}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={desc}
+                      className="mr-1"
+                    >
+                      {linkText}
+                    </Link>
+                    {desc}
+                  </section>
+                  {image && (
+                    <Link
+                      href={`//${href}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={desc}
+                      className="column is-half link-hover-no-line"
+                    >
+                      <img
+                        {...image.childImageSharp.fluid}
+                        className="shadow-sm"
+                      />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -209,6 +231,24 @@ export const pageQuery = graphql`
       childImageSharp {
         fixed(width: 200, height: 200) {
           ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    readm: file(absolutePath: { regex: "/readm.png/" }) {
+      childImageSharp {
+        fluid {
+          src
+          srcSet
+          sizes
+        }
+      }
+    }
+    echoes: file(absolutePath: { regex: "/echoes.png/" }) {
+      childImageSharp {
+        fluid {
+          src
+          srcSet
+          sizes
         }
       }
     }
