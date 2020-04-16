@@ -1,4 +1,4 @@
-import { THEME } from "./src/components/theme"
+const { THEME } = require("./src/components/theme")
 
 exports.onRenderBody = ({ setBodyAttributes }) => {
   setBodyAttributes({
