@@ -34,7 +34,7 @@ class BlogPostTemplate extends React.Component {
     } = frontmatter
     const disqusConfig = {
       url: `${siteUrl}${permalink}`,
-      identifier: dsq_thread_id.join("") || id,
+      identifier: Array.isArray(dsq_thread_id) ? dsq_thread_id.join("") : id,
       title: title,
     }
 
