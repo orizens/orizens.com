@@ -68,19 +68,23 @@ class AboutPage extends React.Component {
               graduated with a{" "}
               <strong>BA in Computer Science &amp; Business Management</strong>{" "}
               from the Open University.
-              <br />I earned Software Engineering &amp; Development skills by
-              experimenting, experience,{" "}
+            </p>
+            <p className="m-auto">
+              I earned Software Engineering &amp; Development skills by being{" "}
+              <strong>self-driven</strong> and making things happen,
+              experimenting, experience,
               <a
                 href="https://github.com/orizens"
                 target="_blank"
+                className="ml-1"
                 rel="noopener noreferrer"
               >
                 open source
               </a>{" "}
-              some of my work,{" "}
-              <a href="/" target="_blank" rel="noopener noreferrer">
+              some of my work,
+              <Link to="/" className="ml-1 mr-1">
                 writing
-              </a>{" "}
+              </Link>
               about it and reading a lot.
             </p>
             <p className="m-auto">
@@ -91,7 +95,7 @@ class AboutPage extends React.Component {
               code.
             </p>
             <p className="m-auto">
-              When consulting and developing, I follow 4 simple principles:
+              When consulting and developing, I follow simple principles:
             </p>
             <div className="content">
               <ul className="list-unstyled">
@@ -102,6 +106,11 @@ class AboutPage extends React.Component {
                   <>
                     implementing best practices of software architecture,
                     creating <strong>modular &amp; testable code</strong>
+                  </>,
+                  <>
+                    Understanding the big picture while{" "}
+                    <strong>breaking down complex problems</strong> to smaller
+                    challenges
                   </>,
                   <>
                     keeping code and app <strong>structure organized</strong> to
@@ -233,7 +242,7 @@ class AboutPage extends React.Component {
               href={angular}
               target="_blank"
               rel="noopener noreferrer"
-              className="column"
+              className="column link-hover-no-line"
             >
               <Image fixed={book.childImageSharp.fixed} alt={author} />
             </a>
