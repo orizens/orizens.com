@@ -34,9 +34,10 @@ class BlogPostTemplate extends React.Component {
     } = frontmatter
     const disqusConfig = {
       url: `${siteUrl}${permalink}`,
-      identifier: dsq_thread_id || id,
+      identifier: dsq_thread_id.join("") || id,
       title: title,
     }
+
     return (
       <Layout location={location} title={siteTitle} footer={<Packages />}>
         <SEO title={title} description={description || excerpt} image={image} />
@@ -45,7 +46,9 @@ class BlogPostTemplate extends React.Component {
         <article className="blog-post">
           <PostPagination previous={previous} next={next} />
           <header className="title">
-            <h1>{title}</h1>
+            <h1 className="has-text-success has-text-weight-semibold">
+              {title}
+            </h1>
             <p
               className="content"
               style={{

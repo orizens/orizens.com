@@ -30,15 +30,14 @@ export const PostExcerpt = ({
           <Link to={permalink}>
             {image && (
               <Image
-                className="image"
+                className="image h-5"
                 fluid={image.childImageSharp.fluid}
-                style={{ height: "8rem" }}
               />
             )}
           </Link>
         )}
         <p
-          className="content"
+          className="content is-mxless"
           dangerouslySetInnerHTML={{
             __html: description || excerpt,
           }}

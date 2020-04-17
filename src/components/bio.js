@@ -60,8 +60,8 @@ const Bio = () => {
       </Link>
       <p>
         Written by{" "}
-        <Link to="/about">
-          <strong>{author}</strong>
+        <Link to="/about" className="link-hover-no-line">
+          {author}
         </Link>
         , {occupation}, follow me on <Socials size="4" />
       </p>

@@ -63,22 +63,32 @@ class AboutPage extends React.Component {
           </section>
           <section className="content is-size-4 is-medium is-rounded-1 mt-3 m-auto">
             <p className="m-auto">
-              Hi - I'm {author}. I'm a software engineer, focusing on front end
-              &amp; software architecture. <br />I graduated with a{" "}
+              Hi - I'm {author}. I'm a Senior Software Engineer, focusing on{" "}
+              <strong>Front End &amp; Software Architecture</strong>. <br />I
+              graduated with a{" "}
               <strong>BA in Computer Science &amp; Business Management</strong>{" "}
               from the Open University.
-              <br />I earned Software Engineering &amp; Development by
-              experimenting, experience, open source and reading a lot.
+              <br />I earned Software Engineering &amp; Development skills by
+              experimenting, experience,{" "}
+              <a
+                href="https://github.com/orizens"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                open source
+              </a>{" "}
+              some of my work,{" "}
+              <a href="/" target="_blank" rel="noopener noreferrer">
+                writing
+              </a>{" "}
+              about it and reading a lot.
             </p>
             <p className="m-auto">
-              I believe in producing easy maintainable code for applications.
-              Today, I lead Orizens in consulting to companies and startups on
-              how to approach code in their projects and keep it maintainable.
-            </p>
-            <p className="m-auto">
-              Together with a dedicated &amp; professional team, I provide
-              project bootstrapping and development remotely – while afterwards,
-              we integrate it on site and guide the team on it.
+              I believe in producing easy <strong>maintainable code</strong> for
+              applications. I consult to companies and startups on how to
+              approach code in their projects, keep it maintainable and focusing
+              on delivering a <strong>high quality</strong> and well tested
+              code.
             </p>
             <p className="m-auto">
               When consulting and developing, I follow 4 simple principles:
@@ -86,14 +96,25 @@ class AboutPage extends React.Component {
             <div className="content">
               <ul className="list-unstyled">
                 {[
-                  "seeing the code as a reactive system",
-                  "implementing best practices of software architecture",
-                  "creating modular & testable code",
-                  "keeping code and app structure organized to let other developers easily understand and further extend it.",
-                  "Automating development with CI/CD (travis/circle ci)",
-                ].map(text => (
-                  <li key={text}>
-                    <i className="las la-chevron-circle-right mr-1" /> {text}
+                  <>
+                    seeing the code as a live <strong>reactive system</strong>
+                  </>,
+                  <>
+                    implementing best practices of software architecture,
+                    creating <strong>modular &amp; testable code</strong>
+                  </>,
+                  <>
+                    keeping code and app <strong>structure organized</strong> to
+                    let other developers easily understand and further extend
+                    it.
+                  </>,
+                  <>
+                    <strong>Automating</strong> development with CI/CD
+                    (travis/circle ci)
+                  </>,
+                ].map((text, index) => (
+                  <li key={`princ-${index}`}>
+                    <Icon name="chevron-circle-right" /> {text}
                   </li>
                 ))}
               </ul>

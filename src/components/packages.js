@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
 const packages = [
@@ -56,7 +56,7 @@ const Packages = () => {
         My consulting offerings include: Front End Development, Code reviews
         (Angular, NgRx, React, Redux, Javascript), workshops, Consulting and
         Development. Feel free to reach out thru the below forms or through the
-        <a href="/contact"> contact</a> page.
+        <Link to="/contact"> contact</Link> page.
       </p>
       <section className="columns space-vertical">
         {packages.map(({ className, url, image }) => (
