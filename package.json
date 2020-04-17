@@ -8,7 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "bulma": "0.7.5",
+    "bulma": "0.8.2",
     "gatsby": "^2.13.73",
     "gatsby-image": "^2.2.10",
     "gatsby-paginate": "1.1.1",
