@@ -63,7 +63,7 @@ const Packages = () => {
           <section key={url} className="column">
             <a
               href={url}
-              className={`package ${className}`}
+              className={`package link-hover-no-line ${className}`}
               style={{ display: "flex", justifyContent: "center" }}
             >
               <Image fixed={data[image].childImageSharp.fixed} alt={image} />

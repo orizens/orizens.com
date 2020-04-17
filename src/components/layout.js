@@ -23,7 +23,7 @@ export default function Layout(props) {
         {children}
       </main>
       {footer && footer}
-      <footer className="footer has-text-centered is-flex is-aligned">
+      <footer className="content footer has-text-centered is-flex is-aligned">
         <span className="mr-1"> © {new Date().getFullYear()}, Built with </span>
         <a
           href="https://www.gatsbyjs.org"
