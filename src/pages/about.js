@@ -198,7 +198,7 @@ class AboutPage extends React.Component {
                   <section className="column">
                     <Icon name="chevron-circle-right" />
                     <Link
-                      href={`//${href}`}
+                      to={`//${href}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       title={desc}
