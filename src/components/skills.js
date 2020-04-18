@@ -1,4 +1,5 @@
 import React from "react"
+import { ExternalLink } from "./external-link"
 
 const skills = [
   {
@@ -54,9 +55,7 @@ export const Skills = () => {
               {content.map(link => (
                 <li key={`skill-link-${link.label}`}>
                   <i className="las la-chevron-circle-right mr-1" />
-                  <a href={link.link} target="_blank" rel="noopener noreferrer">
-                    {link.label}
-                  </a>
+                  <ExternalLink href={link.link}>{link.label}</ExternalLink>
                 </li>
               ))}
             </ul>

@@ -1,21 +1,21 @@
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Image from "gatsby-image"
+import { ExternalLink } from "./external-link"
 
 const packages = [
   {
     className: "package1",
-    url: "https://goo.gl/RJgihR",
+    url: "goo.gl/RJgihR",
     image: "javascript",
   },
   {
     className: "package2",
-    url: "https://goo.gl/7zg4y9",
+    url: "goo.gl/7zg4y9",
     image: "react",
   },
   {
     className: "package3",
-    url: "https://goo.gl/6iAYIi",
+    url: "goo.gl/6iAYIi",
     image: "angular",
   },
 ]
@@ -25,27 +25,34 @@ const Packages = () => {
     query PackagesQuery {
       javascript: file(absolutePath: { regex: "/package-js.*.png/" }) {
         childImageSharp {
-          fixed(width: 370, height: 180) {
-            ...GatsbyImageSharpFixed
+          fluid {
+            src
+            srcSet
+            sizes
           }
         }
       }
       react: file(absolutePath: { regex: "/package-react.*.png/" }) {
         childImageSharp {
-          fixed(width: 370, height: 180) {
-            ...GatsbyImageSharpFixed
+          fluid {
+            src
+            srcSet
+            sizes
           }
         }
       }
       angular: file(absolutePath: { regex: "/package-angular.*.png/" }) {
         childImageSharp {
-          fixed(width: 370, height: 180) {
-            ...GatsbyImageSharpFixed
+          fluid {
+            src
+            srcSet
+            sizes
           }
         }
       }
     }
   `)
+  console.log(data["angular"].childImageSharp.fluid)
   return (
     <article className="content is-medium section pb-4" id="consulting">
       <h2 className="title is-3 has-text-centered">My Consulting Packages</h2>
@@ -56,18 +63,21 @@ const Packages = () => {
         My consulting offerings include: Front End Development, Code reviews
         (Angular, NgRx, React, Redux, Javascript), workshops, Consulting and
         Development. Feel free to reach out thru the below forms or through the
-        <Link to="/contact"> contact</Link> page.
+        <Link to="/contact" className="ml-1">
+          contact
+        </Link>{" "}
+        page.
       </p>
       <section className="columns space-vertical">
         {packages.map(({ className, url, image }) => (
-          <section key={url} className="column">
-            <a
+          <section key={url} className="column has-text-centered">
+            <ExternalLink
               href={url}
-              className={`package link-hover-no-line ${className}`}
+              className={`package ${className}`}
               style={{ display: "flex", justifyContent: "center" }}
             >
-              <Image fixed={data[image].childImageSharp.fixed} alt={image} />
-            </a>
+              <img {...data[image].childImageSharp.fluid} alt={image} />
+            </ExternalLink>
           </section>
         ))}
       </section>

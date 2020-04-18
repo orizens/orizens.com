@@ -10,6 +10,7 @@ import { Skills } from "../components/skills"
 import Packages from "../components/packages"
 import Socials from "../components/socials"
 import { Icon } from "../components/icon"
+import { ExternalLink } from "../components/external-link"
 
 // import { rhythm } from "../utils/typography"
 
@@ -37,8 +38,7 @@ class AboutPage extends React.Component {
         footer={<Packages />}
       >
         <SEO title="All posts" />
-        {/* <Bio />I have written {posts.length} Posts so far */}
-        <section className="has-text-centered">
+        <section className="has-text-centered mt-3">
           <Image
             fixed={avatar.childImageSharp.fixed}
             alt={author}
@@ -46,7 +46,6 @@ class AboutPage extends React.Component {
               marginRight: rhythm(1 / 2),
               marginBottom: 0,
               minWidth: 50,
-              borderRadius: `100%`,
             }}
             imgStyle={{
               borderRadius: `50%`,
@@ -73,14 +72,9 @@ class AboutPage extends React.Component {
               I earned Software Engineering &amp; Development skills by being{" "}
               <strong>self-driven</strong> and making things happen,
               experimenting, experience,
-              <a
-                href="https://github.com/orizens"
-                target="_blank"
-                className="ml-1"
-                rel="noopener noreferrer"
-              >
+              <ExternalLink href="github.com/orizens" className="ml-1">
                 open source
-              </a>{" "}
+              </ExternalLink>{" "}
               some of my work,
               <Link to="/" className="ml-1 mr-1">
                 writing
@@ -156,7 +150,7 @@ class AboutPage extends React.Component {
                     "A YouTube™ Alternative Web App Media Player - Made With Angular, Open Source",
                 },
                 {
-                  href: "www.npmjs.com/package/ngx-infinite-scroll",
+                  href: "npmjs.com/package/ngx-infinite-scroll",
                   linkText: (
                     <>
                       ngx-infinite-scroll{" "}
@@ -173,23 +167,20 @@ class AboutPage extends React.Component {
                   ),
                   desc: (
                     <>
-                      My most popular npm module (Used By{" "}
-                      <a
-                        href="//google.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Google
-                      </a>
-                      ,{" "}
-                      <a
-                        href="//amazon.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Amazon
-                      </a>
-                      , <a href="//disney.com">Disney</a> and others)
+                      My most popular npm module (Used By
+                      {[
+                        { href: "google.com", text: "Google" },
+                        { href: "microsoft.com", text: "Microsoft" },
+                        { href: "amazon.com", text: "Amazon" },
+                        { href: "disney.com", text: "Disney" },
+                      ].map(({ href, text }) => (
+                        <>
+                          <ExternalLink href={href} className="ml-1">
+                            {text}
+                          </ExternalLink>
+                        </>
+                      ))}
+                      <span className="ml-1">and others</span>)
                     </>
                   ),
                 },
@@ -197,22 +188,14 @@ class AboutPage extends React.Component {
                 <li key={href} className="columns">
                   <section className="column">
                     <Icon name="chevron-circle-right" />
-                    <Link
-                      to={`//${href}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={desc}
-                      className="mr-1"
-                    >
+                    <ExternalLink href={href} title={desc} className="mr-1">
                       {linkText}
-                    </Link>
+                    </ExternalLink>
                     {desc}
                   </section>
                   {image && (
-                    <Link
-                      href={`//${href}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <ExternalLink
+                      href={href}
                       title={desc}
                       className="column is-half link-hover-no-line"
                     >
@@ -221,7 +204,7 @@ class AboutPage extends React.Component {
                         className="shadow-sm"
                         alt={linkText}
                       />
-                    </Link>
+                    </ExternalLink>
                   )}
                 </li>
               ))}
@@ -231,26 +214,16 @@ class AboutPage extends React.Component {
           <section className="has-text-centered space-vertical columns content is-medium is-rounded-1">
             <h2 className="column is-size-3 lh-4">
               <i className="las la-book-reader mr-1" /> I’m the author of{" "}
-              <a
-                href="//www.apress.com/us/book/9781484226193"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-hover-no-line"
-              >
+              <ExternalLink href="//www.apress.com/us/book/9781484226193">
                 "Reactive Programming with Angular and NgRx"
-              </a>
+              </ExternalLink>
               <aside className="is-size-6">
                 (first book on Angular &amp; NgRx)
               </aside>
             </h2>
-            <a
-              href={angular}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="column link-hover-no-line"
-            >
+            <ExternalLink href={angular} className="column link-hover-no-line">
               <Image fixed={book.childImageSharp.fixed} alt={author} />
-            </a>
+            </ExternalLink>
           </section>
           <Skills />
         </article>
