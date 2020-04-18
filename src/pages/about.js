@@ -167,7 +167,14 @@ class AboutPage extends React.Component {
                   ),
                   desc: (
                     <>
-                      My most popular npm module (Used By
+                      My most popular npm module (
+                      <ExternalLink
+                        href="twitter.com/orizens/status/1251531163266617345"
+                        className="mr-1 has-text-danger"
+                      >
+                        Used
+                      </ExternalLink>
+                      By{" "}
                       {[
                         { href: "google.com", text: "Google" },
                         { href: "microsoft.com", text: "Microsoft" },
@@ -175,9 +182,9 @@ class AboutPage extends React.Component {
                         { href: "disney.com", text: "Disney" },
                       ].map(({ href, text }) => (
                         <>
-                          <ExternalLink href={href} className="ml-1">
+                          <ExternalLink href={href} className="">
                             {text}
-                          </ExternalLink>
+                          </ExternalLink>{" "}
                         </>
                       ))}
                       <span className="ml-1">and others</span>)
@@ -188,7 +195,11 @@ class AboutPage extends React.Component {
                 <li key={href} className="columns">
                   <section className="column">
                     <Icon name="chevron-circle-right" />
-                    <ExternalLink href={href} title={desc} className="mr-1">
+                    <ExternalLink
+                      href={href}
+                      title={`${href} ${linkText.length ? linkText : ""}`}
+                      className="mr-1"
+                    >
                       {linkText}
                     </ExternalLink>
                     {desc}
