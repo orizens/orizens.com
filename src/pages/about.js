@@ -231,9 +231,14 @@ class AboutPage extends React.Component {
           <section className="has-text-centered space-vertical columns content is-medium is-rounded-1">
             <h2 className="column is-size-3 lh-4">
               <i className="las la-book-reader mr-1" /> I’m the author of{" "}
-              <Link to="http://www.apress.com/us/book/9781484226193">
+              <a
+                href="//www.apress.com/us/book/9781484226193"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-hover-no-line"
+              >
                 "Reactive Programming with Angular and NgRx"
-              </Link>
+              </a>
               <aside className="is-size-6">
                 (first book on Angular &amp; NgRx)
               </aside>
