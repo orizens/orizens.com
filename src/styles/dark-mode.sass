@@ -1,6 +1,6 @@
 @import "./custom-varilables.sass";
 
-$semi-dark: rgba(10, 10, 10, 0.95);
+$semi-dark: rgba(10, 10, 10, 0.9);
 .dark-mode
   color: $white-bis
   background-color: $black-ter
@@ -29,12 +29,12 @@ $semi-dark: rgba(10, 10, 10, 0.95);
   .dark-mode
     background-blend-mode: multiply
 
-@supports (backdrop-filter: blur(7px))
-  .dark-mode
-    .content.is-medium,
-    .has-background-white-bis
-      background-color: rgba(rgb(10, 10, 10), .6) !important
-      backdrop-filter: blur(7px)
+// @supports (backdrop-filter: blur(7px))
+//   .dark-mode
+//     .content.is-medium,
+//     .has-background-white-bis
+//       background-color: rgba(rgb(10, 10, 10), .6) !important
+//       // backdrop-filter: blur(7px)
 
 +mobile
   .dark-mode
