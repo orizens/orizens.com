@@ -52,7 +52,7 @@ const Packages = () => {
       }
     }
   `)
-  console.log(data["angular"].childImageSharp.fluid)
+
   return (
     <article className="content is-medium section pb-4" id="consulting">
       <h2 className="title is-3 has-text-centered">My Consulting Packages</h2>
