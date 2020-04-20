@@ -24,6 +24,18 @@ export const PostExcerpt = ({
           <Link to={permalink}>{title || slug}</Link>
         </h2>
         <small className="subtitle">{new Date(date).toDateString()}</small>
+        <div className="tags">
+          {tags &&
+            tags.map(tag => (
+              <Link
+                to={`/tags/${tag}`}
+                key={tag}
+                className="tag button is-success is-outlined"
+              >
+                {tag}
+              </Link>
+            ))}
+        </div>
       </header>
       <section>
         {image && (
@@ -42,18 +54,6 @@ export const PostExcerpt = ({
             __html: description || excerpt,
           }}
         />
-        <div className="tags">
-          {tags &&
-            tags.map(tag => (
-              <Link
-                to={`/tags/${tag}`}
-                key={tag}
-                className="tag button is-success is-outlined"
-              >
-                {tag}
-              </Link>
-            ))}
-        </div>
       </section>
     </section>
   </article>
