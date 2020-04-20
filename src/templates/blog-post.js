@@ -73,7 +73,7 @@ class BlogPostTemplate extends React.Component {
             </div>
             {image && (
               <Image
-                className="image"
+                className="image is-rounded-1"
                 fluid={image.childImageSharp.fluid}
                 style={{ height: "25rem" }}
               />

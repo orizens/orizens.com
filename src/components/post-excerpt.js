@@ -30,7 +30,7 @@ export const PostExcerpt = ({
           <Link to={permalink}>
             {image && (
               <Image
-                className="image h-5"
+                className="image h-5 is-rounded-1"
                 fluid={image.childImageSharp.fluid}
               />
             )}
