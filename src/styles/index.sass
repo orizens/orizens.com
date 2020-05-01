@@ -65,6 +65,10 @@ body
   opacity: .85
 .shadow-sm
   box-shadow: $navbar-shadow
+.blog-post .content .gatsby-highlight
+  margin: 2rem -6rem
+  > pre
+    border-radius: $radius-large
 // responsive navbar
 +mobile
   &.navbar-menu.is-active
@@ -92,6 +96,7 @@ body
 
   .content .gatsby-highlight
     font-size: $size-6
+    margin: 0
 
 .navbar-burger
   background-color: transparent
