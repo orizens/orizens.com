@@ -65,10 +65,7 @@ body
   opacity: .85
 .shadow-sm
   box-shadow: $navbar-shadow
-.blog-post .content .gatsby-highlight
-  margin: 2rem -6rem
-  > pre
-    border-radius: $radius-large
+
 // responsive navbar
 +mobile
   &.navbar-menu.is-active
@@ -81,6 +78,16 @@ body
       color: $grey-darker
   .content.is-medium
     padding: 0
+  .blog-post .content .gatsby-highlight
+    margin: 0
+    > pre
+      border-radius: $radius-large
+
++desktop
+  .content .gatsby-highlight
+    font-size: $size-6
+    margin: 2rem -6rem
+
 .blog-post
   h2
     font-size: $size-4
@@ -96,7 +103,6 @@ body
 
   .content .gatsby-highlight
     font-size: $size-6
-    margin: 0
 
 .navbar-burger
   background-color: transparent
