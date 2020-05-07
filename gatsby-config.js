@@ -103,5 +103,6 @@ module.exports = {
         shortname: `orizens`,
       },
     },
+    `gatsby-plugin-netlify-cms`,
   ],
 }
