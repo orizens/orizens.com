@@ -120,11 +120,22 @@ a
 
 main a:not(.link-hover-no-line), .content a:not(.link-hover-no-line)
   border-bottom: 1px solid
+  line-height: initial
 main a:hover, .content a:hover,
   color: $info
 strong
   color: $info
 .tag:not(body)
+  margin-right: .5rem
+  margin-top: .5rem
+
+  $tagsColor: ('angular2': tomato, 'react': #03a9f4, 'redux': #673ab7, 'architecture': #795548, 'javascript': #ffc107, 'typescript': #2196f3, 'rxjs': #e91e63, 'ngrx': #ba68c8, 'ngrx-effects': #ba68c8, 'nodejs': #8bc34a)
+
+  @each $tag, $bgcolor in $tagsColor
+    &.tag-#{$tag}
+      background-color: $bgcolor !important
+      color: #000 !important
+
   &:hover
     text-decoration: none
 

@@ -21,7 +21,7 @@ tags:
   - angular.js
   - architecture
   - gruntjs
-  - node.js
+  - nodejs
   - requirejs
 ---
 
@@ -30,7 +30,7 @@ Developing a well structured application wasn't so straight forward for me when 
 <!--more-->
 
 Usually, a lot of developers use angular's seed or yeoman's default angular generator to scaffold an angular app. While this generator does generated the angular's seed modular project, It's still has few drawbacks (i.e, no less support) for keeping modules separated.
-  
+
 There are steps you can take to make this seed or your own application structure organized as needed and support a stream lined work flow.
 
 In this first post, I want to share few concepts I use in my daily client development (currently, angular.js):
@@ -138,7 +138,7 @@ I created a "app.tpl.less" file in the root of "src" directory which imports cro
 ````
 
 The "grunt-include-source" module allows to compile this "app.tpl.less" file and output this file along with a list of less files imports from all over the app.
-  
+
 The grunt "less.js" holds the configuration of how and where to compile the less files from/to.
 
 ```typescript
@@ -200,7 +200,7 @@ module.export = function(grunt) {
 ## Directives Templates - Getting Ready For Production
 
 I like to have a clear separation between html & js. Although writing html as a string or a multi-line is possible, It's hard to maintain and use.
-  
+
 When developing directives, if needed, I usually write its html as a regular separated file template:
 
 ```typescript
@@ -262,5 +262,5 @@ module.exports = function(grunt) {
 ## What's Next?
 
 I tend to focus on more automated work flows I discovered gruntjs can do for development. Also, This series will include automation tasks for production using gruntjs as well.
-  
+
 If you have any questions, suggestions or other gems you want me to clarify, please comment and i'll do my best to approach these.

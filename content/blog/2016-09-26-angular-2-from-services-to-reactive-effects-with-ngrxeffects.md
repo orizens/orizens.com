@@ -1,8 +1,8 @@
 ---
 id: 1067
-title: 'Angular (2+): From Services To Reactive Effects With Ngrx/Effects'
+title: "Angular (2+): From Services To Reactive Effects With Ngrx/Effects"
 date: 2016-09-26T19:08:53+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1067
@@ -18,8 +18,9 @@ categories:
 tags:
   - angular2
   - ngrx
-  - ngrx/effects
+  - ngrx-effects
 ---
+
 In a former article, I wrote <a href="http://orizens.com/wp/blog/angular-2-ngrxstore-ngrxeffects-intro-to-functional-approach-for-a-chain-of-actions/" target="_blank">an introduction for integrating ngrx/effects with Angular (+2)</a> - a functional approach for reacting to a chain of events. Since then, based on this approach, I defined more side effects for several actions in my open source project, <a href="http://github.com/orizens/echoes-ng2" target="_blank">Echoes Player</a>. It has really proven itself to be worthwhile in terms of logics architecture and code organization. In this post, I share more insights on working with <a href="https://github.com/ngrx/effects/tree/v2" target="_blank">ngrx/effects version 2</a> (currently in beta) and how show a real app use case where I applied it.<!--more-->
 
 ## The User Profile Component
@@ -28,22 +29,22 @@ _[UPDATED: October, 5th, 2016]_ This article's focus is on the <a href="http://
 
 This component involves several actions:
 
-  1. authorize the user
-  2. fetch user profile
-  3. fetch all user playlists
-  4. display all playlists
+1. authorize the user
+2. fetch user profile
+3. fetch all user playlists
+4. display all playlists
 
 In order to achieve these, the user profile component uses theses services:
 
-  1. **UserManager** - fetch any user profile related information
-  2. **Authorization** - authorize the user in youtube and google sign in
-  3. **Ngrx/Store** - connect the "**playlist**" and "**user**" reducers to the view
+1. **UserManager** - fetch any user profile related information
+2. **Authorization** - authorize the user in youtube and google sign in
+3. **Ngrx/Store** - connect the "**playlist**" and "**user**" reducers to the view
 
 There are more actions in this component which require other services to be included:
 
-  1. nowPlaylistActions - to queue a list of videos to now playlist
-  2. youtubePlayerActions - to play the first video of a list of videos
-  3. nowPlaylistService - to update the index of the selected video to be played
+1. nowPlaylistActions - to queue a list of videos to now playlist
+2. youtubePlayerActions - to play the first video of a list of videos
+3. nowPlaylistService - to update the index of the selected video to be played
 
 We're going to focus on the first 3 services which allow sign-in and displaying the user's playlists.
 
@@ -51,11 +52,11 @@ We're going to focus on the first 3 services which allow sign-in and displaying 
 
 Before I refactored the user profile service, it was responsible for few operations:
 
-  1. loading the google api for **authorization**
-  2. attaching a click handler for a **sign-in** button
-  3. **authorizing** the user
-  4. **fetching** user playlists
-  5. more logics for fetching the **next page** of playlists (maximum size of playlists is 50)
+1. loading the google api for **authorization**
+2. attaching a click handler for a **sign-in** button
+3. **authorizing** the user
+4. **fetching** user playlists
+5. more logics for fetching the **next page** of playlists (maximum size of playlists is 50)
 
 Obviously, the code structure can be better - I wanted to achieve a lot in a limited time and knowledge, and using these tools was just with a preliminary knowledge. I felt from the start that this implementation should be organized and authored in a different way. The **UserProfile** service achieved too much of its purpose.
 
@@ -72,32 +73,33 @@ The authorization process has been extracted to its own service in the app's cor
 ```typescript
 @Injectable()
 export class GapiLoader {
-  private _api: Observable<any>;
+  private _api: Observable<any>
 
-  constructor() { }
+  constructor() {}
 
-  load (api: string) {
-    return this.createApi(api);
+  load(api: string) {
+    return this.createApi(api)
   }
-  private _loadApi (api: string, observer) {
-    const gapiAuthLoaded = window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance();
+  private _loadApi(api: string, observer) {
+    const gapiAuthLoaded =
+      window.gapi && window.gapi.auth2 && window.gapi.auth2.getAuthInstance()
     if (gapiAuthLoaded && gapiAuthLoaded.currentUser) {
-      return observer.next(gapiAuthLoaded);
+      return observer.next(gapiAuthLoaded)
     }
-    window.gapi.load(api, response => observer.next(response));
+    window.gapi.load(api, response => observer.next(response))
   }
 
-  private createApi (api) {
+  private createApi(api) {
     this._api = new Observable(observer => {
-      const isGapiLoaded = window.gapi && window.gapi.load;
-      const onApiLoaded = () => this._loadApi(api, observer);
+      const isGapiLoaded = window.gapi && window.gapi.load
+      const onApiLoaded = () => this._loadApi(api, observer)
       if (isGapiLoaded) {
-        onApiLoaded();
+        onApiLoaded()
       } else {
-        window['apiLoaded'] = onApiLoaded;
+        window["apiLoaded"] = onApiLoaded
       }
-    });
-    return this._api;
+    })
+    return this._api
   }
 }
 ```
@@ -109,50 +111,49 @@ The consumer of this service is the **Authorization** service. It is injected wi
 ```typescript
 @Injectable()
 export class Authorization {
-	private isSignedIn: boolean = false;
-	private _googleAuth: any;
+  private isSignedIn: boolean = false
+  private _googleAuth: any
 
-	constructor(
-		private zone: NgZone,
-		private store: Store<EchoesState>,
-		private gapiLoader: GapiLoader,
-		private userProfileActions: UserProfileActions
-		) {
-		this.loadAuth();
-	}
+  constructor(
+    private zone: NgZone,
+    private store: Store<EchoesState>,
+    private gapiLoader: GapiLoader,
+    private userProfileActions: UserProfileActions
+  ) {
+    this.loadAuth()
+  }
 
-	loadAuth () {
-		// attempt to SILENT authorize
-		this.gapiLoader
-			.load('auth2')
-			.subscribe(authInstance => {
-				if (authInstance && authInstance.currentUser) {
-					return this._googleAuth = authInstance;
-				}
-				this.authorize()
-					.then(GoogleAuth => {
-						const isSignedIn = GoogleAuth.isSignedIn.get();
-						const authResponse = GoogleAuth.currentUser.get();
-						const hasAccessToken = authResponse.getAuthResponse().hasOwnProperty('access_token');
-						this._googleAuth = GoogleAuth;
-						if (isSignedIn && hasAccessToken) {
-							this.zone.run(() => this.handleSuccessLogin(authResponse));
-						}
-					});
-			});
-	}
+  loadAuth() {
+    // attempt to SILENT authorize
+    this.gapiLoader.load("auth2").subscribe(authInstance => {
+      if (authInstance && authInstance.currentUser) {
+        return (this._googleAuth = authInstance)
+      }
+      this.authorize().then(GoogleAuth => {
+        const isSignedIn = GoogleAuth.isSignedIn.get()
+        const authResponse = GoogleAuth.currentUser.get()
+        const hasAccessToken = authResponse
+          .getAuthResponse()
+          .hasOwnProperty("access_token")
+        this._googleAuth = GoogleAuth
+        if (isSignedIn && hasAccessToken) {
+          this.zone.run(() => this.handleSuccessLogin(authResponse))
+        }
+      })
+    })
+  }
 
-	authorize () {
-		const authOptions = {
-			client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
-			scope: 'profile email https://www.googleapis.com/auth/youtube'
-		};
-		return window.gapi.auth2.init(authOptions);
-	}
+  authorize() {
+    const authOptions = {
+      client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
+      scope: "profile email https://www.googleapis.com/auth/youtube",
+    }
+    return window.gapi.auth2.init(authOptions)
+  }
 }
 ```
 
-I won't go in detail of the code that runs in the "then" block, since, currently, google's &#8216;**auth2**&#8216; api doesn't allow to "silently" authenticate the user as it did in the previous version of "**auth**" (at least, in the client side). <del>so this code currently doesn't trigger the <strong>signIn</strong> function (if you are familiar with a way to silently authenticate the user with auth2 - please do let me know in the comments or through the contact page).</del> _[UPDATED: October, 5th, 2016]_ I added the "**scope**" entry to the authOptions in the "**authorize**". Now, if the user is already authenticated, the "**loadAuth**" runs the "**handleSuccessLogin**"  and sends the authResponse as if the user clicked the sign-in button.
+I won't go in detail of the code that runs in the "then" block, since, currently, google's &#8216;**auth2**&#8216; api doesn't allow to "silently" authenticate the user as it did in the previous version of "**auth**" (at least, in the client side). <del>so this code currently doesn't trigger the <strong>signIn</strong> function (if you are familiar with a way to silently authenticate the user with auth2 - please do let me know in the comments or through the contact page).</del> *[UPDATED: October, 5th, 2016]* I added the "**scope**" entry to the authOptions in the "**authorize**". Now, if the user is already authenticated, the "**loadAuth**" runs the "**handleSuccessLogin**"  and sends the authResponse as if the user clicked the sign-in button.
 
 The **signIn** function is an **important** take out of the user profile service. It eliminated the code in the user profile service which attached a click handler for signing in the user (a copy paste from google's guide).  Once the signIn process has successfully been completed, the app needs to save the access token.
 
@@ -160,27 +161,24 @@ I use **ngrx/store** in order to dispatch an action for saving the token. Notic
 
 ```typescript
 export class Authorization {
-// ....
-signIn () {
-		const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
-		const scope = 'profile email https://www.googleapis.com/auth/youtube';
-		const signOptions = { scope };
-		if (this._googleAuth) {
-			this._googleAuth
-				.signIn(signOptions)
-				.then(
-					run(this.handleSuccessLogin),
-					run(this.handleFailedLogin)
-				);
-		}
-	}
+  // ....
+  signIn() {
+    const run = fn => r => this.zone.run(() => fn.call(this, r))
+    const scope = "profile email https://www.googleapis.com/auth/youtube"
+    const signOptions = { scope }
+    if (this._googleAuth) {
+      this._googleAuth
+        .signIn(signOptions)
+        .then(run(this.handleSuccessLogin), run(this.handleFailedLogin))
+    }
+  }
 
-	handleSuccessLogin(response) {
-		const token = response.getAuthResponse().access_token;
-		this.isSignedIn = true;
-		this.store.dispatch(this.userProfileActions.updateToken(token));
-	}
-//...
+  handleSuccessLogin(response) {
+    const token = response.getAuthResponse().access_token
+    this.isSignedIn = true
+    this.store.dispatch(this.userProfileActions.updateToken(token))
+  }
+  //...
 }
 ```
 
@@ -192,9 +190,9 @@ I consider this flow to be a candidate for declaring this logic in an effects ob
 
 For the first **side effect**, whenever the token is updated in the user profile store, this actions should follow:
 
-  1. the user profile service should be updated with the **new token**
-  2. the user profile service should **fetch** the user's playlists
-  3. the new **data** from the playlists request has to be **saved** an operate on another side effect
+1. the user profile service should be updated with the **new token**
+2. the user profile service should **fetch** the user's playlists
+3. the new **data** from the playlists request has to be **saved** an operate on another side effect
 
 These 3 actions are defined in the first effect:
 
@@ -235,8 +233,8 @@ The "updateData" method, saves a playlists response in store. This is the json r
 
 Several actions should be taken upon this response arrival:
 
-  1. On the one hand, The "**items**" array holds some of all of the user's playlists - this should be put in to the user's playlists store
-  2. On the second hand, the "**nextPageToken**" value should be stored in the user's profile store
+1. On the one hand, The "**items**" array holds some of all of the user's playlists - this should be put in to the user's playlists store
+2. On the second hand, the "**nextPageToken**" value should be stored in the user's profile store
 
 These 2 actions are decoupled and not connected to each other. In contrary to the effect that we declared for updating the token, these can be declared each in an effect. Separating them will allow to test them each on its own as well as invoke more actions, if needed:
 
@@ -267,9 +265,9 @@ The last action which updated the page token, does that with dispatching an even
 
 The last effect in this saga, reacts to the update action of the page token:
 
-  1. it **updates** the page token in the user profile service
-  2. it initiates a **request** to get the next page of playlists
-  3. it **saves** the new response data
+1. it **updates** the page token in the user profile service
+2. it initiates a **request** to get the next page of playlists
+3. it **saves** the new response data
 
 ```typescript
 export class UserProfileEffects {

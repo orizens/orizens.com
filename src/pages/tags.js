@@ -7,22 +7,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Logger } from "../components/logger"
 
-const Colors = {
-  angular2: "tomato",
-  react: "#03a9f4",
-  redux: "#673ab7",
-  architecture: "#795548",
-  javascript: "#ffc107",
-  typescript: "#2196f3",
-  rxjs: "#e91e63",
-  ngrx: "#ba68c8",
-  "ngrx/effects": "#ba68c8",
-  "node.js": "#8bc34a",
-}
-
-function getColor(key) {
-  return Colors[key.toLowerCase()] || null
-}
 const TagsPage = ({
   location,
   data: {
@@ -44,13 +28,7 @@ const TagsPage = ({
           className="link-hover-no-line"
         >
           <span
-            className="tag button is-outlined is-success is-size-6"
-            style={{
-              marginRight: ".5rem",
-              marginTop: ".5rem",
-              backgroundColor: getColor(fieldValue),
-              color: getColor(fieldValue) ? "black" : null,
-            }}
+            className={`tag button is-outlined is-success is-size-6 tag-${fieldValue}`}
           >
             {fieldValue} ({totalCount})
           </span>

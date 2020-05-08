@@ -27,7 +27,11 @@ const Tags = ({ pageContext, data, location }) => {
         header={`Blog Page ${index} of ${pageCount}`}
       /> */}
       <h1 className="is-size-2 space-bottom-3 has-text-weight-medium">
-        <Link to="/tags" title="Back To All Tags Page">
+        <Link
+          to="/tags"
+          title="Back To All Tags Page"
+          className="link-hover-no-line"
+        >
           <Icon name="chevron-circle-left" />
         </Link>
         Articles tagged with: <span className="has-text-warning">{tag}</span>

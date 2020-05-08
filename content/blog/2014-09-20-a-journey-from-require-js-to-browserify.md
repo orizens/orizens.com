@@ -26,7 +26,7 @@ tags:
   - gruntjs
   - javascript
   - learning
-  - node.js
+  - nodejs
   - tools
   - underscore
 ---

@@ -2,7 +2,7 @@
 id: 750
 title: First Steps In Setting Up Travis CI To Your Javascript Project
 date: 2015-02-04T11:20:52+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=750
@@ -24,10 +24,11 @@ tags:
   - howto
   - javascript
   - learning
-  - node.js
+  - nodejs
   - open source
   - travis
 ---
+
 I've been developing my projects with <a title="Decluttering your Gruntfile.js (organizing grunt)" href="http://orizens.com/wp/blog/decluttering-your-gruntfile-js/" target="_blank">build processes</a> for quite some time now. At some point I added unit tests and end to end to my javascript project. In this post i'd like to share some simple steps I did in order to add Continuous Integration to my <a title="Echoes Player" href="http://github.com/orizens/echoes" target="_blank">open source project</a>, <a href="http://echotu.be" target="_blank">Echoes Player</a>, using <a title="Travis CI in the cloud" href="http://travis-ci.org" target="_blank">Travis</a>.<!--more-->
 
 From the docs of Travis: "Travis CI is a hosted continuous integration service. It is integrated with GitHub and offers first class support" - For many programming languages.
@@ -84,24 +85,27 @@ Travis uses the convention of "**npm test**" to run the tests. I configured this
 Up until using Travis, the tests were configured to run with karma runner, and never end (so i can develop with tdd in practice). In karma runner, the flag for this is "singleRun" set to false. In Travis, the tests need to run once. Travis expose an environmental variable in nodejs process. So, in order to adjust to it, I simple read the TRAVIS variable and set the "singleRun" to true when running in TRAVIS.
 
 ```typescript
-var gulp = require('gulp');
-var karma = require('karma').server;
-var isTravis = process.env.TRAVIS || false;
-var pathToKarmaConf = __dirname.replace('/gulp', '');
+var gulp = require("gulp")
+var karma = require("karma").server
+var isTravis = process.env.TRAVIS || false
+var pathToKarmaConf = __dirname.replace("/gulp", "")
 
-module.exports = gulp.task('test', function (done) {
-	console.log('isTravis', isTravis);
-  karma.start({
-    configFile: pathToKarmaConf + '/karma.conf.js',
-    singleRun: isTravis
-  }, done);
-});
+module.exports = gulp.task("test", function(done) {
+  console.log("isTravis", isTravis)
+  karma.start(
+    {
+      configFile: pathToKarmaConf + "/karma.conf.js",
+      singleRun: isTravis,
+    },
+    done
+  )
+})
 ```
 
 The result of Travis running the build is output to travis dashboard (the same output that the terminal output when running the tests in mac's terminal):
 
 [
-  
+
 <img class="  wp-image-755 aligncenter" src=".../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-11.33.00-AM-1024x693.png" alt="Screen Shot 2015-02-04 at 11.33.00 AM" width="660" height="447" srcset=".../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-11.33.00-AM-1024x693.png 1024w, .../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-11.33.00-AM-300x203.png 300w, .../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-11.33.00-AM-517x350.png 517w" sizes="(max-width: 660px) 100vw, 660px" />](.../../img/uploads/2015/02/Screen-Shot-2015-02-04-at-11.33.00-AM.png)
 
 ## Connect Travis To Your Github Project
