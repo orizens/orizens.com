@@ -140,14 +140,14 @@ class AboutPage extends React.Component {
                   linkText: "ReadM",
                   image: readm,
                   desc:
-                    "Practice Reading With Real-Time Feedback App (React, Redux, Firebase)",
+                    "Practice Reading With Real-Time Feedback App (React, Redux, Firebase, PWA)",
                 },
                 {
                   href: "echoesplayer.com",
                   linkText: "Echoes Player",
                   image: echoes,
                   desc:
-                    "A YouTube™ Alternative Web App Media Player - Made With Angular, Open Source",
+                    "A YouTube™ Alternative Web App Media Player (Made With Angular, Open Source, PWA)",
                 },
                 {
                   href: "npmjs.com/package/ngx-infinite-scroll",
