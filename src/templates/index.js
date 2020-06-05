@@ -21,7 +21,7 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
-        <Logger content={data} />
+        <Logger content={{ data, pageContext }} />
         <Search />
         <Pagination
           {...pageContext}
