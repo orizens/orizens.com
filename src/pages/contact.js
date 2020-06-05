@@ -35,17 +35,9 @@ export default function ContactPage({ data, location }) {
       <SEO title="All posts" />
       <section className="has-text-centered">
         <Image
+          className="profile"
           fixed={avatar.childImageSharp.fixed}
           alt={author}
-          style={{
-            marginRight: rhythm(1 / 2),
-            marginBottom: 0,
-            minWidth: 50,
-            borderRadius: `100%`,
-          }}
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
         />
       </section>
       <article>

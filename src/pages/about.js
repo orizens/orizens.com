@@ -40,16 +40,9 @@ class AboutPage extends React.Component {
         <SEO title="All posts" />
         <section className="has-text-centered mt-3">
           <Image
+            className="profile"
             fixed={avatar.childImageSharp.fixed}
             alt={author}
-            style={{
-              marginRight: rhythm(1 / 2),
-              marginBottom: 0,
-              minWidth: 50,
-            }}
-            imgStyle={{
-              borderRadius: `50%`,
-            }}
           />
         </section>
         <article>

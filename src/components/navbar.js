@@ -9,7 +9,7 @@ export default function Navbar({ path }) {
     query LogoQuery {
       logo: file(absolutePath: { regex: "/enso-white.png/" }) {
         childImageSharp {
-          fixed(width: 60, height: 60) {
+          fixed(width: 40, height: 40) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -46,7 +46,7 @@ export default function Navbar({ path }) {
           {navItems.map(item => (
             <Link
               key={`navbar-${item.link}`}
-              className={`navbar-item space-sides-1 ${getActiveClassName(
+              className={`navbar-item space-sides-1 is-rounded-1 is-size-1 ${getActiveClassName(
                 item.link
               )}`}
               to={item.link}
@@ -65,7 +65,7 @@ export default function Navbar({ path }) {
         className="navbar-burger burger has-text-white-bis"
         aria-label="menu"
         aria-expanded="false"
-        onClick={() => toggleNavbar()}
+        onClick={toggleNavbar}
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

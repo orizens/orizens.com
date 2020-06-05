@@ -26,11 +26,13 @@ export default function Theme() {
 
   return (
     <button
-      className={`button is-warning ${storageValue ? "" : "is-outlined"}`}
+      className={`button is-relative is-rounded is-warning ${
+        storageValue ? "is-danger" : ""
+      }`}
       onClick={toggleTheme}
     >
-      <span className="icon is-small">
-        <i className="las la-adjust"></i>
+      <span className="icon is-large">
+        <i className={`is-size-3 las la-${storageValue ? "sun" : "moon"}`}></i>
       </span>
     </button>
   )

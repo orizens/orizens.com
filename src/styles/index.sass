@@ -65,7 +65,13 @@ body
   opacity: .85
 .shadow-sm
   box-shadow: $navbar-shadow
-
+.profile img
+  border: 5px solid $primary
+  margi-bottom: 0
+  min-width: 50
+  border-radius: 50%
+.profile-small img
+  border-width: 2px
 // responsive navbar
 +mobile
   &.navbar-menu.is-active
@@ -73,13 +79,18 @@ body
     width: 100%
     top: 4rem
   .navbar-menu
-    box-shadow: $navbar-shadow
+    background-color: $primary
+    left: 0
     .navbar-item
-      color: $grey-darker
+      color: $white
+      text-align: center;
+      padding: 2rem 1rem
   .content.is-medium
     padding: 0
   .blog-post .content .gatsby-highlight
     margin: 0
+  .navbar
+    padding: .5rem
 
 +desktop
   .content .gatsby-highlight
@@ -89,13 +100,13 @@ body
 .blog-post
   h2
     font-size: $size-4
-    color: $primary
+    color: $danger
   h3
     font-size: $size-5
-    color: $primary
+    color: $danger
   h4
     font-size: $size-6
-    color: $primary
+    color: $danger
   .gatsby-resp-image-wrapper
     margin: $size-6
 
@@ -108,9 +119,10 @@ body
   background-color: transparent
   border: none
 .navbar
-  box-shadow: $navbar-shadow
-  // backdrop-filter: blur(7px)
-  background-color: rgba(40, 40, 40, 0.9) !important
+  background-color: $primary !important
+  // border-bottom: 2px solid darken($link, 0.8)
+  .navbar-menu .navbar-item.has-background-success
+    background-color: $black-ter !important
 
 .social-link
   vertical-align: middle

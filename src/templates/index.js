@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import { Logger } from "../components/logger"
 import { Pagination } from "../components/pagination"
 import { PostExcerpt } from "../components/post-excerpt"
+import Search from "../components/search"
 
 class BlogIndex extends React.Component {
   render() {
@@ -20,7 +21,8 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
-        <Logger content={pageContext} />
+        <Logger content={data} />
+        {/* <Search /> */}
         <Pagination
           {...pageContext}
           header={`Blog Page ${index} of ${pageCount}`}

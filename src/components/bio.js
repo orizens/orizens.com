@@ -45,6 +45,7 @@ const Bio = () => {
         className="link-hover-no-line"
       >
         <Image
+          className="profile profile-small"
           fixed={data.avatar.childImageSharp.fixed}
           alt={author}
           style={{
