@@ -46,7 +46,7 @@ export default function Navbar({ path }) {
           {navItems.map(item => (
             <Link
               key={`navbar-${item.link}`}
-              className={`navbar-item space-sides-1 is-rounded-1 is-size-1 ${getActiveClassName(
+              className={`navbar-item space-sides-1 is-rounded-1  ${getActiveClassName(
                 item.link
               )}`}
               to={item.link}
