@@ -11,6 +11,7 @@ import { Disqus } from "gatsby-plugin-disqus"
 import Packages from "../components/packages"
 import { Logger } from "../components/logger"
 import { PostPagination } from "../components/post-pagination"
+import Search from "../components/search"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -43,6 +44,7 @@ class BlogPostTemplate extends React.Component {
         <SEO title={title} description={description || excerpt} image={image} />
         <Bio />
         <Logger content={pageContext} />
+        <Search />
         <article className="blog-post">
           <PostPagination previous={previous} next={next} />
           <header className="title">

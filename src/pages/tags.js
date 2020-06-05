@@ -6,6 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Logger } from "../components/logger"
+import Search from "../components/search"
 
 const TagsPage = ({
   location,
@@ -20,6 +21,7 @@ const TagsPage = ({
     <SEO title="All posts" />
     <Bio />
     <Logger content={group} />
+    <Search section="tags" />
     <section className="content is-medium is-rounded-1">
       {group.map(({ fieldValue, totalCount }) => (
         <Link
