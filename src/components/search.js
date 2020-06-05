@@ -14,7 +14,7 @@ export default function Search({ section = "blog" }) {
         href={`www.google.com/search?q=site:orizens.com/${section}`}
         target="_blank"
       >
-        search <strong>orizens.com/{section}</strong> with Google
+        search orizens.com/{section} with Google
       </ExternalLink>
     </div>
     // <form onSubmit={handleSearch}>
