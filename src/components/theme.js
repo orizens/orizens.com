@@ -26,8 +26,8 @@ export default function Theme() {
 
   return (
     <button
-      className={`button is-relative is-rounded is-primary ${
-        storageValue ? "is-danger" : ""
+      className={`button is-relative is-rounded is-black is-dark-bg-theme ${
+        storageValue ? "is-dark-active" : ""
       }`}
       onClick={toggleTheme}
     >
