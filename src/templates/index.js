@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { Logger } from "../components/logger"
 import { Pagination } from "../components/pagination"
 import { PostExcerpt } from "../components/post-excerpt"
-import Search from "../components/search"
+// import Search from "../components/search"
 
 class BlogIndex extends React.Component {
   render() {
