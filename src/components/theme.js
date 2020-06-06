@@ -26,13 +26,14 @@ export default function Theme() {
 
   return (
     <button
-      className={`button is-relative is-rounded is-black is-dark-bg-theme ${
+      className={`button is-relative is-rounded is-black is-dark-bg-theme overflow-hidden is-flex is-flex-column theme-switcher ${
         storageValue ? "is-dark-active" : ""
       }`}
       onClick={toggleTheme}
     >
-      <span className="icon is-large">
-        <i className={`is-size-3 las la-${storageValue ? "moon" : "sun"}`}></i>
+      <span className="icon is-large is-flex is-flex-column">
+        <i className={`is-size-3 las la-moon`}></i>
+        <i className={`is-size-3 las la-sun`}></i>
       </span>
     </button>
   )

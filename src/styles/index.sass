@@ -54,10 +54,16 @@ body
   justify-content: center
 .is-justify-end
   justify-content: flex-end
+.is-justify-between
+  justify-content: space-between
+.overflow-hidden
+  overflow: hidden
 .flex-1
   flex: 1
 .flex-2
   flex: 2
+.is-flex-column
+  flex-direction: column
 .push-right
   margin-right: $size-5
 .link-hover-no-line:hover
@@ -76,6 +82,14 @@ body
   background-color: $black-ter !important
   color: $white
   border-color: transparent
+.theme-switcher
+  .icon
+    transition: all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    transform: translateY(-16px);
+.is-dark-active .icon
+  transform: translateY(17px);
+.navbar
+  padding: .5rem
 // responsive navbar
 +mobile
   &.navbar-menu.is-active

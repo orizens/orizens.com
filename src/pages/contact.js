@@ -69,7 +69,7 @@ export default function ContactPage({ data, location }) {
               <label className="label">Name</label>
               <div className="control has-icons-right">
                 <input
-                  className="input is-success"
+                  className="input is-success is-dark-primary"
                   type="text"
                   name="name"
                   id="name"
@@ -85,7 +85,7 @@ export default function ContactPage({ data, location }) {
               <label className="label">Email</label>
               <div className="control has-icons-left has-icons-right">
                 <input
-                  className="input is-success"
+                  className="input is-success is-dark-primary"
                   type="email"
                   name="email"
                   id="email"
@@ -108,7 +108,7 @@ export default function ContactPage({ data, location }) {
                 <textarea
                   name="message"
                   id="message"
-                  className="textarea is-success"
+                  className="textarea is-success is-dark-primary"
                   placeholder="Textarea"
                   required
                 ></textarea>

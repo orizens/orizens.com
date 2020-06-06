@@ -1,10 +1,16 @@
 @import "./custom-varilables.sass";
 
 $semi-dark: rgba(8, 10, 14, .95);
+$dark-primary: #1a202c
 .dark-mode
   color: $white-bis
-  background-color: #1a202c
+  background-color: $dark-primary
 
+  .is-dark-primary
+    background-color: $dark-primary
+    color: $white-bis
+  input::placeholder
+    color: $white-ter
   .content.is-medium
     padding: 3rem
     background-color: $semi-dark
