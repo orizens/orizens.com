@@ -15,7 +15,7 @@ export default function Layout(props) {
         <Navbar path={location.pathname} />
       </header>
       <main
-        className="section pt-5 m-auto"
+        className="section pt-5 m-auto mih-80"
         style={{
           maxWidth: rhythm(35),
         }}

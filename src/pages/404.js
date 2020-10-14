@@ -33,10 +33,8 @@ export default function NotFoundPage({ location, location: { pathname } }) {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="404: Not Found" />
-      <article className="not-found-page is-flex is-justify-center columns is-aligned">
-        <h1 className="push-right" onClick={() => console.log(data)}>
-          Nothing Is Here
-        </h1>
+      <article className="not-found-page is-flex is-flex-column is-justify-center columns is-aligned">
+        <h1 className="push-right font-1">Nothing Is Here</h1>
         <Image
           fixed={data.logo.childImageSharp.fixed}
           className="transition-floating space-vertical"
