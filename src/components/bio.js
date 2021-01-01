@@ -15,7 +15,7 @@ import Socials from "./socials"
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-picture.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/profile-nature.png/" }) {
         childImageSharp {
           fixed(width: 75, height: 75) {
             ...GatsbyImageSharpFixed
