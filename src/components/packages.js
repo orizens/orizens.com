@@ -61,8 +61,9 @@ const Packages = () => {
         style={{ width: "50%", margin: "0 auto" }}
       >
         My consulting offerings include: Front End Development, Code reviews
-        (Angular, NgRx, React, Redux, Javascript), workshops, Consulting and
-        Development. Feel free to reach out thru the below forms or through the
+        (React, Redux, Typescript, Javascript, Angular, NgRx), workshops,
+        Consulting and Development. Feel free to reach out thru the below forms
+        or through the
         <Link to="/contact" className="ml-1">
           contact
         </Link>{" "}
