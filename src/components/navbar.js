@@ -9,7 +9,7 @@ export default function Navbar({ path }) {
     query LogoQuery {
       logo: file(absolutePath: { regex: "/enso-white.png/" }) {
         childImageSharp {
-          fixed(width: 40, height: 40) {
+          fixed(width: 30, height: 30) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -20,8 +20,8 @@ export default function Navbar({ path }) {
   const toggleNavbar = () => {
     setNavbar(!navbarOpened)
   }
-  const getActiveClassName = link => {
-    return navItems.every(item => item.link !== path) &&
+  const getActiveClassName = (link) => {
+    return navItems.every((item) => item.link !== path) &&
       link !== path &&
       link === "/"
       ? "has-background-success"
@@ -37,13 +37,13 @@ export default function Navbar({ path }) {
       <div className="navbar-brand flex-1">
         <a className="is-flex is-aligned" href="/">
           <Image fixed={data.logo.childImageSharp.fixed} />
-          <span className="is-size-3 has-text-white">rizens</span>
+          <span className="is-size-3">rizens</span>
         </a>
       </div>
 
       <div className={`navbar-menu flex-2 ${navbarOpened ? "is-active" : ""}`}>
         <div className="navbar-start flex-1 is-justify-center">
-          {navItems.map(item => (
+          {navItems.map((item) => (
             <Link
               key={`navbar-${item.link}`}
               className={`navbar-item space-sides-1 is-rounded-1  ${getActiveClassName(

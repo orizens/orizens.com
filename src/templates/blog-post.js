@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
-import { Link } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -10,6 +9,7 @@ import { rhythm, scale } from "../utils/typography"
 import { Disqus } from "gatsby-plugin-disqus"
 import Packages from "../components/packages"
 import { Logger } from "../components/logger"
+import { Tags } from "../components/tags"
 import { PostPagination } from "../components/post-pagination"
 import Search from "../components/search"
 
@@ -47,7 +47,7 @@ class BlogPostTemplate extends React.Component {
         <Search />
         <article className="blog-post">
           <PostPagination previous={previous} next={next} />
-          <header className="title">
+          <header className="title has-text-centered">
             <h1 className="has-text-success has-text-weight-semibold">
               {title}
             </h1>
@@ -61,18 +61,7 @@ class BlogPostTemplate extends React.Component {
             >
               {date}
             </p>
-            <div className="tags">
-              {tags &&
-                tags.map(tag => (
-                  <Link
-                    to={`/tags/${tag}`}
-                    key={tag}
-                    className="tag button is-success is-outlined"
-                  >
-                    {tag}
-                  </Link>
-                ))}
-            </div>
+            <Tags tags={tags} />
             {image && (
               <Image
                 className="image is-rounded-1"

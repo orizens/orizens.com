@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 import Image from "gatsby-image"
+import { Tags } from "./tags"
 
 export const PostExcerpt = ({
   slug,
@@ -16,6 +17,7 @@ export const PostExcerpt = ({
   <article key={slug} className="space-vertical">
     <section className="section has-background-white-bis is-rounded-1">
       <header
+        className="has-text-centered"
         style={{
           marginBottom: rhythm(1 / 2),
         }}
@@ -24,18 +26,7 @@ export const PostExcerpt = ({
           <Link to={permalink}>{title || slug}</Link>
         </h2>
         <small className="subtitle">{new Date(date).toDateString()}</small>
-        <div className="tags">
-          {tags &&
-            tags.map(tag => (
-              <Link
-                to={`/tags/${tag}`}
-                key={tag}
-                className="tag button is-success is-outlined"
-              >
-                {tag}
-              </Link>
-            ))}
-        </div>
+        <Tags tags={tags} />
       </header>
       <section>
         {image && (

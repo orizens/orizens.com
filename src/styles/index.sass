@@ -142,10 +142,12 @@ body
   background-color: transparent
   border: none
 .navbar
-  background-color: $primary !important
+  background-color: $navbar-bg-dark
+  &.is-dark
+    background-color: $navbar-bg
   // border-bottom: 2px solid darken($link, 0.8)
   .navbar-menu .navbar-item.has-background-success
-    background-color: $black-ter !important
+    // background-color: $black-ter !important
 
 .social-link
   vertical-align: middle
