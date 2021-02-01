@@ -20,8 +20,8 @@ export default function Navbar({ path }) {
   const toggleNavbar = () => {
     setNavbar(!navbarOpened)
   }
-  const getActiveClassName = (link) => {
-    return navItems.every((item) => item.link !== path) &&
+  const getActiveClassName = link => {
+    return navItems.every(item => item.link !== path) &&
       link !== path &&
       link === "/"
       ? "has-background-success"
@@ -41,14 +41,18 @@ export default function Navbar({ path }) {
         </a>
       </div>
 
-      <div className={`navbar-menu flex-2 ${navbarOpened ? "is-active" : ""}`}>
+      <div
+        className={`navbar-menu flex-2 animate__animated ${
+          navbarOpened ? "is-active animate__bounceInDown" : ""
+        }`}
+      >
         <div className="navbar-start flex-1 is-justify-center">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <Link
               key={`navbar-${item.link}`}
-              className={`navbar-item space-sides-1 is-rounded-1  ${getActiveClassName(
+              className={`navbar-item space-sides-1 is-rounded-1 animate__animated ${getActiveClassName(
                 item.link
-              )}`}
+              )} ${navbarOpened && "animate__bounceInLeft"}`}
               to={item.link}
               activeClassName="has-background-success"
             >

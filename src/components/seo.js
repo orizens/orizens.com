@@ -93,6 +93,11 @@ function SEO({ description, lang, meta, title, image = "" }) {
           href:
             "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css",
         },
+        {
+          rel: "stylesheet",
+          href:
+            "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+        },
       ]}
     />
   )
