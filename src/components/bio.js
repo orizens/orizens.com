@@ -35,9 +35,9 @@ const Bio = () => {
   return (
     <div
       style={{
-        display: `flex`,
         marginBottom: rhythm(1),
       }}
+      className="is-flex is-dark is-justify-center navbar px-2 pb-1 pt-5 is-navbar-bg zindex-1"
     >
       <Link
         to="/about"
@@ -59,7 +59,7 @@ const Bio = () => {
           }}
         />
       </Link>
-      <p>
+      <p className="is-aligned">
         Written by{" "}
         <Link to="/about" className="link-hover-no-line">
           {author}

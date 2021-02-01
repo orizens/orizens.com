@@ -24,6 +24,8 @@ body
   margin-top: 5.5rem
 .space-bottom-3
   margin-bottom: $size-7
+.zindex-1
+  z-index: 10
 .mr-1
   margin-right: .5rem
 .ml-1
@@ -40,6 +42,13 @@ body
   padding-top: 3rem
 .lh-4
   line-height: 3rem !important
+.pt-4
+  padding-top: 5.2rem
+.px-2
+  padding-right: 2rem
+  padding-left: 2rem
+.pb-1
+  padding-bottom: 1rem
 .m-auto
   margin-left: auto
   margin-right: auto
@@ -86,12 +95,12 @@ body
   border-color: transparent
 .theme-switcher
   .icon
-    transition: all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    transform: translateY(-16px);
+    transition: all .3s cubic-bezier(0.18, 0.89, 0.32, 1.28)
+    transform: translateY(-16px)
 .is-dark-active .icon
-  transform: translateY(17px);
+  transform: translateY(17px)
 .navbar
-  padding: .5rem
+  // padding: .5rem
 // responsive navbar
 +mobile
   &.navbar-menu.is-active
@@ -148,10 +157,14 @@ body
   // border-bottom: 2px solid darken($link, 0.8)
   .navbar-menu .navbar-item.has-background-success
     // background-color: $black-ter !important
-
+.is-navbar-bg
+  background-color: $navbar-bg-dark
+  &.-is-dark
+  background-color: $navbar-bg
 .social-link
   vertical-align: middle
-
+.backdrop-blur-5
+  backdrop-filter: blur(5px)
 a
   transition: all .3s ease-out
 
@@ -166,7 +179,7 @@ strong
   margin-right: .5rem
   margin-top: .5rem
 
-  $tagsColor: ('angular2': tomato, 'react': #03a9f4, 'redux': #673ab7, 'architecture': #795548, 'javascript': #ffc107, 'typescript': #2196f3, 'rxjs': #e91e63, 'ngrx': #ba68c8, 'ngrx-effects': #ba68c8, 'nodejs': #8bc34a)
+  $tagsColor: ('angular2': tomato, 'react': #03a9f4, 'redux': #673ab7, 'architecture': #ff5722, 'javascript': #ffc107, 'typescript': #2196f3, 'rxjs': #e91e63, 'ngrx': #ba68c8, 'ngrx-effects': #ba68c8, 'nodejs': #8bc34a, 'hooks': #2196f3, 'clean-code': #8bc34a)
 
   @each $tag, $bgcolor in $tagsColor
     &.tag-#{$tag}

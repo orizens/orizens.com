@@ -1,6 +1,6 @@
 @import "./custom-varilables.sass";
 
-$semi-dark: rgba(8, 10, 14, .95);
+$semi-dark: $navbar-bg;
 $dark-primary: #1a202c
 
 .dark-mode
@@ -17,7 +17,7 @@ $dark-primary: #1a202c
     background-color: $semi-dark
   
   .has-background-white-bis
-    background-color: $semi-dark !important
+    background-color: $semi-dark
   .tag
     background-color: $link
     color: $black-ter
@@ -25,8 +25,15 @@ $dark-primary: #1a202c
     color: $white-bis
   .footer
     background-color: $semi-dark
-  main a:hover, .content a:hover,
+  main a:hover, 
+  .content a:hover,
     color: $warning
+
+  .tag
+    border: 1px solid
+  .tag:hover
+    background: transparent
+    border-color: $warning
   h1, h2, h3, h4, h5, h6
     color: $white
   strong

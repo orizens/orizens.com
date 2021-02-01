@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 // Components
 import { Link, graphql } from "gatsby"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Logger } from "../components/logger"
@@ -19,7 +18,6 @@ const TagsPage = ({
 }) => (
   <Layout location={location} title="All Orizens Article Tags">
     <SEO title="All posts" />
-    <Bio />
     <Logger content={group} />
     <Search section="tags" />
     <section className="content is-medium is-rounded-1">

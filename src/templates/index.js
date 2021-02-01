@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Logger } from "../components/logger"
@@ -20,7 +19,6 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
-        <Bio />
         <Logger content={{ data, pageContext }} />
         <Search />
         <Pagination

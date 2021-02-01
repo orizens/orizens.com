@@ -4,15 +4,20 @@ import { rhythm } from "../utils/typography"
 import "../styles/index.sass"
 import Navbar from "./navbar"
 import Socials from "./socials"
+import Bio from "./bio"
 
 export default function Layout(props) {
   const { location, children, footer } = props
   // const rootPath = `${__PATH_PREFIX__}/`
   // if (location.pathname === rootPath) {
+  const isInValidToShow = ["/about", "/contact"].some(
+    route => route === location.pathname
+  )
   return (
     <div>
       <header>
         <Navbar path={location.pathname} />
+        {!isInValidToShow && <Bio />}
       </header>
       <main
         className="section pt-5 m-auto mih-80"

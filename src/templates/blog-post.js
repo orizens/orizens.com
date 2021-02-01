@@ -42,7 +42,6 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={location} title={siteTitle} footer={<Packages />}>
         <SEO title={title} description={description || excerpt} image={image} />
-        <Bio />
         <Logger content={pageContext} />
         <Search />
         <article className="blog-post">
@@ -71,7 +70,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </header>
           <section
-            className="content is-medium is-rounded-1"
+            className="content is-medium is-rounded-1 backdrop-blur-5"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <hr

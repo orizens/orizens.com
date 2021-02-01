@@ -16,7 +16,7 @@ const typography = new Typography({
   googleFonts: [
     {
       name: "Open Sans",
-      styles: ["300"],
+      styles: ["300", "400", "500"],
     },
   ],
 })
