@@ -100,6 +100,28 @@ body
 .is-dark-active .icon
   transform: translateY(17px)
 .navbar
+
+
+// algolia start
+.ais-Hits-list
+  display: flex
+  flex-wrap: wrap
+  flex-direction: row
+  justify-content: space-between
+  column-gap: 1rem
+  li.ais-Hits-item
+    max-width: 47%
+  li.ais-Hits-item:empty
+    display: none
+.ais-SearchBox-form
+  .btn-clear-search
+    transition: all 0.2s ease-out
+    transform: translatex(-4rem)
+  input.input:valid + .btn-clear-search,
+  input.input:focus + .btn-clear-search
+    transform: translatex(0rem)
+
+// algolia end
   // padding: .5rem
 // responsive navbar
 +mobile
