@@ -52,7 +52,10 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
         value={currentRefinement}
         onChange={event => refine(event.currentTarget.value)}
       />
-      <button className="button is-primary" onClick={() => refine("")}>
+      <button
+        className="button is-danger is-rounded btn-clear-search"
+        onClick={() => refine("")}
+      >
         <i className="las la-times" />
       </button>
       {isSearchStalled ? "My search is stalled" : ""}

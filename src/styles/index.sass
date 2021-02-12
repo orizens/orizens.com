@@ -113,6 +113,12 @@ body
     max-width: 47%
   li.ais-Hits-item:empty
     display: none
+.ais-SearchBox-form
+  .btn-clear-search
+    display: none
+  input.input:valid + .btn-clear-search,
+  input.input:focus + .btn-clear-search
+    display: block
 
 // algolia end
   // padding: .5rem
