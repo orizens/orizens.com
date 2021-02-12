@@ -14,7 +14,7 @@ const filterResult =
 const Hit = ({ hit }) =>
   hit.description === filterResult ? null : (
     <a href={hit.url} className="m-auto ">
-      <article className="has-background-white-bis has-text-centered mt-3 is-flex-column section">
+      <article className="has-background-white-bis has-text-centered mt-3 is-flex-column section is-rounded-1">
         <h2 className="space-bottom-3">
           <div className="has-text-primary is-size-5">{hit.title}</div>
           <div class="media section is-flex-column">

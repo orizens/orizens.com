@@ -118,12 +118,16 @@ body
   li.ais-Hits-item:empty
     display: none
 .ais-SearchBox-form
+  .input
+    width: 30vw 
   .btn-clear-search
     transition: all 0.2s ease-out
     transform: translatex(-4rem)
+    opacity: 0
   input.input:valid + .btn-clear-search,
   input.input:focus + .btn-clear-search
     transform: translatex(0rem)
+    opacity: 1
 
 // algolia end
   // padding: .5rem
@@ -147,6 +151,11 @@ body
     margin: 0
   .navbar
     padding: .5rem
+  li.ais-Hits-item
+    max-width: 100%
+  .ais-SearchBox-form
+    .input
+      width: 60vw 
 
 +desktop
   .content .gatsby-highlight
