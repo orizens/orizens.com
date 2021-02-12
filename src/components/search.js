@@ -48,7 +48,7 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
     >
       <input
         type="search"
-        className="ais-SearchBox-input input is-rounded"
+        className="ais-SearchBox-input input is-rounded zindex-1"
         value={currentRefinement}
         onChange={event => refine(event.currentTarget.value)}
       />

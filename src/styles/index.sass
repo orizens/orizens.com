@@ -115,10 +115,11 @@ body
     display: none
 .ais-SearchBox-form
   .btn-clear-search
-    display: none
+    transition: all 0.2s ease-out
+    transform: translatex(-4rem)
   input.input:valid + .btn-clear-search,
   input.input:focus + .btn-clear-search
-    display: block
+    transform: translatex(0rem)
 
 // algolia end
   // padding: .5rem
