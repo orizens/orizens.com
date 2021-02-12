@@ -50,11 +50,15 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
         type="search"
         className="ais-SearchBox-input input is-rounded zindex-1"
         value={currentRefinement}
+        required
         onChange={event => refine(event.currentTarget.value)}
       />
       <button
         className="button is-danger is-rounded btn-clear-search"
-        onClick={() => refine("")}
+        onClick={ev => {
+          refine("")
+          ev.preventDefault()
+        }}
       >
         <i className="las la-times" />
       </button>
