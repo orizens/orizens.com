@@ -13,6 +13,7 @@ export default function Layout(props) {
   const isInValidToShow = ["/about", "/contact"].some(
     route => route === location.pathname
   )
+
   return (
     <div>
       <header>
