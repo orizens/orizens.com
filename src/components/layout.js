@@ -21,7 +21,7 @@ export default function Layout(props) {
         {!isInValidToShow && <Bio />}
       </header>
       <main
-        className="section pt-5 m-auto mih-80"
+        className="section pt-0 m-auto mih-80"
         style={{
           maxWidth: rhythm(35),
         }}
@@ -29,7 +29,7 @@ export default function Layout(props) {
         {children}
       </main>
       {footer && footer}
-      <footer className="content footer has-text-centered is-flex is-aligned">
+      <footer className="content footer has-text-centered is-flex is-aligned mb-0">
         <span className="mr-1"> © {new Date().getFullYear()}, Built with </span>
         <a
           href="https://www.gatsbyjs.org"
