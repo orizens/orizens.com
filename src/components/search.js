@@ -18,7 +18,7 @@ const Hit = ({ hit }) =>
             {hit.title}
           </a>
           <div class="media section is-flex-column">
-            <figure className="image is-128x128 media-left">
+            <figure className="is-rounded-1 overflow-hidden">
               <img src={hit.image} />
             </figure>
             <Snippet

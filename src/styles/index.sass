@@ -101,16 +101,18 @@ body
   transform: translateY(17px)
 .navbar
 
+
+// algolia start
 .ais-Hits-list
   display: flex
   flex-wrap: wrap
   flex-direction: row
   justify-content: space-between
   column-gap: 3rem
-
-// algolia start
-li.ais-Hits-item
+  li.ais-Hits-item
     max-width: 22rem
+  li.ais-Hits-item:empty
+    display: none
 
 // algolia end
   // padding: .5rem
