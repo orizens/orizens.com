@@ -60,6 +60,7 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
   </div>
 )
 
+const OrizensSearchBox = connectSearchBox(SearchBox)
 export default function Search({ section = "blog" }) {
   // const [query, setQuery] = React.useState(null)
 
@@ -77,7 +78,7 @@ export default function Search({ section = "blog" }) {
           search orizens.com/{section} with Google
         </ExternalLink> */}
         <InstantSearch indexName={orizensIndex} searchClient={searchClient}>
-          <SearchBox />
+          <OrizensSearchBox />
           <div class="panel">
             <Snippet attribute="description" hit={Hit} />
           </div>
