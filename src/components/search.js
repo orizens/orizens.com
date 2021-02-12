@@ -48,8 +48,9 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
     >
       <input
         type="search"
-        className="ais-SearchBox-input input is-rounded zindex-1"
+        className="ais-SearchBox-input input is-rounded zindex-1 has-background-white-bis has-text-primary is-primary"
         value={currentRefinement}
+        placeholder="find anything..."
         required
         onChange={event => refine(event.currentTarget.value)}
       />
