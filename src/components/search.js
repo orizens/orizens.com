@@ -58,7 +58,6 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => (
       >
         <i className="las la-times" />
       </button>
-      {isSearchStalled ? "My search is stalled" : ""}
     </form>
   </div>
 )
