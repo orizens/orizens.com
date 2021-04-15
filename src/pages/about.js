@@ -38,7 +38,7 @@ class AboutPage extends React.Component {
         footer={<Packages />}
       >
         <SEO title="All posts" />
-        <section className="has-text-centered pt-4">
+        <section className="has-text-centered">
           <Image
             className="profile"
             fixed={avatar.childImageSharp.fixed}
