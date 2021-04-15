@@ -21,7 +21,7 @@ export default function Layout(props) {
         {!isInValidToShow && <Bio />}
       </header>
       <main
-        className="section pt-0 m-auto mih-80"
+        className="section m-auto mih-80"
         style={{
           maxWidth: rhythm(35),
         }}
