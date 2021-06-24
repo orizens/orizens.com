@@ -20,7 +20,7 @@ This series is **kept updated** with new articles that are published here.
 
 Be sure to checkout my live open source live projects:
 
-- [Echoes Player](http://echoesplayer.com) ([Angular Source Code](http://github.com/orizens/echoes-player))
+- [Echoes Player](https://echoesplayer.netlify.app/) ([Angular Source Code](http://github.com/orizens/echoes-player))
 - [Orizens npm packages](http://npmjs.com/~orizens)
 
 ## Online Angular & NGRX Workshop

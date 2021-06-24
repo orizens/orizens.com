@@ -136,7 +136,7 @@ class AboutPage extends React.Component {
                     "Practice Reading With Real-Time Feedback App (React, Redux, Firebase, PWA)",
                 },
                 {
-                  href: "echoesplayer.com",
+                  href: "echoesplayer.netlify.app",
                   linkText: "Echoes Player",
                   image: echoes,
                   desc:

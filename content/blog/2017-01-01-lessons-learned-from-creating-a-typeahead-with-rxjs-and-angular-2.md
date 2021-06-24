@@ -23,7 +23,7 @@ tags:
   - rxjs
 ---
 
-Following recent articles on development of [Echoes Player](http://echoesplayer.com), my [open source media player](http://echoesplayer.com) built with Angular, I really wanted to implement a typeahead feature for this version. There are some great ng2-typeahead out-there (available in npm), however, I wanted to take this opportunity to built something from scratch - exploring deeper concepts in Angular. I learned quite a few from implementing a typeahead component and i'm sharing these in this article.
+Following recent articles on development of [Echoes Player](https://echoesplayer.netlify.app/), my [open source media player](https://echoesplayer.netlify.app/) built with Angular, I really wanted to implement a typeahead feature for this version. There are some great ng2-typeahead out-there (available in npm), however, I wanted to take this opportunity to built something from scratch - exploring deeper concepts in Angular. I learned quite a few from implementing a typeahead component and i'm sharing these in this article.
 
 ## Typeahead - Design
 
@@ -320,7 +320,7 @@ The suggestions box is similar to a dropdown. To allow this feature, I took the 
 
 ## All Lessons Learned From Typeahead Component
 
-You can see the end result live on [Echoes Player App](http://echoesplayer.com) and in this screenshot:
+You can see the end result live on [Echoes Player App](https://echoesplayer.netlify.app/) and in this screenshot:
 
 <img class="alignnone wp-image-1156 size-large" src=".../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-1024x754.png" width="697" height="513" srcset=".../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-1024x754.png 1024w, .../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-300x221.png 300w, .../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-768x566.png 768w" sizes="(max-width: 697px) 100vw, 697px" />
 

@@ -21,7 +21,7 @@ tags:
   - typescript
 ---
 
-I like to write clear and maintainable code. To be honest - sometimes I just don't. However, I always look for how to make the code that I write to be better. While developing and enhancing my [open source media player](http://github.com/orizens/echoes-player), [Echoes Player](http://echoesplayer.com), I tend to look again at the code and think of how to make it better in terms of being reusable, clearer and maintainable. The project is build with Angular and NgRx as a state management. In contrary to examples you can find in articles about Angular and NgRx, I chose to use a similar approach of the <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank" rel="noopener">Proxy Pattern</a> to make components and state management less verbose.
+I like to write clear and maintainable code. To be honest - sometimes I just don't. However, I always look for how to make the code that I write to be better. While developing and enhancing my [open source media player](http://github.com/orizens/echoes-player), [Echoes Player](https://echoesplayer.netlify.app/), I tend to look again at the code and think of how to make it better in terms of being reusable, clearer and maintainable. The project is build with Angular and NgRx as a state management. In contrary to examples you can find in articles about Angular and NgRx, I chose to use a similar approach of the <a href="https://en.wikipedia.org/wiki/Proxy_pattern" target="_blank" rel="noopener">Proxy Pattern</a> to make components and state management less verbose.
 
 <!--more-->
 

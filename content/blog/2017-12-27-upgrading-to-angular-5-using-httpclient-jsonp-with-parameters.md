@@ -1,8 +1,8 @@
 ---
 id: 1295
-title: 'Upgrading to Angular 5: Using HttpClient, JSONP with parameters'
+title: "Upgrading to Angular 5: Using HttpClient, JSONP with parameters"
 date: 2017-12-27T12:30:41+00:00
-author: Oren Farhi 
+author: Oren Farhi
 templateKey: blog-post
 layout: post
 guid: http://orizens.com/wp/?p=1295
@@ -17,6 +17,7 @@ categories:
 tags:
   - angular2
 ---
+
 [Angular](https://blog.angular.io/version-5-0-0-of-angular-now-available-37e414935ced) released **version 5** - deprecating the old http module "**@angular/http**" with the replacement of "**@angular/common/http**". Along with the http module, the jsonp module was also deprecated in favor of a better replacement which is included with the new HttpClient. The usage of jsonp is a little bit different with this version. My open source project, [ngx-typeahead](https://www.npmjs.com/package/ngx-typeahead) - is an auto suggest directive for Angular-  allowing to query a remote source either with jsonp or http (and with version 0.1.0 - static list as well). In this article, i'm sharing the steps I took for upgrading the package to use HttpClient and performing a jsonp request with parameters.<!--more-->
 
 ## Step 1: Updating The Module Imports
@@ -49,12 +50,11 @@ import {
   Response,
   Jsonp,
   URLSearchParams,
-  Http
-} from '@angular/http';
+  Http,
+} from "@angular/http"
 
 // After: with Angular 5
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient } from "@angular/common/http"
 ```
 
 ## Step 2: Updating The Http Service Injection
@@ -84,7 +84,7 @@ constructor(
 
 In the old version, i used the jsonp service and had to create an options object which includes the parameters to attach for the request. Eventually, I passed 2 arguments to the jsonp method that was used ("get" by default):
 
-```typescript
+````typescript
 
 
 With the new HttpClient it's a little bit different. "jsonp" is a method that performs the jsonp request. It takes the first argument as the url and the callback string name as the second argument.
@@ -104,8 +104,8 @@ requestJsonp(url, options, callback = 'callback') {
       .map((response: Response) => response[1])
       .map((results: any[]) => results.map((result: string) => result[0]));
   }
-```
+````
 
-You can see and experiment with ngx-typeahead in this [plunkr demo](http://plnkr.co/edit/gV6kMSRlogjBKnh3JHU3?p=preview) and in production on my open source alternative player to YouTube: [Echoes Player](http://echoesplayer.com)
+You can see and experiment with ngx-typeahead in this [plunkr demo](http://plnkr.co/edit/gV6kMSRlogjBKnh3JHU3?p=preview) and in production on my open source alternative player to YouTube: [Echoes Player](https://echoesplayer.netlify.app/)
 
-[<img class="alignnone wp-image-1299" src=".../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM.png" alt="" width="408" height="339" srcset=".../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM.png 964w, .../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM-300x250.png 300w, .../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM-768x639.png 768w" sizes="(max-width: 408px) 100vw, 408px" />](http://echoesplayer.com)
+[<img class="alignnone wp-image-1299" src=".../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM.png" alt="" width="408" height="339" srcset=".../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM.png 964w, .../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM-300x250.png 300w, .../../img/uploads/2017/12/Screen-Shot-2017-12-27-at-12.23.12-PM-768x639.png 768w" sizes="(max-width: 408px) 100vw, 408px" />](https://echoesplayer.netlify.app/)

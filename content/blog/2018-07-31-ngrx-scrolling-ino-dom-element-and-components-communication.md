@@ -20,7 +20,7 @@ tags:
   - ngrx
 ---
 
-My open source app, [Echoes Player](http://github.com/orizens/echoes-player), allows to consume and create a "now" playlist - where you can queue media to the playlist that is currently playing. A somewhat not too visible feature in [Echoes](http://echoesplayer.com) is the ability to "reveal" the now playing track in the playlist. This article shows how I integrated ngrx, angular's ng-for and the DOM's scrollTo feature to support the functionality for this feature.<!--more-->
+My open source app, [Echoes Player](http://github.com/orizens/echoes-player), allows to consume and create a "now" playlist - where you can queue media to the playlist that is currently playing. A somewhat not too visible feature in [Echoes](https://echoesplayer.netlify.app/) is the ability to "reveal" the now playing track in the playlist. This article shows how I integrated ngrx, angular's ng-for and the DOM's scrollTo feature to support the functionality for this feature.<!--more-->
 
 ## Now Playlist "Reveal" Feature
 
@@ -236,6 +236,6 @@ The "**now playing**" feature is a nice component featuring few key concepts tha
 
 Those concepts can be further enhanced and achieved differently using other strategies. I always look for doing [things simpler](http://orizens.com/wp/blog/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/) or rather different, as long as it feels intuitive, fits the [code architecture](http://orizens.com/wp/blog/decluttering-angular-components-the-proxy-pattern/) used for the app and follow best practices for creating robust code.
 
-Echoes Player is an open source project and [entire code is available](http://github.com/orizens/echoes-player) (feel free to fork, open pull requests and suggest features) as well using the actual app at <http://echoesplayer.com>.
+Echoes Player is an open source project and [entire code is available](http://github.com/orizens/echoes-player) (feel free to fork, open pull requests and suggest features) as well using the actual app at <https://echoesplayer.netlify.app/>.
 
 If you like this article or in need for an advice for your Front End Development project, reach me out via the [contact page](http://orizens.com/contact) or get a quote free of charge through one of [consulting packages](http://orizens.com/services) i'm offering as part of my services (or click on one of them on the right, if you're using a desktop/laptop).

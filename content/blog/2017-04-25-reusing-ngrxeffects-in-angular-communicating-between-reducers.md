@@ -22,7 +22,7 @@ tags:
   - ngrx
 ---
 
-After upgrading my <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a>, "<a href="http://echoesplayer.com" target="_blank" rel="noopener noreferrer">Echoes Player</a>", to work with the latest stable angular-cli 1.0 version (<a href="http://orizens.com/wp/blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/" target="_blank" rel="noopener noreferrer">wrote an article about it</a>), I set down to refactor the application's code. I always like to look at implementations few times and experiment with several approaches. This time, I wanted to take advantage of <a href="https://github.com/ngrx/effects" target="_blank" rel="noopener noreferrer">ngrx/effects</a> observables and understand how those can be reused. In this post I'm sharing my take on reusing ngrx/effects in order to communicate between two different reducers.<!--more-->
+After upgrading my <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a>, "<a href="https://echoesplayer.netlify.app/" target="_blank" rel="noopener noreferrer">Echoes Player</a>", to work with the latest stable angular-cli 1.0 version (<a href="http://orizens.com/wp/blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/" target="_blank" rel="noopener noreferrer">wrote an article about it</a>), I set down to refactor the application's code. I always like to look at implementations few times and experiment with several approaches. This time, I wanted to take advantage of <a href="https://github.com/ngrx/effects" target="_blank" rel="noopener noreferrer">ngrx/effects</a> observables and understand how those can be reused. In this post I'm sharing my take on reusing ngrx/effects in order to communicate between two different reducers.<!--more-->
 
 ## Preface
 
@@ -212,7 +212,7 @@ ngOnDestroy() {
 }
 ```
 
-That sums up the reuse of the "NowPlaylist" effects and the concept of communicating between two reducers or more. "<a href="http://echoesplayer.com" target="_blank" rel="noopener noreferrer">Echoes Player</a>" is an <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a> - feel free to **suggest** better alternatives, **feature** requests and other suggestions as well.
+That sums up the reuse of the "NowPlaylist" effects and the concept of communicating between two reducers or more. "<a href="https://echoesplayer.netlify.app/" target="_blank" rel="noopener noreferrer">Echoes Player</a>" is an <a href="http://github.com/orizens/echoes-player" target="_blank" rel="noopener noreferrer">open source project</a> - feel free to **suggest** better alternatives, **feature** requests and other suggestions as well.
 
 My new book - "<a href="http://amazon.com/Reactive-Programming-Angular-ngrx-Extensions/dp/1484226194/ref=sr_1_1?ie=UTF8&qid=1492519061&sr=8-1&keywords=reactive+programming+with+angular" target="_blank" rel="noopener noreferrer">Reactive Programming With Angular & ngrx extensions</a>" - is soon to be release through <a href="http://apress.com/us/book/9781484226193" target="_blank" rel="noopener noreferrer">Apress Media</a> (expected date is June 2017). This book walks through the creation process of a liter version of Echoes while understanding the concepts of reactive programming with RxJs, Angular and ngrx extensions - ngrx/store & ngrx/effects.
 
