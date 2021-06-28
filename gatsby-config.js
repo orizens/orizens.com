@@ -4,8 +4,8 @@ module.exports = {
   siteMetadata: {
     title: `Orizens`,
     author: `Oren Farhi`,
-    occupation: `Senior Front End Engineer`,
-    description: `Front End Engineer, React Consultant, Software Architect, Javascript, Angular and much more`,
+    occupation: `Front End Engineer Tech Lead`,
+    description: `Front End Engineer Tech Lead, React Consultant, Software Architect, Javascript, Angular and much more`,
     siteUrl: `https://orizens.com`,
     disqus: `orizens`,
     social: {

@@ -55,7 +55,8 @@ class AboutPage extends React.Component {
           </section>
           <section className="content is-size-4 is-medium is-rounded-1 mt-3 m-auto">
             <p className="m-auto">
-              Hi - I'm {author}. I'm a Senior Software Engineer, focusing on{" "}
+              Hi - I'm {author}. I'm a Senior Software Engineer / Front End Tech
+              Lead, focusing on{" "}
               <strong>Front End &amp; Software Architecture</strong>. <br />I
               graduated with a{" "}
               <strong>BA in Computer Science &amp; Business Management</strong>{" "}
