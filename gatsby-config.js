@@ -88,7 +88,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#23d160`,
         display: `minimal-ui`,
-        icon: `content/assets/profile-nature.png`,
+        icon: `content/assets/profile-2021.jpg`,
       },
     },
     `gatsby-plugin-offline`,

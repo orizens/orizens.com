@@ -136,7 +136,7 @@ export default function ContactPage({ data, location }) {
 
 export const pageQuery = graphql`
   query {
-    avatar: file(absolutePath: { regex: "/profile-nature.png/" }) {
+    avatar: file(absolutePath: { regex: "/profile-2021.jpg/" }) {
       childImageSharp {
         fixed(width: 200, height: 200) {
           ...GatsbyImageSharpFixed
