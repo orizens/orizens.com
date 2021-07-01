@@ -75,7 +75,7 @@ export default function Search({ section = "blog" }) {
   //   ev.preventDefault()
   //   setQuery(ev.target.value)
   // }
-  return (
+  return true ? null : (
     <>
       <div className="is-flex-column is-justify-center">
         {/* <ExternalLink
