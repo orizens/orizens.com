@@ -76,14 +76,20 @@ class AboutPage extends React.Component {
               about it and reading a lot.
             </p>
             <p className="m-auto">
-              I believe in producing easy <strong>maintainable code</strong> for
-              applications. I consult to companies and startups on how to
-              approach code in their projects, keep it maintainable and focusing
-              on delivering a <strong>high quality</strong> and well tested
-              code.
+              In my work, I incorporate a 3 point perspective to software
+              architecture while looking at a challenge with depth and entirety.{" "}
+              <br />
+              With my experience - i'm able to lead teams into taking a unique
+              perspective, look up and move forward.
+              <br />I believe in producing easy{" "}
+              <strong>maintainable code</strong> for applications. I consult to
+              companies and startups on how to approach code in their projects,
+              keep it maintainable and focusing on delivering a{" "}
+              <strong>high quality</strong> and well tested code.
             </p>
             <p className="m-auto">
-              When consulting and developing, I follow simple principles:
+              When consulting and developing, I like to make a difference by
+              following simple principles:
             </p>
             <div className="content">
               <ul className="list-unstyled">
