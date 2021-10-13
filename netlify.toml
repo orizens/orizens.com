@@ -1,9 +1,6 @@
 [build]
   publish = "public"
   command = "npm run build"
-[build.environment]
-  YARN_VERSION = "1.9.4"
-  YARN_FLAGS = "--no-ignore-optional"
 [[redirects]]
   from="/cv"
   to="https://orizens.github.io/cv/"
