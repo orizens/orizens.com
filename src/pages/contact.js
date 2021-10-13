@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Image from "gatsby-image"
 // import { rhythm } from "../utils/typography"
 import { Skills } from "../components/skills"
@@ -28,11 +29,11 @@ export default function ContactPage({ data, location }) {
       }
     }, 1000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [search])
 
   return (
     <Layout location={location} title={title} footer={<Packages />}>
-      <SEO title="All posts" />
+      <Seo title="All posts" />
       <section className="has-text-centered pt-4">
         <Image
           className="profile"

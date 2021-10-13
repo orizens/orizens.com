@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Image from "gatsby-image"
 // import { rhythm } from "../utils/typography"
 import { Link } from "gatsby"
@@ -37,7 +37,7 @@ class AboutPage extends React.Component {
         title={title}
         footer={<Packages />}
       >
-        <SEO title="All posts" />
+        <Seo title="All posts" />
         <section className="has-text-centered pt-4">
           <Image
             className="profile"

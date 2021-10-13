@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 // import Image from "gatsby-image"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { Logger } from "../components/logger"
 
 export default function AngularArticlesSeries({ data, location }) {
@@ -27,7 +27,7 @@ export default function AngularArticlesSeries({ data, location }) {
 
   return (
     <Layout location={location}>
-      <SEO title="Angular Article Series" />
+      <Seo title="Angular Article Series" />
       <Logger content={data} />
       <article className="content angular-article-series">
         <div

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { Logger } from "../components/logger"
 import { Pagination } from "../components/pagination"
 import { PostExcerpt } from "../components/post-excerpt"
@@ -18,7 +18,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
+        <Seo title="All posts" />
         <Logger content={{ data, pageContext }} />
         <Search />
         <Pagination

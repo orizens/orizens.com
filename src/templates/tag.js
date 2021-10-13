@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { Logger } from "../components/logger"
 // import { Pagination } from "../components/pagination"
 import { PostExcerpt } from "../components/post-excerpt"
@@ -17,7 +17,7 @@ const Tags = ({ pageContext, data, location }) => {
   // } tagged with "${tag}"`
   return (
     <Layout location={location} title={`Articles tagged with: ${tag}`}>
-      <SEO title="All posts" />
+      <Seo title="All posts" />
       <Logger content={edges} />
       <Logger content={totalCount} />
       {/* <Pagination

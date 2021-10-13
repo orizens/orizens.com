@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { Disqus } from "gatsby-plugin-disqus"
 import Packages from "../components/packages"
@@ -41,7 +41,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={location} title={siteTitle} footer={<Packages />}>
-        <SEO title={title} description={description || excerpt} image={image} />
+        <Seo title={title} description={description || excerpt} image={image} />
         <Logger content={pageContext} />
         <Search />
         <article className="blog-post">
