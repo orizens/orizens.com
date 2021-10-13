@@ -12,43 +12,41 @@ module.exports = {
       twitter: `orizens`,
       github: `orizens`,
       npm: `orizens`,
-      linkedin: `orenfarhi`,
+      linkedin: `orenfarhi`
     },
     publications: {
-      angular: `//www.apress.com/us/book/9781484226193`,
-    },
+      angular: `//www.apress.com/us/book/9781484226193`
+    }
   },
   plugins: [
     "gatsby-plugin-sass",
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
+        name: `blog`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/pages`,
-        name: `pages`,
-      },
+        name: `pages`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
+        name: `assets`
+      }
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/img`,
-        name: "images",
-      },
+        name: "images"
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -57,26 +55,28 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
-            },
+              maxWidth: 630
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
+          `gatsby-remark-smartypants`
+        ]
+      }
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-1207545-1`,
-      },
+        trackingId: `UA-1207545-1`
+      }
     },
     `gatsby-plugin-feed`,
     {
@@ -88,31 +88,31 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#23d160`,
         display: `minimal-ui`,
-        icon: `content/assets/profile-2021.jpg`,
-      },
+        icon: `content/assets/profile-2021.jpg`
+      }
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
+        pathToConfigModule: `src/utils/typography`
+      }
     },
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `orizens`,
-      },
+        shortname: `orizens`
+      }
     },
-    `gatsby-plugin-netlify-cms`,
+    // `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        queries: require("./src/utils/algolia-queries"),
-      },
-    },
-  ],
+        queries: require("./src/utils/algolia-queries")
+      }
+    }
+  ]
 }
