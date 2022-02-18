@@ -5,7 +5,7 @@ const createPaginatedPages = require("gatsby-paginate")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const result = await graphql(
     `
       {
@@ -63,8 +63,8 @@ exports.createPages = async ({ graphql, actions }) => {
   createPaginatedPages({
     edges: posts,
     createPage: createPage,
-    pageTemplate: "src/templates/index.js",
-    pageLength: 5 // This is optional and defaults to 10 if not used
+    pageTemplate: "src/templates/index.tsx",
+    pageLength: 5, // This is optional and defaults to 10 if not used
     // pathPrefix: "blog", // This is optional and defaults to an empty string if not used
     // context: {}, // This is optional and defaults to an empty object if not used
   })
@@ -80,8 +80,8 @@ exports.createPages = async ({ graphql, actions }) => {
         // slug: post.node.fields.slug,
         slug: post.node.fields.slug,
         previous,
-        next
-      }
+        next,
+      },
     })
   })
 
@@ -91,10 +91,10 @@ exports.createPages = async ({ graphql, actions }) => {
   tags.forEach(tag => {
     createPage({
       path: `/tags/${tag.fieldValue}/`,
-      component: path.resolve(`./src/templates/tag.js`),
+      component: path.resolve(`./src/templates/tag.tsx`),
       context: {
-        tag: tag.fieldValue
-      }
+        tag: tag.fieldValue,
+      },
     })
   })
 }
@@ -107,7 +107,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value
+      value,
     })
   }
 }

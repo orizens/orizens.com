@@ -8,35 +8,33 @@ import { Pagination } from "../components/pagination"
 import { PostExcerpt } from "../components/post-excerpt"
 import Search from "../components/search"
 
-class BlogIndex extends React.Component {
-  render() {
-    // models/page-context.ts
-    const { data, pageContext } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    // const posts = data.allMarkdownRemark.edges
-    const { group, index, pageCount } = pageContext
+const BlogIndex = props => {
+  // models/page-context.ts
+  const { data, pageContext } = props
+  const siteTitle = data.site.siteMetadata.title
+  // const posts = data.allMarkdownRemark.edges
+  const { group, index, pageCount } = pageContext
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <Seo title="All posts" />
-        <Logger content={{ data, pageContext }} />
-        <Search />
-        <Pagination
-          {...pageContext}
-          header={`Blog Page ${index} of ${pageCount}`}
+  return (
+    <Layout location={props.location} title={siteTitle}>
+      <Seo title="All posts" />
+      <Logger content={{ data, pageContext }} />
+      <Search />
+      <Pagination
+        {...pageContext}
+        header={`Blog Page ${index} of ${pageCount}`}
+      />
+      {group.map(({ node: { excerpt, fields, frontmatter } }) => (
+        <PostExcerpt
+          {...fields}
+          {...frontmatter}
+          excerpt={excerpt}
+          key={frontmatter.id}
         />
-        {group.map(({ node: { excerpt, fields, frontmatter } }) => (
-          <PostExcerpt
-            {...fields}
-            {...frontmatter}
-            excerpt={excerpt}
-            key={frontmatter.id}
-          />
-        ))}
-        <Pagination {...pageContext} />
-      </Layout>
-    )
-  }
+      ))}
+      <Pagination {...pageContext} />
+    </Layout>
+  )
 }
 
 export default BlogIndex

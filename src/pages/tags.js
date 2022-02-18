@@ -17,7 +17,7 @@ const TagsPage = ({
   },
 }) => (
   <Layout location={location} title="All Orizens Article Tags">
-    <Seo title="All posts" />
+    <Seo title="All Tags in Orizens.com" />
     <Logger content={group} />
     <Search section="tags" />
     <section className="content is-medium is-rounded-1">
@@ -28,7 +28,7 @@ const TagsPage = ({
           className="link-hover-no-line"
         >
           <span
-            className={`tag button is-outlined is-success is-size-6 tag-${fieldValue}`}
+            className={`tag tag-large tag-warning is-outlined is-size-6 tag-${fieldValue}`}
           >
             {fieldValue} ({totalCount})
           </span>

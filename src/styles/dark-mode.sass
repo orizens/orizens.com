@@ -18,9 +18,7 @@ $dark-primary: #1a202c
   
   .has-background-white-bis
     background-color: $semi-dark
-  .tag
-    background-color: $link
-    color: $black-ter
+
   .title, .subtitle, strong, .label
     color: $white-bis
   .footer
@@ -30,10 +28,14 @@ $dark-primary: #1a202c
     color: $warning
 
   .tag
-    border: 1px solid
-  .tag:hover
-    background: transparent
-    border-color: $warning
+    border: 1px solid $warning
+    color: $white-ter
+    &:hover
+      background-color: transparent
+
+  .tag-warning:hover
+    color: $warning
+
   h1, h2, h3, h4, h5, h6
     color: $white
   strong

@@ -37,7 +37,7 @@ class AboutPage extends React.Component {
         title={title}
         footer={<Packages />}
       >
-        <Seo title="All posts" />
+        <Seo title="Tech Lead Front End Engineer React Oren Farhi" />
         <section className="has-text-centered pt-4">
           <Image
             className="profile"
@@ -141,15 +141,13 @@ class AboutPage extends React.Component {
                   href: "readm.netlify.app",
                   linkText: "ReadM",
                   image: readm,
-                  desc:
-                    "Practice Reading With Real-Time Feedback App (React, Redux, Firebase, PWA)",
+                  desc: "Practice Reading With Real-Time Feedback App (React, Redux, Firebase, PWA)",
                 },
                 {
                   href: "echoesplayer.netlify.app",
                   linkText: "Echoes Player",
                   image: echoes,
-                  desc:
-                    "A YouTube™ Alternative Web App Media Player (Made With Angular, Open Source, PWA)",
+                  desc: "A YouTube™ Alternative Web App Media Player (Made With Angular, Open Source, PWA)",
                 },
                 {
                   href: "npmjs.com/package/ngx-infinite-scroll",
