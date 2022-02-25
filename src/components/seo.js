@@ -19,6 +19,7 @@ function Seo({ description, lang, meta, title, image = "" }) {
             title
             description
             author
+            siteUrl
           }
         }
 
@@ -61,10 +62,11 @@ function Seo({ description, lang, meta, title, image = "" }) {
         },
         {
           property: `og:image`,
-          content:
+          content: `${site.siteMetadata.siteUrl}${
             image && image.childImageSharp
               ? image.childImageSharp.fluid.src
-              : avatar.childImageSharp.fixed.src,
+              : avatar.childImageSharp.fixed.src
+          }`,
         },
         {
           property: `og:type`,
@@ -90,13 +92,11 @@ function Seo({ description, lang, meta, title, image = "" }) {
       link={[
         {
           rel: "stylesheet",
-          href:
-            "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css",
+          href: "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css",
         },
         {
           rel: "stylesheet",
-          href:
-            "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+          href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
         },
       ]}
     />
