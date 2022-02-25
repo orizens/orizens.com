@@ -35,6 +35,11 @@ function Seo({ description, lang, meta, title, image = "" }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const pageImage = `${site.siteMetadata.siteUrl}${
+    image && image.childImageSharp
+      ? image.childImageSharp.fluid.src
+      : avatar.childImageSharp.fixed.src
+  }`
 
   return (
     <Helmet
@@ -62,11 +67,7 @@ function Seo({ description, lang, meta, title, image = "" }) {
         },
         {
           property: `og:image`,
-          content: `${site.siteMetadata.siteUrl}${
-            image && image.childImageSharp
-              ? image.childImageSharp.fluid.src
-              : avatar.childImageSharp.fixed.src
-          }`,
+          content: pageImage,
         },
         {
           property: `og:type`,
@@ -87,6 +88,10 @@ function Seo({ description, lang, meta, title, image = "" }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          property: `twitter:image`,
+          content: pageImage,
         },
       ].concat(meta)}
       link={[
