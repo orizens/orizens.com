@@ -23,7 +23,7 @@ export default function Layout(props) {
       <main
         className="section m-auto mih-80"
         style={{
-          maxWidth: rhythm(35),
+          maxWidth: props?.maxWidth || rhythm(35),
         }}
       >
         {children}

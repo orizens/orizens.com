@@ -14,7 +14,7 @@ export const PostExcerpt = ({
   description,
   tags,
 }) => (
-  <article key={slug} className="">
+  <article key={slug} className="position-relative">
     <section className="section has-background-white-bis is-rounded-1">
       <header
         className="has-text-centered"
@@ -23,10 +23,10 @@ export const PostExcerpt = ({
           height: '12rem'
         }}
       >
-        <h2 className="">
+        <h2 className="post-header">
           <Link to={permalink}>{title || slug}</Link>
         </h2>
-        <small className="subtitle">{new Date(date).toDateString()}</small>
+        <small className="subtitle position-absolute">{new Date(date).toDateString()}</small>
         <Tags tags={tags} />
       </header>
       <section>

@@ -16,8 +16,8 @@ const BlogIndex = props => {
   const { group, index, pageCount } = pageContext
 
   return (
-    <Layout location={props.location} title={siteTitle}>
-      <Seo title="All posts" />
+    <Layout location={props.location} title={siteTitle} maxWidth="65rem">
+      <Seo title="Oren Farhi writings on React Redux Toolkit Web development Angular tutorials and articles for beginners, intermidiates and professionals" />
       <Logger content={{ data, pageContext }} />
       <Search />
       <Pagination
