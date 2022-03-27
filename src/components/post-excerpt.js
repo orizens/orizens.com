@@ -17,11 +17,7 @@ export const PostExcerpt = ({
   <article key={slug} className="position-relative">
     <section className="section has-background-white-bis is-rounded-1 padding-1">
       <header
-        className="has-text-centered"
-        style={{
-          marginBottom: rhythm(1 / 2),
-          height: '11rem'
-        }}
+        className="has-text-centered header-container"
       >
         <h2 className="post-header">
           <Link to={permalink}>{title || slug}</Link>
