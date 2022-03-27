@@ -15,12 +15,12 @@ export const PostExcerpt = ({
   tags,
 }) => (
   <article key={slug} className="position-relative">
-    <section className="section has-background-white-bis is-rounded-1">
+    <section className="section has-background-white-bis is-rounded-1 padding-1">
       <header
         className="has-text-centered"
         style={{
           marginBottom: rhythm(1 / 2),
-          height: '12rem'
+          height: '11rem'
         }}
       >
         <h2 className="post-header">
