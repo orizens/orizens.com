@@ -64,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
     edges: posts,
     createPage: createPage,
     pageTemplate: "src/templates/index.tsx",
-    pageLength: 5, // This is optional and defaults to 10 if not used
+    pageLength: 20, // This is optional and defaults to 10 if not used
     // pathPrefix: "blog", // This is optional and defaults to an empty string if not used
     // context: {}, // This is optional and defaults to an empty object if not used
   })
