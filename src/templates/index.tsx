@@ -24,7 +24,7 @@ const BlogIndex = props => {
         {...pageContext}
         header={`Blog Page ${index} of ${pageCount}`}
       />
-      <section>
+      <section className="posts-layout">
       {group.map(({ node: { excerpt, fields, frontmatter } }) => (
         <PostExcerpt
           {...fields}
