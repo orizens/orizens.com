@@ -24,6 +24,7 @@ const BlogIndex = props => {
         {...pageContext}
         header={`Blog Page ${index} of ${pageCount}`}
       />
+      <section>
       {group.map(({ node: { excerpt, fields, frontmatter } }) => (
         <PostExcerpt
           {...fields}
@@ -32,6 +33,7 @@ const BlogIndex = props => {
           key={frontmatter.id}
         />
       ))}
+      </section>
       <Pagination {...pageContext} />
     </Layout>
   )

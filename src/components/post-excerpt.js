@@ -14,15 +14,16 @@ export const PostExcerpt = ({
   description,
   tags,
 }) => (
-  <article key={slug} className="space-vertical">
+  <article key={slug} className="">
     <section className="section has-background-white-bis is-rounded-1">
       <header
         className="has-text-centered"
         style={{
           marginBottom: rhythm(1 / 2),
+          height: '12rem'
         }}
       >
-        <h2 className="is-size-3 space-bottom-3">
+        <h2 className="">
           <Link to={permalink}>{title || slug}</Link>
         </h2>
         <small className="subtitle">{new Date(date).toDateString()}</small>
