@@ -47,7 +47,7 @@ In twitter, I created lists of interest, and each time I follow someone new, it'
   
 The 2 most useful lists that I follow and read are: <a title="Twitter Javascript Orizens List" href="https://twitter.com/orizens/lists/javascript" target="_blank" rel="noopener">The Javascript List</a> and <a title="The Web Dev Orizens Twitter List" href="https://twitter.com/orizens/lists/webdev" target="_blank" rel="noopener">The WebDev List</a>.
   
-I also use the <a title="Oren Farhi Goolge Plus Profile" href="https://plus.google.com/u/0/+OrenFarhi1/posts" target="_blank" rel="noopener">Google Plus Platform</a> as well for following and reading interseting news and trends - using various circles i created for following Javascript related news (angularjs, google chrome and more).
+I also use the <a title="Oren Farhi Google Plus Profile" href="https://plus.google.com/u/0/+OrenFarhi1/posts" target="_blank" rel="noopener">Google Plus Platform</a> as well for following and reading interseting news and trends - using various circles i created for following Javascript related news (angularjs, google chrome and more).
   
 I use Chrome application <a title="Tweetdeck Chrome Application" href="https://chrome.google.com/webstore/detail/tweetdeck-by-twitter/hbdpomandigafcibbmofojjchbcdagbl?hl=en-US&utm_source=chrome-ntp-launcher" target="_blank" rel="noopener">Tweetdeck</a> to better read and follow my list on demand.
 
