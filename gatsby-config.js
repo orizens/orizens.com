@@ -73,11 +73,20 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: `UA-1207545-1`,
+    //   },
+    // },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: `UA-1207545-1`,
-      },
+        trackingIds: [
+          "G-203MX4DMNF",
+          `UA-1207545-1`
+        ]
+      }
     },
     `gatsby-plugin-feed`,
     {
