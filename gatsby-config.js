@@ -15,7 +15,7 @@ module.exports = {
       linkedin: `orenfarhi`,
     },
     publications: {
-      angular: `//www.apress.com/us/book/9781484226193`,
+      angular: `//link.springer.com/book/10.1007/978-1-4842-2620-9`,
     },
   },
   plugins: [

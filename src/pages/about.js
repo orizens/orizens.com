@@ -55,9 +55,9 @@ class AboutPage extends React.Component {
           </section>
           <section className="content is-size-4 is-medium is-rounded-1 mt-3 m-auto">
             <p className="m-auto">
-              Hi - I'm {author}. I'm a Senior Software Engineer / Front End Tech
+              Hi - I'm {author}. I'm an Experienced Software Engineer, Front End Tech
               Lead, focusing on{" "}
-              <strong>Front End &amp; Software Architecture</strong>. <br />I
+              <strong>Front End &amp; Software Architecture</strong> and creating well formed applications. <br />I
               graduated with a{" "}
               <strong>BA in Computer Science &amp; Business Management</strong>{" "}
               from the Open University.
@@ -138,10 +138,10 @@ class AboutPage extends React.Component {
             <ul className="list-unstyled is-size-4">
               {[
                 {
-                  href: "readm.netlify.app",
+                  href: "readm.app",
                   linkText: "ReadM",
                   image: readm,
-                  desc: "Practice Reading With Real-Time Feedback App (React, Redux, Firebase, PWA)",
+                  desc: "Practice Reading With Real-Time Feedback (React, Redux, Firebase, PWA)",
                 },
                 {
                   href: "echoesplayer.netlify.app",
@@ -225,7 +225,7 @@ class AboutPage extends React.Component {
           <section className="has-text-centered space-vertical columns content is-medium is-rounded-1">
             <h2 className="column is-size-3 lh-4">
               <i className="las la-book-reader mr-1" /> I’m the author of{" "}
-              <ExternalLink href="//www.apress.com/us/book/9781484226193">
+              <ExternalLink href="//link.springer.com/book/10.1007/978-1-4842-2620-9">
                 "Reactive Programming with Angular and NgRx"
               </ExternalLink>
               <aside className="is-size-6">

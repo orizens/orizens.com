@@ -32,7 +32,7 @@ export default function Socials({ size = 2 }) {
         {
           icon: "book",
           iconType: "las",
-          href: `//www.apress.com/us/book/9781484226193`,
+          href: `//link.springer.com/book/10.1007/978-1-4842-2620-9`,
           tooltip: "My Angular & NgRx Reactive Programming Book",
         },
       ].map(({ icon, href, text, tooltip, iconType }) => (
