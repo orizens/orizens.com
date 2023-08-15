@@ -23,7 +23,7 @@ function Seo({ description, lang, meta, title, image = "" }) {
           }
         }
 
-        avatar: file(absolutePath: { regex: "/profile-2021.jpg/" }) {
+        avatar: file(absolutePath: { regex: "/profile-oren.jpg/" }) {
           childImageSharp {
             fixed(width: 200, height: 200) {
               ...GatsbyImageSharpFixed
