@@ -141,7 +141,7 @@ class AboutPage extends React.Component {
                   href: "readm.app",
                   linkText: "ReadM",
                   image: readm,
-                  desc: "Practice Reading With Real-Time Feedback (React, Redux, Firebase, PWA)",
+                  desc: "Empowers teachers by providing an automated smart assessment tool for monitoring students' reading fluency, while providing live reports with real time insights.",
                 },
                 {
                   href: "echoesplayer.netlify.app",
@@ -254,7 +254,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    readm: file(absolutePath: { regex: "/readm.png/" }) {
+    readm: file(absolutePath: { regex: "/readm-ui.png/" }) {
       childImageSharp {
         fluid {
           src
