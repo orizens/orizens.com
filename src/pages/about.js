@@ -114,8 +114,7 @@ class AboutPage extends React.Component {
                     it.
                   </>,
                   <>
-                    <strong>Automating</strong> development with CI/CD
-                    (travis/circle ci)
+                    <strong>Automating</strong> development with CI/CD utilizing Github Actions
                   </>,
                 ].map((text, index) => (
                   <li key={`princ-${index}`}>
