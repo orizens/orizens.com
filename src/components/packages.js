@@ -21,6 +21,25 @@ const packages = [
 ]
 
 const Packages = () => {
+  return (
+    <article className="content is-medium section pb-4" id="consulting">
+      <h2 className="title is-3 has-text-centered">Open To Work</h2>
+      <p
+        className="subtitle has-text-centered is-size-4"
+        style={{ width: "50%", margin: "0 auto" }}
+      >
+        I'm open to work as a Front End Tech Lead or Senior Front End Engineer. I bring to the table: Code reviews
+        , high quality development with React, Redux Toolkit & Query, Typescript, Javascript, Firebase, SASS, ChakraUI (or any css-in-js) ), node.js scripts and E2E using Cypress and React Testing Library.
+        Please 
+        <Link to="/contact" className="ml-1">
+          contact
+        </Link>{" "}
+        me to hear more.
+      </p>
+    </article>
+  )
+}
+const OldPackages = () => {
   const data = useStaticQuery(graphql`
     query PackagesQuery {
       javascript: file(absolutePath: { regex: "/package-js.*.png/" }) {

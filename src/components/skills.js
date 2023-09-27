@@ -7,9 +7,9 @@ const skills = [
     label: "My Tech Stack",
     content: [
       { link: "//facebook.github.io/react/", label: "React (Typescript)" },
-      { link: "//github.com/reactjs/redux", label: "Redux" },
-      { link: "//angular.io", label: "Angular (Typescript)" },
-      { link: "//github.com/ngrx", label: "NgRx" },
+      { link: "//redux-toolkit.js.org/", label: "Redux Toolkit" },
+      { link: "//cypress.io", label: "Cypress (E2E with Cucumber & Gherkin)" },
+      { link: "//chakra-ui.com/", label: "ChakraUI (CSS-IN-JS)" },
       { link: "//firebase.com/", label: "Firebase" },
       { link: "//sass-lang.com/", label: "Sass" },
     ],
