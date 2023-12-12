@@ -7,7 +7,7 @@ layout: '@/templates/BasePost.astro'
 # permalink: /blog/reusing-ngrxeffects-in-angular-communicating-between-reducers/
 dsq_thread_id:
   - "5757320729"
-imgSrc: /src/images/blog/uploads/2017/04/effects-reuse.jpg
+imgSrc: /images/blog/uploads/2017/04/effects-reuse.jpg
 tags:
   - angular
   - ngrx

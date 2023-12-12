@@ -8,7 +8,7 @@ guid: http://orizens.com/wp/?p=1352
 # permalink: /blog/ngrx-scrolling-ino-dom-element-and-components-communication/
 dsq_thread_id:
   - "6826788041"
-imgSrc: /src/images/blog/uploads/2018/07/scroll-post.jpg
+imgSrc: /images/blog/uploads/2018/07/scroll-post.jpg
 tags:
   - angular
   - architecture

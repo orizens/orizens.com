@@ -8,7 +8,7 @@ guid: http://orizens.com/wp/?p=1229
 permalink: /blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/
 dsq_thread_id:
   - "5645812559"
-imgSrc: /src/images/blog/uploads/2017/03/ngrxaot.jpg
+imgSrc: /images/blog/uploads/2017/03/ngrxaot.jpg
 tags:
   - angular
   - aot

@@ -7,7 +7,7 @@ layout: '@/templates/BasePost.astro'
 # permalink: /blog/decluttering-angular-components-the-proxy-pattern/
 dsq_thread_id:
   - "6245641675"
-imgSrc: /src/images/blog/uploads/2017/10/IMG_20170813_124752-01.jpeg
+imgSrc: /images/blog/uploads/2017/10/IMG_20170813_124752-01.jpeg
 categories:
   - Angular
   - architecture

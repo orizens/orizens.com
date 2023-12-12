@@ -5,7 +5,7 @@ pubDate: 2019-10-05T14:50:00+00:00
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-hooks-and-components-custom-hooks-as-minions-at-your-service/
-imgSrc: "/src/images/blog/2019-10/IMG_20190921_125514.jpg"
+imgSrc: "/images/blog/2019-10/IMG_20190921_125514.jpg"
 imgAlt: "fantasy chair"
 tags:
   - react

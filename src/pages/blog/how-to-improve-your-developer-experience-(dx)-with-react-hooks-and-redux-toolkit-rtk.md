@@ -5,7 +5,7 @@ pubDate: 2021-07-03T22:14:48.459Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-improve-your-developer-experience-(dx)-with-react-hooks-and-redux-toolkit-rtk/
-imgSrc: '/src/images/blog/2021-7/PXL_20210702_194653498.PORTRAIT.jpg'
+imgSrc: '/images/blog/2021-7/PXL_20210702_194653498.PORTRAIT.jpg'
 imgAlt: 'choco balls'
 tags:
   - react

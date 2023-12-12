@@ -5,7 +5,7 @@ pubDate: 2020-12-31T00:13:48.715Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-making-component-and-hooks-with-clean-code-approach/
-imgSrc: "/src/images/blog/2020-12/PXL_20201223_194527123.PORTRAIT.jpg"
+imgSrc: "/images/blog/2020-12/PXL_20201223_194527123.PORTRAIT.jpg"
 tags:
   - react
   - hooks
@@ -137,4 +137,4 @@ Please check out my app [ReadM] - a reading app that builds confidence in readin
 [reusing hooks]: https://orizens.com/blog/react-hooks-and-components-custom-hooks-as-minions-at-your-service/
 [much more hooks related articles]: https://orizens.com/tags/hooks
 [pseudo code]: https://en.wikipedia.org/wiki/Pseudocode
-[paragraph]: /src/images/blog/2020-12/paragraph.png "Paragraph component"
+[paragraph]: /images/blog/2020-12/paragraph.png "Paragraph component"

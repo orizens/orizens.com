@@ -5,7 +5,7 @@ pubDate: 2020-04-19T23:32:38.000Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-functional-programming-with-custom-react-hooks/
-imgSrc: "/src/images/blog/2020-04/IMG_20200406_143035.jpg"
+imgSrc: "/images/blog/2020-04/IMG_20200406_143035.jpg"
 imgAlt: "white tree"
 tags:
   - react
@@ -297,5 +297,5 @@ Expect more useful articles sharing code from the [ReadM] development experience
 [use-recorder source code at github]: https://github.com/orizens/use-recorder.git
 [an npm package]: https://www.npmjs.com/package/use-recorder
 [recorder demo]: https://p1wmc.csb.app/
-[readm app]: /src/images/blog/2020-04/readm.png "ReadM App"
-[readm recorder]: /src/images/blog/2020-04/readm-recorder.png "ReadM usage of recorder"
+[readm app]: /images/blog/2020-04/readm.png "ReadM App"
+[readm recorder]: /images/blog/2020-04/readm-recorder.png "ReadM usage of recorder"

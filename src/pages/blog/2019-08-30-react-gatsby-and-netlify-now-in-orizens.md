@@ -7,7 +7,7 @@ layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-gatsby-and-netlify-now-in-orizens/
 dsq_thread_id:
   - ""
-imgSrc: /src/images/blog/uploads/netlify-deployed.png
+imgSrc: /images/blog/uploads/netlify-deployed.png
 tags:
   - react
   - gatsby

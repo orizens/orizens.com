@@ -9,7 +9,7 @@ dsq_thread_id:
   - "5426540708"
 dsq_needs_sync:
   - "1"
-imgSrc: /src/images/blog/uploads/2017/01/type-rxjs.jpg
+imgSrc: /images/blog/uploads/2017/01/type-rxjs.jpg
 tags:
   - angular
   - architecture

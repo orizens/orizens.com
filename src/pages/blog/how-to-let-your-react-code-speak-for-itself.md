@@ -5,7 +5,7 @@ pubDate: 2020-05-30T15:48:30.402Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-let-your-react-code-speak-for-itself/
-imgSrc: "/src/images/blog/2020-05/2020-05-30.jpg"
+imgSrc: "/images/blog/2020-05/2020-05-30.jpg"
 imgAlt: "red flower"
 tags:
   - react
@@ -233,8 +233,8 @@ Expect more useful articles sharing code from the [ReadM] development experience
 [readm]: https://readm.app
 [custom hooks as a service]: https://orizens.com/blog/react-hooks-and-components-custom-hooks-as-minions-at-your-service/
 [functional programming inside custom hooks]: https://orizens.com/blog/how-to-functional-programming-with-custom-react-hooks/
-[readm app]: /src/images/blog/2020-05/speaker.png "ReadM App - The Speaker Component Is Highlighted"
-[wordresult in react devtools]: /src/images/blog/2020-05//WordResult.png "Word Result in React DevTools"
-[paragraph in react devtools]: /src/images/blog/2020-05//paragraph-in-devtools.png "Paragraph in React DevTools"
-[readm word highlighting]: /src/images/blog/2020-05//word-highlighting.gif "ReadM Word Highlighting"
+[readm app]: /images/blog/2020-05/speaker.png "ReadM App - The Speaker Component Is Highlighted"
+[wordresult in react devtools]: /images/blog/2020-05//WordResult.png "Word Result in React DevTools"
+[paragraph in react devtools]: /images/blog/2020-05//paragraph-in-devtools.png "Paragraph in React DevTools"
+[readm word highlighting]: /images/blog/2020-05//word-highlighting.gif "ReadM Word Highlighting"
 [@infoq china]: https://www.infoq.cn/article/ZmcUNS7ezTwKjL0wUCLI

@@ -6,7 +6,7 @@ author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-not-have-a-mess-with-react-hooks-and-redux/
 # dsq_thread_id:
-imgSrc: /src/images/blog/2020-01/IMG_20191229_111820.jpg
+imgSrc: /images/blog/2020-01/IMG_20191229_111820.jpg
 imgAlt: "red coffee"
 tags:
   - react

@@ -5,7 +5,7 @@ author: Oren Farhi
 pubDate: 2022-08-10T15:56:38.693Z
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/reducing-react-dev-server-to-213ms-from-create-react-app-to-vite-migration/
-imgSrc: '/src/images/blog/20220810/turtle.jpg'
+imgSrc: '/images/blog/20220810/turtle.jpg'
 imgAlt: 'turtle'
 tags:
   - react
@@ -235,8 +235,8 @@ The Article is based on [ReadM] - a free app for practicing English reading fast
 
 [still an issue]: https://github.com/storybookjs/builder-vite/issues/463#event-7089130387
 [readm]: https://readm.app
-[dev server]: /src/images/blog/20220810/dev-server.png "fast dev server"
-[dev server before]: /src/images/blog/20220810/react-scripts-server.png "react-scripts server"
+[dev server]: /images/blog/20220810/dev-server.png "fast dev server"
+[dev server before]: /images/blog/20220810/react-scripts-server.png "react-scripts server"
 [VitePWA]: https://vite-plugin-pwa.netlify.app/
 [Vite]: https://vitejs.dev/
 

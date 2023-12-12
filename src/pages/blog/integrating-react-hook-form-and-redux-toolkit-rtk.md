@@ -5,7 +5,7 @@ pubDate: 2021-10-13T17:49:04.757Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/integrating-react-hook-form-and-redux-toolkit-rtk/
-imgSrc: '/src/images/blog/2021-10/PXL_20211010_201650887_2.jpg'
+imgSrc: '/images/blog/2021-10/PXL_20211010_201650887_2.jpg'
 imgAlt: 'tree lights'
 tags:
   - react
@@ -142,6 +142,6 @@ Thanks for reading.
 [readm]: https://readm.netlify.app
 [improving your developer experience]: https://orizens.com/blog/how-to-improve-your-developer-experience-(dx)-with-react-hooks-and-redux-toolkit-rtk/
 [react-hook-form]: https://react-hook-form.com/
-[book editor]: /src/images/blog/readm-book-editor.png "readm book editor"
-[front page editor]: /src/images/blog/readm-front-page-editor.png "readm page editor"
+[book editor]: /images/blog/readm-book-editor.png "readm book editor"
+[front page editor]: /images/blog/readm-front-page-editor.png "readm page editor"
 [redux toolkit]: https://redux-toolkit.js.org/

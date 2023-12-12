@@ -5,7 +5,7 @@ pubDate: 2023-04-06T15:56:38.693Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/integration-of-firebase-firestore-with-redux-toolkit-query/
-imgSrc: '/src/images/blog/2023-04-06/rainbow.jpg'
+imgSrc: '/images/blog/2023-04-06/rainbow.jpg'
 imgAlt: 'rainbow'
 tags:
   - react
@@ -142,5 +142,5 @@ When accessing a student's profile, the page utilizes the useGetUserProfile hook
 
 [readm]: https://readm.app
 [Redux Toolkit Query]: https://redux-toolkit.js.org/rtk-query/usage/queries
-[classes]: /src/images/blog/2023-04-06/classes.png "classes page in readm practice reading aloud app"
-[student]: /src/images/blog/2023-04-06/student.png "classes page in readm practice reading aloud app"
+[classes]: /images/blog/2023-04-06/classes.png "classes page in readm practice reading aloud app"
+[student]: /images/blog/2023-04-06/student.png "classes page in readm practice reading aloud app"

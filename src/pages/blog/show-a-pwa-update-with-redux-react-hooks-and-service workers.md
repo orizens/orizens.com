@@ -5,7 +5,7 @@ pubDate: 2020-06-28T15:48:30.402Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/show-a-pwa-update-with-redux-react-hooks-and-service workers/
-imgSrc: "/src/images/blog/2020-06-28/2020-06-28.jpg"
+imgSrc: "/images/blog/2020-06-28/2020-06-28.jpg"
 imgAlt: "lake"
 tags:
   - react
@@ -148,4 +148,4 @@ I wanted to have a **clear separation of concerns** - the **logics** layer and t
 [why you would consider adding offline support]: https://create-react-app.dev/docs/making-a-progressive-web-app/#why-opt-in
 [store api hook]: https://orizens.com/blog/how-to-not-have-a-mess-with-react-hooks-and-redux/
 [redux selector hook]: https://react-redux.js.org/api/hooks#useselector
-[toastui]: /src/images/blog/2020-06-28/toast.png "Toast for an app update."
+[toastui]: /images/blog/2020-06-28/toast.png "Toast for an app update."

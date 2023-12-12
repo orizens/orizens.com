@@ -8,7 +8,7 @@ layout: '@/templates/BasePost.astro'
 
 dsq_thread_id:
   - "6375090931"
-imgSrc: /src/images/blog/uploads/2017/12/typeahead.jpg
+imgSrc: /images/blog/uploads/2017/12/typeahead.jpg
 categories:
   - Angular
 tags:

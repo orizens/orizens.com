@@ -5,7 +5,7 @@ pubDate: 2023-09-26T14:19:07.683Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 slug: /blog/best_practices_for_developing_complex_form-based_apps_with_react_hook_form_and_typescript_support/
-imgSrc: '/src/images/blog/2023-09/mint-icecream.jpg'
+imgSrc: '/images/blog/2023-09/mint-icecream.jpg'
 imgAlt: 'mint-icecream'
 tags:
   - react

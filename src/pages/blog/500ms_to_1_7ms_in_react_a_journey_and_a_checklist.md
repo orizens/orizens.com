@@ -5,7 +5,7 @@ pubDate: 2022-07-28T15:56:38.693Z
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/500ms_to_1_7ms_in_react_a_journey_and_a_checklist/
-imgSrc: '/src/images/blog/2022-7/duck.jpg'
+imgSrc: '/images/blog/2022-7/duck.jpg'
 imgAlt: 'duck'
 tags:
   - react
@@ -187,13 +187,13 @@ Article is based on [ReadM] - a free app for practicing English reading fast whi
 
 [readm]: https://readm.app
 [First Meaningful Paint]: https://web.dev/first-meaningful-paint/
-[perf controls]: /src/images/blog/2022-7/perf-controls.png "performance controls"
-[props changed]: /src/images/blog/2022-7/props-changed.png "props changed tooltip"
-[hooks changed]: /src/images/blog/2022-7/hooks-changed.png "hooks changed tooltip"
-[component hooks]: /src/images/blog/2022-7/component-hooks.png "component hooks"
+[perf controls]: /images/blog/2022-7/perf-controls.png "performance controls"
+[props changed]: /images/blog/2022-7/props-changed.png "props changed tooltip"
+[hooks changed]: /images/blog/2022-7/hooks-changed.png "hooks changed tooltip"
+[component hooks]: /images/blog/2022-7/component-hooks.png "component hooks"
 [custom hooks]: https://orizens.com/blog/how-to-let-your-react-code-speak-for-itself/
-[before]: /src/images/blog/2022-7/BEFORE.png
-[after]: /src/images/blog/2022-7/AFTER.png
+[before]: /images/blog/2022-7/BEFORE.png
+[after]: /images/blog/2022-7/AFTER.png
 [contact me]: https://orizens.com/contact
 [tweet me]: https://twitter.com/orizens
 [Chinese 1]: https://juejin.cn/post/7133137152199622669
