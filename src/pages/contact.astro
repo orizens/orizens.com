@@ -1,0 +1,75 @@
+---
+import type { FrontmatterPage } from 'astro-boilerplate-components';
+
+import { GradientText } from '@/components/GradientText';
+import { Input } from '@/components/Input';
+import { ProfileAvatar } from '@/components/profile';
+import { RunInClient } from '@/components/RunInClient';
+import { Section } from '@/components/Section';
+import { Space } from '@/components/Space';
+import { Socials } from '@/partials/Socials';
+import Base from '@/templates/Base.astro';
+
+const SUBMIT_PARAM = 'success';
+
+export interface Props {
+  page: FrontmatterPage;
+}
+
+// const { page } = Astro.props as Props;
+// const titleSuffix = ` - ${AppConfig.site_name}`;
+// const titleBase = `Blog page ${page.currentPage}`;
+// const title = titleBase + titleSuffix;
+const description =
+  'Contact Oren Farhi for software engineering, react front end';
+---
+
+<Base head={{ title: 'Contact Oren Farhi', description }}>
+  <Section className='max-w-screen-md px-0'>
+    <Space
+      variant='space'
+      className='grid justify-center justify-items-center gap-3 rounded-xl py-6'
+    >
+      <ProfileAvatar />
+      <h1 class='text-primary'>Contact Me</h1>
+      <h2 class='uppercase text-primary'>
+        Front End Engineering & Tech leading
+      </h2>
+      <Socials />
+    </Space>
+  </Section>
+  <RunInClient client:only param={SUBMIT_PARAM}>
+    <Section className='space max-w-screen-md bg-primaryAlpha'>
+      <GradientText className='text-2xl'>
+        Thank you for contacting me. I'll get back to you as soon as I can.
+      </GradientText>
+      <a href='/contact/' class='block text-lg'> back to contact</a>
+    </Section>
+    <Section slot='fallback' className='mt-6 max-w-screen-md bg-primaryAlpha'>
+      <form
+        name='Contact Form'
+        method='POST'
+        action={`/contact?${SUBMIT_PARAM}`}
+        data-netlify='true'
+        class='grid gap-4'
+      >
+        <input type='hidden' name='form-name' value='Contact Form' />
+        <Input label='Your Name' htmlFor='name' placeholder='Your Name' />
+        <Input label='Your Email' htmlFor='email' placeholder='Your Email' />
+        <Input
+          label='Your Message'
+          htmlFor='message'
+          placeholder='Your Message'
+          type='textarea'
+          rows='6'
+        />
+        <button
+          type='submit'
+          class='rounded-md bg-primary px-8 py-3 text-base font-semibold text-white outline-none'
+        >
+          Submit
+        </button>
+      </form>
+    </Section>
+  </RunInClient>
+</Base>

@@ -1,0 +1,47 @@
+---
+import { BlogCollection } from '@/components/BlogCollection';
+import { Section } from '@/components/Section';
+import { SectionHeader } from '@/components/SectionHeader';
+// import { CTA } from '@/partials/CTA';
+import Base from '@/templates/Base.astro';
+import type { OrizensPostFrontMatter } from '@/utils/Posts';
+import { countTags, sortByDate } from '@/utils/Posts';
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob<OrizensPostFrontMatter>('../blog/*.md');
+
+  const allTags = countTags(allPosts);
+
+  return Object.keys(allTags).map((tag) => ({ params: { tag } }));
+}
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.params as Props;
+const allPosts = await Astro.glob<OrizensPostFrontMatter>('../blog/*.md');
+const tagPosts = sortByDate(allPosts).filter((post) =>
+  post.frontmatter.tags.includes(tag)
+);
+
+const titleBase = `Articles for tag: "${tag}"`;
+const title = titleBase;
+const description = 'lessons learned, best practices, thoughts and more.';
+---
+
+<Base head={{ title, description }}>
+  <Section>
+    <SectionHeader gradient={tag}>
+      <img
+        slot='image'
+        src='/src/images/galaxy-world.png'
+        class='absolute right-2 h-52'
+      />
+      Articles with tag:
+    </SectionHeader>
+  </Section>
+  <Section>
+    <BlogCollection postList={tagPosts} />
+  </Section>
+</Base>

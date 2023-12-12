@@ -1,0 +1,49 @@
+---
+import type { IFrontmatter } from 'astro-boilerplate-components';
+import { Tags as AstroTags } from 'astro-boilerplate-components';
+
+import { Section } from '@/components/Section';
+import { getTagColor } from '@/components/StackTags';
+import Base from '@/templates/Base.astro';
+import { AppConfig } from '@/utils/AppConfig';
+import { countTags } from '@/utils/Posts';
+import { SectionHeader } from '@/components/SectionHeader';
+
+const allPosts = await Astro.glob<IFrontmatter>('../blog/*.md');
+const allTags = countTags(allPosts);
+const allTagsSorted = Object.entries(allTags).sort((a: any[], b: any[]) => {
+  if (a[1] > b[1]) {
+    return -1;
+  }
+  if (a[1] < b[1]) {
+    return 1;
+  }
+  return 0;
+});
+
+const title = 'Oren Farhi articles';
+const { description } = AppConfig;
+---
+
+<Base head={{ title, description }}>
+  <!-- <RecentPosts postList={lastThreePosts} /> -->
+  <SectionHeader
+  gradient='Tags'
+  >
+      Articles by
+    <img slot="image" src="/src/images/world.png" class='md:absolute h-52 right-2' />
+  </SectionHeader>
+  <Section>
+    <div class='grid md:grid-cols-3 sm:grid-cols-2 gap-6'>
+      {allTagsSorted.map(([tagName, total]) => (
+        <a href={`/tags/${tagName}/`} class="hover:scale-105 transition-all">
+          <AstroTags color={getTagColor(tagName)}>
+            <div class="p-2 text-2xl">
+              {tagName} ({total as any})
+              </div>
+          </AstroTags>
+        </a>
+      ))}
+    </div>
+  </Section>
+</Base>
