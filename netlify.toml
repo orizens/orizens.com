@@ -1,9 +1,0 @@
-[build]
-  publish = "public"
-  command = "npm run build"
-[[redirects]]
-  from="/cv"
-  to="https://orizens.github.io/cv/"
-[[redirects]]
-  from="/services"
-  to="/about"
