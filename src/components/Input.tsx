@@ -23,6 +23,7 @@ export function Input({
         {label}
       </label>
       <FormComponent
+        name={htmlFor}
         type={type}
         id={htmlFor}
         className="block w-full rounded-lg border border-primary bg-gray-900 p-3 text-xl text-gray-100 shadow-sm "
