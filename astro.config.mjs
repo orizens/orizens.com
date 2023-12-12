@@ -4,7 +4,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 import { astroImageTools } from 'astro-imagetools';
-// import AstroPWA from '@vite-pwa/astro';
+import AstroPWA from '@vite-pwa/astro';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,18 +21,23 @@ export default defineConfig({
   },
   vite: {
     ssr: { noExternal: ['react-icons'] },
+    plugins: [
+      ViteImageOptimizer({
+        test: /\.(jpeg|jpg|png|webp)$/i,
+      }),
+    ],
   },
   integrations: [
     react(),
     tailwind({}),
     sitemap(),
     robotsTxt(),
-    // AstroPWA({
-    //   workbox: {
-    //     navigateFallback: '/',
-    //     globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
-    //   },
-    // }),
+    AstroPWA({
+      workbox: {
+        navigateFallback: '/',
+        globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+      },
+    }),
     astroImageTools,
   ],
 });
