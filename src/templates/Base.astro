@@ -1,11 +1,10 @@
 ---
 import { GoogleAnalytics } from '@astrolib/analytics';
-import { pwaInfo } from 'virtual:pwa-info';
 
+// import { pwaInfo } from 'virtual:pwa-info';
 import { Footer } from '@/partials/Footer';
 import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
-import ReloadPrompt from '@/components/ReloadPrompt.astro';
 
 export interface Props {
   head: {
@@ -30,7 +29,7 @@ const {
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
-    { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
+    <!-- { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> } -->
   </head>
   <body class='bg-slate-900 text-gray-100'>
     <Navbar />
@@ -38,6 +37,17 @@ const {
     <slot></slot>
 
     <Footer />
-    <ReloadPrompt />
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then(function (registrations) {
+            for (let registration of registrations) {
+              registration.unregister();
+            }
+          });
+      }
+    </script>
+    <!-- <ReloadPrompt /> -->
   </body>
 </html>

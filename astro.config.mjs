@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 import { astroImageTools } from 'astro-imagetools';
-import AstroPWA from '@vite-pwa/astro'
+// import AstroPWA from '@vite-pwa/astro';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +26,12 @@ export default defineConfig({
     tailwind({}),
     sitemap(),
     robotsTxt(),
-    AstroPWA(),
+    // AstroPWA({
+    //   workbox: {
+    //     navigateFallback: '/',
+    //     globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+    //   },
+    // }),
     astroImageTools,
   ],
 });
