@@ -1,45 +1,48 @@
 <script src='./pwa.ts'>
 
 </script>
-<div id='pwa-toast' role='alert' aria-labelledby='toast-message'>
-  <div class='message'>
-    <span id='toast-message'></span>
-  </div>
-  <button id='pwa-refresh'> Reload</button>
-  <button id='pwa-close'> Close</button>
+<div
+  id='pwa-toast'
+  role='alert'
+  aria-labelledby='toast-message'
+  class='inset-0 z-50 p-6 backdrop-blur-md'
+>
+  <section
+    class='mx-auto max-w-lg rounded-lg border-primaryAlpha bg-primaryAlpha p-10'
+  >
+    <div class='mb-6 py-20 text-center'>
+      <span id='toast-message' class='text-center text-3xl text-primary'>
+      </span>
+    </div>
+    <div class='flex justify-center gap-4'>
+      <button
+        id='pwa-refresh'
+        class='rounded-lg border-primary bg-primary p-3 text-xl text-teal-800'
+      >
+        Reload
+      </button>
+      <button
+        id='pwa-close'
+        class='rounded-lg border border-primary p-3 text-xl'
+      >
+        Close
+      </button>
+    </div>
+  </section>
 </div>
 
 <style>
   #pwa-toast {
     visibility: hidden;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    margin: 16px;
-    padding: 12px;
-    border: 1px solid #8885;
-    border-radius: 4px;
-    z-index: 1;
-    text-align: left;
-    box-shadow: 3px 4px 5px 0 #8885;
-  }
-  #pwa-toast .message {
-    margin-bottom: 8px;
-  }
-  #pwa-toast button {
-    border: 1px solid #8885;
-    outline: none;
-    margin-right: 5px;
-    border-radius: 2px;
-    padding: 3px 10px;
   }
   #pwa-toast.show {
     visibility: visible;
+    position: fixed;
   }
   button#pwa-refresh {
     display: none;
   }
   #pwa-toast.show.refresh button#pwa-refresh {
-    display: inline-block;
+    display: block;
   }
 </style>

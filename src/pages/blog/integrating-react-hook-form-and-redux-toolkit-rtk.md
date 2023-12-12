@@ -142,6 +142,6 @@ Thanks for reading.
 [readm]: https://readm.netlify.app
 [improving your developer experience]: https://orizens.com/blog/how-to-improve-your-developer-experience-(dx)-with-react-hooks-and-redux-toolkit-rtk/
 [react-hook-form]: https://react-hook-form.com/
-[book editor]: /images/blog/readm-book-editor.png "readm book editor"
-[front page editor]: /images/blog/readm-front-page-editor.png "readm page editor"
+[book editor]: /images/blog/2021-10/readm-book-editor.png "readm book editor"
+[front page editor]: /images/blog/2021-10/readm-front-page-editor.png "readm page editor"
 [redux toolkit]: https://redux-toolkit.js.org/
