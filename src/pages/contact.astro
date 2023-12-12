@@ -46,7 +46,13 @@ const description =
       <a href='/contact/' class='block text-lg'> back to contact</a>
     </Section>
     <Section slot='fallback' className='mt-6 max-w-screen-md bg-primaryAlpha'>
-      <form name='contact' method='POST' data-netlify='true' class='grid gap-4'>
+      <form
+        name='contact'
+        method='POST'
+        data-netlify='true'
+        action='#'
+        class='grid gap-4'
+      >
         <Input label='Your Name' htmlFor='name' placeholder='Your Name' />
         <Input label='Your Email' htmlFor='email' placeholder='Your Email' />
         <Input
