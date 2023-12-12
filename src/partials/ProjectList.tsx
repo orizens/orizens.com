@@ -8,7 +8,7 @@ import readmImage from './readm-ui.png';
 
 const ProjectList = ({ className = '' }) => (
   <Section
-    className={`my-6 p-0 ${className}`}
+    className={`p-0 ${className}`}
     title={
       <>
         My <GradientText>Achievements</GradientText>
@@ -24,7 +24,7 @@ const ProjectList = ({ className = '' }) => (
           src: readmImage.src,
           alt: 'Mobile & Web App Development',
         }}
-        tags={['React.js', 'ChakraUI', 'TypeScript', 'Firebase', 'Cypress']}
+        tags={['React', 'ChakraUI', 'TypeScript', 'Firebase', 'Cypress']}
       />
       <Project
         name="Echoes Player"

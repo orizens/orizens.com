@@ -20,7 +20,7 @@ const description = `Oren Farhi - An experienced Software Engineer, Front End En
 ---
 
 <Base head={{ title: 'About Me', description }}>
-  <Section className='max-w-screen-md px-0'>
+  <Section className='grid max-w-screen-md gap-6 px-6'>
     <Space
       variant='space'
       className='grid justify-center justify-items-center gap-3 rounded-xl py-6'
@@ -30,71 +30,73 @@ const description = `Oren Farhi - An experienced Software Engineer, Front End En
       <h2 class='uppercase text-primary'>front end engineer / tech lead</h2>
       <Socials />
     </Space>
+    <Section className='bg-primaryAlpha'>
+      <p class='m-auto'>
+        Hi - I'm Oren Farhi. I'm an Experienced Software Engineer, Front End
+        Tech Lead, focusing on{' '}
+        <strong>Front End &amp; Software Architecture</strong> and creating well
+        formed applications. <br />I graduated with a{' '}
+        <strong
+          >BA in Computer Science &amp; Business Management
+        </strong>{' '}from the Open University.
+      </p>
+      <p class='m-auto'>
+        I earned Software Engineering &amp; Development skills by being{' '}
+        <strong>self-driven</strong> and making things happen, experimenting, experience,<a
+          href='github.com/orizens'
+          class='ml-1'
+        >
+          open source
+        </a>{' '}some of my work,<a href='/' class='mx-1'> writing</a>about it
+        and reading a lot.
+      </p>
+      <p class='m-auto'>
+        In my work, I incorporate a 3 point perspective to software architecture
+        while looking at a challenge with depth and entirety.{' '}
+        <br />With my experience - i'm able to lead teams into taking a unique
+        perspective, look up and move forward.
+      </p>
+      <p class='m-auto'>
+        <br />I believe in producing easy{' '}
+        <strong>maintainable code</strong> for applications. I consult to companies
+        and startups on how to approach code in their projects, keep it maintainable
+        and focusing on delivering a{' '}
+        <strong>high quality</strong> and well tested code.
+      </p>
+    </Section>
+    <Section className='bg-primaryAlpha'>
+      <p class='m-auto'>
+        When consulting and developing, I like to make a difference by following
+        simple principles:
+      </p>
+      <div>
+        <ul class='ml-5 list-disc'>
+          {[
+            <>
+              seeing the code as a live <strong>reactive system</strong>
+            </>,
+            <>
+              implementing best practices of software architecture, creating{' '}
+              <strong>modular &amp; testable code</strong>
+            </>,
+            <>
+              Understanding the big picture while{' '}
+              <strong>breaking down complex problems</strong> to smaller
+              challenges
+            </>,
+            <>
+              keeping code and app <strong>structure organized</strong> to let
+              other developers easily understand and further extend it.
+            </>,
+            <>
+              <strong>Automating</strong> development with CI/CD utilizing
+              Github Actions
+            </>,
+          ].map((text) => <li>{text}</li>)}
+        </ul>
+      </div>
+    </Section>
   </Section>
-  <Section className='max-w-screen-md bg-primaryAlpha'>
-    <p class='m-auto'>
-      Hi - I'm Oren Farhi. I'm an Experienced Software Engineer, Front End Tech
-      Lead, focusing on{' '}
-      <strong>Front End &amp; Software Architecture</strong> and creating well formed
-      applications. <br />I graduated with a{' '}
-      <strong>BA in Computer Science &amp; Business Management</strong>{' '}from
-      the Open University.
-    </p>
-    <p class='m-auto'>
-      I earned Software Engineering &amp; Development skills by being{' '}
-      <strong>self-driven</strong> and making things happen, experimenting, experience,<a
-        href='github.com/orizens'
-        class='ml-1'
-      >
-        open source
-      </a>{' '}some of my work,<a href='/' class='mx-1'> writing</a>about it and
-      reading a lot.
-    </p>
-    <p class='m-auto'>
-      In my work, I incorporate a 3 point perspective to software architecture
-      while looking at a challenge with depth and entirety.{' '}
-      <br />With my experience - i'm able to lead teams into taking a unique
-      perspective, look up and move forward.
-    </p>
-    <p class='m-auto'>
-      <br />I believe in producing easy{' '}
-      <strong>maintainable code</strong> for applications. I consult to companies
-      and startups on how to approach code in their projects, keep it maintainable
-      and focusing on delivering a{' '}
-      <strong>high quality</strong> and well tested code.
-    </p>
-  </Section>
-  <Section className='mt-6 max-w-screen-md bg-primaryAlpha'>
-    <p class='m-auto'>
-      When consulting and developing, I like to make a difference by following
-      simple principles:
-    </p>
-    <div>
-      <ul class='ml-5 list-disc'>
-        {[
-          <>
-            seeing the code as a live <strong>reactive system</strong>
-          </>,
-          <>
-            implementing best practices of software architecture, creating{' '}
-            <strong>modular &amp; testable code</strong>
-          </>,
-          <>
-            Understanding the big picture while{' '}
-            <strong>breaking down complex problems</strong> to smaller
-            challenges
-          </>,
-          <>
-            keeping code and app <strong>structure organized</strong> to let
-            other developers easily understand and further extend it.
-          </>,
-          <>
-            <strong>Automating</strong> development with CI/CD utilizing Github
-            Actions
-          </>,
-        ].map((text) => <li>{text}</li>)}
-      </ul>
-    </div>
-  </Section>
-  <ProjectList className='max-w-screen-md px-0' />
+
+  <ProjectList className='max-w-screen-md px-6' />
 </Base>

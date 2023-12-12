@@ -7,7 +7,11 @@ import { Section } from '@/components/Section';
 import { Socials } from './Socials';
 
 const Hero = () => (
-  <Section size="lg" className="space my-14 border border-primaryAlpha">
+  <Section
+    size="lg"
+    containerClassName="my-14 px-6"
+    className="space border border-primaryAlpha"
+  >
     <HeroAvatar
       title={
         <>

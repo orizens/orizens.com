@@ -34,7 +34,7 @@ export const StackTags = ({ tags, className = '' }: any) => (
   <div className={`flex flex-wrap gap-2 ${className}`}>
     {tags.map((tag: string) => (
       <a
-        href={`/tags/${tag}/`}
+        href={`/tags/${tag.toLowerCase()}/`}
         key={`tag-${tag}`}
         className="transition-transform hover:scale-110"
       >

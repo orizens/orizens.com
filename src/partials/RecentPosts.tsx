@@ -11,7 +11,7 @@ type IRecentPostsProps = {
 
 const RecentPosts = (props: IRecentPostsProps) => (
   <Section
-    className="my-10 px-0"
+    containerClassName="my-10"
     title={
       <div className="flex items-baseline justify-between">
         <div>

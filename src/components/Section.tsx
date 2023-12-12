@@ -6,6 +6,7 @@ type ISectionProps = {
   title?: ReactNode;
   children: ReactNode;
   className?: string;
+  containerClassName?: string;
   size?: 'lg' | 'md' | 'sm';
 };
 
@@ -13,18 +14,21 @@ const Section = ({
   title = undefined,
   children,
   className = undefined,
+  containerClassName = undefined,
   size = 'lg',
   ...props
 }: ISectionProps) => (
   <div
     className={`mx-auto ${['max-w-screen-', size].join(
       ''
-    )} rounded-xl p-6 text-xl ${className}`}
+    )} rounded-xl text-xl ${containerClassName}`}
     {...props}
   >
-    {title && <div className="mb-6 text-3xl font-bold">{title}</div>}
+    <section className={`mx-auto rounded-xl p-6 ${className}`}>
+      {title && <div className="mb-6 text-3xl font-bold">{title}</div>}
 
-    {children}
+      {children}
+    </section>
   </div>
 );
 

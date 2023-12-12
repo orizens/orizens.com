@@ -26,17 +26,30 @@ module.exports = {
       addBase({
         h1: {
           fontSize: theme('fontSize.6xl'),
-          color: primaryImportant,
+          // color: primaryImportant,
+          color: theme('colors.primary'),
+        },
+        '.prose h1': {
+          fontSize: theme('fontSize.6xl'),
+          // color: primaryImportant,
+          color: theme('colors.primary'),
         },
         h2: {
-          color: primaryImportant,
+          color: theme('colors.primary'),
+        },
+        '.prose h2': {
+          color: theme('colors.primary'),
         },
         h3: {
           fontSize: theme('fontSize.2xl'),
           color: primaryImportant,
         },
         strong: {
-          color: primaryImportant,
+          color: theme('colors.amber[300]'),
+        },
+        '.prose p strong': {
+          // color: primaryImportant,
+          color: theme('colors.amber[300]'),
         },
         a: {
           color: primaryImportant,
