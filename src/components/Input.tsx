@@ -25,7 +25,7 @@ export function Input({
       <FormComponent
         type={type}
         id={htmlFor}
-        className="block w-full rounded-lg border border-primary bg-gray-900 p-3 text-xl text-gray-900 shadow-sm "
+        className="block w-full rounded-lg border border-primary bg-gray-900 p-3 text-xl text-gray-100 shadow-sm "
         placeholder={placeholder}
         required
         {...props}
