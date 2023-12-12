@@ -49,8 +49,8 @@ const description =
       <form
         name='contact'
         method='POST'
+        action={`/contact?${SUBMIT_PARAM}`}
         data-netlify='true'
-        action='#'
         class='grid gap-4'
       >
         <Input label='Your Name' htmlFor='name' placeholder='Your Name' />
