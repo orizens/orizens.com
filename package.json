@@ -60,5 +60,8 @@
   "volta": {
     "node": "18.16.1"
   },
+  "engines": {
+    "node": "20"
+  },
   "author": "Oren Farhi"
 }
