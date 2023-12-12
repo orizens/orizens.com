@@ -1,5 +1,3 @@
-import './BlogPost.css';
-
 import type { IFrontmatter } from 'astro-boilerplate-components';
 import { PostHeader } from 'astro-boilerplate-components';
 import type { ReactNode } from 'react';
