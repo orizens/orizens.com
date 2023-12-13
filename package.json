@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run copy:redirects",
+    "copy:redirects": "cp _redirects dist/_redirects",
     "preview": "astro preview",
     "clean": "rimraf dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.astro .",
