@@ -10,6 +10,9 @@ module.exports = {
     './node_modules/astro-boilerplate-components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      OpenSans: ['"Open Sans"', 'sans-serif'],
+    },
     extend: {
       colors: {
         primary,
@@ -24,6 +27,9 @@ module.exports = {
     require('@tailwindcss/typography'),
     plugin(({ addBase, theme }) => {
       addBase({
+        body: {
+          fontFamily: theme('fontFamily.OpenSans'),
+        },
         h1: {
           fontSize: theme('fontSize.6xl'),
           // color: primaryImportant,

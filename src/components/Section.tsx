@@ -7,7 +7,7 @@ type ISectionProps = {
   children: ReactNode;
   className?: string;
   containerClassName?: string;
-  size?: 'lg' | 'md' | 'sm';
+  size?: 'lg' | 'md' | 'sm' | null;
 };
 
 const Section = ({

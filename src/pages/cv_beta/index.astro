@@ -1,0 +1,142 @@
+---
+import {
+  HiOutlineEnvelope,
+  HiOutlineLink,
+  HiOutlinePhone,
+} from 'react-icons/hi2';
+
+import { ProfileAvatar } from '@/components/profile';
+import { Space } from '@/components/Space';
+import Base from '@/templates/Base.astro';
+import { AppConfig } from '@/utils/AppConfig';
+
+import { tags, works } from './work';
+
+const title = 'Oren Farhi articles';
+const { description } = AppConfig;
+---
+
+<Base head={{ title, description }} empty bgColor='bg-white'>
+  <Space className='rounded-none p-6' variant='space'>
+    <div class='grid justify-center justify-items-center'>
+      <ProfileAvatar />
+      <h1 class='my-3 text-6xl font-semibold'>Oren Farhi</h1>
+      <h2 class='text-2xl font-thin uppercase'>
+        Front End Engineer / Tech Lead
+      </h2>
+    </div>
+    <div class='right-2 top-2 md:absolute'>
+      <ul class='list-none md:text-sm'>
+        <li>
+          <HiOutlineEnvelope className='inline' /> farhioren@gmail.com
+        </li>
+        <li>
+          <HiOutlineLink className='inline' /> orizens.com/cv
+        </li>
+        <li>
+          <HiOutlinePhone className='inline' /> +1 (646) 753 4899
+        </li>
+        <li>
+          <HiOutlinePhone className='inline' /> +1 (551) 246 0056
+        </li>
+      </ul>
+    </div>
+  </Space>
+  <main
+    class='mx-auto grid max-w-screen-lg gap-6 p-6 text-slate-700 md:grid-cols-1 lg:grid-cols-3'
+  >
+    <article class='col-span-2 grid gap-6'>
+      <section>
+        <h2 class='text-3xl'>Professional Profile</h2>
+        <section class='rounded-xl bg-primaryAlpha p-6'>
+          <p>
+            Hi. I'm Oren - An experienced Software Engineer, focusing on Front
+            End & Tech Leading, author of - <a
+              class='underline hover:bg-primaryAlpha'
+              href='https://link.springer.com/book/10.1007/978-1-4842-2620-9'
+              target='_blank'
+              >"Reactive Programming with Angular and NGRX"
+            </a>, published by Springer, a dedicated professional helping others
+            to produce
+            <strong class='text-primary'>easy & maintainable</strong> code for applications,
+            while focusing on delivering a <strong class='text-primary'
+              >high quality
+            </strong> and well tested code (since 2006).
+          </p>
+          <p>
+            When consulting and developing, I follow simple principles:<br /> seeing
+            the code as a live <strong class='text-primary'
+              >reactive system
+            </strong>, implementing best practices of software architecture,
+            creating <strong class='text-primary'
+              >modular &amp; testable code
+            </strong>, Understanding the big picture while
+            <strong class='text-primary'>breaking down complex problems</strong>
+            to smaller challenges, keeping code and app <strong
+              class='text-primary'
+              >structure organized
+            </strong> to let other developers easily understand and further extend
+            it, <strong class='text-primary'>Automating</strong> development with
+            CI/CD.
+          </p>
+          <p>
+            Co-Founder of <a href='https://readm.app' target='_blank'
+              >"ReadM"
+            </a>
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2 class='text-3xl'>Work Experience</h2>
+        <div class='grid gap-6'>
+          {works.map((work) => (
+            <section class="rounded-xl bg-primaryAlpha p-6 md:relative">
+              <h3 class="text-lg">{work.role}</h3>
+              <h4 class="uppercase text-primary">{work.company}</h4>
+              <aside class="uppercase text-primary md:absolute md:right-0 md:top-8 md:rounded-l-xl md:bg-primary md:px-3 md:py-1 md:text-white">
+                {work.date}
+              </aside>
+              <p>{work.tagline}</p>
+              {work.projectsTitle ? (
+                <>
+                  <h5 class="mt-3 italic">{work.projectsTitle}</h5>
+                  {work?.projects?.length && (
+                    <ul class="ml-6 list-disc">
+                      {work.projects.map((project) => (
+                        <li>{project}</li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : null}
+              {work.clientTitle ? (
+                <>
+                  <h5 class="mt-3 italic">{work.clientTitle}</h5>
+                  {work?.clients?.length && (
+                    <ul class="ml-6 list-disc">
+                      {work.clients.map(([def, desc]) => (
+                        <li>
+                          <span class="text-primary">{def}</span> - {desc}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : null}
+            </section>
+          ))}
+        </div>
+      </section>
+    </article>
+    <aside>
+      <section>
+        <h2 class='text-3xl'>My Skills</h2>
+        <div class='flex flex-wrap gap-3 rounded-xl bg-primaryAlpha p-6'>
+          {tags.map((tag) => (
+            <div class="rounded-xl bg-primary px-3 py-2 text-white">{tag}</div>
+          ))}
+        </div>
+      </section>
+    </aside>
+  </main>
+</Base>

@@ -11,11 +11,15 @@ export interface Props {
     title: string;
     description: string;
   };
+  empty?: boolean;
+  bgColor?: string;
 }
 
 const {
   head: { title, description },
 } = Astro.props as Props;
+const isEmpty = Astro.props.empty;
+const bgColor = Astro.props?.bgColor ?? 'bg-slate-900';
 ---
 
 <html lang='en'>
@@ -29,14 +33,19 @@ const {
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+    <link
+    href='//fonts.googleapis.com/css?family=Open+Sans:300'
+    rel='stylesheet'
+    type='text/css'
+  />
     { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
   </head>
-  <body class='bg-slate-900 text-gray-100'>
-    <Navbar />
+  <body class={`${bgColor} text-gray-100`}>
+    {!isEmpty && <Navbar />}
 
     <slot></slot>
 
-    <Footer />
+    {!isEmpty && <Footer />}
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
