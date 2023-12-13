@@ -8,7 +8,7 @@ import orizensPlanet from './orizens-planet.png';
 
 const NavLink = ({ href, children, ...props }: any) => (
   <a href={href} {...props}>
-    <div className="bg-transparent text-xl shadow-xl shadow-transparent transition-all hover:shadow-primary md:text-lg">
+    <div className="rounded-xl bg-transparent px-2 py-1 text-xl shadow-xl shadow-transparent transition-all hover:shadow-primary md:text-lg">
       {children}
     </div>
   </a>
