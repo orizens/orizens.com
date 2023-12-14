@@ -1,8 +1,5 @@
 ---
-import type {
-  FrontmatterPage,
-  IFrontmatter,
-} from 'astro-boilerplate-components';
+import type { FrontmatterPage } from 'astro-boilerplate-components';
 import {
   NewerOlderPagination,
   PaginationHeader,
@@ -13,6 +10,7 @@ import { BlogCollection } from '@/components/BlogCollection';
 // import { CTA } from '@/partials/CTA';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
+import type { OrizensPostFrontMatter } from '@/utils/Posts';
 import { sortByDate } from '@/utils/Posts';
 
 type GetStaticPaths = {
@@ -20,7 +18,7 @@ type GetStaticPaths = {
 };
 
 export async function getStaticPaths({ paginate }: GetStaticPaths) {
-  const allPosts = await Astro.glob<IFrontmatter>('./**/*.md');
+  const allPosts = await Astro.glob<OrizensPostFrontMatter>('./**/*.md');
   const sortedPosts = sortByDate(allPosts);
 
   // Return a paginated collection of paths for all posts
