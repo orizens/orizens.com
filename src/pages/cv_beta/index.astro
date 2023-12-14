@@ -10,35 +10,38 @@ import { Space } from '@/components/Space';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
-import { tags, works } from './work';
+import * as myCv from './cv.md';
+import { works } from './work';
 
 const title = 'Oren Farhi articles';
 const { description } = AppConfig;
+const data = myCv.frontmatter;
+
+const details = [
+  [HiOutlineEnvelope, data.email],
+  [HiOutlineLink, data.link],
+  [HiOutlinePhone, data.mobile[0]],
+  [HiOutlinePhone, data.mobile[1]],
+];
 ---
 
 <Base head={{ title, description }} empty bgColor='bg-white'>
   <Space className='rounded-none p-6' variant='space'>
     <div class='grid justify-center justify-items-center'>
       <ProfileAvatar />
-      <h1 class='my-3 text-6xl font-semibold'>Oren Farhi</h1>
+      <h1 class='my-3 text-6xl font-semibold'>{data.name}</h1>
       <h2 class='text-2xl font-thin uppercase'>
-        Front End Engineer / Tech Lead
+        {data.role}
       </h2>
     </div>
     <div class='right-2 top-2 md:absolute'>
-      <ul class='list-none md:text-sm'>
-        <li>
-          <HiOutlineEnvelope className='inline' /> farhioren@gmail.com
-        </li>
-        <li>
-          <HiOutlineLink className='inline' /> orizens.com/cv
-        </li>
-        <li>
-          <HiOutlinePhone className='inline' /> +1 (646) 753 4899
-        </li>
-        <li>
-          <HiOutlinePhone className='inline' /> +1 (551) 246 0056
-        </li>
+      <ul class='grid list-none gap-1 md:text-sm'>
+        {details.map(([Icon, label]) => (
+          <li>
+            <Icon className="mr-1 inline" />
+            {label}
+          </li>
+        ))}
       </ul>
     </div>
   </Space>
@@ -132,7 +135,7 @@ const { description } = AppConfig;
       <section>
         <h2 class='text-3xl'>My Skills</h2>
         <div class='flex flex-wrap gap-3 rounded-xl bg-primaryAlpha p-6'>
-          {tags.map((tag) => (
+          {data.skills.map((tag: string) => (
             <div class="rounded-xl bg-primary px-3 py-2 text-white">{tag}</div>
           ))}
         </div>

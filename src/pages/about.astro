@@ -1,6 +1,7 @@
 ---
 import type { FrontmatterPage } from 'astro-boilerplate-components';
 
+import Check from '@/components/Check.astro';
 import { ProfileAvatar } from '@/components/profile';
 import { Section } from '@/components/Section';
 import { Space } from '@/components/Space';
@@ -68,7 +69,7 @@ const description = `Oren Farhi - An experienced Software Engineer, Front End En
         simple principles:
       </p>
       <div>
-        <ul class='ml-5 list-disc'>
+        <ul class='list-image-none'>
           {[
             <>
               seeing the code as a live <strong>reactive system</strong>
@@ -90,7 +91,12 @@ const description = `Oren Farhi - An experienced Software Engineer, Front End En
               <strong>Automating</strong> development with CI/CD utilizing
               Github Actions
             </>,
-          ].map((text) => <li>{text}</li>)}
+          ].map((text) => (
+            <li class="my-3">
+              <Check />
+              {text}
+            </li>
+          ))}
         </ul>
       </div>
     </Section>

@@ -1,27 +1,3 @@
-export const tags = [
-  'Typescript',
-  'React',
-  'React Native',
-  'Redux Toolkit',
-  'Cypress',
-  'Jest',
-  'Vitest',
-  'Testing Library',
-  'SCSS/SASS',
-  'Javascript',
-  'Firebase',
-  'Astro',
-  'Angular',
-  'NgRx',
-  'Architecture',
-  'CSS',
-  'Node',
-  'UX',
-  'Git',
-  'Github',
-  'JIRA',
-];
-
 export const works = [
   {
     role: 'Tech Application Advisor',
