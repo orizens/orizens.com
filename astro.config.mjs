@@ -6,6 +6,7 @@ import robotsTxt from 'astro-robots-txt';
 import { astroImageTools } from 'astro-imagetools';
 import AstroPWA from '@vite-pwa/astro';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import mdx from '@astrojs/mdx';
 import packageJson from './package.json';
 
 // https://astro.build/config
@@ -31,6 +32,7 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind({}),
+    mdx(),
     sitemap(),
     robotsTxt(),
     AstroPWA({

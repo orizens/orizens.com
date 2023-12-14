@@ -7,10 +7,11 @@ import {
 
 import { ProfileAvatar } from '@/components/profile';
 import { Space } from '@/components/Space';
+import Work from '@/partials/Work.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
-import * as myCv from './cv.md';
+import * as myCv from './cv.mdx';
 import { works } from './work';
 
 const title = 'Oren Farhi articles';
@@ -49,6 +50,8 @@ const details = [
     class='mx-auto grid max-w-screen-lg gap-6 p-6 text-slate-700 md:grid-cols-1 lg:grid-cols-3'
   >
     <article class='col-span-2 grid gap-6'>
+      <myCv.Content />
+
       <section>
         <h2 class='text-3xl'>Professional Profile</h2>
         <section class='rounded-xl bg-primaryAlpha p-6'>
@@ -92,42 +95,7 @@ const details = [
       <section>
         <h2 class='text-3xl'>Work Experience</h2>
         <div class='grid gap-6'>
-          {works.map((work) => (
-            <section class="rounded-xl bg-primaryAlpha p-6 md:relative">
-              <h3 class="text-lg">{work.role}</h3>
-              <h4 class="uppercase text-primary">{work.company}</h4>
-              <aside class="uppercase text-primary md:absolute md:right-0 md:top-8 md:rounded-l-xl md:bg-primary md:px-3 md:py-1 md:text-white">
-                {work.date}
-              </aside>
-              <p>{work.tagline}</p>
-              {work.projectsTitle ? (
-                <>
-                  <h5 class="mt-3 italic">{work.projectsTitle}</h5>
-                  {work?.projects?.length && (
-                    <ul class="ml-6 list-disc">
-                      {work.projects.map((project) => (
-                        <li>{project}</li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              ) : null}
-              {work.clientTitle ? (
-                <>
-                  <h5 class="mt-3 italic">{work.clientTitle}</h5>
-                  {work?.clients?.length && (
-                    <ul class="ml-6 list-disc">
-                      {work.clients.map(([def, desc]) => (
-                        <li>
-                          <span class="text-primary">{def}</span> - {desc}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              ) : null}
-            </section>
-          ))}
+          {works.map((work) => <Work work={work} />)}
         </div>
       </section>
     </article>

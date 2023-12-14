@@ -52,6 +52,7 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
+    "@astrojs/mdx": "^1.1.5",
     "@astrolib/analytics": "^0.5.0",
     "astro-boilerplate-components": "^1.0.15",
     "date-fns": "^2.28.0",
