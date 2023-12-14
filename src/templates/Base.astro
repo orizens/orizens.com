@@ -19,7 +19,8 @@ const {
   head: { title, description },
 } = Astro.props as Props;
 const isEmpty = Astro.props.empty;
-const bgColor = Astro.props?.bgColor ?? 'bg-slate-900';
+// const bgColor = Astro.props?.bgColor ?? 'bg-slate-900';
+const bgColor = Astro.props?.bgColor ?? 'bg-gradient-to-tr from-slate-900 via-gray-900 to-slate-800';
 ---
 
 <html lang='en'>
