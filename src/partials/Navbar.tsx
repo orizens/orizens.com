@@ -1,8 +1,7 @@
 import './Navbar.css';
 
-import { NavbarTwoColumns, Section } from 'astro-boilerplate-components';
-
 import { Logo } from '@/components/Logo';
+import { Section } from '@/components/Section';
 
 import orizensPlanet from './orizens-planet.png';
 
@@ -14,8 +13,8 @@ const NavLink = ({ href, children, ...props }: any) => (
   </a>
 );
 const Navbar = () => (
-  <Section>
-    <NavbarTwoColumns>
+  <Section containerClassName="px-3">
+    <header className="mx-auto flex max-w-screen-md flex-col items-center sm:flex-row sm:justify-between">
       <a href="/">
         <Logo
           icon={
@@ -28,14 +27,14 @@ const Navbar = () => (
         />
       </a>
 
-      <nav className="mx-auto mt-10 flex gap-6 sm:mt-0 md:mx-0">
+      <nav className="mx-auto mt-10 flex gap-2 sm:mt-0 md:mx-0">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/blog/">Blog</NavLink>
         <NavLink href="/about/">About</NavLink>
         <NavLink href="/tags/">Tags</NavLink>
         <NavLink href="/contact/">Contact</NavLink>
       </nav>
-    </NavbarTwoColumns>
+    </header>
   </Section>
 );
 

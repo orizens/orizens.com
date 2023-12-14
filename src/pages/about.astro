@@ -6,16 +6,13 @@ import { Section } from '@/components/Section';
 import { Space } from '@/components/Space';
 import { ProjectList } from '@/partials/ProjectList';
 import { Socials } from '@/partials/Socials';
+import TechStack from '@/partials/TechStack.astro';
 import Base from '@/templates/Base.astro';
 
 export interface Props {
   page: FrontmatterPage;
 }
 
-// const { page } = Astro.props as Props;
-// const titleSuffix = ` - ${AppConfig.site_name}`;
-// const titleBase = `Blog page ${page.currentPage}`;
-// const title = titleBase + titleSuffix;
 const description = `Oren Farhi - An experienced Software Engineer, Front End Engineer, Front End Architect, Tech Leading, team player`;
 ---
 
@@ -48,7 +45,7 @@ const description = `Oren Farhi - An experienced Software Engineer, Front End En
           class='ml-1'
         >
           open source
-        </a>{' '}some of my work,<a href='/' class='mx-1'> writing</a>about it
+        </a>{' '}some of my work,<a href='/' class='mx-1'>writing</a>about it
         and reading a lot.
       </p>
       <p class='m-auto'>
@@ -99,5 +96,8 @@ const description = `Oren Farhi - An experienced Software Engineer, Front End En
     </Section>
   </Section>
 
+  <Section size='md'>
+    <TechStack />
+  </Section>
   <ProjectList className='max-w-screen-md px-6' />
 </Base>

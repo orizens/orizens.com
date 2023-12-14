@@ -1,7 +1,9 @@
 ---
+import { Section } from '@/components/Section';
 import { Hero } from '@/partials/Hero';
 import { ProjectList } from '@/partials/ProjectList';
 import { RecentPosts } from '@/partials/RecentPosts';
+import TechStack from '@/partials/TechStack.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import type { OrizensPostFrontMatter } from '@/utils/Posts';
@@ -19,5 +21,8 @@ const { description } = AppConfig;
 <Base head={{ title, description }}>
   <Hero />
   <RecentPosts postList={lastThreePosts} />
-  <ProjectList className='px-0' />
+  <ProjectList className='px-6' />
+  <Section>
+    <TechStack />
+  </Section>
 </Base>

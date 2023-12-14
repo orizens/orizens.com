@@ -1,0 +1,60 @@
+---
+import { AiOutlineCode, AiOutlineLaptop } from 'react-icons/ai';
+
+import { Space } from '@/components/Space';
+
+const tech = [
+  {
+    title: 'My Tech Stack',
+    icon: AiOutlineLaptop,
+    items: [
+      ['//react.dev/', 'React (Typescript)'],
+      ['//redux-toolkit.js.org/', 'Redux Toolkit'],
+      ['//chakra-ui.com/', 'ChakraUI'],
+      ['//tailwindcss.com', 'Tailwind'],
+      ['//sass-lang.com/', 'Scss'],
+      ['//astro.build/', 'Astro'],
+      ['//firebase.com/', 'Firebase'],
+    ],
+  },
+  {
+    title: 'Open Source',
+    icon: AiOutlineCode,
+    items: [
+      ['//www.npmjs.com/package/use-recorder', 'use-recorder'],
+      ['//npmjs.com/package/ngx-infinite-scroll', 'Angular Infinite Scroll'],
+      ['//github.com/orizens/echoes-player', 'Echoes Player App'],
+      ['//npmjs.com/package/ngx-typeahead', 'Angular Typeahead'],
+      ['//npmjs.com/package/ngx-youtube-player', 'Angular Youtube Player'],
+      ['//github.com/orizens/ngrx-styleguide', 'Angular NgRx Style Guide'],
+      ['//github.com/orizens', 'More Projects...'],
+    ],
+  },
+];
+---
+
+<Space variant='space' className='grid gap-4 rounded-xl p-6 md:grid-cols-2'>
+  {tech.map(({ title, items, icon: Icon }) => (
+    <section class="grid gap-2">
+      <h2 class="flex items-center gap-2 text-3xl text-accent">
+        <Icon className="text-white" /> {title}
+      </h2>
+      <div class="rounded-xl bg-primaryAlpha p-2">
+        <ul class="grid list-none gap-2">
+          {items.map(([href, label]) => (
+            <li class="w-full">
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block w-full border border-transparent p-2 hover:rounded-xl hover:border-primary"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+</Space>
