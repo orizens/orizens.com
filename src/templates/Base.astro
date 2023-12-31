@@ -1,11 +1,11 @@
 ---
 import { GoogleAnalytics } from '@astrolib/analytics';
 
-import { pwaInfo } from 'virtual:pwa-info';
+import ReloadPrompt from '@/components/ReloadPrompt.astro';
 import { Footer } from '@/partials/Footer';
 import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
-import ReloadPrompt from '@/components/ReloadPrompt.astro';
+
 export interface Props {
   head: {
     title: string;
@@ -20,7 +20,9 @@ const {
 } = Astro.props as Props;
 const isEmpty = Astro.props.empty;
 // const bgColor = Astro.props?.bgColor ?? 'bg-slate-900';
-const bgColor = Astro.props?.bgColor ?? 'bg-gradient-to-tr from-slate-900 via-gray-900 to-slate-800';
+const bgColor =
+  Astro.props?.bgColor ??
+  'bg-gradient-to-tr from-slate-900 via-gray-900 to-slate-800';
 ---
 
 <html lang='en'>
@@ -35,13 +37,16 @@ const bgColor = Astro.props?.bgColor ?? 'bg-gradient-to-tr from-slate-900 via-gr
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
     <link
-    href='//fonts.googleapis.com/css?family=Open+Sans:300'
-    rel='stylesheet'
-    type='text/css'
-  />
-    { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
+      href='//fonts.googleapis.com/css?family=Open+Sans:300'
+      rel='stylesheet'
+      type='text/css'
+    />
+    <!-- { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> } -->
   </head>
-  <body class={`${bgColor} text-gray-100`}>
+  <body
+    class={`${bgColor} text-gray-100`}
+    data-lastupdate={new Date().toString()}
+  >
     {!isEmpty && <Navbar />}
 
     <slot></slot>
