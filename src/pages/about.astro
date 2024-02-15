@@ -17,7 +17,13 @@ export interface Props {
 const description = `Oren Farhi - An experienced Software Engineer, Front End Engineer, Front End Architect, Tech Leading, team player`;
 ---
 
-<Base head={{ title: 'About Me', description }}>
+<Base
+  head={{
+    title: 'About Me',
+    description,
+    og: { image: '/images/profile.jpg' },
+  }}
+>
   <Section className='grid max-w-screen-md gap-6 px-6'>
     <Space
       variant='space'

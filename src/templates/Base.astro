@@ -10,15 +10,20 @@ export interface Props {
   head: {
     title: string;
     description: string;
+    og?: {
+      image: string;
+    }
   };
   empty?: boolean;
   bgColor?: string;
 }
 
 const {
-  head: { title, description },
+  head: { title, description }, 
 } = Astro.props as Props;
 const isEmpty = Astro.props.empty;
+const ogData = Astro.props?.head?.og;
+
 // const bgColor = Astro.props?.bgColor ?? 'bg-slate-900';
 const bgColor =
   Astro.props?.bgColor ??
@@ -41,6 +46,11 @@ const bgColor =
       rel='stylesheet'
       type='text/css'
     />
+    {ogData && 
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={ogData.image} />
+    }
     <!-- { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> } -->
   </head>
   <body

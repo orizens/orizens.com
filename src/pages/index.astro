@@ -18,7 +18,7 @@ const { title } = AppConfig;
 const { description } = AppConfig;
 ---
 
-<Base head={{ title, description }}>
+<Base head={{ title, description, og: { image: '/images/galaxy-map.jpg' } }}>
   <Hero />
   <RecentPosts postList={lastThreePosts} />
   <ProjectList className='px-6' />

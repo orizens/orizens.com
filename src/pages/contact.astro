@@ -24,7 +24,13 @@ const description =
   'Contact Oren Farhi for software engineering, react front end';
 ---
 
-<Base head={{ title: 'Contact Oren Farhi', description }}>
+<Base
+  head={{
+    title: 'Contact Oren Farhi',
+    description,
+    og: { image: '/images/profile.jpg' },
+  }}
+>
   <Section className='max-w-screen-md px-0'>
     <Space
       variant='space'
