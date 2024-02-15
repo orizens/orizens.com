@@ -23,7 +23,6 @@ const title = `${content.title} - ${AppConfig.site_name}`;
   }}
 >
   <BlogPost frontmatter={content}>
-    {JSON.stringify(Astro.props)}
     <slot></slot>
   </BlogPost>
 
