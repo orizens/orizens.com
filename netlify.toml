@@ -1,3 +1,14 @@
 [build]
   publish = "dist"
   command = "npm run build"
+[[redirects]]
+  from = "/cv"
+  to = "https://orizens.github.io/cv"
+[[headers]]
+  for = "/*"
+  [headers.values]
+  cache-control = '''
+  max-age=0,
+  no-cache,
+  no-store,
+  must-revalidate'''
