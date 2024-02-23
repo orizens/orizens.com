@@ -36,8 +36,8 @@ window.addEventListener('load', () => {
   refreshSW = registerSW({
     immediate: true,
     onOfflineReady() {
-      pwaToastMessage.innerHTML = 'App ready to work offline';
-      showPwaToast(true);
+      // pwaToastMessage.innerHTML = 'App ready to work offline';
+      // showPwaToast(true);
     },
     onNeedRefresh() {
       pwaToastMessage.innerHTML =

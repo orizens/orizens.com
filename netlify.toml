@@ -2,8 +2,9 @@
   publish = "dist"
   command = "npm run build"
 [[redirects]]
-  from = "/cv"
+  from = "https://orizens.com/cv"
   to = "https://orizens.github.io/cv"
+  status = 200
 [[headers]]
   for = "/*"
   [headers.values]
