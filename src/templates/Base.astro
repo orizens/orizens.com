@@ -1,7 +1,7 @@
 ---
 import { GoogleAnalytics } from '@astrolib/analytics';
 
-import ReloadPrompt from '@/components/ReloadPrompt.astro';
+// import ReloadPrompt from '@/components/ReloadPrompt.astro';
 import { Footer } from '@/partials/Footer';
 import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
@@ -57,7 +57,6 @@ const bgColor =
       <meta name="twitter:description" content={description}>
       <meta name="twitter:image" content={ogData.image}>
     }
-    <!-- { pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> } -->
   </head>
   <body
     class={`${bgColor} text-gray-100`}
@@ -79,6 +78,5 @@ const bgColor =
           });
       }
     </script>
-    <ReloadPrompt />
   </body>
 </html>

@@ -4,10 +4,10 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 import { astroImageTools } from 'astro-imagetools';
-import AstroPWA from '@vite-pwa/astro';
+// import AstroPWA from '@vite-pwa/astro';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import mdx from '@astrojs/mdx';
-import packageJson from './package.json';
+// import packageJson from './package.json';
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,24 +35,24 @@ export default defineConfig({
     mdx(),
     sitemap(),
     robotsTxt(),
-    AstroPWA({
-      manifest: {
-        name: 'orizens',
-        description: `front end engineering and arechitecture articles by Oren Farhi, genereated at ${new Date().getTime()}, version ${
-          packageJson.version
-        }`,
-        short_name: 'orizens',
-        start_url: '/',
-        display: 'standalone',
-        background_color: '#0f182a',
-        lang: 'en',
-        scope: `/?${new Date().getTime()}`,
-      },
-      workbox: {
-        navigateFallback: '/',
-        globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
-      },
-    }),
+    // AstroPWA({
+    //   manifest: {
+    //     name: 'orizens',
+    //     description: `front end engineering and arechitecture articles by Oren Farhi, genereated at ${new Date().getTime()}, version ${
+    //       packageJson.version
+    //     }`,
+    //     short_name: 'orizens',
+    //     start_url: '/',
+    //     display: 'standalone',
+    //     background_color: '#0f182a',
+    //     lang: 'en',
+    //     scope: `/?${new Date().getTime()}`,
+    //   },
+    //   workbox: {
+    //     navigateFallback: '/',
+    //     globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}'],
+    //   },
+    // }),
     astroImageTools,
   ],
 });
