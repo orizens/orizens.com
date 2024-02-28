@@ -2,7 +2,7 @@
 id: 20230923
 title: "Best Practices for Developing Complex Form-Based Apps with React Hook Form and TypeScript Support"
 pubDate: 2023-09-26T14:19:07.683Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 slug: /blog/best_practices_for_developing_complex_form-based_apps_with_react_hook_form_and_typescript_support/
 imgSrc: '/images/blog/2023-09/mint-icecream.jpg'

@@ -2,7 +2,7 @@
 id: 20211013
 title: "Integrating React Hook Form & Redux-Toolkit (rtk)"
 pubDate: 2021-10-13T17:49:04.757Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/integrating-react-hook-form-and-redux-toolkit-rtk/
 imgSrc: '/images/blog/2021-10/PXL_20211010_201650887_2.jpg'

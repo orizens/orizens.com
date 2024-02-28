@@ -2,7 +2,7 @@
 id: 20191005
 title: "React Hooks and Components: Custom Hooks as Minions At Your Service"
 pubDate: 2019-10-05T14:50:00+00:00
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-hooks-and-components-custom-hooks-as-minions-at-your-service/
 imgSrc: "/images/blog/2019-10/IMG_20190921_125514.jpg"

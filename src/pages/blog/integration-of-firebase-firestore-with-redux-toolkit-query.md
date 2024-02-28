@@ -2,7 +2,7 @@
 id: 20230406
 title: "Integration of Firebase Firestore with Redux Toolkit Query"
 pubDate: 2023-04-06T15:56:38.693Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/integration-of-firebase-firestore-with-redux-toolkit-query/
 imgSrc: '/images/blog/2023-04-06/rainbow.jpg'

@@ -38,7 +38,7 @@ export default defineConfig({
     // AstroPWA({
     //   manifest: {
     //     name: 'orizens',
-    //     description: `front end engineering and arechitecture articles by Oren Farhi, genereated at ${new Date().getTime()}, version ${
+    //     description: `front end engineering and arechitecture articles by Oren Farchi, genereated at ${new Date().getTime()}, version ${
     //       packageJson.version
     //     }`,
     //     short_name: 'orizens',

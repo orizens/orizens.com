@@ -2,7 +2,7 @@
 id: 1352
 title: "Ngrx, Scrolling Into DOM Elements & Components Communication"
 pubDate: 2018-07-31T04:09:35+00:00
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 guid: http://orizens.com/wp/?p=1352
 # permalink: /blog/ngrx-scrolling-ino-dom-element-and-components-communication/

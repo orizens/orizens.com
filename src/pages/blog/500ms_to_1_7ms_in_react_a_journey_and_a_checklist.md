@@ -2,7 +2,7 @@
 id: 20220728
 title: "500ms to 1.7ms In React: A Journey And A Checklist"
 pubDate: 2022-07-28T15:56:38.693Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/500ms_to_1_7ms_in_react_a_journey_and_a_checklist/
 imgSrc: '/images/blog/2022-7/duck.jpg'

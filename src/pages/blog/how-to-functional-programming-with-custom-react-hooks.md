@@ -2,7 +2,7 @@
 id: 20200419
 title: "How To Functional Programming With Custom React Hooks"
 pubDate: 2020-04-19T23:32:38.000Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-functional-programming-with-custom-react-hooks/
 imgSrc: "/images/blog/2020-04/IMG_20200406_143035.jpg"

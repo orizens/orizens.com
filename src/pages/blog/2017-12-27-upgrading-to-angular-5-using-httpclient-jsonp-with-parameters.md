@@ -2,7 +2,7 @@
 id: 1295
 title: "Upgrading to Angular 5: Using HttpClient, JSONP with parameters"
 pubDate: 2017-12-27T12:30:41+00:00
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/upgrading-to-angular-5-using-httpclient-jsonp-with-parameters/
 

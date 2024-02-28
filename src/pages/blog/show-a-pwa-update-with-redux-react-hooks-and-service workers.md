@@ -2,7 +2,7 @@
 id: 20200628
 title: "Show A PWA Update with Redux, React Hooks & Service Workers"
 pubDate: 2020-06-28T15:48:30.402Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/show-a-pwa-update-with-redux-react-hooks-and-service workers/
 imgSrc: "/images/blog/2020-06-28/2020-06-28.jpg"

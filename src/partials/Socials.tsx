@@ -4,7 +4,7 @@ import { FiBook, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const socials = [
   { href: '//twitter.com/orizens', Icon: FiTwitter },
-  { href: '//www.linkedin.com/in/orenfarhi/', Icon: FiLinkedin },
+  { href: '//www.linkedin.com/in/orenFarchi/', Icon: FiLinkedin },
   { href: '//github.com/orizens', Icon: FiGithub },
   { href: '//link.springer.com/book/10.1007/978-1-4842-2620-9', Icon: FiBook },
   { href: '//www.npmjs.com/~orizens', Icon: DiNpm },

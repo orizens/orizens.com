@@ -2,7 +2,7 @@
 id: 1276
 title: "Decluttering Angular Components: The Proxy Pattern"
 pubDate: 2017-10-27T18:30:35+00:00
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/decluttering-angular-components-the-proxy-pattern/
 dsq_thread_id:

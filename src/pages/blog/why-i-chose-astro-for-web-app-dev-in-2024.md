@@ -1,7 +1,7 @@
 ---
 title: "Why I choose Astro for web app development in 2024"
 pubDate: 2024-02-15T21:16:45.670Z
-author: Oren Farhi
+author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/show-a-pwa-update-with-redux-react-hooks-and-service workers/
 imgSrc: "/images/blog/2024/choose-astro.jpg"
