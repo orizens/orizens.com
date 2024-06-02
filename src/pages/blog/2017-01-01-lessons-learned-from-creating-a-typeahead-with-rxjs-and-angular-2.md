@@ -5,10 +5,6 @@ pubDate: 2017-01-01T14:29:36+00:00
 author: Oren Farchi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/
-dsq_thread_id:
-  - "5426540708"
-dsq_needs_sync:
-  - "1"
 imgSrc: /images/blog/uploads/2017/01/type-rxjs.jpg
 tags:
   - angular
@@ -315,7 +311,7 @@ The suggestions box is similar to a dropdown. To allow this feature, I took the 
 
 You can see the end result live on [Echoes Player App](https://echoesplayer.netlify.app/) and in this screenshot:
 
-<img class="alignnone wp-image-1156 size-large" src=".../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-1024x754.png" width="697" height="513" srcset=".../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-1024x754.png 1024w, .../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-300x221.png 300w, .../../img/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-768x566.png 768w" sizes="(max-width: 697px) 100vw, 697px" />
+<img class="alignnone wp-image-1156 size-large" src="...//images/blog/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-1024x754.png" width="697" height="513" srcset="...//images/blog/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-1024x754.png 1024w, ...//images/blog/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-300x221.png 300w, ...//images/blog/uploads/2017/01/Screen-Shot-2017-01-01-at-4.23.24-PM-768x566.png 768w" sizes="(max-width: 697px) 100vw, 697px" />
 
 To summarize the great benefits came out form this experience, we learned these:
 

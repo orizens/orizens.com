@@ -4,8 +4,8 @@ title: "Guidelines For developing with Angular, ngrx/store, ngrx/effects & AOT"
 pubDate: 2017-03-19T13:57:23+00:00
 author: Oren Farchi
 layout: '@/templates/BasePost.astro'
-guid: http://orizens.com/wp/?p=1229
-permalink: /blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/
+# guidhttp://orizens.com/wp/?p=1229
+# permalink: /blog/guidelines-for-developing-with-angular-ngrxstore-ngrxeffects-aot/
 dsq_thread_id:
   - "5645812559"
 imgSrc: /images/blog/uploads/2017/03/ngrxaot.jpg
