@@ -20,7 +20,7 @@ As developers, we're constantly seeking ways to streamline our workflows and enh
 
 ### 1. Simplicity and Ease of Use
 
-One of the most compelling advantages of RTK Query is its simplicity. The code you provided demonstrates how easy it is to define endpoints for various operations, such as querying data, creating, updating, and deleting resources. The `injectEndpoints` method allows you to define these endpoints in a concise and declarative manner, reducing boilerplate code and improving readability.
+One of the most compelling advantages of RTK Query is its simplicity. This code demonstrates how easy it is to define endpoints for various operations, such as querying data, creating, updating, and deleting resources. The `injectEndpoints` method allows you to define these endpoints in a concise and declarative manner, reducing boilerplate code and improving readability.
 
 ```typescript
 booksApi.injectEndpoints({
@@ -41,7 +41,7 @@ booksApi.injectEndpoints({
 
 ### 2. Automatic Caching and Invalidation
 
-One of the standout features of RTK Query is its built-in caching mechanism. The library automatically caches the data fetched from your endpoints, ensuring that subsequent requests for the same data are served from the cache, reducing network overhead and improving performance. The code you provided demonstrates how RTK Query handles cache invalidation using the `invalidatesTags` option.
+One of the standout features of RTK Query is its built-in caching mechanism. The library automatically caches the data fetched from your endpoints, ensuring that subsequent requests for the same data are served from the cache, reducing network overhead and improving performance. This function i.e, handles cache invalidation using the `invalidatesTags` option.
 
 ```typescript
 createBundle: builder.mutation<any, void>({
@@ -58,7 +58,7 @@ By specifying the `BooksTag`, RTK Query knows which cache entries to invalidate 
 
 ### 3. Scalability and Maintainability
 
-As your application grows in complexity, managing asynchronous data fetching and caching can become increasingly challenging. RTK Query's modular approach and separation of concerns make it easier to scale and maintain your codebase. Each endpoint is defined independently, allowing you to easily add, modify, or remove endpoints as needed without affecting the rest of your application.
+As your application grows in complexity, managing asynchronous data fetching and caching can become increasingly challenging. RTK Query's modular approach and separation of concerns make it easier to scale and maintain your codebase. Each endpoint is defined independently, allowing you to easily add, modify, or remove endpoints as needed without affecting the rest of the app.
 
 ```typescript
 endpoints: builder => ({
@@ -76,7 +76,7 @@ This modular structure promotes code reusability and makes it easier to reason a
 
 ### 4. Efficient Data Fetching and Normalization
 
-RTK Query provides built-in support for efficient data fetching and normalization. The code you provided demonstrates how you can fetch data from multiple sources and normalize the data using the `toSimpleBooks` function. However, the current implementation can be optimized to reduce code duplication and improve readability. Here's an optimized version of the code:
+RTK Query provides built-in support for efficient data fetching and normalization. This queryFn shows how you can fetch data from multiple sources and normalize the data using the `toSimpleBooks` function:
 
 ```typescript
 async queryFn(collections) {
@@ -97,15 +97,15 @@ async queryFn(collections) {
 }
 ```
 
-In this optimized version, we're using `Promise.all` to fetch the two collections (`latest-books-1-query` and `latest-books-2-query`) concurrently. This approach ensures that we don't have to wait for one collection to finish fetching before starting the other, potentially reducing the overall fetching time.
+In this code, i'm using `Promise.all` to fetch the two collections (`latest-books-1-query` and `latest-books-2-query`) concurrently. This approach ensures that we don't have to wait for one collection to finish fetching before starting the other, potentially reducing the overall fetching time.
 
-Additionally, we've moved the `getBooksBundle` call inside the `try` block, ensuring that it's executed only if the collections are fetched successfully. This change helps maintain a clear separation of concerns and makes the code easier to reason about.
+The `getBooksBundle` call inside the `try` block, ensures that it's executed only if the collections are fetched successfully. This strategy helps maintaining a clear separation of concerns and makes the code easier to reason about.
 
 By leveraging RTK Query's efficient data fetching capabilities and employing best practices like `Promise.all`, you can ensure that your application fetches and normalizes data in an optimized and efficient manner, leading to improved performance and a better user experience.
 
 ### 5. Ease of Use with Exposed Hooks
 
-One of the standout features of RTK Query is the ease of use it provides through its exposed hooks. The code you provided demonstrates how you can use the generated hooks (useGetBooksQuery, useCreateBundleMutation, etc.) to interact with the defined endpoints within your React components. These hooks abstract away the complexities of managing asynchronous data fetching and caching, allowing you to focus on building your application's logic.
+One of the standout features of RTK Query is the ease of use it provides through its exposed hooks. You can use the generated hooks (useGetBooksQuery, useCreateBundleMutation, etc.) to interact with the defined endpoints within your React components. These hooks abstract away the complexities of managing asynchronous data fetching and caching, allowing you to focus on building your application's logic.
 typescript
 
 ```typescript
