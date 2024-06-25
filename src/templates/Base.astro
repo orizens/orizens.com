@@ -5,6 +5,7 @@ import { GoogleAnalytics } from '@astrolib/analytics';
 import { Footer } from '@/partials/Footer';
 import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
+import { AstroFont } from "astro-font";
 
 export interface Props {
   head: {
@@ -41,10 +42,18 @@ const bgColor =
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
-    <link
-      href='//fonts.googleapis.com/css?family=Open+Sans:300'
-      rel='stylesheet'
-      type='text/css'
+    <AstroFont
+      config={[
+        {
+          src: [],
+          preload: false,
+          display: "swap",
+          name: "Open Sans",
+          fallback: "sans-serif",
+          cssVariable: "font-open-sans",
+          googleFontsURL: 'https://fonts.googleapis.com/css?family=Open+Sans:300',
+        },
+      ]}
     />
     {ogData && 
       <meta property="og:title" content={title} />
