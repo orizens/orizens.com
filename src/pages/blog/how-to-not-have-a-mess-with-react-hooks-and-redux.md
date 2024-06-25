@@ -2,7 +2,7 @@
 id: 20201016
 title: "How To Not Have A Mess with React Hooks & Redux"
 pubDate: 2020-01-17T03:58:39.857Z
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-not-have-a-mess-with-react-hooks-and-redux/
 # dsq_thread_id:

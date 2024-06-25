@@ -2,7 +2,7 @@
 id: 20210703
 title: "How To Improve Your Developer Experience (DX) With React, Hooks And Redux-Toolkit (rtk)"
 pubDate: 2021-07-03T22:14:48.459Z
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-improve-your-developer-experience-(dx)-with-react-hooks-and-redux-toolkit-rtk/
 imgSrc: '/images/blog/2021-7/PXL_20210702_194653498.PORTRAIT.jpg'

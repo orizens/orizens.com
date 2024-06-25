@@ -2,7 +2,7 @@
 id: 20240603
 title: "The Benefits of Using RTK Query: A Scalable and Efficient Solution"
 pubDate: 2024-06-03T14:51:41.760Z
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/show-a-pwa-update-with-redux-react-hooks-and-service workers/
 imgSrc: "/images/blog/2024/The Benefits of Using RTK Query.jpg"

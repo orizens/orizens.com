@@ -2,7 +2,7 @@
 id: 1151
 title: Lessons Learned from Creating A Typeahead With RxJs And Angular
 pubDate: 2017-01-01T14:29:36+00:00
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/lessons-learned-from-creating-a-typeahead-with-rxjs-and-angular-2/
 imgSrc: /images/blog/uploads/2017/01/type-rxjs.jpg

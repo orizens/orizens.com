@@ -2,7 +2,7 @@
 id: 20201230
 title: "React - Making Component & Hooks With Clean Code Approach"
 pubDate: 2020-12-31T00:13:48.715Z
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-making-component-and-hooks-with-clean-code-approach/
 imgSrc: "/images/blog/2020-12/PXL_20201223_194527123.PORTRAIT.jpg"

@@ -1,7 +1,7 @@
 ---
 id: 20220810
 title: "Reducing React Dev Server to 213ms - From Create React App To Vite Migration"
-author: Oren Farchi
+author: Oren Farhi
 pubDate: 2022-08-10T15:56:38.693Z
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/reducing-react-dev-server-to-213ms-from-create-react-app-to-vite-migration/

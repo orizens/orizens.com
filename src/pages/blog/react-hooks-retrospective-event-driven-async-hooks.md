@@ -2,7 +2,7 @@
 id: 20201231
 title: "React Hooks Retrospective: Event Driven Async Hooks"
 pubDate: 2021-01-31T22:14:48.459Z
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-hooks-retrospective-event-driven-async-hooks/
 imgSrc: "/images/blog/2021-1/PXL_20201217_162640591.PORTRAIT.jpg"

@@ -2,7 +2,7 @@
 id: 20200539
 title: "How To Let Your React Code Speak For Itself"
 pubDate: 2020-05-30T15:48:30.402Z
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/how-to-let-your-react-code-speak-for-itself/
 imgSrc: "/images/blog/2020-05/2020-05-30.jpg"

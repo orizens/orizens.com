@@ -2,7 +2,7 @@
 id: 908
 title: 'Setup Karma For Testing Angular 1.x Components With ES2015 & Browserify'
 pubDate: 2016-01-08T11:32:43+00:00
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/setup-karma-for-testing-angular-1-x-components-with-es2015-browserify/
 # dsq_thread_id:

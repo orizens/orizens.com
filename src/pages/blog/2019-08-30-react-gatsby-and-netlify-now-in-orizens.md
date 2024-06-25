@@ -2,7 +2,7 @@
 id: 20190830
 title: "From Wordpress to React, Gatsby And Netlify - Now In Orizens.com"
 pubDate: 2019-08-30T04:09:35+00:00
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/react-gatsby-and-netlify-now-in-orizens/
 dsq_thread_id:

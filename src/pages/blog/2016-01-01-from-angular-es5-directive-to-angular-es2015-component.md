@@ -2,7 +2,7 @@
 id: 904
 title: From Angular ES5 Directive To Angular ES2015 Component (ES6)
 pubDate: 2016-01-01T15:22:08+00:00
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/from-angular-es5-directive-to-angular-es2015-component/
 # dsq_thread_id:

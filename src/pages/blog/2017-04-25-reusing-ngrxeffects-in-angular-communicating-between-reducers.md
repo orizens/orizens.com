@@ -2,7 +2,7 @@
 id: 1246
 title: Reusing ngrx/effects in Angular (communicating between reducers)
 pubDate: 2017-04-25T09:17:09+00:00
-author: Oren Farchi
+author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/reusing-ngrxeffects-in-angular-communicating-between-reducers/
 dsq_thread_id:
