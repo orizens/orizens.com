@@ -8,12 +8,12 @@ imgSrc: "/images/blog/2025/aitdd.jpg"
 imgAlt: "AI-driven development concept"
 tags:
 
-* ai
-* tdd
-* bdd
-* architecture
-* clean-code
-* productivity
+- ai
+- tdd
+- bdd
+- architecture
+- clean-code
+- productivity
 
 ---
 
