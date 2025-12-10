@@ -1,4 +1,4 @@
-import profile from './profile.jpg';
+import profile from './profile.png';
 
 const ProfileAvatar = ({ className = '' }) => (
   <img
