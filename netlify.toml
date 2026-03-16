@@ -3,7 +3,7 @@
   command = "npm run build"
 [[redirects]]
   from = "https://orizens.com/cv"
-  to = "https://orizens.github.io/cv"
+  to = "https://orencv.netlify.app/"
   status = 200
 [[headers]]
   for = "/*"
