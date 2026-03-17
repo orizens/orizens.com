@@ -4,7 +4,7 @@
 [[redirects]]
   from = "https://orizens.com/cv"
   to = "https://orencv.netlify.app/"
-  status = 200
+  status = 301
 [[headers]]
   for = "/*"
   [headers.values]
