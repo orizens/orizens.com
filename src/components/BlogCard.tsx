@@ -11,16 +11,18 @@ interface BlogCardProps extends MarkdownInstance<FrontmatterPage> {
   frontmatter: any;
 }
 export const OrizensBlogCard = ({ url, frontmatter }: BlogCardProps) => (
-  <div className="relative grid gap-3 transition-transform hover:scale-110">
-    <a href={frontmatter?.slug ?? url}>
-      <div className="grid grid-cols-1 overflow-hidden rounded-md bg-slate-800 md:grid-cols-3">
-        <div className="aspect-w-3 col-auto h-60 md:aspect-h-1">
-          <img
-            className="h-full w-full object-cover object-center"
-            src={frontmatter.imgSrc}
-            alt={frontmatter.imgAlt}
-            loading="lazy"
-          ></img>
+  <div className="relative grid gap-3 transition-transform">
+    <a href={frontmatter?.slug ?? url} className="group">
+      <div className="grid grid-cols-1 overflow-hidden rounded-md bg-slate-800 transition-colors duration-200 group-hover:bg-slate-900 md:grid-cols-3">
+        <div className="p-4">
+          <div className="aspect-w-2 col-auto h-60 p-2 md:aspect-h-1">
+            <img
+              className="h-full w-full rounded-md object-cover object-center"
+              src={frontmatter.imgSrc}
+              alt={frontmatter.imgAlt}
+              loading="lazy"
+            />
+          </div>
         </div>
 
         <div className="col-span-2 p-6">
@@ -33,9 +35,9 @@ export const OrizensBlogCard = ({ url, frontmatter }: BlogCardProps) => (
           <div className="mt-2 text-sm">{frontmatter?.description}</div>
         </div>
       </div>
+      <div className="absolute bottom-2 right-2">
+        {frontmatter?.tags ? <StackTags tags={frontmatter.tags} /> : null}
+      </div>
     </a>
-    <div className="absolute bottom-2 right-2">
-      {frontmatter?.tags ? <StackTags tags={frontmatter.tags} /> : null}
-    </div>
   </div>
 );
