@@ -1,0 +1,56 @@
+---
+/**
+ * Standard marketing-page section: content max-width, generous vertical rhythm
+ * (py-14 mobile / py-24 desktop per DESIGN_SYSTEM.md) and an optional heading row
+ * with a small cube-style icon and a trailing action slot.
+ */
+interface Props {
+  id?: string;
+  title?: string;
+  as?: 'h2' | 'h3';
+  icon?: string; // inline svg path markup
+  class?: string;
+}
+
+const {
+  id,
+  title,
+  as = 'h2',
+  icon,
+  class: className = '',
+} = Astro.props as Props;
+const Heading = as;
+const hasAction = Astro.slots.has('action');
+---
+
+<section
+  id={id}
+  class:list={[
+    'mx-auto max-w-content px-5 py-12 sm:px-6 lg:px-10 lg:py-16 xl:px-12',
+    className,
+  ]}
+>
+  {title && (
+    <div class="mb-8 flex items-center justify-between gap-4">
+      <Heading class="font-display flex items-center gap-3 text-[1.75rem] text-ink-primary sm:text-4xl">
+        {icon && (
+          <span class="flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-cool bg-cosmic-800/70 text-orbit-300">
+            <svg
+              viewBox="0 0 24 24"
+              class="h-5 w-5"
+              fill="none"
+              set:html={icon}
+            />
+          </span>
+        )}
+        <span set:html={title} />
+      </Heading>
+      {hasAction && (
+        <div class="flex-none text-sm">
+          <slot name="action" />
+        </div>
+      )}
+    </div>
+  )}
+  <slot></slot>
+</section>

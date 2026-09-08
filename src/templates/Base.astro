@@ -1,9 +1,10 @@
 ---
 import { GoogleAnalytics } from '@astrolib/analytics';
 
-// import ReloadPrompt from '@/components/ReloadPrompt.astro';
-import { Footer } from '@/partials/Footer';
-import { Navbar } from '@/partials/Navbar';
+import '@/styles/global.css';
+
+import { SiteFooter } from '@/partials/SiteFooter';
+import { Header } from '@/partials/Header';
 import { AppConfig } from '@/utils/AppConfig';
 
 export interface Props {
@@ -12,22 +13,19 @@ export interface Props {
     description: string;
     og?: {
       image: string;
-    }
+    };
   };
   empty?: boolean;
+  /** kept for backwards compatibility — the cosmic background now lives in global.css */
   bgColor?: string;
 }
 
 const {
-  head: { title, description }, 
+  head: { title, description },
 } = Astro.props as Props;
 const isEmpty = Astro.props.empty;
 const ogData = Astro.props?.head?.og;
-
-// const bgColor = Astro.props?.bgColor ?? 'bg-slate-900';
-const bgColor =
-  Astro.props?.bgColor ??
-  'bg-gradient-to-tr from-slate-900 via-gray-900 to-slate-800';
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://orizens.com');
 ---
 
 <html lang='en'>
@@ -38,44 +36,59 @@ const bgColor =
     <title>{title}</title>
     <meta name='description' content={description} />
     <meta name='author' content={AppConfig.author} />
+    <link rel='canonical' href={canonical.href} />
 
     <link rel='alternate' type='application/rss+xml' href='/rss.xml' />
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href='//fonts.googleapis.com/css?family=Open+Sans:300'
+      href='https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap'
       rel='stylesheet'
-      type='text/css'
     />
-    {ogData && 
-      <meta property="og:title" content={title} />
-      <meta property="og:type" content="website">
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogData.image} />
-      <meta name="twitter:card" content="summary_large_image">
-      <meta property="twitter:domain" content="orizens.com">
-      <meta name="twitter:title" content={title}>
-      <meta name="twitter:description" content={description}>
-      <meta name="twitter:image" content={ogData.image}>
+
+    {
+      ogData && (
+        <>
+          <meta property='og:title' content={title} />
+          <meta property='og:type' content='website' />
+          <meta property='og:description' content={description} />
+          <meta property='og:image' content={ogData.image} />
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta property='twitter:domain' content='orizens.com' />
+          <meta name='twitter:title' content={title} />
+          <meta name='twitter:description' content={description} />
+          <meta name='twitter:image' content={ogData.image} />
+        </>
+      )
     }
   </head>
-  <body
-    class={`${bgColor} text-gray-100`}
-    data-lastupdate={new Date().toString()}
-  >
-    {!isEmpty && <Navbar />}
+  <body data-lastupdate={new Date().toString()}>
+    <div class='starfield' aria-hidden='true'></div>
 
-    <slot></slot>
+    <a
+      href='#main'
+      class='sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-orbit-600 focus:px-4 focus:py-2 focus:text-white'
+    >
+      Skip to content
+    </a>
 
-    {!isEmpty && <Footer />}
+    {!isEmpty && <Header client:load pathname={Astro.url.pathname} />}
+
+    <main id='main' class='relative z-[1]'>
+      <slot />
+    </main>
+
+    {!isEmpty && <SiteFooter />}
+
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .getRegistrations()
-          .then(function (registrations) {
-            for (let registration of registrations) {
-              registration.unregister();
-            }
-          });
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        });
       }
     </script>
   </body>

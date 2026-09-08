@@ -18,7 +18,7 @@ export function Input({
     <div>
       <label
         htmlFor={htmlFor}
-        className="mb-2 block text-lg font-medium text-primary"
+        className="mb-2 block text-sm font-semibold uppercase tracking-wider text-ink-muted"
       >
         {label}
       </label>
@@ -26,7 +26,7 @@ export function Input({
         name={htmlFor}
         type={type}
         id={htmlFor}
-        className="block w-full rounded-lg border border-primary bg-gray-900 p-3 text-xl text-gray-100 shadow-sm "
+        className="block w-full rounded-xl border border-cool bg-cosmic-900/70 p-3 text-base text-ink-primary outline-none transition-colors placeholder:text-ink-subtle focus:border-cool-hover"
         placeholder={placeholder}
         required
         {...props}

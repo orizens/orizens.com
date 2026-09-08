@@ -1,27 +1,13 @@
 ---
-import type { FrontmatterPage } from 'astro-boilerplate-components';
-
-import { GradientText } from '@/components/GradientText';
+import PageSection from '@/components/PageSection.astro';
 import { Input } from '@/components/Input';
-import { ProfileAvatar } from '@/components/profile';
 import { RunInClient } from '@/components/RunInClient';
-import { Section } from '@/components/Section';
-import { Space } from '@/components/Space';
 import { Socials } from '@/partials/Socials';
 import Base from '@/templates/Base.astro';
 
 const SUBMIT_PARAM = 'success';
-
-export interface Props {
-  page: FrontmatterPage;
-}
-
-// const { page } = Astro.props as Props;
-// const titleSuffix = ` - ${AppConfig.site_name}`;
-// const titleBase = `Blog page ${page.currentPage}`;
-// const title = titleBase + titleSuffix;
 const description =
-  'Contact Oren Farhi for software engineering, react front end';
+  'Contact Oren Farhi about software engineering, front end architecture, React and tech leadership.';
 ---
 
 <Base
@@ -31,50 +17,60 @@ const description =
     og: { image: '/images/profile.png' },
   }}
 >
-  <Section className='max-w-screen-md px-0'>
-    <Space
-      variant='space'
-      className='grid justify-center justify-items-center gap-3 rounded-xl py-6'
+  <PageSection class='!pb-4 lg:!pb-6'>
+    <p class='text-xs font-semibold uppercase tracking-[0.32em] text-ink-muted'>
+      Contact
+    </p>
+    <h1
+      class='mt-4 font-display-xl text-ink-primary'
+      style='font-size:clamp(2.6rem,6vw,4.5rem)'
     >
-      <ProfileAvatar />
-      <h1 class='text-primary'>Contact Me</h1>
-      <h2 class='uppercase text-primary'>
-        Front End Engineering & Tech leading
-      </h2>
+      Let&rsquo;s <span class='brand-text'>Connect</span>
+    </h1>
+    <p class='mt-4 max-w-2xl text-lg text-ink-secondary'>
+      Have an idea, a question, or just want to say hi? Send a message and I&rsquo;ll
+      get back to you as soon as I can.
+    </p>
+    <div class='mt-5'>
       <Socials />
-    </Space>
-  </Section>
-  <RunInClient client:only param={SUBMIT_PARAM}>
-    <Section className='space max-w-screen-md bg-primaryAlpha'>
-      <GradientText className='text-2xl'>
-        Thank you for contacting me. I'll get back to you as soon as I can.
-      </GradientText>
-      <a href='/contact/' class='block text-lg'> back to contact</a>
-    </Section>
-    <Section slot='fallback' className='mt-6 max-w-screen-md bg-primaryAlpha'>
-      <form
-        name='contact'
-        method='POST'
-        action={`/contact?${SUBMIT_PARAM}`}
-        data-netlify='true'
-        class='grid gap-4'
-      >
-        <Input label='Your Name' htmlFor='name' placeholder='Your Name' />
-        <Input label='Your Email' htmlFor='email' placeholder='Your Email' />
-        <Input
-          label='Your Message'
-          htmlFor='message'
-          placeholder='Your Message'
-          type='textarea'
-          rows='6'
-        />
-        <button
-          type='submit'
-          class='rounded-md bg-primary px-8 py-3 text-base font-semibold text-white outline-none'
+    </div>
+  </PageSection>
+
+  <PageSection class='!pt-0'>
+    <RunInClient client:only='react' param={SUBMIT_PARAM}>
+      <div class='c-card p-6 sm:p-8'>
+        <p class='brand-text text-2xl font-semibold'>
+          Thank you for reaching out.
+        </p>
+        <p class='mt-2 text-ink-secondary'>
+          I&rsquo;ll get back to you as soon as I can.
+        </p>
+        <a href='/contact/' class='mt-4 inline-block text-orbit-400'>← Back to contact</a>
+      </div>
+
+      <div slot='fallback' class='c-card p-6 sm:p-8'>
+        <form
+          name='contact'
+          method='POST'
+          action={`/contact?${SUBMIT_PARAM}`}
+          data-netlify='true'
+          class='grid gap-5'
         >
-          Submit
-        </button>
-      </form>
-    </Section>
-  </RunInClient>
+          <input type='hidden' name='form-name' value='contact' />
+          <Input label='Your name' htmlFor='name' placeholder='Your name' />
+          <Input label='Your email' htmlFor='email' type='email' placeholder='you@example.com' />
+          <Input
+            label='Your message'
+            htmlFor='message'
+            placeholder='Tell me about it…'
+            type='textarea'
+            rows='6'
+          />
+          <button type='submit' class='c-btn c-btn-primary w-full sm:w-auto'>
+            Send message
+          </button>
+        </form>
+      </div>
+    </RunInClient>
+  </PageSection>
 </Base>

@@ -1,13 +1,8 @@
 ---
 import type { FrontmatterPage } from 'astro-boilerplate-components';
-import {
-  NewerOlderPagination,
-  PaginationHeader,
-  Section,
-} from 'astro-boilerplate-components';
 
-import { BlogCollection } from '@/components/BlogCollection';
-// import { CTA } from '@/partials/CTA';
+import PageSection from '@/components/PageSection.astro';
+import PostGrid from '@/components/PostGrid.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import type { OrizensPostFrontMatter } from '@/utils/Posts';
@@ -21,8 +16,7 @@ export async function getStaticPaths({ paginate }: GetStaticPaths) {
   const allPosts = await Astro.glob<OrizensPostFrontMatter>('./**/*.md');
   const sortedPosts = sortByDate(allPosts);
 
-  // Return a paginated collection of paths for all posts
-  return paginate(sortedPosts, { pageSize: 6 });
+  return paginate(sortedPosts, { pageSize: 8 });
 }
 
 interface Props {
@@ -30,29 +24,60 @@ interface Props {
 }
 
 const { page } = Astro.props as Props;
-const titleSuffix = ` - ${AppConfig.site_name}`;
-const titleBase = `Blog page ${page.currentPage}`;
-const title = titleBase + titleSuffix;
-const description = 'lessons learned, best practices, thoughts and more.';
+const titleBase =
+  page.currentPage > 1 ? `Writing — page ${page.currentPage}` : 'Writing';
+const title = `${titleBase} - ${AppConfig.site_name}`;
+const description =
+  'Front end engineering, software architecture, lessons learned, best practices and thoughts by Oren Farhi.';
 ---
 
-<Base head={{ title, description }}>
-  <Section>
-    <PaginationHeader
-      title={`Oren Farhi Software Engineering Blog`}
-      description='lessons learned, best practices, thoughts and more'
-    />
-  </Section>
+<Base head={{ title, description, og: { image: '/images/galaxy-map.jpg' } }}>
+  <PageSection class='!pb-4 lg:!pb-6'>
+    <p class='text-xs font-semibold uppercase tracking-[0.32em] text-ink-muted'>
+      Ideas · Code · A brighter tomorrow
+    </p>
+    <h1
+      class='mt-4 font-display-xl text-ink-primary'
+      style='font-size:clamp(2.6rem,6vw,4.5rem)'
+    >
+      <span class='brand-text'>Writing</span>
+    </h1>
+    <p class='mt-4 max-w-2xl text-lg text-ink-secondary'>
+      {description}
+    </p>
+    <p class='mt-2 text-sm text-ink-muted'>
+      <a class='hover:text-ink-primary' href='/tags/'>Browse by tag →</a>
+    </p>
+  </PageSection>
 
-  <Section>
-    <NewerOlderPagination page={page} />
-  </Section>
+  <PageSection class='!pt-0'>
+    <PostGrid posts={page.data} variant='full' />
 
-  <Section>
-    <BlogCollection postList={page.data} />
-  </Section>
-
-  <Section>
-    <NewerOlderPagination page={page} />
-  </Section>
+    <nav
+      aria-label='Pagination'
+      class='mt-12 flex items-center justify-between text-sm'
+    >
+      {
+        page.url.prev ? (
+          <a href={page.url.prev} class='c-btn c-btn-secondary'>
+            ← Newer
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      <span class='text-ink-muted'>
+        Page {page.currentPage} of {page.lastPage}
+      </span>
+      {
+        page.url.next ? (
+          <a href={page.url.next} class='c-btn c-btn-secondary'>
+            Older →
+          </a>
+        ) : (
+          <span />
+        )
+      }
+    </nav>
+  </PageSection>
 </Base>

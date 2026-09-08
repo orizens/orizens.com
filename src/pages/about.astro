@@ -1,117 +1,135 @@
 ---
-import type { FrontmatterPage } from 'astro-boilerplate-components';
-
+import avatar from '@/assets/avatar.png';
 import Check from '@/components/Check.astro';
-import { ProfileAvatar } from '@/components/profile';
-import { Section } from '@/components/Section';
-import { Space } from '@/components/Space';
-import { ProjectList } from '@/partials/ProjectList';
+import PageSection from '@/components/PageSection.astro';
+import ContactCTA from '@/partials/ContactCTA.astro';
+import OpenSource from '@/partials/OpenSource.astro';
+import SelectedWork from '@/partials/SelectedWork.astro';
 import { Socials } from '@/partials/Socials';
-import TechStack from '@/partials/TechStack.astro';
+import TechStackStrip from '@/partials/TechStackStrip.astro';
 import Base from '@/templates/Base.astro';
 
-export interface Props {
-  page: FrontmatterPage;
-}
+const description = `Oren Farhi — an experienced Software Engineer, Front End Engineer, Front End Architect and Tech Lead, focused on software architecture and well-formed applications.`;
 
-const description = `Oren Farhi - An experienced Software Engineer, Front End Engineer, Front End Architect, Tech Leading, team player`;
+const principles = [
+  'Seeing the code as a live reactive system',
+  'Implementing best practices of software architecture — modular & testable code',
+  'Understanding the big picture while breaking down complex problems into smaller challenges',
+  'Keeping code and app structure organized so others can easily understand and extend it',
+  'Automating development with CI/CD using GitHub Actions',
+];
 ---
 
-<Base
-  head={{
-    title: 'About Me',
-    description,
-    og: { image: '/images/profile.png' },
-  }}
->
-  <Section className='grid max-w-screen-md gap-6 px-6'>
-    <Space
-      variant='space'
-      className='grid justify-center justify-items-center gap-3 rounded-xl py-6'
-    >
-      <ProfileAvatar />
-      <h1 class='text-primary'>Oren Farhi</h1>
-      <h2 class='uppercase text-primary'>
-        senior front end engineer / tech lead
-      </h2>
-      <Socials />
-    </Space>
-    <Section className='bg-primaryAlpha'>
-      <p class='m-auto'>
-        Hi - I'm Oren Farhi. I'm an Experienced Software Engineer, Front End
-        Tech Lead, focusing on{' '}
-        <strong>Front End &amp; Software Architecture</strong> and creating well
-        formed applications. <br />I graduated with a{' '}
-        <strong
-          >BA in Computer Science &amp; Business Management
-        </strong>{' '}from the Open University.
-      </p>
-      <p class='m-auto'>
-        I earned Software Engineering &amp; Development skills by being{' '}
-        <strong>self-driven</strong> and making things happen, experimenting, experience,<a
-          href='//github.com/orizens'
-          target='_blank'
-          class='ml-1'
-        >
-          open source
-        </a>{' '}some of my work,<a href='/' class='mx-1'>writing</a>about it
-        and reading a lot.
-      </p>
-      <p class='m-auto'>
-        In my work, I incorporate a 3 point perspective to software architecture
-        while looking at a challenge with depth and entirety.{' '}
-        <br />With my experience - i'm able to lead teams into taking a unique
-        perspective, look up and move forward.
-      </p>
-      <p class='m-auto'>
-        <br />I believe in producing easy{' '}
-        <strong>maintainable code</strong> for applications. I consult to companies
-        and startups on how to approach code in their projects, keep it maintainable
-        and focusing on delivering a{' '}
-        <strong>high quality</strong> and well tested code.
-      </p>
-    </Section>
-    <Section className='bg-primaryAlpha'>
-      <p class='m-auto'>
-        When consulting and developing, I like to make a difference by following
-        simple principles:
-      </p>
-      <div>
-        <ul class='list-image-none'>
-          {[
-            <>
-              seeing the code as a live <strong>reactive system</strong>
-            </>,
-            <>
-              implementing best practices of software architecture, creating{' '}
-              <strong>modular &amp; testable code</strong>
-            </>,
-            <>
-              Understanding the big picture while{' '}
-              <strong>breaking down complex problems</strong> to smaller
-              challenges
-            </>,
-            <>
-              keeping code and app <strong>structure organized</strong> to let
-              other developers easily understand and further extend it.
-            </>,
-            <>
-              <strong>Automating</strong> development with CI/CD utilizing
-              Github Actions
-            </>,
-          ].map((text) => (
-            <li class="my-3">
-              <Check />
-              {text}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Section>
-  </Section>
+<Base head={{ title: 'About Oren Farhi', description, og: { image: '/images/profile.png' } }}>
+  {/* Hero — reuses the home page's full-bleed cosmic artwork (public/images/header-new.png),
+      pulled up behind the transparent site header, with the intro copy on the darker
+      left side and Oren's 3D avatar floating on the moon to the right. */}
+  <section class='relative isolate -mt-[4.75rem] overflow-hidden'>
+    <div class='pointer-events-none absolute inset-0 -z-10' aria-hidden='true'>
+      <img
+        src='/images/header-new.png'
+        alt=''
+        loading='eager'
+        fetchpriority='high'
+        class='h-full w-full object-cover object-[68%_center]'
+      />
+    </div>
 
-  <Section size='md'>
-    <TechStack />
-  </Section>
-  <ProjectList className='max-w-screen-md px-6' />
+    <div
+      class='relative mx-auto flex min-h-[clamp(30rem,72vh,40rem)] max-w-content flex-col justify-center px-5 pb-16 pt-28 sm:px-6 lg:px-10 lg:pb-20 lg:pt-36 xl:px-12'
+    >
+      <div class='max-w-2xl w-full max-w-xl rounded-3xl border border-cool bg-cosmic-900/60 p-6 sm:p-8'>
+        <p class='text-xs font-semibold uppercase tracking-[0.32em] text-ink-muted'>
+          About
+        </p>
+        <h1
+          class='mt-5 font-display-xl text-ink-primary'
+          style='font-size:clamp(2.6rem,6vw,4.5rem)'
+        >
+          <span class='brand-text'>Oren Farhi</span>
+        </h1>
+        <p class='mt-4 text-lg font-medium text-ink-secondary sm:text-xl'>
+          Senior Front End Engineer <span class='text-ink-subtle'>·</span> Tech Lead
+        </p>
+        <div class='mt-6'>
+          <Socials />
+        </div>
+      </div>
+    </div>
+
+    {/* Floating 3D avatar — on the moon, right of the copy */}
+    <div
+      class='pointer-events-none z-0 items-end sm:relative sm:right-[50%] md:absolute md:bottom-6 md:right-[21%] lg:flex lg:right-[23%] xl:bottom-[62px] xl:right-[24%]'
+      aria-hidden='true'
+    >
+      <div class='grid items-center justify-items-end sm:relative'>
+        <div
+          class='absolute left-1/2 top-[46%] h-[72%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(41,198,255,0.28),transparent_65%)] blur-2xl motion-safe:animate-glow-breathe'
+        >
+        </div>
+        <img
+          src={avatar.src}
+          width={avatar.width}
+          height={avatar.height}
+          alt='Oren Farhi — 3D avatar'
+          loading='eager'
+          class='relative h-[26rem] w-auto drop-shadow-[0_22px_45px_rgba(0,0,0,0.5)] motion-safe:animate-float-soft'
+        />
+      </div>
+    </div>
+  </section>
+
+  <PageSection class='!py-6 lg:!py-8'>
+    <div class='c-card space-y-4 p-6 text-base leading-relaxed text-ink-secondary sm:p-8 sm:text-lg'>
+      <p>
+        Hi — I&rsquo;m Oren Farhi. I&rsquo;m an experienced Software Engineer and
+        Front End Tech Lead, focusing on
+        <strong class='text-ink-primary'>front end &amp; software architecture</strong>
+        and creating well-formed applications. I graduated with a
+        <strong class='text-ink-primary'>BA in Computer Science &amp; Business Management</strong>
+        from the Open University.
+      </p>
+      <p>
+        I earned my software engineering skills by being
+        <strong class='text-ink-primary'>self-driven</strong> — making things
+        happen, experimenting,
+        <a class='text-orbit-400' href='//github.com/orizens' target='_blank' rel='noopener noreferrer'>open-sourcing</a>
+        some of my work,
+        <a class='text-orbit-400' href='/blog/'>writing</a> about it, and reading
+        a lot.
+      </p>
+      <p>
+        In my work I take a three-point perspective on software architecture,
+        looking at a challenge with depth and entirety. With this experience I
+        help teams take a unique perspective, look up, and move forward.
+      </p>
+      <p>
+        I believe in producing easy,
+        <strong class='text-ink-primary'>maintainable code</strong>. I consult
+        with companies and startups on how to approach code in their projects,
+        keep it maintainable, and deliver
+        <strong class='text-ink-primary'>high-quality</strong>, well-tested work.
+      </p>
+    </div>
+  </PageSection>
+
+  <PageSection title='How I <span class="brand-text">work</span>' class='!py-6 lg:!py-8'>
+    <div class='c-card p-6 sm:p-8'>
+      <ul class='space-y-3'>
+        {
+          principles.map((text) => (
+            <li class='flex items-start gap-3 text-ink-secondary'>
+              <Check />
+              <span>{text}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </PageSection>
+
+  <SelectedWork />
+  <TechStackStrip />
+  <OpenSource />
+  <ContactCTA />
 </Base>

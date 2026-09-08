@@ -1,15 +1,13 @@
 ---
-import { BlogCollection } from '@/components/BlogCollection';
-import { Section } from '@/components/Section';
-import { SectionHeader } from '@/components/SectionHeader';
-// import { CTA } from '@/partials/CTA';
+import PageSection from '@/components/PageSection.astro';
+import PostGrid from '@/components/PostGrid.astro';
 import Base from '@/templates/Base.astro';
+import { AppConfig } from '@/utils/AppConfig';
 import type { OrizensPostFrontMatter } from '@/utils/Posts';
 import { countTags, sortByDate } from '@/utils/Posts';
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob<OrizensPostFrontMatter>('../blog/*.md');
-
   const allTags = countTags(allPosts);
 
   return Object.keys(allTags).map((tag) => ({ params: { tag } }));
@@ -22,26 +20,30 @@ interface Props {
 const { tag } = Astro.params as Props;
 const allPosts = await Astro.glob<OrizensPostFrontMatter>('../blog/*.md');
 const tagPosts = sortByDate(allPosts).filter((post) =>
-  post.frontmatter.tags.includes(tag)
+  post.frontmatter.tags?.includes(tag)
 );
 
-const titleBase = `Articles for tag: "${tag}"`;
-const title = titleBase;
-const description = 'lessons learned, best practices, thoughts and more.';
+const title = `Articles tagged "${tag}" - ${AppConfig.site_name}`;
+const description = `Front end engineering articles by Oren Farhi tagged ${tag}.`;
 ---
 
-<Base head={{ title, description, og: { image: '/images/galaxy-world.jpg' } }}>
-  <Section>
-    <SectionHeader gradient={tag}>
-      <img
-        slot='image'
-        src='/images/galaxy-world.png'
-        class='right-2 h-52 md:absolute'
-      />
-      Articles with tag:
-    </SectionHeader>
-  </Section>
-  <Section>
-    <BlogCollection postList={tagPosts} />
-  </Section>
+<Base head={{ title, description, og: { image: '/images/galaxy-world.png' } }}>
+  <PageSection class='!pb-4 lg:!pb-6'>
+    <p class='text-sm text-ink-muted'>
+      <a class='hover:text-ink-primary' href='/tags/'>← All tags</a>
+    </p>
+    <h1
+      class='mt-4 font-display-xl text-ink-primary'
+      style='font-size:clamp(2.4rem,5vw,4rem)'
+    >
+      Articles with tag <span class='brand-text'>{tag}</span>
+    </h1>
+    <p class='mt-3 text-ink-muted'>
+      {tagPosts.length} {tagPosts.length === 1 ? 'article' : 'articles'}
+    </p>
+  </PageSection>
+
+  <PageSection class='!pt-0'>
+    <PostGrid posts={tagPosts} variant='full' />
+  </PageSection>
 </Base>

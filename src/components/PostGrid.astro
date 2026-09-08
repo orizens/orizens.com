@@ -1,0 +1,20 @@
+---
+import PostCard from '@/components/PostCard.astro';
+
+interface Props {
+  posts: any[];
+  variant?: 'compact' | 'full';
+  columns?: 1 | 3;
+}
+
+const { posts, variant = 'full', columns = 1 } = Astro.props as Props;
+---
+
+<div
+  class:list={[
+    'grid gap-6',
+    columns === 3 ? 'md:grid-cols-3' : 'grid-cols-1',
+  ]}
+>
+  {posts.map((post) => <PostCard post={post} variant={variant} />)}
+</div>

@@ -1,0 +1,29 @@
+---
+import PageSection from '@/components/PageSection.astro';
+import PostGrid from '@/components/PostGrid.astro';
+
+interface Props {
+  posts: any[];
+}
+
+const { posts } = Astro.props as Props;
+const docIcon =
+  '<path d="M7 3h7l5 5v13H7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v5h5M10 13h6M10 17h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>';
+---
+
+<PageSection
+  id='writing'
+  title='Recent <span class="brand-text">Writing</span>'
+  icon={docIcon}
+  class='translate-y-[-47px] rounded-2xl bg-[#05143570] backdrop-blur-[15px]'
+>
+  <a
+    slot='action'
+    href='/blog/'
+    class='text-ink-secondary transition-colors hover:text-ink-primary'
+  >
+    View all posts →
+  </a>
+
+  <PostGrid posts={posts.slice(0, 3)} variant='compact' columns={3} />
+</PageSection>

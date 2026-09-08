@@ -1,0 +1,46 @@
+---
+import PageSection from '@/components/PageSection.astro';
+
+const codeIcon =
+  '<path d="m8 6-5 6 5 6M16 6l5 6-5 6M13 4l-2 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>';
+
+const projects = [
+  { name: 'use-recorder', desc: 'React hook for recording audio in the browser.', link: '//www.npmjs.com/package/use-recorder' },
+  { name: 'ngx-infinite-scroll', desc: 'Performant infinite scroll directive for Angular.', link: '//npmjs.com/package/ngx-infinite-scroll' },
+  { name: 'Echoes Player', desc: 'Open-source YouTube™ alternative media player.', link: '//github.com/orizens/echoes-player' },
+  { name: 'ngx-typeahead', desc: 'Lightweight Angular typeahead built with RxJS.', link: '//npmjs.com/package/ngx-typeahead' },
+  { name: 'ngx-youtube-player', desc: 'Angular wrapper for the YouTube iframe player.', link: '//npmjs.com/package/ngx-youtube-player' },
+  { name: 'ngrx-styleguide', desc: 'Community style guide for Angular + NgRx.', link: '//github.com/orizens/ngrx-styleguide' },
+];
+---
+
+<PageSection id='open-source' title='Open <span class="brand-text">Source</span>' icon={codeIcon}>
+  <a
+    slot='action'
+    href='//github.com/orizens'
+    target='_blank'
+    rel='noopener noreferrer'
+    class='text-ink-secondary transition-colors hover:text-ink-primary'
+  >
+    More on GitHub →
+  </a>
+
+  <div class='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+    {
+      projects.map((project) => (
+        <a
+          href={project.link}
+          target='_blank'
+          rel='noopener noreferrer'
+          class='c-card group flex flex-col gap-1.5 p-5'
+        >
+          <span class='flex items-center justify-between'>
+            <span class='font-semibold text-ink-primary'>{project.name}</span>
+            <span class='text-ink-muted transition-colors group-hover:text-orbit-300' aria-hidden='true'>↗</span>
+          </span>
+          <span class='text-sm leading-relaxed text-ink-secondary'>{project.desc}</span>
+        </a>
+      ))
+    }
+  </div>
+</PageSection>

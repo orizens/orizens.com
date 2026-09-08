@@ -1,0 +1,226 @@
+/*
+ * Orizens cosmic environment — see plans/DESIGN_SYSTEM.md
+ * Built primarily with performant CSS: layered radial gradients, a subtle star
+ * field and pseudo-element glows. The supplied space artwork sits ABOVE this so
+ * the page already looks intentional while images load.
+ */
+
+:root {
+  --background: #020817;
+  --background-secondary: #061226;
+
+  --surface: #091a32;
+  --surface-elevated: #0c203b;
+
+  --foreground: #f7faff;
+  --foreground-secondary: #c3cee0;
+  --foreground-muted: #8293ad;
+
+  --primary: #0b9cff;
+  --primary-light: #29c6ff;
+
+  --accent: #8066ff;
+  --accent-light: #a17cff;
+
+  --border: rgba(109, 220, 255, 0.13);
+  --border-hover: rgba(41, 198, 255, 0.3);
+
+  --content-width: 1440px;
+
+  /*
+   * Type — two distinct serifs plus a sans for UI chrome:
+   *  - --font-serif       Fraunces: display serif, headings only.
+   *  - --font-serif-text  Newsreader: reading serif for body copy, articles,
+   *                       cards — everything that isn't a heading or UI chrome.
+   *  - --font-sans        Inter: tags, labels, meta.
+   *                       Nav + buttons use --font-serif (the title font).
+   */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces', Georgia, Cambria, 'Times New Roman', serif;
+  --font-serif-text: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--foreground-secondary);
+  font-family: var(--font-serif-text);
+  font-optical-sizing: auto;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 72% 12%, rgba(101, 72, 232, 0.2), transparent 32%),
+    radial-gradient(circle at 20% 28%, rgba(11, 156, 255, 0.12), transparent 28%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Decorative star field — hidden from assistive tech via aria on the element. */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+  background-size: 340px 340px, 220px 220px, 500px 500px;
+  background-image:
+    radial-gradient(1.6px 1.6px at 40px 60px, rgba(255, 255, 255, 0.9), transparent 55%),
+    radial-gradient(1.2px 1.2px at 130px 190px, rgba(169, 236, 255, 0.7), transparent 55%),
+    radial-gradient(2px 2px at 300px 420px, rgba(194, 169, 255, 0.6), transparent 55%);
+  opacity: 0.7;
+  animation: starfield-drift 220s linear infinite;
+}
+
+@keyframes starfield-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-380px, -190px, 0);
+  }
+}
+
+/*
+ * Display serif for headings (Fraunces). `font-optical-sizing: auto` lets the
+ * variable `opsz` axis switch to the high-contrast display cut as headings grow,
+ * while smaller headings keep sturdier, readable shapes. Pair with a Tailwind
+ * weight utility (font-normal / font-medium) — serifs read heavy, so avoid
+ * bold/extrabold here. See plans/DESIGN_SYSTEM.md §9.
+ */
+.font-display {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Optical tightening for the largest hero-scale headings. */
+.font-display-xl {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+}
+
+/* Handwritten decorative accents only — never headings / nav / body. */
+.hand {
+  font-family: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+  color: var(--foreground-secondary);
+  line-height: 1.15;
+}
+
+.brand-text {
+  background: linear-gradient(90deg, #6ddcff 0%, #29c6ff 28%, #8066ff 68%, #c2a9ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Keyboard focus must stay visible everywhere. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Tactile card system */
+.c-card {
+  background: rgba(9, 26, 50, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+.c-card:hover,
+.c-card:focus-within {
+  border-color: var(--border-hover);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.38),
+    0 0 30px rgba(11, 156, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
+}
+
+/* Primary / secondary buttons */
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-serif);
+  padding: 0.9rem 1.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  transition:
+    box-shadow 200ms ease,
+    transform 200ms ease,
+    background 200ms ease;
+  min-height: 44px;
+}
+
+.c-btn-primary {
+  color: #fff;
+  background: linear-gradient(135deg, #0878f9, #0b9cff);
+  border: 1px solid rgba(109, 220, 255, 0.55);
+  box-shadow:
+    0 8px 30px rgba(11, 156, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.c-btn-primary:hover {
+  box-shadow:
+    0 10px 38px rgba(11, 156, 255, 0.42),
+    0 0 18px rgba(41, 198, 255, 0.2);
+}
+
+.c-btn-secondary {
+  color: var(--foreground);
+  background: rgba(12, 32, 59, 0.7);
+  border: 1px solid rgba(169, 236, 255, 0.22);
+}
+
+.c-btn-secondary:hover {
+  background: rgba(18, 48, 82, 0.85);
+}
+
+/* Honor reduced motion everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .starfield {
+    animation: none;
+  }
+}

@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  name: string;
+  description: string;
+  link: string;
+  category: string;
+  tags?: string[];
+  image?: ImageMetadata;
+  imageAlt?: string;
+  icon?: string;
+}
+
+const { name, description, link, category, tags = [], image, imageAlt = '', icon } =
+  Astro.props as Props;
+
+const extIcon =
+  '<path d="M14 4h6v6M20 4l-9 9M9 5H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>';
+---
+
+<a
+  href={link}
+  target='_blank'
+  rel='noopener noreferrer'
+  class='c-card group flex flex-col overflow-hidden'
+>
+  <div class='relative h-44 overflow-hidden bg-cosmic-800'>
+    {
+      image ? (
+        <Image
+          src={image}
+          alt={imageAlt}
+          width={640}
+          class='h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105'
+        />
+      ) : (
+        <div class='flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(41,198,255,0.28),transparent_55%),radial-gradient(circle_at_75%_80%,rgba(128,102,255,0.28),transparent_55%)]'>
+          <svg viewBox='0 0 24 24' class='h-12 w-12 text-orbit-300' fill='none' set:html={icon ?? extIcon} />
+        </div>
+      )
+    }
+    <div class='absolute inset-0 bg-gradient-to-t from-cosmic-950/70 to-transparent'></div>
+    <span
+      class='absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg border border-cool bg-cosmic-950/60 text-ink-muted backdrop-blur-sm transition-colors group-hover:text-orbit-300'
+      aria-hidden='true'
+    >
+      <svg viewBox='0 0 24 24' class='h-4 w-4' fill='none' set:html={extIcon} />
+    </span>
+  </div>
+
+  <div class='flex flex-1 flex-col gap-2 p-5 sm:p-6'>
+    <h3 class='font-display text-xl leading-snug text-ink-primary'>{name}</h3>
+    <p class='text-sm leading-relaxed text-ink-secondary'>{description}</p>
+
+    <div class='mt-auto flex flex-wrap items-center gap-2 pt-2'>
+      <span class='rounded-full border border-cool bg-primaryAlpha px-2.5 py-1 text-xs font-medium text-orbit-300'>
+        {category}
+      </span>
+      {
+        tags.slice(0, 3).map((tag) => (
+          <span class='text-xs text-ink-muted'>{tag}</span>
+        ))
+      }
+    </div>
+  </div>
+</a>
+</invoke>
