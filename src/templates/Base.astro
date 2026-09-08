@@ -1,10 +1,10 @@
 ---
-import { GoogleAnalytics } from '@astrolib/analytics';
-
 import '@/styles/global.css';
 
-import { SiteFooter } from '@/partials/SiteFooter';
+import { GoogleAnalytics } from '@astrolib/analytics';
+
 import { Header } from '@/partials/Header';
+import { SiteFooter } from '@/partials/SiteFooter';
 import { AppConfig } from '@/utils/AppConfig';
 
 export interface Props {
@@ -25,9 +25,12 @@ const {
 } = Astro.props as Props;
 const isEmpty = Astro.props.empty;
 const ogData = Astro.props?.head?.og;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://orizens.com');
+const canonical = new URL(
+  Astro.url.pathname,
+  Astro.site ?? 'https://orizens.com'
+);
 const ogImage = new URL(
-  ogData?.image ?? '/images/og-image.jpg',
+  ogData?.image ?? '/images/og-image.png',
   Astro.site ?? 'https://orizens.com'
 ).href;
 ---
@@ -75,18 +78,20 @@ const ogImage = new URL(
     {!isEmpty && <Header client:load pathname={Astro.url.pathname} />}
 
     <main id='main' class='relative z-[1]'>
-      <slot />
+      <slot></slot>
     </main>
 
     {!isEmpty && <SiteFooter />}
 
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-          for (const registration of registrations) {
-            registration.unregister();
-          }
-        });
+        navigator.serviceWorker
+          .getRegistrations()
+          .then(function (registrations) {
+            for (const registration of registrations) {
+              registration.unregister();
+            }
+          });
       }
     </script>
   </body>
