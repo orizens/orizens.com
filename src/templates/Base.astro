@@ -12,7 +12,7 @@ export interface Props {
     title: string;
     description: string;
     og?: {
-      image: string;
+      image?: string;
     };
   };
   empty?: boolean;
@@ -26,6 +26,10 @@ const {
 const isEmpty = Astro.props.empty;
 const ogData = Astro.props?.head?.og;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://orizens.com');
+const ogImage = new URL(
+  ogData?.image ?? '/images/og-image.jpg',
+  Astro.site ?? 'https://orizens.com'
+).href;
 ---
 
 <html lang='en'>
@@ -48,21 +52,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://orizens.com
       rel='stylesheet'
     />
 
-    {
-      ogData && (
-        <>
-          <meta property='og:title' content={title} />
-          <meta property='og:type' content='website' />
-          <meta property='og:description' content={description} />
-          <meta property='og:image' content={ogData.image} />
-          <meta name='twitter:card' content='summary_large_image' />
-          <meta property='twitter:domain' content='orizens.com' />
-          <meta name='twitter:title' content={title} />
-          <meta name='twitter:description' content={description} />
-          <meta name='twitter:image' content={ogData.image} />
-        </>
-      )
-    }
+    <meta property='og:title' content={title} />
+    <meta property='og:type' content='website' />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content={ogImage} />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta property='twitter:domain' content='orizens.com' />
+    <meta name='twitter:title' content={title} />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content={ogImage} />
   </head>
   <body data-lastupdate={new Date().toString()}>
     <div class='starfield' aria-hidden='true'></div>
