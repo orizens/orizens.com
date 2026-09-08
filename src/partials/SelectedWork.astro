@@ -1,0 +1,86 @@
+---
+import PageSection from '@/components/PageSection.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+
+import bookImage from './9781484226193.png';
+import echoesImage from './echoes.png';
+import ittimImage from './ittim-app.png';
+import readmImage from './readm-ui.png';
+
+const cubeIcon =
+  '<path d="M12 3 3 8l9 5 9-5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3 8 0 8 9 5 9-5V8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 13v8" fill="none" stroke="currentColor" stroke-width="1.6"/>';
+const infinityIcon =
+  '<path d="M7 9a3 3 0 1 0 0 6c2 0 3-2 5-3s3-3 5-3a3 3 0 1 1 0 6c-2 0-3-2-5-3S9 9 7 9Z" fill="none" stroke="currentColor" stroke-width="1.7"/>';
+
+const projects = [
+  {
+    name: 'Ittim',
+    description:
+      'Ittim is a Jewish prayers app that helps users track and complete their daily prayers, available as a web app and on Google Play.',
+    link: '//ittim.app',
+    category: 'Productivity',
+    tags: ['React', 'PWA', 'Mobile App', 'Tailwind', 'FCM'],
+    image: ittimImage,
+    imageAlt: 'Ittim prayers tracker app UI',
+  },
+  {
+    name: 'ReadM',
+    description:
+      "ReadM empowers teachers with an automated smart assessment tool for monitoring students' reading fluency (K-4th and ESL/ELL), while providing live reports with up-to-date insights.",
+    link: '//readm.app',
+    category: 'Education',
+    tags: ['React', 'ChakraUI', 'Firebase'],
+    image: readmImage,
+    imageAlt: 'ReadM reading assessment app',
+  },
+  {
+    name: 'Echoes Player',
+    description:
+      'A YouTube™ alternative web app media player — made with Angular, open source and PWA-ready.',
+    link: '//echoesplayer.netlify.app',
+    category: 'Media',
+    tags: ['Angular', 'SCSS', 'TypeScript'],
+    image: echoesImage,
+    imageAlt: 'Echoes Player UI',
+  },
+  {
+    name: 'Reactive Programming with Angular & NgRx',
+    description:
+      'Author of the first book on Angular & NgRx — harnessing reactive programming with RxJS and ngrx.',
+    link: '//link.springer.com/book/10.1007/978-1-4842-2620-9',
+    category: 'Book',
+    tags: ['Angular', 'RxJS', 'Architecture'],
+    image: bookImage,
+    imageAlt: 'Reactive Programming with Angular and NgRx book cover',
+  },
+  {
+    name: 'ngx-infinite-scroll',
+    description:
+      'My most popular npm module — a performant infinite scroll for Angular, used by Google, Microsoft, Amazon, Disney and others.',
+    link: '//npmjs.com/package/ngx-infinite-scroll',
+    category: 'Open Source',
+    tags: ['npm', 'TypeScript'],
+    icon: infinityIcon,
+  },
+];
+---
+
+<PageSection
+  id='work'
+  title='Selected <span class="brand-text">Work</span>'
+  icon={cubeIcon}
+>
+  <a
+    slot='action'
+    href='//github.com/orizens'
+    target='_blank'
+    rel='noopener noreferrer'
+    class='text-ink-secondary transition-colors hover:text-ink-primary'
+  >
+    View all →
+  </a>
+
+  <div class='grid gap-6 sm:grid-cols-2 xl:grid-cols-4'>
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</PageSection>

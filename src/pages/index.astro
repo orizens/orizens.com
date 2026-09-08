@@ -1,28 +1,28 @@
 ---
-import { Section } from '@/components/Section';
-import { Hero } from '@/partials/Hero';
-import { ProjectList } from '@/partials/ProjectList';
-import { RecentPosts } from '@/partials/RecentPosts';
-import TechStack from '@/partials/TechStack.astro';
+import ContactCTA from '@/partials/ContactCTA.astro';
+import Hero from '@/partials/Hero.astro';
+import OpenSource from '@/partials/OpenSource.astro';
+import RecentWriting from '@/partials/RecentWriting.astro';
+import SelectedWork from '@/partials/SelectedWork.astro';
+import TechStackStrip from '@/partials/TechStackStrip.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import type { OrizensPostFrontMatter } from '@/utils/Posts';
 import { sortByDate } from '@/utils/Posts';
 
 const allPosts = await Astro.glob<OrizensPostFrontMatter>('./blog/*.md');
-const sortedPosts = sortByDate(allPosts);
+const recentPosts = sortByDate(allPosts).slice(0, 3);
 
-const lastThreePosts = sortedPosts.slice(0, 6);
-
-const { title } = AppConfig;
+const title =
+  'Oren Farhi — Software Engineer, Front End Tech Lead & Product Builder | Orizens';
 const { description } = AppConfig;
 ---
 
 <Base head={{ title, description, og: { image: '/images/galaxy-map.jpg' } }}>
   <Hero />
-  <RecentPosts postList={lastThreePosts} />
-  <ProjectList className='px-6' />
-  <Section>
-    <TechStack />
-  </Section>
+  <RecentWriting posts={recentPosts} />
+  <SelectedWork />
+  <TechStackStrip />
+  <OpenSource />
+  <ContactCTA />
 </Base>

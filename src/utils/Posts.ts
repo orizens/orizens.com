@@ -23,4 +23,29 @@ export function countTags(posts: any[]) {
     }, {});
 }
 
+/**
+ * Derive a short plain-text excerpt from a post's markdown body. Posts don't
+ * carry a `description` in frontmatter, so we clean the raw content instead of
+ * inventing copy.
+ */
+export function getExcerpt(
+  post: { frontmatter?: { description?: string }; rawContent?: () => string },
+  length = 160
+): string {
+  const explicit = post.frontmatter?.description;
+  if (explicit) return explicit;
+
+  const raw = typeof post.rawContent === 'function' ? post.rawContent() : '';
+  const text = raw
+    .replace(/```[\s\S]*?```/g, ' ') // fenced code
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ') // images
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // links -> text
+    .replace(/[#>*_`~-]+/g, ' ') // md punctuation
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (text.length <= length) return text;
+  return `${text.slice(0, text.lastIndexOf(' ', length) || length).trim()}…`;
+}
+
 export type OrizensPostFrontMatter = IFrontmatter & { tags: string[] };

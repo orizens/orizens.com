@@ -1,0 +1,24 @@
+---
+import PageSection from '@/components/PageSection.astro';
+import Base from '@/templates/Base.astro';
+
+const title = 'Page not found (404) - Oren Farhi';
+const description = 'This page drifted out of orbit.';
+---
+
+<Base head={{ title, description }}>
+  <PageSection class='!py-20 text-center lg:!py-28'>
+    <p class='brand-text text-7xl font-extrabold sm:text-8xl'>404</p>
+    <h1 class='font-display mt-6 text-3xl text-ink-primary sm:text-4xl'>
+      This page drifted out of orbit
+    </h1>
+    <p class='mx-auto mt-4 max-w-md text-ink-secondary'>
+      The page you&rsquo;re looking for doesn&rsquo;t exist or was moved. Let&rsquo;s
+      get you back on course.
+    </p>
+    <div class='mt-8 flex flex-col justify-center gap-3 sm:flex-row'>
+      <a href='/' class='c-btn c-btn-primary'>Back home</a>
+      <a href='/blog/' class='c-btn c-btn-secondary'>Read the writing</a>
+    </div>
+  </PageSection>
+</Base>

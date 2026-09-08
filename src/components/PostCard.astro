@@ -1,0 +1,73 @@
+---
+import { format } from 'date-fns';
+
+import { getExcerpt } from '@/utils/Posts';
+
+interface Props {
+  post: any;
+  /** compact = homepage 3-up; full = listing rows */
+  variant?: 'compact' | 'full';
+}
+
+const { post, variant = 'full' } = Astro.props as Props;
+const { frontmatter, url } = post;
+const href = frontmatter?.slug ?? url;
+const date = frontmatter?.pubDate ? format(new Date(frontmatter.pubDate), 'LLL d, yyyy') : '';
+const excerpt = getExcerpt(post, variant === 'compact' ? 110 : 200);
+const tags: string[] = frontmatter?.tags ?? [];
+const img = frontmatter?.imgSrc;
+---
+
+<article class:list={['c-card group overflow-hidden', variant === 'full' ? 'md:flex' : 'flex flex-col']}>
+  <a
+    href={href}
+    class:list={[
+      'block',
+      variant === 'full' ? 'md:flex md:w-full md:items-stretch' : 'flex h-full flex-col',
+    ]}
+  >
+    <div
+      class:list={[
+        'relative overflow-hidden bg-cosmic-800',
+        variant === 'full' ? 'h-44 md:h-auto md:w-64 md:flex-none' : 'h-40',
+      ]}
+    >
+      {
+        img ? (
+          <img
+            src={img}
+            alt={frontmatter?.imgAlt ?? ''}
+            loading='lazy'
+            class='h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105'
+          />
+        ) : (
+          <div class='h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgba(41,198,255,0.28),transparent_55%),radial-gradient(circle_at_75%_80%,rgba(128,102,255,0.28),transparent_55%)]' />
+        )
+      }
+      <div class='absolute inset-0 bg-gradient-to-t from-cosmic-950/70 to-transparent'></div>
+    </div>
+
+    <div class='flex flex-1 flex-col gap-2 p-5 sm:p-6'>
+      <time class='font-sans text-xs font-medium uppercase tracking-wider text-ink-muted'>{date}</time>
+      <h3 class='font-display text-xl leading-snug text-ink-primary sm:text-[1.35rem]'>
+        {frontmatter?.title}
+      </h3>
+      {excerpt && (
+        <p class:list={['text-sm leading-relaxed text-ink-secondary', variant === 'compact' && 'line-clamp-3']}>
+          {excerpt}
+        </p>
+      )}
+      {
+        tags.length > 0 && (
+          <div class='mt-auto flex flex-wrap gap-1.5 pt-2'>
+            {tags.slice(0, variant === 'compact' ? 2 : 4).map((tag) => (
+              <span class='rounded-md border border-cool bg-primaryAlpha px-2 py-0.5 font-sans text-[0.7rem] font-medium text-orbit-300'>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </a>
+</article>

@@ -27,5 +27,18 @@
   "[json][jsonc]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {
+    "statusBar.debuggingForeground": "#F3FBFE",
+    "statusBar.noFolderForeground": "#F3FBFE",
+    "activityBar.background": "#053241",
+    "titleBar.activeBackground": "#07465B",
+    "titleBar.activeForeground": "#F3FBFE",
+    "titleBar.inactiveBackground": "#053241",
+    "titleBar.inactiveForeground": "#F3FBFE",
+    "statusBar.background": "#053241",
+    "statusBar.foreground": "#F3FBFE",
+    "statusBar.debuggingBackground": "#053241",
+    "statusBar.noFolderBackground": "#053241"
   }
 }

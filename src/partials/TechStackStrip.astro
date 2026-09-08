@@ -1,0 +1,46 @@
+---
+import PageSection from '@/components/PageSection.astro';
+
+const layersIcon =
+  '<path d="M12 3 3 8l9 5 9-5-9-5Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3 13 9 5 9-5M3 18l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.6"/>';
+
+// The real stack already represented across Orizens — no proficiency claims.
+const stack = [
+  'React',
+  'TypeScript',
+  'Angular',
+  'Redux Toolkit',
+  'NgRx',
+  'Astro',
+  'Node.js',
+  'Firebase',
+  'Tailwind',
+  'SCSS',
+];
+---
+
+<PageSection id='stack' class='py-10 lg:py-14'>
+  <div class='c-card flex flex-col gap-5 p-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8'>
+    <div class='flex items-center gap-3'>
+      <span class='flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-cool bg-cosmic-800/70 text-orbit-300'>
+        <svg viewBox='0 0 24 24' class='h-5 w-5' fill='none' set:html={layersIcon} />
+      </span>
+      <h2 class='font-display text-2xl text-ink-primary'>Tech Stack</h2>
+    </div>
+
+    <ul class='flex flex-wrap gap-2'>
+      {
+        stack.map((item) => (
+          <li class='flex items-center gap-2 rounded-full border border-cool bg-cosmic-900/60 px-3 py-1.5 text-sm text-ink-secondary'>
+            <span class='h-1.5 w-1.5 rounded-full bg-brand' aria-hidden='true' />
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class='hand text-lg text-ink-secondary lg:text-right'>
+      Building a better web, together.
+    </p>
+  </div>
+</PageSection>

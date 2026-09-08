@@ -1,30 +1,72 @@
 ---
 import type { IFrontmatter } from 'astro-boilerplate-components';
+import { format } from 'date-fns';
 
-import { BlogPost } from '@/partials/BlogPost';
-import { CTA } from '@/partials/CTA';
+import ContactCTA from '@/partials/ContactCTA.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 
 export interface Props {
-  content: IFrontmatter;
+  content: IFrontmatter & { tags?: string[] };
 }
 
 const { content } = Astro.props as Props;
 const image = content?.imgSrc;
 const title = `${content.title} - ${AppConfig.site_name}`;
+const date = content?.pubDate ? format(new Date(content.pubDate), 'LLLL d, yyyy') : '';
+const tags: string[] = (content?.tags as string[]) ?? [];
 ---
 
 <Base
   head={{
     title,
-    description: content.description,
-    og: { image },
+    description: content.description ?? AppConfig.description,
+    og: image ? { image } : undefined,
   }}
 >
-  <BlogPost frontmatter={content}>
-    <slot></slot>
-  </BlogPost>
+  <article class='mx-auto max-w-3xl px-5 py-12 sm:px-6 lg:py-16'>
+    <header class='mb-8 text-center'>
+      <div class='flex items-center justify-center gap-2 font-sans text-sm text-ink-muted'>
+        {date && <time>{date}</time>}
+        <span aria-hidden='true'>·</span>
+        <span>{AppConfig.author}</span>
+      </div>
+      <h1 class='font-display mt-4 text-[2rem] leading-tight text-ink-primary sm:text-4xl lg:text-[3.25rem]'>
+        {content.title}
+      </h1>
+      {
+        tags.length > 0 && (
+          <div class='mt-5 flex flex-wrap justify-center gap-2'>
+            {tags.map((tag) => (
+              <a
+                href={`/tags/${tag.toLowerCase()}/`}
+                class='rounded-md border border-cool bg-primaryAlpha px-2.5 py-1 font-sans text-xs font-medium text-orbit-300 transition-colors hover:border-cool-hover'
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </header>
 
-  <CTA />
+    {
+      image && (
+        <img
+          src={image}
+          alt={content.imgAlt ?? ''}
+          class='mb-10 aspect-[3/2] w-full rounded-4xl border border-cool object-cover object-center'
+          loading='eager'
+        />
+      )
+    }
+
+    <div
+      class='prose prose-invert mx-auto max-w-none text-lg leading-8 prose-headings:font-medium prose-a:text-orbit-400 prose-img:rounded-2xl prose-pre:rounded-2xl prose-pre:border prose-pre:border-cool'
+    >
+      <slot />
+    </div>
+  </article>
+
+  <ContactCTA />
 </Base>
