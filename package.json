@@ -27,7 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "@vite-pwa/astro": "^0.2.0",
-    "astro": "3.3.0",
+    "astro": "7.2.8",
     "astro-eslint-parser": "^0.2.2",
     "astro-imagetools": "^0.6.10",
     "astro-robots-txt": "^0.3.2",
