@@ -30,8 +30,8 @@ const SiteFooter = () => (
           className="flex items-center gap-3"
           aria-label="Orizens — home"
         >
-          <PlanetMark className="h-9 w-9" />
-          <span className="font-display text-xl font-semibold text-ink-primary">
+          <PlanetMark className="h-14 drop-shadow-[0_0_14px_rgba(41,198,255,0.45)]" />
+          <span className="hidden font-display text-2xl font-semibold tracking-tight text-ink-primary">
             Orizens
           </span>
         </a>

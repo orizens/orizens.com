@@ -1,0 +1,824 @@
+---
+import {
+  TbArrowRight,
+  TbFileText,
+  TbMenu2,
+  TbPalette,
+  TbRocket,
+  TbSettings,
+  TbUnlink,
+  TbUserQuestion,
+} from 'react-icons/tb';
+
+import { Input } from '@/components/Input';
+import { PlanetMark } from '@/components/PlanetMark';
+import { RunInClient } from '@/components/RunInClient';
+import Base from '@/templates/Base.astro';
+
+const title =
+  'AI Builder Workshop — turn your AI-built app into a real product | Oren Farhi';
+const description =
+  'You built a full-stack app with AI and it keeps breaking. A hands-on workshop to redesign, test, host and ship it properly — for founders and entrepreneurs, no CS degree required.';
+
+/*
+ * Full-bleed cosmic artwork behind the hero. Drop the text-free reference image
+ * at public/images/workshop-cosmic.png. The layout keeps the hero copy on the
+ * left so the upright product panels on the right of the artwork stay clear;
+ * tune `object-position` below to match the final asset's focal point.
+ */
+const BG = '/images/workshop-cosmic.png';
+const LEAF = '/images/workshop-leaf.png';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '#join', label: 'Workshop' },
+  { href: '#consulting', label: 'Consulting' },
+  { href: '/blog/', label: 'Articles' },
+  { href: '/about/', label: 'About' },
+];
+
+const problems = [
+  {
+    Icon: TbUnlink,
+    tint: '#ff8f6b',
+    lines: ['Fixes create', 'new problems'],
+  },
+  {
+    Icon: TbPalette,
+    tint: '#a78bff',
+    lines: ['The product feels', 'inconsistent'],
+  },
+  {
+    Icon: TbUserQuestion,
+    tint: '#5fd3ff',
+    lines: ['You’re not sure', 'what to do next'],
+  },
+];
+
+const steps = [
+  { n: '1', Icon: TbFileText, tint: '#5fd3ff', label: 'Plan' },
+  { n: '2', Icon: TbSettings, tint: '#a78bff', label: 'Refine' },
+  { n: '3', Icon: TbRocket, tint: '#5fe0a8', label: 'Launch' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Course',
+      name: 'AI Builder Workshop',
+      description,
+      url: 'https://orizens.com/ai-builder-workshop/',
+      provider: {
+        '@type': 'Organization',
+        name: 'Orizens',
+        url: 'https://orizens.com',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Do I need to know how to code?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. The workshop is built for founders, entrepreneurs and beginners who used an AI assistant to build something and now need an engineer’s plan to make it work well.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'I already built something with AI — can it be saved?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Usually, yes. We triage what to keep, what to rebuild, then restructure, redesign and test it so changes stop breaking the app.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What tools will my project use?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Recommended, widely-supported platforms: a Namecheap domain, Netlify for hosting and functions, GitHub for code, Issues and GitHub Actions CI/CD, and Google social sign-in.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Why did my AI tokens run out so fast?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Without structure, an AI assistant re-reads and rewrites large parts of the project on every change. A plan and a modular architecture cut that waste dramatically — and the workshop shows you how to cap and track it.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<Base head={{ title, description, og: { image: '/images/og-image.png' } }} empty>
+  <script
+    type='application/ld+json'
+    set:html={JSON.stringify(jsonLd)}
+    is:inline
+  />
+
+  {/* Faint page-wide cosmic wash so the artwork carries past the hero without
+      any opaque block sitting over it. */}
+  <div class='pointer-events-none fixed inset-0 -z-10' aria-hidden='true'>
+    <img src={BG} alt='' class='h-full w-full object-cover opacity-[0.18]' />
+    <!-- <div class='absolute inset-0 bg-cosmic-950/60'></div> -->
+  </div>
+
+  {/* ---------- Header (transparent, over the artwork) ---------- */}
+  <header class='absolute inset-x-0 top-0 z-50'>
+    <div
+      class='relative mx-auto flex max-w-content items-center justify-between gap-4 px-5 py-5 sm:px-6 lg:px-10 xl:px-12'
+    >
+      <a
+        href='/'
+        class='flex items-center gap-2.5'
+        aria-label='Orizens — home'
+      >
+        <PlanetMark className='h-14 drop-shadow-[0_0_14px_rgba(41,198,255,0.45)]' />
+        <span
+          class='font-display text-2xl font-semibold tracking-tight text-ink-primary sr-only'
+        >
+          Orizens
+        </span>
+      </a>
+
+      <nav
+        aria-label='Primary'
+        class='absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 lg:flex'
+      >
+        {
+          navLinks.map((l) => (
+            <a
+              href={l.href}
+              class='font-display rounded-lg px-3 py-2 text-[0.95rem] font-medium text-ink-secondary transition-colors hover:text-white'
+            >
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class='hidden items-center gap-3 lg:flex'>
+        <a href='/contact/' class='cta-outline'>Sign In</a>
+        <a href='#join' class='cta-primary cta-sm'>Join the Workshop →</a>
+      </div>
+
+      <button
+        id='lp-menu-btn'
+        type='button'
+        class='flex h-11 w-11 items-center justify-center rounded-lg border border-cool bg-cosmic-800/60 text-white backdrop-blur-sm lg:hidden'
+        aria-label='Open menu'
+        aria-expanded='false'
+        aria-controls='lp-menu'
+      >
+        <span class='icon-halo' style={{ '--tint': '#5fd3ff' }} aria-hidden='true'>
+          <TbMenu2 className='relative h-6 w-6' />
+        </span>
+      </button>
+    </div>
+
+    <div
+      id='lp-menu'
+      hidden
+      class='border-t border-cool bg-cosmic-950/95 backdrop-blur-md lg:hidden'
+    >
+      <nav
+        aria-label='Mobile'
+        class='mx-auto flex max-w-content flex-col gap-1 px-5 py-4'
+      >
+        {
+          navLinks.map((l) => (
+            <a
+              href={l.href}
+              class='font-display rounded-xl px-4 py-3 text-lg font-medium text-ink-secondary hover:bg-primaryAlpha hover:text-white'
+            >
+              {l.label}
+            </a>
+          ))
+        }
+        <a href='/contact/' class='cta-outline mt-3 w-full'>Sign In</a>
+        <a href='#join' class='cta-primary mt-2 w-full'>Join the Workshop →</a>
+      </nav>
+    </div>
+  </header>
+
+  {/* ---------- Hero over the cosmic artwork ---------- */}
+  <section class='relative isolate overflow-hidden'>
+    <div class='pointer-events-none absolute inset-0 -z-10' aria-hidden='true'>
+      <img
+        src={BG}
+        alt=''
+        loading='eager'
+        fetchpriority='high'
+        decoding='async'
+        class='h-full w-full object-cover object-left md:object-[74%_center]'
+      />
+      {/* Readability wash — heavier on mobile (copy spans full width), lighter on
+          desktop so the product panels on the right stay crisp. */}
+      <!-- <div
+        class='absolute inset-0 bg-gradient-to-r from-cosmic-950/92 via-cosmic-950/68 to-cosmic-950/35 md:from-cosmic-950/90 md:via-cosmic-950/45 md:to-cosmic-950/5'
+      >
+      </div> -->
+      <!-- <div
+        class='absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cosmic-950'
+      >
+      </div> -->
+    </div>
+
+    {/* Hero copy — upper-left, panels on the right stay clear */}
+    <div
+      class='relative mx-auto flex min-h-[clamp(34rem,82vh,46rem)] max-w-content flex-col justify-center px-5 pb-16 pt-28 sm:px-6 lg:px-10 lg:pb-24 lg:pt-36 xl:px-12'
+    >
+      <div class='max-w-2xl'>
+        <p
+          class='font-sans text-xs font-semibold uppercase tracking-[0.32em] text-orbit-200'
+        >
+          AI Builder Workshop
+        </p>
+
+        <h1
+          class='font-display-xl mt-5 text-white'
+          style='font-size:clamp(2.1rem,6vw,4rem)'
+        >
+          Your Idea Works.<br />
+          <span class='pale-line'>Now Make It Ready.</span>
+        </h1>
+
+        <p class='mt-6 max-w-md text-lg text-[#dbe6fb] sm:text-xl'>
+          Turn your AI-built prototype into a product people can trust.
+        </p>
+
+        <div class='mt-8'>
+          <a href='#join' class='cta-primary w-full sm:w-auto'>
+            Join the Beginner Workshop →
+          </a>
+        </div>
+
+        <p class='mt-5'>
+          <a href='#consulting' class='link-underline'>
+            Need hands-on help? Explore consulting.
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Core message panel ---------- */}
+  {/* Sits just below the hero; the sprouting-leaf artwork is the panel
+      background, with the copy set clear of it on the right. */}
+  <div
+    class='relative z-10 mx-auto -mt-10 max-w-content px-5 pb-6 sm:-mt-16 sm:px-6 lg:px-10 xl:px-12'
+  >
+    <div
+      class='c-card relative isolate overflow-hidden p-6 pl-24 sm:p-9 sm:pl-44 md:pl-56'
+    >
+      <div class='absolute inset-0 -z-10' aria-hidden='true'>
+        <img
+          src='/images/workshop-leaf.png'
+          alt=''
+          loading='lazy'
+          decoding='async'
+          class='h-full w-full object-cover object-left'
+        />
+        <div
+          class='absolute inset-0'
+        >
+        </div>
+      </div>
+      <p class='font-display text-xl text-white sm:text-2xl'>
+        You don’t need to become an engineer.
+      </p>
+      <p class='mt-2 text-lg text-[#b7cef0] sm:text-xl'>
+        You need a clear way to work with AI.
+      </p>
+    </div>
+  </div>
+
+  {/* ---------- Problems ---------- */}
+  <section
+    class='mx-auto max-w-content px-5 py-12 sm:px-6 lg:px-10 lg:py-16 xl:px-12'
+  >
+    <div class='c-card p-6 sm:p-9 lg:p-12'>
+      <h2
+        class='font-display text-center text-[1.75rem] text-white sm:text-left sm:text-4xl'
+      >
+        Does this sound familiar?
+      </h2>
+      <div class='mt-8 grid gap-5 md:grid-cols-3'>
+        {
+          problems.map((p) => (
+            <div class='problem-card lift flex flex-col items-center rounded-2xl border border-cool p-6 text-center'>
+              <span class='icon-halo' style={{ '--tint': p.tint }} aria-hidden='true'>
+                <p.Icon className='relative h-12 w-12' style={{ color: p.tint }} />
+              </span>
+              <p class='mt-4 text-base font-semibold text-white'>
+                {p.lines[0]}
+                <br />
+                {p.lines[1]}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Process ---------- */}
+  <section
+    class='mx-auto max-w-content px-5 py-12 sm:px-6 lg:px-10 lg:py-16 xl:px-12'
+  >
+    <div class='c-card p-6 sm:p-9 lg:p-12'>
+      <h2
+        class='font-display text-center text-[1.75rem] text-white sm:text-left sm:text-4xl'
+      >
+        A clear path from idea to product
+      </h2>
+      <div
+        class='mt-8 flex flex-col items-stretch gap-4 md:flex-row md:items-center'
+      >
+        {
+          steps.map((s, i) => (
+            <>
+              <div
+                class='process-card lift flex flex-1 flex-col items-center rounded-2xl border border-cool p-6 text-center'
+                style={`--tint: ${s.tint}`}
+              >
+                <span class='step-badge self-start' aria-hidden='true'>
+                  {s.n}
+                </span>
+                <span
+                  class='icon-halo mt-3'
+                  style={{ '--tint': s.tint }}
+                  aria-hidden='true'
+                >
+                  <s.Icon className='relative h-16 w-16' style={{ color: s.tint }} />
+                </span>
+                <p class='mt-4 text-lg font-semibold text-white'>{s.label}</p>
+              </div>
+              {i < steps.length - 1 && (
+                <span
+                  class='icon-halo hidden flex-none md:inline-flex'
+                  style={{ '--tint': '#5fd3ff' }}
+                  aria-hidden='true'
+                >
+                  <TbArrowRight className='relative h-6 w-6 text-orbit-300' />
+                </span>
+              )}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ---------- Final call to action ---------- */}
+  {/* Placed over the planetary-horizon artwork; vignetted top and bottom so it
+      reads as open cosmic space, not a hard-edged block. */}
+  <section class='relative isolate overflow-hidden py-20 lg:py-28'>
+    <div class='absolute inset-0 -z-10' aria-hidden='true'>
+      <img
+        src='/images/workshop-earth.png'
+        alt=''
+        loading='lazy'
+        decoding='async'
+        class='h-full w-full object-cover object-[center_70%]'
+      />
+    </div>
+    <div class='mx-auto max-w-3xl px-5 text-center sm:px-6'>
+      <h2
+        class='font-display text-[1.75rem] text-white sm:text-4xl lg:text-5xl'
+      >
+        Keep your big idea. Lose the confusion.
+      </h2>
+      <div class='mt-9 flex justify-center'>
+        <a href='#join' class='cta-primary w-full sm:w-auto'>
+          Save my workshop seat →
+        </a>
+      </div>
+      <p class='mt-5'>
+        <a href='#consulting' class='link-underline'>Book a consultation</a>
+      </p>
+    </div>
+  </section>
+
+  {/* ---------- Sign-up form (Netlify) ---------- */}
+  <section
+    id='join'
+    class='mx-auto max-w-content scroll-mt-24 px-5 py-12 sm:px-6 lg:px-10 lg:py-16 xl:px-12'
+  >
+    <h2 class='font-display mb-6 text-[1.75rem] text-white sm:text-4xl'>
+      Join the workshop
+    </h2>
+    <RunInClient client:only='react' param='joined'>
+      <div class='c-card p-6 sm:p-8'>
+        <p class='pale-line font-display text-2xl'>You’re on the list.</p>
+        <p class='mt-2 text-ink-secondary'>
+          I’ll be in touch with the details soon. Talk shortly.
+        </p>
+        <a href='/ai-builder-workshop/' class='mt-4 inline-block text-orbit-400'
+          >← Back to the page</a
+        >
+      </div>
+
+      <div slot='fallback' class='c-card p-6 sm:p-8'>
+        <p class='mb-6 max-w-xl text-ink-secondary'>
+          Leave your details and a note on what you built. I’ll send you the
+          workshop info and dates.
+        </p>
+        <form
+          name='workshop-signup'
+          method='POST'
+          action='/ai-builder-workshop/?joined'
+          data-netlify='true'
+          data-netlify-honeypot='bot-field'
+          class='grid gap-5'
+        >
+          <input type='hidden' name='form-name' value='workshop-signup' />
+          <p class='hidden'>
+            <label>
+              Don’t fill this out if you’re human:
+              <input name='bot-field' />
+            </label>
+          </p>
+          <Input label='Your name' htmlFor='name' placeholder='Your name' />
+          <Input
+            label='Your email'
+            htmlFor='email'
+            type='email'
+            placeholder='you@example.com'
+          />
+          <Input
+            label='What did you build with AI?'
+            htmlFor='project'
+            placeholder='A booking site, a store, a dashboard…'
+            type='textarea'
+            rows='4'
+          />
+          <div>
+            <label
+              for='project-link'
+              class='mb-2 block text-sm font-semibold uppercase tracking-wider text-ink-muted'
+            >
+              Link to it <span class='normal-case text-ink-subtle'>(optional)</span>
+            </label>
+            <input
+              id='project-link'
+              name='project-link'
+              type='url'
+              placeholder='https://…'
+              class='block w-full rounded-xl border border-cool bg-cosmic-900/70 p-3 text-base text-ink-primary outline-none transition-colors placeholder:text-ink-subtle focus:border-cool-hover'
+            />
+          </div>
+          <button type='submit' class='cta-primary w-full sm:w-auto'>
+            Join the workshop →
+          </button>
+        </form>
+      </div>
+    </RunInClient>
+  </section>
+
+  {/* ---------- Consulting form (Netlify) ---------- */}
+  <section
+    id='consulting'
+    class='mx-auto max-w-content scroll-mt-24 px-5 py-12 sm:px-6 lg:px-10 lg:py-16 xl:px-12'
+  >
+    <h2 class='font-display mb-6 text-[1.75rem] text-white sm:text-4xl'>
+      Work with me directly
+    </h2>
+    <RunInClient client:only='react' param='booked'>
+      <div class='c-card p-6 sm:p-8'>
+        <p class='pale-line font-display text-2xl'>Request received.</p>
+        <p class='mt-2 text-ink-secondary'>
+          I’ll reply with a couple of times that work. Thanks for reaching out.
+        </p>
+        <a href='/ai-builder-workshop/' class='mt-4 inline-block text-orbit-400'
+          >← Back to the page</a
+        >
+      </div>
+
+      <div slot='fallback' class='c-card p-6 sm:p-8'>
+        <p class='mb-6 max-w-xl text-ink-secondary'>
+          Prefer one-on-one? Book a working session — we go through your project
+          together, agree on a plan, and I point you at exactly what to fix
+          first.
+        </p>
+        <form
+          name='consulting-request'
+          method='POST'
+          action='/ai-builder-workshop/?booked'
+          data-netlify='true'
+          data-netlify-honeypot='bot-field'
+          class='grid gap-5'
+        >
+          <input type='hidden' name='form-name' value='consulting-request' />
+          <p class='hidden'>
+            <label>
+              Don’t fill this out if you’re human:
+              <input name='bot-field' />
+            </label>
+          </p>
+          <Input label='Your name' htmlFor='c-name' placeholder='Your name' />
+          <Input
+            label='Your email'
+            htmlFor='c-email'
+            type='email'
+            placeholder='you@example.com'
+          />
+          <Input
+            label='Tell me about your project'
+            htmlFor='c-message'
+            placeholder='What you built, what’s breaking, what you want it to become…'
+            type='textarea'
+            rows='6'
+          />
+          <button type='submit' class='cta-primary w-full sm:w-auto'>
+            Request a session →
+          </button>
+        </form>
+      </div>
+    </RunInClient>
+  </section>
+
+  {/* ---------- Footer ---------- */}
+  <footer
+    class='relative z-[1] mt-16 border-t border-cool bg-cosmic-950/80 backdrop-blur-md'
+  >
+    <div
+      class='mx-auto flex max-w-content flex-col gap-6 px-5 py-10 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-10 xl:px-12'
+    >
+      <a href='/' class='flex items-center gap-3' aria-label='Orizens — home'>
+        <PlanetMark className='h-14 drop-shadow-[0_0_14px_rgba(41,198,255,0.45)]' />
+        <span
+          class='sr-only font-display text-2xl font-semibold tracking-tight text-ink-primary'
+        >
+          Orizens
+        </span>
+      </a>
+
+      <nav
+        aria-label='Footer'
+        class='flex flex-wrap justify-center gap-x-6 gap-y-2'
+      >
+        {
+          navLinks.map((l) => (
+            <a
+              href={l.href}
+              class='font-sans text-sm text-ink-secondary transition-colors hover:text-white'
+            >
+              {l.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <p class='font-sans text-sm text-ink-secondary'>
+        A brighter digital tomorrow.
+      </p>
+    </div>
+  </footer>
+
+  <script is:inline>
+    (function () {
+      var btn = document.getElementById('lp-menu-btn');
+      var menu = document.getElementById('lp-menu');
+      if (!btn || !menu) return;
+      var close = function () {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open menu');
+        menu.hidden = true;
+      };
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        if (open) {
+          close();
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.setAttribute('aria-label', 'Close menu');
+          menu.hidden = false;
+        }
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', close);
+      });
+    })();
+  </script>
+
+  <style>
+    /* Headings inherit the site display serif (.font-display / .font-display-xl
+       from global.css); balance long lines and drop them out from the artwork
+       with a soft dark shadow. */
+    .font-display,
+    .font-display-xl {
+      overflow-wrap: break-word;
+      text-wrap: balance;
+      text-shadow:
+        1px 2px 6px rgba(0, 0, 0, 0.55),
+        0 1px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Very subtle pale-blue gradient for the second hero line / accents. */
+    .pale-line {
+      background: linear-gradient(92deg, #eaf3ff 0%, #c1d9ff 55%, #a7c6ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+    }
+
+    /* Coral → purple → electric-blue gradient button with a soft glow. */
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.02rem;
+      line-height: 1;
+      padding: 1rem 1.9rem;
+      border-radius: 9999px;
+      color: #fff;
+      text-align: center;
+      background: linear-gradient(
+        115deg,
+        #ff7a59 0%,
+        #ff5f86 26%,
+        #8066ff 60%,
+        #0b9cff 100%
+      );
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow:
+        0 12px 40px rgba(128, 102, 255, 0.38),
+        0 0 22px rgba(255, 122, 89, 0.26),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 16px 50px rgba(128, 102, 255, 0.5),
+        0 0 32px rgba(255, 122, 89, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Header-sized variant. */
+    .cta-sm {
+      padding: 0.62rem 1.15rem;
+      font-size: 0.875rem;
+    }
+
+    .cta-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 0.9rem;
+      line-height: 1;
+      padding: 0.62rem 1.15rem;
+      border-radius: 9999px;
+      color: var(--foreground);
+      background: rgba(9, 20, 40, 0.4);
+      border: 1px solid rgba(169, 236, 255, 0.35);
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .cta-outline:hover {
+      background: rgba(18, 48, 82, 0.6);
+      border-color: rgba(41, 198, 255, 0.55);
+    }
+
+    .link-underline {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      color: #c3dbff;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: rgba(195, 219, 255, 0.55);
+      transition: color 0.2s ease;
+    }
+
+    .link-underline:hover {
+      color: #fff;
+      text-decoration-color: #fff;
+    }
+
+    /* Problem cards carry a soft cyan→violet gradient as their surface. */
+    .problem-card {
+      background: radial-gradient(
+        circle at 30% 25%,
+        rgba(41, 198, 255, 0.28),
+        rgba(128, 102, 255, 0.16)
+      );
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.75rem;
+      width: 2.75rem;
+      border-radius: 9999px;
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #8066ff, #0b9cff);
+      box-shadow: 0 4px 14px rgba(128, 102, 255, 0.4);
+    }
+
+    /* Process cards: radial wash tinted per step, centered on the top-left
+       corner so the glow trails down from behind the step number. */
+    .process-card {
+      background:
+        radial-gradient(
+          circle at top left,
+          color-mix(in srgb, var(--tint) 24%, transparent),
+          transparent 62%
+        ),
+        rgba(6, 18, 38, 0.55);
+    }
+
+    /* Shiny shadow halo behind every icon. A blurred tinted disc sits behind
+       the glyph, and the glyph itself gets a matching bloom drop-shadow. */
+    .icon-halo {
+      --tint: #5fd3ff;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+    }
+
+    .icon-halo::before {
+      content: '';
+      position: absolute;
+      inset: -38%;
+      z-index: -1;
+      border-radius: 9999px;
+      background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--tint) 60%, transparent) 0%,
+        color-mix(in srgb, var(--tint) 22%, transparent) 42%,
+        transparent 70%
+      );
+      filter: blur(12px);
+    }
+
+    .icon-halo > svg {
+      filter:
+        drop-shadow(0 0 6px color-mix(in srgb, var(--tint) 75%, transparent))
+        drop-shadow(0 2px 10px color-mix(in srgb, var(--tint) 45%, transparent));
+    }
+
+    /* Small hover lift on cards. */
+    .lift {
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .lift:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        0 0 24px rgba(11, 156, 255, 0.12);
+    }
+
+    .cta-primary:focus-visible,
+    .cta-outline:focus-visible,
+    .link-underline:focus-visible {
+      outline: 2px solid var(--primary-light);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-primary,
+      .lift,
+      .link-underline,
+      .cta-outline {
+        transition: none;
+      }
+
+      .cta-primary:hover,
+      .lift:hover {
+        transform: none;
+      }
+    }
+  </style>
+</Base>
