@@ -220,10 +220,10 @@ const jsonLd = {
       />
       {/* Readability wash — heavier on mobile (copy spans full width), lighter on
           desktop so the product panels on the right stay crisp. */}
-      <!-- <div
+      <div
         class='absolute inset-0 bg-gradient-to-r from-cosmic-950/92 via-cosmic-950/68 to-cosmic-950/35 md:from-cosmic-950/90 md:via-cosmic-950/45 md:to-cosmic-950/5'
       >
-      </div> -->
+      </div>
       <!-- <div
         class='absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cosmic-950'
       >
@@ -260,7 +260,10 @@ const jsonLd = {
         </div>
 
         <p class='mt-5'>
-          <a href='#consulting' class='link-underline'>
+          <a
+            href='#consulting'
+            class='link-underline inline-block rounded-lg bg-cosmic-950/45 px-3 py-2 backdrop-blur-md sm:bg-transparent sm:p-0 sm:backdrop-blur-none'
+          >
             Need hands-on help? Explore consulting.
           </a>
         </p>
