@@ -67,7 +67,7 @@ const Header = ({ pathname = '/' }: { pathname?: string }) => {
           aria-label="Orizens — home"
         >
           <PlanetMark className="h-14 drop-shadow-[0_0_14px_rgba(41,198,255,0.45)]" />
-          <span className="hidden font-display text-2xl font-semibold tracking-tight text-ink-primary">
+          <span className="sr-only font-display text-2xl font-semibold tracking-tight text-ink-primary">
             Orizens
           </span>
         </a>
