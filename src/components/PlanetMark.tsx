@@ -3,7 +3,7 @@
  * and in both themes. The supplied raster (src/assets/logo.png) ships without a
  * real alpha channel; swap this for an <img> if a properly matted logo is added.
  */
-import logoWhite from '@/assets/logo-white.png';
+import logoWhite from '@/assets/logo-white.webp';
 
 type Props = {
   className?: string;
