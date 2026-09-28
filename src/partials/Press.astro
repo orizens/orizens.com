@@ -1,0 +1,135 @@
+---
+import PageSection from '@/components/PageSection.astro';
+
+const quoteIcon =
+  '<path d="M4 5h16v10H8l-4 4V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>';
+
+const mentions = [
+  {
+    name: 'InfoQ',
+    links: [
+      { label: 'Using custom React Hooks in functional programming (Chinese translation)', href: '//www.infoq.cn/article/4PGR9BeBKGIKyElkNiLN' }, 
+      { label: 'Let your code tell its story (Chinese translation)', href: '//www.infoq.cn/article/ZmcUNS7ezTwKjL0wUCLI' }
+    ],
+  },
+  {
+    name: 'React Status',
+    links: [
+      { label: 'Issue #479', href: '//react.statuscode.com/issues/479' },
+      { label: 'Issue #356', href: '//react.statuscode.com/issues/356' },
+      { label: 'Issue #300', href: '//react.statuscode.com/issues/300' },
+      { label: 'Issue #261', href: '//react.statuscode.com/issues/261' },
+      { label: 'Issue #247', href: '//react.statuscode.com/issues/247' },
+      { label: 'Issue #225', href: '//react.statuscode.com/issues/225' },
+    ],
+  },
+  {
+    name: 'React Newsletter',
+    links: [
+      { label: 'Issue #387 (2023)', href: '//reactnewsletter.com/issues/387' },
+      { label: 'Issue #327 (2022)', href: '//reactnewsletter.com/issues/327' },
+      {
+        label: 'Issue #353',
+        href: '//us4.campaign-archive.com/?u=29c888baee9c05ccb614e1e92&id=0cdb0aecbd',
+      },
+    ],
+  },
+  {
+    name: 'JavaScript Weekly',
+    links: [
+      { label: 'Issue #601', href: '//javascriptweekly.com/issues/601' },
+      { label: 'Issue #269', href: '//javascriptweekly.com/issues/269' },
+      { label: 'Issue #265', href: '//javascriptweekly.com/issues/265' },
+      { label: 'Issue #260', href: '//javascriptweekly.com/issues/260' },
+      { label: 'Issue #218', href: '//javascriptweekly.com/issues/218' },
+      { label: 'Issue #200', href: '//javascriptweekly.com/issues/200' },
+    ],
+  },
+  {
+    name: 'DZone',
+    links: [
+      {
+        label: 'Modular Feature-Driven Development: The Smart Phone',
+        href: '//dzone.com/articles/modular-feature-driven-development-the-smart-phone',
+      },
+      {
+        label: 'The Benefits of Using RTK Query',
+        href: '//dzone.com/articles/the-benefits-of-using-rtk-query',
+      },
+      {
+        label: 'Best Practices for Developing Complex Form-Based Apps',
+        href: '//dzone.com/articles/best-practices-for-developing-complex-form-based-a',
+      },
+      {
+        label: 'Integration of Firebase Firestore With Redux Toolkit',
+        href: '//dzone.com/articles/integration-of-firebase-firestore-with-redux-toolk',
+      },
+      {
+        label: 'Reducing React Dev Server Startup to 213ms From Create React App',
+        href: '//dzone.com/articles/reducing-react-dev-server-to-213ms-from-create-rea',
+      },
+    ],
+  },
+  {
+    name: 'Book Reviews — Reactive Programming with Angular & NgRx',
+    links: [
+      { label: '@dunchunter', href: '//twitter.com/dunchunter/status/872945031178407936' },
+      { label: '@Dhabolt', href: '//twitter.com/Dhabolt/status/1061240683959328768' },
+      { label: '@glen_a_smith', href: '//twitter.com/glen_a_smith/status/917918755564412929' },
+      { label: '@RickCasey', href: '//twitter.com/RickCasey/status/904477875830751233' },
+      { label: '@rs459', href: '//twitter.com/rs459/status/900367135662370816' },
+    ],
+  },
+  {
+    name: 'Echoes Player Mentions',
+    links: [
+      {
+        label: 'Mybridge — Top 25 Angular OSS Projects (2018)',
+        href: '//medium.mybridge.co/angular-open-source-projects-for-the-past-year-v-2018-dba2041e6ff8',
+      },
+      {
+        label: 'Mybridge — 18 Amazing Angular Projects',
+        href: '//medium.mybridge.co/18-amazing-open-source-angular-projects-dd9e81d921ee',
+      },
+      { label: '@robwormald', href: '//twitter.com/robwormald/status/929462242701205505' },
+    ],
+  },
+];
+---
+
+<PageSection id='press' title='Press &amp; <span class="brand-text">Mentions</span>' icon={quoteIcon}>
+  <div class='c-card overflow-x-auto'>
+    <table class='w-full min-w-[36rem] border-collapse text-left'>
+      <thead>
+        <tr class='border-b border-cool'>
+          <th class='px-5 py-3 text-sm font-medium text-ink-muted sm:px-6'>Publication</th>
+          <th class='px-5 py-3 text-sm font-medium text-ink-muted sm:px-6'>Mentions</th>
+        </tr>
+      </thead>
+      <tbody class='divide-y divide-cool'>
+        {
+          mentions.map((pub) => (
+            <tr>
+              <td class='px-5 py-4 align-top font-semibold text-ink-primary sm:px-6'>{pub.name}</td>
+              <td class='px-5 py-4 sm:px-6'>
+                <div class='flex flex-wrap gap-2'>
+                  {pub.links.map((link) => (
+                    <a
+                      href={link.href}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      class='inline-flex items-center gap-1 rounded-full border border-cool bg-cosmic-800/60 px-3 py-1 text-sm text-ink-secondary transition-colors hover:border-orbit-400/60 hover:text-orbit-300'
+                    >
+                      {link.label}
+                      <span aria-hidden='true'>↗</span>
+                    </a>
+                  ))}
+                </div>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</PageSection>
