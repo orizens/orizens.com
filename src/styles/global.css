@@ -207,6 +207,16 @@ body {
 }
 
 /* Honor reduced motion everywhere. */
+/* Floating pill header once the page is scrolled */
+header.backdrop-blur-md {
+  top: 1rem !important;
+  width: 96svw;
+  margin: 0 auto;
+  border-radius: 4rem;
+  background: rgb(2 8 23 / 68%);
+  transition: all 0.3s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
