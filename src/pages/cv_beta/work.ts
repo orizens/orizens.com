@@ -60,7 +60,7 @@ export const works = [
     ],
   },
   {
-    role: 'Senior Front End Engineer & Consultant',
+    role: 'Senior Software Engineer, Front End & Consultant',
     date: '2018 - 2020',
     company: 'Tangent Logic, Full-Time',
     tagline:
@@ -75,7 +75,7 @@ export const works = [
     ],
   },
   {
-    role: 'Senior Front End Engineer & Consultant',
+    role: 'Senior Software Engineer, Front End & Consultant',
     date: '2016 - 2018',
     company: 'Orizens (Self Owned), Full-Time',
     tagline: `Developing Web Applications with  React, Angular, Redux, NgRx, Typescript, CI/CD and Web Technologies. Writing at the <a
