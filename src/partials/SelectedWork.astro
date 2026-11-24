@@ -4,7 +4,10 @@ import ProjectCard from '@/components/ProjectCard.astro';
 
 import bookImage from './9781484226193.png';
 import echoesImage from './echoes.png';
-import ittimImage from './ittim-app.png';
+import ittimImage from './ittim-app.webp';
+import kashrutImage from './kashrut-check.jpg';
+import orElImage from './or-el.jpg';
+import tovawayImage from './tovaway.webp';
 import readmImage from './readm-ui.png';
 
 const cubeIcon =
@@ -13,6 +16,36 @@ const infinityIcon =
   '<path d="M7 9a3 3 0 1 0 0 6c2 0 3-2 5-3s3-3 5-3a3 3 0 1 1 0 6c-2 0-3-2-5-3S9 9 7 9Z" fill="none" stroke="currentColor" stroke-width="1.7"/>';
 
 const projects = [
+  {
+    name: 'Kashrut Check',
+    description:
+      'A React Native app for iOS and Android — take a photo of a kosher symbol, or choose a screenshot, and see whether it is on the approved agency list. Everything runs on your phone.',
+    link: '//kashrutcheck.netlify.app',
+    category: 'Mobile App',
+    tags: ['React Native', 'iOS', 'Android'],
+    image: kashrutImage,
+    imageAlt: 'Kashrut Check app: scan a product, search, or take a photo to check kashrut',
+  },
+  {
+    name: 'Tovaway',
+    description:
+      'A full-stack community service connecting Israelis who are flying with people who need a small, personal and legal item carried to or from Israel — simple and free of charge.',
+    link: '//tovaway.com',
+    category: 'Full Stack',
+    tags: ['Next.js', 'Full Stack', 'Community'],
+    image: tovawayImage,
+    imageAlt: 'Tovaway — Israelis helping Israelis on the way',
+  },
+  {
+    name: 'Or-El',
+    description:
+      "The smart screen app for shuls — transforming your synagogue's displays with real-time prayer times, zmanim, announcements and community updates.",
+    link: '//or-el.netlify.app',
+    category: 'Web App',
+    tags: ['Smart Display', 'Zmanim', 'Real-time'],
+    image: orElImage,
+    imageAlt: 'Or-El: a synagogue display screen showing prayer times, zmanim, clock and weather',
+  },
   {
     name: 'Ittim',
     description:
