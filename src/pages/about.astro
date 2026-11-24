@@ -13,11 +13,45 @@ import Base from '@/templates/Base.astro';
 const description = `Oren Farhi — an experienced Software Engineer, Front End Engineer, Front End Architect and Tech Lead, focused on software architecture and well-formed applications.`;
 
 const principles = [
-  'Seeing the code as a live reactive system',
-  'Implementing best practices of software architecture — modular & testable code',
-  'Understanding the big picture while breaking down complex problems into smaller challenges',
-  'Keeping code and app structure organized so others can easily understand and extend it',
-  'Automating development with CI/CD using GitHub Actions',
+  {
+    title: 'Simple beats clever.',
+    text: 'I break big, tangled problems into small pieces that anyone on the team can read, test and change.',
+  },
+  {
+    title: 'Architecture is a team sport.',
+    text: 'Good structure should make the next developer faster, not more confused.',
+  },
+  {
+    title: 'Speed is a feature.',
+    text: "I've cut build times with Vite and Bun and shortened CI runs for unit and E2E tests, because slow feedback quietly drains a team.",
+  },
+  {
+    title: 'Ship safely.',
+    text: 'Feature flags, solid test coverage and CI/CD pipelines let teams release often without holding their breath.',
+  },
+  {
+    title: 'AI as a teammate, not a shortcut.',
+    text: 'I use AI coding agents every day, and I help teams adopt them in a way that raises quality instead of just raising output.',
+  },
+];
+
+const advisory = [
+  {
+    title: 'Technical leadership on demand:',
+    text: 'architecture reviews and audits of code, security and infrastructure',
+  },
+  {
+    title: 'Keeping agencies honest:',
+    text: 'overseeing external dev shops and contractors so founders know what they\'re paying for',
+  },
+  {
+    title: 'AI-augmented development:',
+    text: 'setting up workflows where AI agents speed teams up without cutting corners',
+  },
+  {
+    title: 'Getting investor-ready:',
+    text: 'pitch decks, plus advice on how to approach conversations with investment firms',
+  },
 ];
 ---
 
@@ -83,33 +117,32 @@ const principles = [
   <PageSection class='!py-6 lg:!py-8'>
     <div class='c-card space-y-4 p-6 text-base leading-relaxed text-ink-secondary sm:p-8 sm:text-lg'>
       <p>
-        Hi — I&rsquo;m Oren Farhi. I&rsquo;m an experienced Software Engineer and
-        Front End Tech Lead, focusing on
-        <strong class='text-ink-primary'>front end &amp; software architecture</strong>
-        and creating well-formed applications. I graduated with a
+        I&rsquo;ve been building for the web for over 20 years, and I still get
+        a kick out of the moment a messy problem turns into something simple.
+      </p>
+      <p>
+        I&rsquo;m <strong class='text-ink-primary'>self-taught at heart</strong>.
+        I started by taking things apart to see how they worked, and later
+        earned a
         <strong class='text-ink-primary'>BA in Computer Science &amp; Business Management</strong>
-        from the Open University.
+        from the Open University. That mix still shapes how I work. I care about
+        clean architecture, and I also care whether what we&rsquo;re building
+        actually moves the business.
       </p>
       <p>
-        I earned my software engineering skills by being
-        <strong class='text-ink-primary'>self-driven</strong> — making things
-        happen, experimenting,
-        <a class='text-orbit-400' href='//github.com/orizens' target='_blank' rel='noopener noreferrer'>open-sourcing</a>
-        some of my work,
-        <a class='text-orbit-400' href='/blog/'>writing</a> about it, and reading
-        a lot.
+        Most recently I&rsquo;ve led front end work at companies like Zscaler,
+        HighRes BioSolutions, Rivery and 1Care.ai. The products ranged from
+        security platforms and lab automation software to data pipelines and
+        healthcare. Along the way I wrote
+        <em>Reactive Programming with Angular and NgRx</em> (Apress), created
+        <a class='text-orbit-400' href='//github.com/orizens/ngx-infinite-scroll' target='_blank' rel='noopener noreferrer'>ngx-infinite-scroll</a>,
+        which teams around the world rely on, and co-founded ReadM, an
+        AI-powered reading fluency platform for kids.
       </p>
       <p>
-        In my work I take a three-point perspective on software architecture,
-        looking at a challenge with depth and entirety. With this experience I
-        help teams take a unique perspective, look up, and move forward.
-      </p>
-      <p>
-        I believe in producing easy,
-        <strong class='text-ink-primary'>maintainable code</strong>. I consult
-        with companies and startups on how to approach code in their projects,
-        keep it maintainable, and deliver
-        <strong class='text-ink-primary'>high-quality</strong>, well-tested work.
+        These days I split my time between two things I love: leading
+        engineering teams, and helping founders build the right product the
+        right way.
       </p>
     </div>
   </PageSection>
@@ -118,10 +151,33 @@ const principles = [
     <div class='c-card p-6 sm:p-8'>
       <ul class='space-y-3'>
         {
-          principles.map((text) => (
+          principles.map((p) => (
             <li class='flex items-start gap-3 text-ink-secondary'>
               <Check />
-              <span>{text}</span>
+              <span>
+                <strong class='text-ink-primary'>{p.title}</strong> {p.text}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </PageSection>
+
+  <PageSection title='For teams and <span class="brand-text">founders</span>' class='!py-6 lg:!py-8'>
+    <div class='c-card p-6 sm:p-8'>
+      <p class='mb-4 text-ink-secondary'>
+        Besides my engineering roles, I work as an advisor and consultant to
+        startups. That usually means:
+      </p>
+      <ul class='space-y-3'>
+        {
+          advisory.map((p) => (
+            <li class='flex items-start gap-3 text-ink-secondary'>
+              <Check />
+              <span>
+                <strong class='text-ink-primary'>{p.title}</strong> {p.text}
+              </span>
             </li>
           ))
         }
