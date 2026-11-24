@@ -257,40 +257,40 @@ rgba(245,237,226,.18)
 Two families, loaded from Google Fonts in `src/templates/Base.astro`. A third
 (Caveat) is used only for tiny handwritten accents.
 
-### Display serif — headings
+### Display serif - headings
 
 **Fraunces** (variable, with `opsz` optical sizing).
 Fallback stack: `Georgia, Cambria, "Times New Roman", serif`.
 
-Fraunces is warm, readable and premium — soft humanist terminals that match the
+Fraunces is warm, readable and premium - soft humanist terminals that match the
 "warmer / softer than the surrounding cosmic environment" direction, and an
 optical-size axis so large headings pick up the high-contrast display cut while
 small headings (card titles) stay sturdy.
 
 Use it for every heading: hero H1, page H1s, section H2/H3, card titles, article
 titles, and `.prose` headings. Never for nav, buttons, body copy, labels or
-metadata — those stay Inter.
+metadata - those stay Inter.
 
 Tokens / helpers:
 
 - Tailwind: `font-serif` (alias `font-display`) → the Fraunces stack.
 - CSS var: `--font-serif`.
-- `.font-display` — family + `font-optical-sizing: auto`, `font-weight: 500`,
+- `.font-display` - family + `font-optical-sizing: auto`, `font-weight: 500`,
   `letter-spacing: -0.02em`, `line-height: 1.05`. For section headings and
   card titles. Pair with a size utility only.
-- `.font-display-xl` — same, tighter (`-0.025em` / `line-height: 0.98`). For
+- `.font-display-xl` - same, tighter (`-0.025em` / `line-height: 0.98`). For
   hero- and page-scale H1s. Pair with a `font-size` (clamp) only.
 
-Weight: **400–600 only.** Serifs read heavy — never `font-bold` / `font-extrabold`
+Weight: **400–600 only.** Serifs read heavy - never `font-bold` / `font-extrabold`
 on a Fraunces heading. 500 is the default; 600 for a heading that must shout.
 
-### Body / UI sans — Inter
+### Body / UI sans - Inter
 
 Set on `<body>`. Used for all body copy, navigation, buttons, form controls,
 labels, eyebrows and metadata. Fallback: `system-ui, -apple-system, "Segoe UI",
 Roboto, sans-serif`. Token: `font-sans` / `--font-sans`.
 
-### Handwritten accent — Caveat
+### Handwritten accent - Caveat
 
 `.hand` class only, for tiny decorative phrases:
 
@@ -301,7 +301,7 @@ Never for navigation, headings, buttons or body text.
 ### Desktop H1 (Fraunces)
 
 font-size: clamp(2.6rem, 6vw, 4.5rem) for page H1s;
-the hero H1 goes larger — clamp(2.9rem, 7.2vw, 5.75rem).
+the hero H1 goes larger - clamp(2.9rem, 7.2vw, 5.75rem).
 
 font-weight: 500 (`.font-display-xl`).
 

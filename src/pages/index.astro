@@ -14,7 +14,7 @@ const allPosts = await Astro.glob<OrizensPostFrontMatter>('./blog/*.md');
 const recentPosts = sortByDate(allPosts).slice(0, 3);
 
 const title =
-  'Oren Farhi — Software Engineer, Front End Tech Lead & Product Builder | Orizens';
+  'Oren Farhi - Software Engineer, Front End Tech Lead & Product Builder | Orizens';
 const { description } = AppConfig;
 ---
 

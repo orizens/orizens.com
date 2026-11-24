@@ -64,7 +64,7 @@ const Header = ({ pathname = '/' }: { pathname?: string }) => {
         <a
           href="/"
           className="flex items-center gap-3"
-          aria-label="Orizens — home"
+          aria-label="Orizens - home"
         >
           <PlanetMark className="h-14 drop-shadow-[0_0_14px_rgba(41,198,255,0.45)]" />
           <span className="sr-only font-display text-2xl font-semibold tracking-tight text-ink-primary">

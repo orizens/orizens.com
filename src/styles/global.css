@@ -1,5 +1,5 @@
 /*
- * Orizens cosmic environment — see plans/DESIGN_SYSTEM.md
+ * Orizens cosmic environment - see plans/DESIGN_SYSTEM.md
  * Built primarily with performant CSS: layered radial gradients, a subtle star
  * field and pseudo-element glows. The supplied space artwork sits ABOVE this so
  * the page already looks intentional while images load.
@@ -28,10 +28,10 @@
   --content-width: 1440px;
 
   /*
-   * Type — two distinct serifs plus a sans for UI chrome:
+   * Type - two distinct serifs plus a sans for UI chrome:
    *  - --font-serif       Fraunces: display serif, headings only.
    *  - --font-serif-text  Newsreader: reading serif for body copy, articles,
-   *                       cards — everything that isn't a heading or UI chrome.
+   *                       cards - everything that isn't a heading or UI chrome.
    *  - --font-sans        Inter: tags, labels, meta.
    *                       Nav + buttons use --font-serif (the title font).
    */
@@ -67,7 +67,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Decorative star field — hidden from assistive tech via aria on the element. */
+/* Decorative star field - hidden from assistive tech via aria on the element. */
 .starfield {
   position: fixed;
   inset: 0;
@@ -96,7 +96,7 @@ body {
  * Display serif for headings (Fraunces). `font-optical-sizing: auto` lets the
  * variable `opsz` axis switch to the high-contrast display cut as headings grow,
  * while smaller headings keep sturdier, readable shapes. Pair with a Tailwind
- * weight utility (font-normal / font-medium) — serifs read heavy, so avoid
+ * weight utility (font-normal / font-medium) - serifs read heavy, so avoid
  * bold/extrabold here. See plans/DESIGN_SYSTEM.md §9.
  */
 .font-display {
@@ -116,7 +116,7 @@ body {
   line-height: 0.98;
 }
 
-/* Handwritten decorative accents only — never headings / nav / body. */
+/* Handwritten decorative accents only - never headings / nav / body. */
 .hand {
   font-family: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
   color: var(--foreground-secondary);

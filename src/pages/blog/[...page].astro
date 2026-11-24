@@ -25,7 +25,7 @@ interface Props {
 
 const { page } = Astro.props as Props;
 const titleBase =
-  page.currentPage > 1 ? `Writing — page ${page.currentPage}` : 'Writing';
+  page.currentPage > 1 ? `Writing - page ${page.currentPage}` : 'Writing';
 const title = `${titleBase} - ${AppConfig.site_name}`;
 const description =
   'Front end engineering, software architecture, lessons learned, best practices and thoughts by Oren Farhi.';
@@ -37,7 +37,7 @@ const description =
       Ideas · Code · A brighter tomorrow
     </p>
     <h1
-      class='mt-4 font-display-xl text-ink-primary'
+      class='font-display-xl mt-4 text-ink-primary'
       style='font-size:clamp(2.6rem,6vw,4.5rem)'
     >
       <span class='brand-text'>Writing</span>
@@ -57,27 +57,23 @@ const description =
       aria-label='Pagination'
       class='mt-12 flex items-center justify-between text-sm'
     >
-      {
-        page.url.prev ? (
-          <a href={page.url.prev} class='c-btn c-btn-secondary'>
-            ← Newer
-          </a>
-        ) : (
-          <span />
-        )
-      }
+      {page.url.prev ? (
+        <a href={page.url.prev} class="c-btn c-btn-secondary">
+          ← Newer
+        </a>
+      ) : (
+        <span />
+      )}
       <span class='text-ink-muted'>
         Page {page.currentPage} of {page.lastPage}
       </span>
-      {
-        page.url.next ? (
-          <a href={page.url.next} class='c-btn c-btn-secondary'>
-            Older →
-          </a>
-        ) : (
-          <span />
-        )
-      }
+      {page.url.next ? (
+        <a href={page.url.next} class="c-btn c-btn-secondary">
+          Older →
+        </a>
+      ) : (
+        <span />
+      )}
     </nav>
   </PageSection>
 </Base>

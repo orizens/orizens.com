@@ -3,7 +3,7 @@ const plugin = require('tailwindcss/plugin');
 
 /**
  * Orizens cosmic design system.
- * See plans/DESIGN_SYSTEM.md — do not scatter arbitrary blues / shadows / radii
+ * See plans/DESIGN_SYSTEM.md - do not scatter arbitrary blues / shadows / radii
  * inside components, reach for these tokens instead.
  */
 const cosmic = {
@@ -63,11 +63,11 @@ module.exports = {
         'Roboto',
         'sans-serif',
       ],
-      // Display serif for headings — Fraunces, with optical sizing (see .font-display
+      // Display serif for headings - Fraunces, with optical sizing (see .font-display
       // in global.css and plans/DESIGN_SYSTEM.md §9). `serif` and `display` are aliases.
       serif: ['Fraunces', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
       display: ['Fraunces', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
-      // Reading serif for body copy / articles / cards — Newsreader, deliberately
+      // Reading serif for body copy / articles / cards - Newsreader, deliberately
       // distinct from the Fraunces display cut. Default on <body>; utility is
       // `font-serif-text`.
       'serif-text': [

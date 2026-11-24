@@ -1,5 +1,5 @@
 /**
- * Orizens planet / orbit brand mark — inline SVG so it stays crisp at every size
+ * Orizens planet / orbit brand mark - inline SVG so it stays crisp at every size
  * and in both themes. The supplied raster (src/assets/logo.png) ships without a
  * real alpha channel; swap this for an <img> if a properly matted logo is added.
  */
