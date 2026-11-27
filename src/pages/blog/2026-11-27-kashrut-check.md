@@ -1,7 +1,7 @@
 ---
 id: 20261127
 pubDate: 2026-11-27T10:00:00+00:00
-title: "Claude did it all - expect for the parts it couldn't"
+title: "Claude did it all - except for the parts it couldn't"
 author: Oren Farhi
 layout: '@/templates/BasePost.astro'
 # permalink: /blog/code-review-is-broken-in-the-age-of-ai/
